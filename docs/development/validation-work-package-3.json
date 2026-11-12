@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-11",
+  "scope": "工作包 3：首次说明、要点抽屉、人工协助和沟通后事项",
+  "prototypePages": [3, 5, 6, 7],
+  "automation": "PAUSED",
+  "configuredModel": { "provider": "deepseek", "model": "deepseek-flash", "thinking": false },
+  "realModelRequests": 0,
+  "checks": {
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "serverTests": { "passed": 33, "failed": 0 },
+    "stateTests": { "passed": 10, "failed": 0 },
+    "offlineCases": { "total": 20, "ready": 14, "disclosure_pending": 2, "needs_information": 2, "manual_review": 2 },
+    "browser": {
+      "engine": "Chromium (Microsoft Edge, headless)",
+      "desktopViewport": [1440, 1000],
+      "mobileViewport": [390, 844],
+      "horizontalOverflow": false,
+      "pageErrors": 0,
+      "localStubRequestsInWorkbenchCheck": 4,
+      "verified": [
+        "首次说明及确认键盘操作，页头重开，当前运行模式，空态禁用生成",
+        "桌面右侧抽屉，窄屏全屏，原文与资料出处，Tab 循环、Escape、恢复焦点和页面位置",
+        "参考回应改写加入底稿，确认后自动预览，实际剪贴板，再次编辑撤销确认",
+        "按场景展示后续事项，折叠、打开协助、失败和取消保留勾选，过时结果只读，刷新清空本次内容",
+        "生成中打开协助取消等待，晚到的响应保留当前编辑，M03 可返回补充，P05 与 E2 进入对应人工核实提示",
+        "P05 和 E2 无底稿、无复制、无后续事项、未调用本地上游桩",
+        "工作包 1 和 2 的旧稿与事实许可流程复测"
+      ]
+    }
+  },
+  "pendingSchoolReview": [
+    "人工协助的正式入口、联系人与响应要求",
+    "E2 触发范围及提示口径，校内流程与资料出处",
+    "访问权限、日志与留存规则，正式辅导员演练"
+  ]
+}

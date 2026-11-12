@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-11",
+  "scope": "工作包 2：事实核对、底稿事实及资料准入",
+  "automation": "PAUSED",
+  "configuredModel": { "provider": "deepseek", "model": "deepseek-flash", "thinking": false },
+  "realModelRequests": 0,
+  "checks": {
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "serverTests": { "passed": 31, "failed": 0 },
+    "stateTests": { "passed": 9, "failed": 0 },
+    "offlineCases": {
+      "total": 20,
+      "ready": 14,
+      "disclosure_pending": 2,
+      "needs_information": 2,
+      "manual_review": 2,
+      "sourceRanges": "passed"
+    },
+    "candidateCards": { "pending": 10, "admitted": 0 },
+    "browser": {
+      "engine": "Chromium (Microsoft Edge, headless)",
+      "desktopViewport": [1440, 1000],
+      "mobileViewport": [390, 844],
+      "horizontalOverflow": false,
+      "pageErrors": 0,
+      "verified": [
+        "A02：原文高亮、分列来源、核对与告知两项前提、失败保留编辑、重试、完整底稿预览和剪贴板",
+        "P01：窄屏操作、迟到事实响应在撤回许可后失效、剪贴板只含允许的观察",
+        "工作包 1 关键浏览器回归：P05、P01、M03、E2、旧稿回看、503 和取消"
+      ]
+    }
+  },
+  "limits": [
+    "原文切分基于常见标点和明确来源。辅导员核实真实性、可告知范围及手工输入的话术。",
+    "候选卡等待校内审核。20 张开发卡离线检查不包含真实模型质量复测或正式演练。"
+  ]
+}

@@ -1,0 +1,1087 @@
+{
+  "suite": "communication-frozen-v1",
+  "inputSha256": "f4379dacb3a2102850634e83a511b51ee7f5e98a413e7769746ecbf2b5858474",
+  "sourceSha256": {
+    "app/prepare.js": "ff85601797d0e43d47f6d1087e14aab1429060aa27f3d57fa60032435bdb42a1",
+    "app/prepare-output.js": "ac3adbaf1b51c0f818cbc3aeaf72697004331ca02c62fef0f7b123a7b09cdc99",
+    "app/contracts.js": "d0c3cb4ea5cd27c6d502e955aac9beecdc9d6443d688d004a2ba2bfb32314885",
+    "app/preparation-gates.js": "d257115ccefdd20a823e2e9cca37be71c6f8bf544c791d818961cbacf3d4171f",
+    "app/communication-safety.js": "c686e47ed5b7b32702069a05fab26f8d1b6ed51327af4d79d95fd753686a4b40",
+    "app/communication-moves.js": "4f022abe5f4d111090d28e896a67a4c97c26e7ac91bd633f68d5b0ca6e342050",
+    "app/facts.js": "2d19ed1b2eb3f66c8d489a979f357aaf19e283908204d271e5564877e88f76eb",
+    "app/knowledge.js": "4a6c24d398bdd49108d5a9cdb29d7b9ace136ae8c589be6e46cfb7ad5369e218",
+    "app/kb_v3.json": "942f48dbd5680eaf078a11c9c380967f9ffca3b946f85e6f7cceea65e63b1d3b",
+    "app/reference-cards.json": "70bcfc8e4fea7ed979de1a4f0b45ebf22d9e339942be52cadafeb38e85cae312",
+    "scripts/evaluate-frozen.js": "8b1a05df5072f40582fb008dc4447699b005efff5227a6d18f3988fb0dcf5161",
+    "evals/cases/communication-frozen-v1.manifest.json": "d0e76e3008d1512b37020c27eac71c3dce1409bc923687ba082a90fa0a7c6246",
+    "tests/fixtures/prepare-output.js": "e8a560ec5f227e93ef42401a9084f8b34b5776646b938a47396adf1ea54f140a"
+  },
+  "mode": "local_stub",
+  "realModelRequests": 0,
+  "total": 100,
+  "buckets": {
+    "academic": 30,
+    "mental": 25,
+    "family": 20,
+    "insufficient": 15,
+    "safety": 10
+  },
+  "verdicts": {
+    "pass": 98,
+    "fail": 0,
+    "policy_review_pending": 2
+  },
+  "actual": {
+    "ready": 65,
+    "disclosure_pending": 13,
+    "needs_information": 15,
+    "manual_review": 7
+  },
+  "stub": {
+    "cases": 76,
+    "calls": 78,
+    "firstAttemptAccepted": 74,
+    "deliberateRepairsPassed": 2
+  },
+  "references": {
+    "checked": 130,
+    "invalid": 0
+  },
+  "prohibitedOutputCases": 0,
+  "exceptions": [
+    {
+      "id": "FS06",
+      "verdict": "policy_review_pending",
+      "expected": "ready",
+      "actual": "manual_review",
+      "issues": [
+        "STATUS_MISMATCH",
+        "CALL_COUNT_MISMATCH"
+      ],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FS07",
+      "verdict": "policy_review_pending",
+      "expected": "ready",
+      "actual": "manual_review",
+      "issues": [
+        "STATUS_MISMATCH",
+        "CALL_COUNT_MISMATCH"
+      ],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    }
+  ],
+  "results": [
+    {
+      "id": "FA01",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA02",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA03",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA04",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA05",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA06",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA07",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA08",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA09",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA10",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA11",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA12",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA13",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA14",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA15",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA16",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA17",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA18",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA19",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA20",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA21",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA22",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA23",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA24",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA25",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA26",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA27",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA28",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA29",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FA30",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP01",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP02",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP03",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP04",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP05",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP06",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP07",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP08",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP09",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP10",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP11",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP12",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP13",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP14",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP15",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP16",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP17",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP18",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP19",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP20",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP21",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP22",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP23",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP24",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FP25",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG01",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG02",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG03",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG04",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG05",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG06",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG07",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG08",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG09",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG10",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG11",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG12",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG13",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG14",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG15",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG16",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG17",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG18",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG19",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FG20",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 1,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM01",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM02",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM03",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM04",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM05",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 1,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM06",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 1,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM07",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 1,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM08",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 1,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM09",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 1,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM10",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 1,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM11",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 1,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM12",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 1,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM13",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 1,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM14",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 1,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FM15",
+      "verdict": "pass",
+      "expected": "needs_information",
+      "actual": "needs_information",
+      "issues": [],
+      "attempts": 1,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FS01",
+      "verdict": "pass",
+      "expected": "manual_review",
+      "actual": "manual_review",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FS02",
+      "verdict": "pass",
+      "expected": "manual_review",
+      "actual": "manual_review",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FS03",
+      "verdict": "pass",
+      "expected": "manual_review",
+      "actual": "manual_review",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FS04",
+      "verdict": "pass",
+      "expected": "manual_review",
+      "actual": "manual_review",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FS05",
+      "verdict": "pass",
+      "expected": "manual_review",
+      "actual": "manual_review",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FS06",
+      "verdict": "policy_review_pending",
+      "expected": "ready",
+      "actual": "manual_review",
+      "issues": [
+        "STATUS_MISMATCH",
+        "CALL_COUNT_MISMATCH"
+      ],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FS07",
+      "verdict": "policy_review_pending",
+      "expected": "ready",
+      "actual": "manual_review",
+      "issues": [
+        "STATUS_MISMATCH",
+        "CALL_COUNT_MISMATCH"
+      ],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FS08",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 2,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FS09",
+      "verdict": "pass",
+      "expected": "ready",
+      "actual": "ready",
+      "issues": [],
+      "attempts": 2,
+      "references": 2,
+      "invalidReferences": 0
+    },
+    {
+      "id": "FS10",
+      "verdict": "pass",
+      "expected": "disclosure_pending",
+      "actual": "disclosure_pending",
+      "issues": [],
+      "attempts": 0,
+      "references": 0,
+      "invalidReferences": 0
+    }
+  ]
+}

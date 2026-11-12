@@ -1,0 +1,11 @@
+# Secrets and local runtime files
+.env
+.env.*
+!.env.example
+app/api.txt
+app/*.key
+*.log
+node_modules/
+dist/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家校沟通助手 · 沟通准备工作台（原型 v2 · 接入模型）</title>
+<style>
+  :root{
+    --green:#1f6b57; --green-d:#18503f; --green-l:#e8f1ee;
+    --ink:#1f2328; --ink-2:#57606a; --ink-3:#8b939c;
+    --line:#e3e6e9; --bg:#f6f7f8; --amber:#fff6e0; --amber-d:#a8730a;
+    --red:#c23a3a; --red-bg:#fdeeee;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+    color:var(--ink); background:var(--bg); font-size:14px; line-height:1.65;-webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:center;gap:14px;padding:12px 22px;background:#fff;
+    border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  .brand{display:flex;align-items:center;gap:10px}
+  .logo{width:30px;height:30px;border-radius:8px;background:var(--green);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700}
+  .brand b{font-size:15px}
+  .brand span{display:block;font-size:11px;color:var(--ink-3);line-height:1.2}
+  .spacer{flex:1}
+  .ghost{border:1px solid var(--line);background:#fff;color:var(--ink-2);
+    padding:6px 12px;border-radius:6px;font-size:12px;cursor:pointer}
+  .ghost:hover{border-color:#c9ced3;color:var(--ink)}
+  .tag-demo{border:1px solid #f0d9a8;background:#fffaf0;color:var(--amber-d);
+    font-size:11px;padding:3px 8px;border-radius:20px}
+  .dot-s{display:inline-block;width:7px;height:7px;border-radius:50%;background:#c9ced3;margin-right:5px}
+  .dot-s.on{background:#2e9e6b} .dot-s.off{background:#d08a2a} .dot-s.err{background:#c23a3a}
+
+  main{max-width:1360px;margin:0 auto;padding:18px 22px 70px;display:grid;
+       grid-template-columns:396px minmax(0,1fr);gap:20px;align-items:start}
+  @media (max-width:1020px){ main{grid-template-columns:1fr} }
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px}
+  .card-h{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .card-h h3{margin:0;font-size:13px;font-weight:700}
+  .card-h .no{width:18px;height:18px;border-radius:50%;background:var(--green-l);color:var(--green);
+    font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700}
+  .card-h .hint{margin-left:auto;font-size:11px;color:var(--ink-3)}
+  .card-b{padding:14px 16px}
+
+  .field{margin-bottom:16px}
+  .field:last-child{margin-bottom:0}
+  .label{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;margin-bottom:6px}
+  .req{color:var(--red);font-size:11px;font-weight:400}
+  .sub{font-size:11.5px;color:var(--ink-3);margin-top:4px;line-height:1.5}
+  textarea,input[type=text],select{width:100%;border:1px solid var(--line);border-radius:7px;padding:8px 10px;
+    font:inherit;font-size:13px;color:var(--ink);background:#fff;outline:none;resize:vertical}
+  textarea:focus,select:focus,input[type=text]:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(31,107,87,.1)}
+  textarea{min-height:86px}
+  .scene-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .scene{border:1px solid var(--line);background:#fff;border-radius:7px;padding:8px 10px;
+    font-size:12.5px;cursor:pointer;text-align:left;color:var(--ink-2);line-height:1.35}
+  .scene:hover{border-color:#c9ced3}
+  .scene.on{border-color:var(--green);background:var(--green-l);color:var(--green-d);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:12px;
+    cursor:pointer;color:var(--ink-2);background:#fff;user-select:none}
+  .chip.on{border-color:var(--green);background:var(--green-l);color:var(--green-d);font-weight:600}
+  .cta{width:100%;padding:11px;border:0;border-radius:8px;background:var(--green);color:#fff;
+    font-size:14px;font-weight:600;cursor:pointer;margin-top:4px}
+  .cta:hover{background:var(--green-d)}
+  .cta:disabled{background:#c8d3cf;cursor:not-allowed}
+
+  .bar{display:flex;align-items:center;gap:10px;padding:9px 14px;background:#fff;
+    border:1px solid var(--line);border-radius:8px;font-size:12px;color:var(--ink-2);margin-bottom:14px}
+  .bar b{color:var(--ink)}
+  .empty{background:#fff;border:1px dashed #d6dbe0;border-radius:10px;padding:56px 20px;
+    text-align:center;color:var(--ink-3);font-size:13px}
+  .empty .big{font-size:15px;color:var(--ink-2);margin-bottom:6px;font-weight:600}
+  .res{display:grid;gap:14px}
+  @media (min-width:1200px){ .res.two{grid-template-columns:1fr 1fr} }
+
+  ul.pts{list-style:none;margin:0;padding:0}
+  ul.pts li{padding:10px 0;border-bottom:1px dashed var(--line)}
+  ul.pts li:last-child{border-bottom:0;padding-bottom:0}
+  .pt-t{font-weight:600;font-size:13.5px;margin-bottom:3px}
+  .pt-w{color:var(--ink-2);font-size:12.5px}
+  .pt-f{display:flex;align-items:center;gap:8px;margin-top:6px}
+  .src{font-size:10.5px;border-radius:4px;padding:1px 6px;border:1px solid;line-height:1.6}
+  .src.rule{color:#1f6b57;border-color:#bcd9d0;background:#f2f8f6}
+  .src.know{color:#3b5ec4;border-color:#ccd6f0;background:#f4f6fd}
+  .src.adv{color:#8a6a12;border-color:#ecdcb4;background:#fdf9ee}
+  .more{margin-left:auto;font-size:12px;color:var(--green);cursor:pointer;background:none;border:0}
+
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:flex;gap:10px;padding:6px 0;font-size:12.5px;color:var(--ink-2)}
+  .steps .dot{width:18px;height:18px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:10.5px;flex:0 0 18px;color:var(--ink-3)}
+  .steps li.cur{color:var(--ink);font-weight:600}
+  .steps li.cur .dot{border-color:var(--green);background:var(--green);color:#fff}
+  .steps li.done .dot{color:var(--green);border-color:var(--green)}
+
+  .risk{background:#fdfaf3;border:1px solid #f0e4c8;border-radius:8px;padding:10px 12px;margin-bottom:10px}
+  .risk:last-child{margin-bottom:0}
+  .risk b{font-size:12.5px;color:#7a5a10}
+  .risk p{margin:2px 0 0;font-size:12px;color:var(--ink-2)}
+
+  .draft{width:100%;min-height:140px;border:1px solid var(--line);border-radius:8px;
+    padding:10px 12px;font:inherit;font-size:13px;line-height:1.75;color:var(--ink)}
+  .draft[readonly]{background:#fafbfb;color:#333}
+  .row{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .btn{border:1px solid var(--line);background:#fff;border-radius:6px;padding:6px 12px;
+    font-size:12.5px;cursor:pointer;color:var(--ink-2)}
+  .btn:hover{border-color:#c9ced3}
+  .btn.pri{background:var(--green);border-color:var(--green);color:#fff;font-weight:600}
+  .btn.pri:hover{background:var(--green-d)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .count{font-size:11.5px;color:var(--ink-3);margin-left:auto}
+
+  .faq{font-size:12.5px}
+  .faq dt{font-weight:600;margin-top:9px}
+  .faq dt:first-child{margin-top:0}
+  .faq dd{margin:2px 0 0;color:var(--ink-2)}
+
+  .warn{background:var(--amber);border:1px solid #f0dcae;border-radius:8px;padding:10px 12px;
+    font-size:12.5px;color:#6b4c07;margin-bottom:14px}
+  .stop{background:var(--red-bg);border:1px solid #f2cccc;border-radius:8px;padding:12px;
+    font-size:12.5px;color:#8d2626;margin-bottom:14px}
+  .stop b{display:block;margin-bottom:3px}
+  .flags{font-size:11.5px;color:var(--ink-3);background:#fafbfb;border:1px dashed var(--line);
+    border-radius:8px;padding:8px 12px;margin-bottom:14px}
+
+  .next{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;font-size:12.5px;color:var(--ink-2)}
+  .next label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+  .next input{margin-top:3px}
+
+  /* 对话 */
+  .chat-body{max-height:340px;overflow:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+  .msg{max-width:86%;font-size:13px;line-height:1.7;padding:9px 12px;border-radius:10px;white-space:pre-wrap}
+  .msg.u{align-self:flex-end;background:var(--green-l);color:#154235;border:1px solid #d3e5df}
+  .msg.a{align-self:flex-start;background:#f7f8f9;color:var(--ink);border:1px solid var(--line)}
+  .msg .who{display:block;font-size:10.5px;color:var(--ink-3);margin-bottom:3px}
+  .chat-in{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--line)}
+  .chat-in textarea{min-height:44px;max-height:120px;flex:1}
+  .chat-tip{font-size:11px;color:var(--ink-3);padding:0 16px 12px}
+
+  .foot{font-size:11.5px;color:var(--ink-3);margin-top:16px;line-height:1.6}
+  .skel{height:11px;background:#eef1f2;border-radius:5px;margin:8px 0;animation:pulse 1.1s infinite}
+  .skel.w60{width:60%} .skel.w80{width:80%} .skel.w40{width:40%}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+
+  .mask{position:fixed;inset:0;background:rgba(20,25,28,.28);opacity:0;pointer-events:none;transition:.18s;z-index:40}
+  .mask.on{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,92vw);background:#fff;
+    box-shadow:-8px 0 30px rgba(0,0,0,.12);transform:translateX(102%);transition:.22s;z-index:41;display:flex;flex-direction:column}
+  .drawer.on{transform:none}
+  .drawer header{border-bottom:1px solid var(--line);padding:14px 18px;position:static}
+  .drawer .card-b{overflow:auto;padding:16px 18px 28px}
+  .drawer h4{margin:16px 0 6px;font-size:12.5px}
+  .drawer h4:first-child{margin-top:0}
+  .drawer p{margin:0;font-size:13px;color:var(--ink-2)}
+  .quote{background:#f7f8f9;border-left:3px solid #d8dde1;padding:9px 12px;border-radius:0 6px 6px 0;
+    font-size:13px;color:var(--ink);margin-top:6px}
+
+  .modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;
+    background:rgba(20,25,28,.35);padding:20px}
+  .modal.on{display:flex}
+  .modal .box{background:#fff;border-radius:12px;max-width:620px;width:100%;max-height:82vh;overflow:auto;padding:22px 24px}
+  .modal h2{margin:0 0 4px;font-size:16px}
+  .modal h4{font-size:13px;margin:14px 0 4px}
+  .modal ul{padding-left:18px;margin:8px 0 0;font-size:13px;color:var(--ink-2)}
+  .modal li{margin-bottom:6px}
+
+  .toast{position:fixed;left:50%;bottom:34px;transform:translate(-50%,14px);background:#22292e;color:#fff;
+    font-size:12.5px;padding:9px 16px;border-radius:8px;opacity:0;pointer-events:none;transition:.2s;z-index:80;max-width:70vw}
+  .toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">家</div>
+    <div><b>家校沟通助手</b><span>跟家长谈话之前，先把要说的理一遍</span></div>
+  </div>
+  <div class="spacer"></div>
+  <span style="font-size:11.5px;color:var(--ink-3)"><span class="dot-s" id="stDot"></span><span id="stText">检查接口…</span></span>
+  <span class="tag-demo">别填真实信息</span>
+  <button class="ghost" id="btnScope">使用说明</button>
+</header>
+
+<main>
+  <section class="card">
+    <div class="card-h"><h3>这次要谈的事</h3><span class="req" style="margin-left:auto">必填</span></div>
+    <div class="card-b">
+      <div class="field">
+        <div class="label">这次是哪一类</div>
+        <div class="scene-grid" id="scenes"></div>
+        <div class="sub">只是按这一类换个思路，系统不会因此判断孩子有没有问题。</div>
+      </div>
+
+      <div class="field">
+        <div class="label">学生出了什么事 <span class="req">必填</span></div>
+        <textarea id="situation" placeholder="几年级、最近出了什么事、现在什么状态、你已经做过什么。"></textarea>
+        <div class="sub">别写名字、学号、班级和聊天原文。手机号、学号这些，发出去之前会自动打码。</div>
+      </div>
+
+      <div class="field">
+        <div class="label">家长那边怎么说</div>
+        <select id="parentReaction">
+          <option value="">还没联系</option><option>说过了，家长不认可</option><option>家长明确拒绝</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <div class="label">孩子自己怎么想</div>
+        <select id="studentWish">
+          <option value="">还没谈到</option><option>愿意谈</option><option>希望先别告诉父母</option>
+        </select>
+        <div class="sub">只是背景，系统不会拿它来决定要不要告诉家长。</div>
+      </div>
+
+      <div class="field">
+        <div class="label">几个关键词</div>
+        <div class="chips" id="chips"></div>
+      </div>
+
+      <div class="field">
+        <div class="label">现在走到哪一步</div>
+        <select id="stage">
+          <option value="">还没定</option><option>已上报，做过研判</option><option>已经告诉家长</option>
+          <option>还在跟家长磨</option><option>在跟学生谈</option><option>在拉双方一起处理</option>
+        </select>
+        <div class="sub">这一步你说了算，系统不会替你猜。</div>
+      </div>
+
+      <div class="field">
+        <div class="label">还有什么要注意的</div>
+        <textarea id="extra" style="min-height:64px" placeholder="比如：学生希望先别告诉家里；家长容易着急。"></textarea>
+      </div>
+
+      <button class="cta" id="btnGen" disabled>帮我理一遍</button>
+      <div class="sub" style="text-align:center;margin-top:8px">内容会发给模型来生成，这个页面不存东西。</div>
+    </div>
+  </section>
+
+  <section id="out">
+    <div class="empty">
+      <div class="big">左边填几项，这里会给出四块内容</div>
+      要说的事 · 建议的顺序 · 说话时注意 · 给家长的草稿
+    </div>
+  </section>
+</main>
+
+<div class="mask" id="mask"></div>
+<aside class="drawer" id="drawer">
+  <header>
+    <h3 id="dTitle" style="margin:0;font-size:14px">要点详情</h3>
+    <button class="ghost" id="dClose" style="margin-left:auto">关闭</button>
+  </header>
+  <div class="card-b" id="dBody"></div>
+</aside>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <h2>使用说明</h2>
+    <p style="color:var(--ink-2);font-size:12.5px;margin:0 0 6px">两分钟看完，省得用的时候心里没底。</p>
+    <h4>它能帮你</h4>
+    <ul>
+      <li>把这次要讲的事理出来，告诉你每一条为什么要讲。</li>
+      <li>给一个说话的顺序，提醒你哪几句容易把事情搞僵。</li>
+      <li>按你给的情况，写一段能直接拿去改的说明。</li>
+      <li>你想不明白的地方，可以接着问它。</li>
+    </ul>
+    <h4>它不会做的事</h4>
+    <ul>
+      <li>不会判断孩子有多危险，也不会说“没事”。</li>
+      <li>不会替你决定要不要告诉家长，也不会替你做处置。</li>
+      <li>不会说孩子是什么病、吃什么药、能不能好；这类话在输出里会被拦掉。</li>
+      <li>不会编你没说的事，也不会替学生表态。</li>
+      <li>不会替你发消息；草稿你自己确认、自己发。</li>
+    </ul>
+    <h4>你写的东西去哪了</h4>
+    <ul>
+      <li>点生成时会发给模型；这个页面不存，关掉就没了。</li>
+      <li>手机号、学号、身份证、邮箱会自动打码；名字请你自己别写。</li>
+      <li>演示的时候用编的例子，别用真实个案。</li>
+    </ul>
+    <div class="row" style="margin-top:18px"><button class="btn pri" id="mOk">知道了，开始用</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   家校沟通助手 · 前端 v2
+   - 生成：POST /api/prepare（服务端调模型 + 脱敏 + 校验）
+   - 追问：POST /api/chat
+   - 服务没起或接口失败时，自动降级为本地示例（并明确提示）
+   ============================================================ */
+
+const SCENES = [
+  {k:"xueye", name:"学业警示"},
+  {k:"xinli", name:"心理健康首次告知"},
+  {k:"yiban", name:"一般家校沟通"},
+  {k:"weiji", name:"危机前期"}
+];
+const CHIPS = ["涉及学业","家长对就医有疑问","家长瞒了情况","学生要求保密","家长着急上火"];
+const STEPS_DEFAULT = ["先上报，做研判","跟家长说清情况","继续跟进，慢慢引导","跟学生本人谈","推动双方一起解决"];
+
+const state = {scene:"xueye", chips:new Set(), data:null, edited:0, confirmed:false,
+               history:[], sending:false, online:false};
+
+/* ---------- 左侧 ---------- */
+const elScenes = document.getElementById("scenes");
+SCENES.forEach(s=>{
+  const b = document.createElement("button");
+  b.className = "scene" + (s.k===state.scene ? " on" : "");
+  b.dataset.k = s.k; b.textContent = s.name;
+  b.onclick = ()=>{
+    state.scene = s.k;
+    [...elScenes.children].forEach(x=>x.classList.toggle("on", x.dataset.k===s.k));
+  };
+  elScenes.appendChild(b);
+});
+
+const elChips = document.getElementById("chips");
+CHIPS.forEach(c=>{
+  const d = document.createElement("div");
+  d.className = "chip"; d.textContent = c;
+  d.onclick = ()=>{
+    if(state.chips.has(c)){state.chips.delete(c); d.classList.remove("on");}
+    else {state.chips.add(c); d.classList.add("on");}
+  };
+  elChips.appendChild(d);
+});
+
+const elSituation = document.getElementById("situation");
+const elGen = document.getElementById("btnGen");
+elSituation.oninput = ()=>{ elGen.disabled = elSituation.value.trim().length < 6; };
+
+/* ---------- 接口状态 ---------- */
+fetch("/api/health").then(r=>r.json()).then(h=>{
+  state.online = !!h.ok;
+  const dot = document.getElementById("stDot"), txt = document.getElementById("stText");
+  if(h.mock){ dot.className="dot-s off"; txt.textContent = "离线示例模式"; }
+  else if(h.key && h.key.indexOf("未找到") < 0){ dot.className="dot-s on"; txt.textContent = "已连模型（" + h.model + "）"; }
+  else { dot.className="dot-s off"; txt.textContent = "未读到 key，走离线示例"; }
+}).catch(()=>{
+  const dot = document.getElementById("stDot"), txt = document.getElementById("stText");
+  dot.className="dot-s err"; txt.textContent = "服务未启动（用 node server.js）";
+});
+
+/* ---------- 生成 ---------- */
+elGen.onclick = async ()=>{
+  const out = document.getElementById("out");
+  out.innerHTML = `<div class="card"><div class="card-b">
+      <div class="skel w40"></div><div class="skel w80"></div><div class="skel w60"></div>
+      <div class="skel w80"></div><div class="skel w40"></div>
+      <div style="font-size:12px;color:var(--ink-3);margin-top:10px">正在理，几秒钟…</div></div></div>`;
+
+  const payload = {
+    scene: state.scene,
+    sceneName: (SCENES.find(s=>s.k===state.scene)||{}).name,
+    situation: elSituation.value.trim(),
+    parentReaction: document.getElementById("parentReaction").value,
+    studentWish: document.getElementById("studentWish").value,
+    chips: [...state.chips],
+    stage: document.getElementById("stage").value,
+    extra: document.getElementById("extra").value.trim()
+  };
+
+  try{
+    const res = await fetch("/api/prepare", {
+      method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload)
+    });
+    const j = await res.json();
+    if(!j.ok) throw new Error(j.error || "生成失败");
+    state.data = j.data;
+  }catch(e){
+    state.data = localFallback(payload);
+    state.data.flags = ["接口不可用（" + e.message.slice(0,60) + "），已用本地示例，仅供看交互"];
+    toast("没连上模型，先给你看个例子");
+  }
+  state.edited = 0; state.confirmed = false; state.history = [];
+  render();
+};
+
+/* ---------- 本地降级示例 ---------- */
+function localFallback(p){
+  const crisis = p.scene === "weiji";
+  return {
+    sceneName: p.sceneName || "学业警示",
+    points:[
+      {title:"先说清这次为什么联系",why:"家长接到电话先紧张，头十秒决定他后面愿不愿意听",source:"know",
+       detail:{aim:"让家长知道这通电话要花多久、谈什么",why:"家长一紧张就容易往坏处想，先把话挑明，后面才谈得下去",
+         react:["是不是孩子出事了？","你们是不是又要处分他？"],
+         reply:"孩子没事，是想跟您对一下这学期上课和作业的情况，几分钟就够。"}},
+      {title:"只讲能核对的事",why:"说“最近状态不好”家长接不住，说“缺课12节”他能听懂",source:"know",
+       detail:{aim:"用具体的事代替评价",why:"家长不认可，多半是听到的都是评价，不是发生了什么",
+         react:["他在家挺好的啊"],"reply":"在家和在学校可能不一样，我把学校这边看到的说给您，您也说说家里的情况。"}},
+      {title:"说清学校已经做了什么",why:"不然家长会觉得学校只通知一下、后面没人管",source:"know",
+       detail:{aim:"让家长知道学校已经介入",why:"抵触常常来自“只收到一个结果，不知道过程”",
+         react:["那你们之前怎么不说？"],reply:"之前我已经找他谈过两次，也跟任课老师对过，这次想请您一起参与。"}},
+      {title:"讲清下一步谁做什么",why:"不说清，这通电话就等于白打",source:"rule",
+       detail:{aim:"把这次沟通落到具体动作",why:"家长挂了电话最常想的是“然后呢”",
+         react:["那我该做什么？"],reply:"这周您先问一句他最近的作息，我这边继续跟课堂，下周三我再跟您对一次。"}}
+    ],
+    steps: crisis ? STEPS_DEFAULT.slice(0,1) : STEPS_DEFAULT,
+    risks:[
+      {title:"别替家长下判断",detail:"说“他就是贪玩”容易把话聊死，只说这学期发生了什么"},
+      {title:"别把话说满",detail:"不说“照这个做肯定能过”，也不说“这事不会告诉别人”"}
+    ],
+    draft: crisis ? null : "家长您好，我是学院辅导员。今天想跟您对一下孩子这学期上课和作业的情况，几分钟就够。\n\n这学期缺课12节，专业课作业连续三次没交，任课老师也说他上课有点走神。就这三件事，我先跟您说清楚；原因我还在了解，不急着下结论。\n\n之前我已经找他谈过两次。您的看法对我很重要，方便的话我们约个时间通个电话。",
+    faq:[
+      {q:"为什么现在才联系我？",a:"先说学校已经做过的（谈过两次、跟任课老师对过），再说这次想请家长一起参与"},
+      {q:"会不会影响毕业？",a:"按学校文件说，超出文件的不替学校答"}
+    ],
+    next:["问一句家长听明白了多少","约下次再聊，或请家长来一趟","再找学生谈一次，看他怎么想","需要时找心理中心或专业老师"],
+    crisis, notes:"", flags:[]
+  };
+}
+
+/* ---------- 渲染 ---------- */
+function srcLabel(s){
+  return s==="rule" ? `<span class="src rule">依据：学校流程</span>`
+       : s==="know" ? `<span class="src know">依据：常规做法</span>`
+       : `<span class="src adv">沟通建议</span>`;
+}
+
+function render(){
+  const d = state.data;
+  const stage = document.getElementById("stage").value;
+  const stageIdx = ["","已上报，做过研判","已经告诉家长","还在跟家长磨","在跟学生谈","在拉双方一起处理"].indexOf(stage);
+  const out = document.getElementById("out");
+
+  let html = `<div class="bar"><b>这次是：${esc(d.sceneName)}</b>
+      <span style="margin-left:auto">${new Date().toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit"})} 生成</span></div>`;
+
+  if(d.crisis){
+    html += `<div class="stop"><b>这种情况，工具不替你出主意</b>
+      你写的内容可能涉及人身安全，也可能需要专业的人来判断。请先按学校流程联系心理中心或相关老师；
+      工具不给处置方案，也不会去判断危不危险。</div>`;
+  }
+  if(d.flags && d.flags.length){
+    html += `<div class="flags">这些地方我替你处理了：${d.flags.map(esc).join("；")}
+      ${(d.redacted && d.redacted.length) ? "；已自动遮蔽：" + d.redacted.join("、") : ""}</div>`;
+  }else if(d.redacted && d.redacted.length){
+    html += `<div class="flags">发出去之前打了码：${d.redacted.join("、")}</div>`;
+  }
+  if(d.notes){
+    html += `<div class="warn">${esc(d.notes)}</div>`;
+  }
+
+  html += `<div class="res two">`;
+  /* 1 要点 */
+  html += `<section class="card"><div class="card-h"><span class="no">1</span><h3>这次要说的几件事</h3>
+      <span class="hint">点开看为什么这么说、家长可能怎么回</span></div><div class="card-b"><ul class="pts">`;
+  (d.points||[]).forEach((p,i)=>{
+    html += `<li><div class="pt-t">${i+1}. ${esc(p.title)}</div><div class="pt-w">${esc(p.why)}</div>
+      <div class="pt-f">${srcLabel(p.source)}<button class="more" data-i="${i}">查看详情 ›</button></div></li>`;
+  });
+  html += `</ul></div></section>`;
+
+  /* 2 步骤 */
+  html += `<section class="card"><div class="card-h"><span class="no">2</span><h3>建议按这个顺序说</h3>
+      <span class="hint">${stageIdx>0?"按你选的步骤标出来了":"还没选走到哪一步"}</span></div><div class="card-b"><ol class="steps">`;
+  (d.steps||STEPS_DEFAULT).forEach((s,i)=>{
+    const cls = (stageIdx>0 && i<stageIdx) ? "done" : (stageIdx>0 && i===stageIdx ? "cur" : "");
+    html += `<li class="${cls}"><span class="dot">${i+1}</span><span>${esc(s)}</span></li>`;
+  });
+  html += `</ol><div class="sub" style="margin-top:10px">系统不知道你走到了哪一步，这得你自己选。</div></div></section>`;
+
+  /* 3 风险 */
+  html += `<section class="card"><div class="card-h"><span class="no">3</span><h3>说话时留个心</h3>
+      <span class="hint">只是提醒，不会给风险打分</span></div><div class="card-b">`;
+  (d.risks||[]).forEach(x=>{ html += `<div class="risk"><b>${esc(x.title)}</b><p>${esc(x.detail)}</p></div>`; });
+  html += `</div></section>`;
+
+  /* 4 底稿 */
+  html += `<section class="card"><div class="card-h"><span class="no">4</span><h3>给家长的草稿</h3>
+      <span class="hint">可以照着改</span></div><div class="card-b">`;
+  if(d.draft){
+    html += `<textarea class="draft" id="draftBox" readonly>${esc(d.draft)}</textarea>
+      <div class="row"><button class="btn" id="btnEdit">改一改</button>
+      <button class="btn pri" id="btnCopy" disabled>看过了，复制</button>
+      <span class="count" id="editCount">改了 0 处</span></div>
+      <div class="sub">点确认只是你认可这段话，工具不会替你发出去。复制之后你自己去发。</div>`;
+  }else{
+    html += `<div class="warn" style="margin:0">这种情况先按学校流程报上去，工具不写信给家长。</div>`;
+  }
+  html += `</div></section></div>`;
+
+  /* FAQ */
+  if((d.faq||[]).length){
+    html += `<section class="card" style="margin-top:14px"><div class="card-h"><h3>家长大概会问</h3>
+      <span class="hint">只是常见问法，不一定真会问</span></div><div class="card-b"><dl class="faq">`;
+    d.faq.forEach(f=>{ html += `<dt>${esc(f.q)}</dt><dd>${esc(f.a)}</dd>`; });
+    html += `</dl></div></section>`;
+  }
+
+  /* 下一步 */
+  if((d.next||[]).length){
+    html += `<section class="card" style="margin-top:14px"><div class="card-h"><h3>谈完做什么</h3>
+      <span class="hint">勾了只是给自己看，不会存成个案记录</span></div><div class="card-b"><div class="next">`;
+    d.next.forEach(n=>{ html += `<label><input type="checkbox"> <span>${esc(n)}</span></label>`; });
+    html += `</div></div></section>`;
+  }
+
+  /* 对话 */
+  html += `<section class="card" style="margin-top:14px">
+      <div class="card-h"><h3>还有没说清的，接着问</h3><span class="hint">一条别超 150 字</span></div>
+      <div class="chat-body" id="chatBody"></div>
+      <div class="chat-in">
+        <textarea id="chatInput" placeholder="比如：家长说“你们就是想把责任推给我们”，这句怎么接？"></textarea>
+        <button class="btn pri" id="btnSend" style="align-self:flex-end;height:44px">发送</button>
+      </div>
+      <div class="chat-tip">对话也不存；别贴真名和聊天原文。</div>
+    </section>`;
+
+  html += `<div class="foot">上面这些只是准备用。事实请你核实，用不用你定。孩子危不危险、要不要上报，不由这个工具判断。</div>`;
+
+  out.innerHTML = html;
+  bind();
+}
+
+function esc(s){
+  return String(s==null?"":s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+function bind(){
+  const d = state.data;
+
+  document.querySelectorAll(".more").forEach(b=>{
+    b.onclick = ()=> openDrawer(d.points[+b.dataset.i]);
+  });
+
+  const box = document.getElementById("draftBox");
+  const btnEdit = document.getElementById("btnEdit");
+  const btnCopy = document.getElementById("btnCopy");
+  const cnt = document.getElementById("editCount");
+  if(box && btnEdit){
+    let counted = false, timer = null;
+    btnEdit.onclick = ()=>{
+      if(box.readOnly){
+        box.readOnly = false; box.focus(); btnCopy.disabled = false; btnEdit.textContent = "保存草稿";
+      }else{
+        box.readOnly = true; btnEdit.textContent = "编辑底稿";
+      }
+    };
+    box.addEventListener("input", ()=>{
+      if(!counted){ state.edited++; counted = true; cnt.textContent = "改了 " + state.edited + " 处"; }
+      clearTimeout(timer); timer = setTimeout(()=>{ counted = false; }, 900);
+    });
+    box.addEventListener("keydown", e=>{ if(e.key==="Enter") counted = false; });
+    btnCopy.onclick = ()=>{
+      copyText(box.value).then(ok=> toast(ok ? "复制好了，你自己去发" : "复制失败了，手动选一下"));
+      state.confirmed = true;
+    };
+  }
+
+  const input = document.getElementById("chatInput");
+  const send = document.getElementById("btnSend");
+  send.onclick = ()=> askChat();
+  input.onkeydown = e=>{ if(e.key==="Enter" && !e.shiftKey){ e.preventDefault(); askChat(); } };
+}
+
+/* ---------- 对话 ---------- */
+async function askChat(){
+  const input = document.getElementById("chatInput");
+  const msg = input.value.trim();
+  if(!msg || state.sending) return;
+  state.sending = true; input.value = "";
+  const body = document.getElementById("chatBody");
+
+  state.history.push({role:"user", content:msg});
+  body.insertAdjacentHTML("beforeend",
+    `<div class="msg u"><span class="who">你</span>${esc(msg)}</div>`);
+  body.scrollTop = body.scrollHeight;
+
+  const pending = document.createElement("div");
+  pending.className = "msg a";
+  pending.innerHTML = `<span class="who">助手</span><span style="color:#8b939c">正在想…</span>`;
+  body.appendChild(pending);
+  body.scrollTop = body.scrollHeight;
+
+  try{
+    const res = await fetch("/api/chat", {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({
+        message: msg,
+        history: state.history.slice(0, -1),
+        input: {
+          scene: state.scene,
+          sceneName: (SCENES.find(s=>s.k===state.scene)||{}).name,
+          situation: elSituation.value.trim(),
+          parentReaction: document.getElementById("parentReaction").value,
+          studentWish: document.getElementById("studentWish").value
+        }
+      })
+    });
+    const j = await res.json();
+    if(!j.ok) throw new Error(j.error || "对话失败");
+    pending.innerHTML = `<span class="who">助手</span>${esc(j.reply)}`;
+    state.history.push({role:"assistant", content:j.reply});
+    if(j.redacted && j.redacted.length) pending.insertAdjacentHTML("beforeend",
+      `<div style="font-size:10.5px;color:#8b939c;margin-top:4px">已遮蔽：${esc(j.redacted.join("、"))}</div>`);
+  }catch(e){
+    pending.innerHTML = `<span class="who">助手</span>（没连上模型：${esc(e.message.slice(0,60))}）先启动 node server.js 再试。`;
+  }finally{
+    state.sending = false;
+    body.scrollTop = body.scrollHeight;
+  }
+}
+
+/* ---------- 抽屉 / 弹窗 / 工具 ---------- */
+const mask = document.getElementById("mask");
+const drawer = document.getElementById("drawer");
+function openDrawer(p){
+  if(!p) return;
+  document.getElementById("dTitle").textContent = p.title || "要点详情";
+  const d = p.detail || {};
+  let html = "";
+  if(d.aim) html += `<h4>这条要做什么</h4><p>${esc(d.aim)}</p>`;
+  if(d.why) html += `<h4>为什么要这么说</h4><p>${esc(d.why)}</p>`;
+  if(d.react && d.react.length) html += `<h4>家长可能的反应</h4><p>${d.react.map(x=>"· "+esc(x)).join("<br>")}</p>`;
+  if(d.reply) html += `<h4>可以这样接</h4><div class="quote">${esc(d.reply)}</div>`;
+  html += `<div class="foot">这里是沟通参考，不是逐字稿；请按这位家长的实际情况调整。</div>`;
+  document.getElementById("dBody").innerHTML = html;
+  mask.classList.add("on"); drawer.classList.add("on");
+}
+document.getElementById("dClose").onclick = closeDrawer;
+mask.onclick = closeDrawer;
+function closeDrawer(){ mask.classList.remove("on"); drawer.classList.remove("on"); }
+
+const modal = document.getElementById("modal");
+document.getElementById("btnScope").onclick = ()=> modal.classList.add("on");
+document.getElementById("mOk").onclick = ()=> modal.classList.remove("on");
+
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg; t.classList.add("on");
+  clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove("on"), 2600);
+}
+function copyText(text){
+  if(navigator.clipboard && window.isSecureContext){
+    return navigator.clipboard.writeText(text).then(()=>true).catch(()=>fallbackCopy(text));
+  }
+  return Promise.resolve(fallbackCopy(text));
+}
+function fallbackCopy(text){
+  const ta = document.createElement("textarea");
+  ta.value = text; ta.style.position="fixed"; ta.style.opacity="0";
+  document.body.appendChild(ta); ta.select();
+  let ok=false; try{ ok = document.execCommand("copy"); }catch(e){ ok=false; }
+  document.body.removeChild(ta); return ok;
+}
+
+/* ---------- 演示模式：地址后面加 ?demo=1 自动填一份示例并生成 ---------- */
+if(new URLSearchParams(location.search).get("demo") === "1"){
+  elSituation.value = "某学院大二学生，本学期累计缺课12节，专业课作业连续三次未交，任课老师反映课堂上注意力差。已找学生谈过两次，他承认最近状态不好，但不希望告诉家里。";
+  elSituation.dispatchEvent(new Event("input"));
+  setTimeout(()=>document.getElementById("btnGen").click(), 300);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+[
+  {
+    "scene": "xueye",
+    "status": "ready",
+    "attempts": 1,
+    "elapsedMs": 7559,
+    "validation": [],
+    "usage": {
+      "prompt_tokens": 2434,
+      "completion_tokens": 967,
+      "total_tokens": 3401
+    },
+    "missingFacts": [],
+    "notices": [],
+    "points": [
+      {
+        "move": "review-records",
+        "title": "先摆出可核对的出勤记录",
+        "source": "method-academic-facts",
+        "review": "待核实",
+        "action": "开场只用已经核实的记录。没有核实的次数或课堂表现留待补充。"
+      },
+      {
+        "move": "hear-parent",
+        "title": "先听家长怎么看这件事",
+        "source": "teacher-listen-focus",
+        "review": "待老师核对",
+        "action": "请家长说说目前最想解决的问题，再一起确定这次先核对什么。"
+      },
+      {
+        "move": "return-to-records",
+        "title": "把记录和原因猜测分开",
+        "source": "candidate-academic-cause",
+        "review": "待核对",
+        "action": null
+      },
+      {
+        "move": "respect-wish",
+        "title": "给学生留出表达的空间",
+        "source": null,
+        "review": null,
+        "action": null
+      },
+      {
+        "move": "study-support",
+        "title": "商量一件近期可做的事",
+        "source": "teacher-agree-next",
+        "review": "待老师核对",
+        "action": "和学生及家长商量一项可行的支持，并确认谁负责、何时再沟通。"
+      }
+    ],
+    "draft": "家长您好。我是孩子的辅导员，这次联系您，是想和您一起核对一下孩子这学期的出勤情况。课程平台显示，本学期有两门课缺勤超过三分之一，其中一门已经发过学业警示通知。这些是平台上的记录，我想先跟您核对，也听听您了解到的情况。孩子这边跟我们说，他只是睡得晚，对缺课记录不太认可。这个说法我先记下来，和平台记录分开，不急着下结论，咱们一条条对。您平时在家看到他这学期的作息和学习状态是怎样的？您最担心的是哪一块？孩子对记录有不同意见，我也想听听他怎么说，您看方便让他一起参与后面的沟通吗？制度上的具体问题，比如后续怎么处理，我现在不随便答复，我核对清楚后再回复您。咱们先商量一件近期能做的事，比如这周先把两门课的出勤记录核对清楚，您看什么时候方便，我们再对一次。",
+    "faq": [
+      {
+        "q": "缺课记录会不会影响毕业或学籍？",
+        "a": "这个问题涉及具体规定，我现在不随便答复，我核对清楚后再回复您。"
+      },
+      {
+        "q": "孩子不认可记录，能不能改？",
+        "a": "记录和学生说法我都先记下来，保持待核对状态，咱们一条条对，不先判断哪方有误。"
+      },
+      {
+        "q": "能不能保证不告诉别人？",
+        "a": "哪些情况我会说、说给谁，我现在就跟您说清楚，不让您事后才知道。"
+      }
+    ]
+  },
+  {
+    "scene": "xinli",
+    "status": "ready",
+    "attempts": 1,
+    "elapsedMs": 6475,
+    "validation": [],
+    "usage": {
+      "prompt_tokens": 2252,
+      "completion_tokens": 1075,
+      "total_tokens": 3327
+    },
+    "missingFacts": [],
+    "notices": [],
+    "points": [
+      {
+        "move": "check-disclosure",
+        "title": "先确认可告知范围",
+        "source": "candidate-mental-disclosure",
+        "review": "待核对",
+        "action": null
+      },
+      {
+        "move": "review-observations",
+        "title": "说清可核对的观察",
+        "source": "candidate-mental-observation",
+        "review": "待核对",
+        "action": null
+      },
+      {
+        "move": "hear-parent",
+        "title": "听听家长的观察和顾虑",
+        "source": "candidate-mental-hear-family",
+        "review": "待核对",
+        "action": null
+      },
+      {
+        "move": "respect-wish",
+        "title": "给学生留出表达意愿的空间",
+        "source": null,
+        "review": null,
+        "action": null
+      },
+      {
+        "move": "contact-time",
+        "title": "商量双方方便的联系时间",
+        "source": "teacher-agree-next",
+        "review": "待老师核对",
+        "action": "商量下一次联系的方式与时间，并确认双方各自准备核对什么。"
+      }
+    ],
+    "draft": "家长您好。今天联系您，是想跟您说说最近在学校观察到孩子的一些情况，也听听您的看法。孩子同意我跟您说明两项观察：近两周上课时，孩子多次打瞌睡；孩子自己说最近睡眠不规律。这两点我想先跟您核对一下，您最近有没有注意到孩子作息或状态上的变化？您最担心的是什么？我想先听听您的观察。孩子也愿意沟通，他希望先听听您的观察，再一起商量下一步。您看什么时间方便，我们再详细聊聊？接下来我先整理一下观察记录，您也留意一下孩子作息，我们保持联系。",
+    "faq": [
+      {
+        "q": "孩子是不是有什么问题？",
+        "a": "目前我只是把观察到的具体情况和您核对，不做任何判断。我们先一起看看作息上的变化，再商量下一步。"
+      },
+      {
+        "q": "需要带孩子去医院吗？",
+        "a": "我理解您的担心。目前先不急着下结论，我们可以先关注作息调整，后续有需要再一起商量。"
+      },
+      {
+        "q": "孩子知道您跟我说这些吗？",
+        "a": "孩子知道并同意我说明这两项观察，他也希望先听听您的观察再商量下一步。"
+      }
+    ]
+  },
+  {
+    "scene": "yiban",
+    "status": "ready",
+    "attempts": 1,
+    "elapsedMs": 5946,
+    "validation": [],
+    "usage": {
+      "prompt_tokens": 2080,
+      "completion_tokens": 981,
+      "total_tokens": 3061
+    },
+    "missingFacts": [],
+    "notices": [],
+    "points": [
+      {
+        "move": "review-observations",
+        "title": "先核对具体观察，不说评价",
+        "source": "method-observations",
+        "review": "待核实",
+        "action": "先说什么时候、在哪里观察到了什么。没有核实的原因留到后面讨论。"
+      },
+      {
+        "move": "hear-parent",
+        "title": "听家长最在意什么",
+        "source": "teacher-listen-focus",
+        "review": "待老师核对",
+        "action": "请家长说说目前最想解决的问题，再一起确定这次先核对什么。"
+      },
+      {
+        "move": "respect-wish",
+        "title": "把学生意愿和家长诉求分开",
+        "source": "candidate-general-student-wish",
+        "review": "待核对",
+        "action": null
+      },
+      {
+        "move": "contact-time",
+        "title": "商量双方方便的通话时间",
+        "source": "candidate-general-contact-time",
+        "review": "待核对",
+        "action": null
+      }
+    ],
+    "draft": "家长您好。今天联系您，是想跟您核对一下孩子最近的情况，也听听您的观察。我目前了解到的是，学生说上课时接电话不方便。您之前提到希望了解孩子最近的学习状态，还想约一个双方方便的时间通电话，我想先跟您确认一下，您最想了解的是哪方面的情况？孩子那边我也想问问他自己的想法，把您的关心转达给他，再一起商量怎么联系合适。您看这周哪个时段方便？我先提两个时间供您选，如果都不合适我们再调整。您有什么想先说的，我听着。",
+    "faq": [
+      {
+        "q": "孩子是不是在学校出什么事了？",
+        "a": "目前我了解到的是学生说上课接电话不方便，没有其他情况。我想先跟您核对这个信息，也听听您的观察，再一起商量下一步。"
+      },
+      {
+        "q": "能不能以后定期跟我说说孩子的情况？",
+        "a": "您希望了解孩子情况的心情我理解。我先听清您具体想了解哪些方面，再核对哪些内容可以跟您说明，以及双方都能接受的联系安排，我核对后回复您。"
+      },
+      {
+        "q": "孩子是不是不愿意跟我沟通？",
+        "a": "学生提到的是上课接电话不方便，我想先听听他自己的想法，也把您的关心转达给他，再一起商量怎么联系合适。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,292 @@
+[
+  {
+    "id": "candidate-academic-conflicting-records",
+    "version": 1,
+    "title": "并列课程记录与学生说明",
+    "excerpt": "逐条记录平台显示与学生自述。双方说法有差异时，保留待核对状态。",
+    "scenes": [
+      "xueye"
+    ],
+    "supports": [
+      "review-records"
+    ],
+    "source": {
+      "title": "项目话术与虚构评测",
+      "locator": "app/communication-moves.js#review-records；evals/cases/communication-v1.json#A02"
+    },
+    "excludedUse": "不能用来判断哪方有误或是否已进入学业警示。",
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null,
+      "expiresOn": null
+    },
+    "permissions": {
+      "read": true,
+      "cite": true,
+      "externalModel": true,
+      "training": false
+    }
+  },
+  {
+    "id": "candidate-academic-cause",
+    "version": 1,
+    "title": "分开记录和原因猜测",
+    "excerpt": "听取家长对原因的看法，将推测与已知记录分开。",
+    "scenes": [
+      "xueye"
+    ],
+    "supports": [
+      "return-to-records"
+    ],
+    "source": {
+      "title": "项目话术与虚构评测",
+      "locator": "app/communication-moves.js#return-to-records；evals/cases/communication-v1.json#A01"
+    },
+    "excludedUse": "不能把家长对学生的定性当作原因。",
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null,
+      "expiresOn": null
+    },
+    "permissions": {
+      "read": true,
+      "cite": true,
+      "externalModel": true,
+      "training": false
+    }
+  },
+  {
+    "id": "candidate-academic-policy",
+    "version": 1,
+    "title": "把流程问题留待查证",
+    "excerpt": "家长问到后果时，记录具体问题，核对适用的校内依据后再说明。",
+    "scenes": [
+      "xueye"
+    ],
+    "supports": [
+      "check-policy"
+    ],
+    "source": {
+      "title": "项目话术与虚构评测",
+      "locator": "app/communication-moves.js#check-policy；evals/cases/communication-v1.json#A03"
+    },
+    "excludedUse": "不能证明学籍、档案或警示解除条件。",
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null,
+      "expiresOn": null
+    },
+    "permissions": {
+      "read": true,
+      "cite": true,
+      "externalModel": true,
+      "training": false
+    }
+  },
+  {
+    "id": "candidate-academic-support",
+    "version": 1,
+    "title": "商量一件学习支持",
+    "excerpt": "核对学习情况后，邀请家长和学生商量一件近期可做的事。",
+    "scenes": [
+      "xueye"
+    ],
+    "supports": [
+      "study-support"
+    ],
+    "source": {
+      "title": "项目话术与虚构评测",
+      "locator": "app/communication-moves.js#study-support；evals/cases/communication-v1.json#A05"
+    },
+    "excludedUse": "不能承诺补交结果或替学生接受安排。",
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null,
+      "expiresOn": null
+    },
+    "permissions": {
+      "read": true,
+      "cite": true,
+      "externalModel": true,
+      "training": false
+    }
+  },
+  {
+    "id": "candidate-mental-disclosure",
+    "version": 1,
+    "title": "逐项核对可告知范围",
+    "excerpt": "记录本次哪些内容获准告知，范围未确定时先保留工作人员核对事项。",
+    "scenes": [
+      "xinli"
+    ],
+    "supports": [
+      "check-disclosure"
+    ],
+    "source": {
+      "title": "项目开发方案与虚构评测",
+      "locator": "docs/product/家校沟通助手_完整开发方案_2026-11-11.md#4；evals/cases/communication-v1.json#P05"
+    },
+    "excludedUse": "不能据此认定保密例外或替代校内人工核实。",
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null,
+      "expiresOn": null
+    },
+    "permissions": {
+      "read": true,
+      "cite": true,
+      "externalModel": true,
+      "training": false
+    }
+  },
+  {
+    "id": "candidate-mental-observation",
+    "version": 1,
+    "title": "区分课堂观察和学生自述",
+    "excerpt": "保留观察发生的时间和说话人，只使用已核对并获准告知的内容。",
+    "scenes": [
+      "xinli"
+    ],
+    "supports": [
+      "review-observations"
+    ],
+    "source": {
+      "title": "项目话术与虚构评测",
+      "locator": "app/communication-moves.js#review-observations；evals/cases/communication-v1.json#P01"
+    },
+    "excludedUse": "不能把作息描述写成诊断或原因判断。",
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null,
+      "expiresOn": null
+    },
+    "permissions": {
+      "read": true,
+      "cite": true,
+      "externalModel": true,
+      "training": false
+    }
+  },
+  {
+    "id": "candidate-mental-hear-family",
+    "version": 1,
+    "title": "听家长补充具体观察",
+    "excerpt": "把家长观察、家长问题和辅导员观察分别记录，保留仍需核对的地方。",
+    "scenes": [
+      "xinli"
+    ],
+    "supports": [
+      "hear-parent"
+    ],
+    "source": {
+      "title": "项目话术与虚构评测",
+      "locator": "app/communication-moves.js#hear-parent；evals/cases/communication-v1.json#P04"
+    },
+    "excludedUse": "不能推断家长已经掌握情况或同意后续安排。",
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null,
+      "expiresOn": null
+    },
+    "permissions": {
+      "read": true,
+      "cite": true,
+      "externalModel": true,
+      "training": false
+    }
+  },
+  {
+    "id": "candidate-general-contact-time",
+    "version": 1,
+    "title": "把联系时间留给双方商量",
+    "excerpt": "先提出可协商的联系时段，约定未达成时保持提议措辞。",
+    "scenes": [
+      "yiban"
+    ],
+    "supports": [
+      "contact-time"
+    ],
+    "source": {
+      "title": "项目话术与虚构评测",
+      "locator": "app/communication-moves.js#contact-time；evals/cases/communication-v1.json#G01"
+    },
+    "excludedUse": "不能把提议写成已经约定的固定频率。",
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null,
+      "expiresOn": null
+    },
+    "permissions": {
+      "read": true,
+      "cite": true,
+      "externalModel": true,
+      "training": false
+    }
+  },
+  {
+    "id": "candidate-general-student-wish",
+    "version": 1,
+    "title": "保留学生对沟通方式的意愿",
+    "excerpt": "把学生的意愿与家长对学校要求的理解分开，先核对需要澄清的事项。",
+    "scenes": [
+      "yiban"
+    ],
+    "supports": [
+      "respect-wish"
+    ],
+    "source": {
+      "title": "项目话术与虚构评测",
+      "locator": "app/communication-moves.js#respect-wish；evals/cases/communication-v1.json#G04"
+    },
+    "excludedUse": "不能替学生决定参与方式或编造学校规定。",
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null,
+      "expiresOn": null
+    },
+    "permissions": {
+      "read": true,
+      "cite": true,
+      "externalModel": true,
+      "training": false
+    }
+  },
+  {
+    "id": "candidate-general-family-scope",
+    "version": 1,
+    "title": "把家长希望了解的事项单独记录",
+    "excerpt": "先听清家长的具体问题，再核对能说明的内容及双方可接受的联系安排。",
+    "scenes": [
+      "yiban"
+    ],
+    "supports": [
+      "hear-parent"
+    ],
+    "source": {
+      "title": "项目话术与虚构评测",
+      "locator": "app/communication-moves.js#hear-parent；evals/cases/communication-v1.json#G02"
+    },
+    "excludedUse": "不能承诺持续汇报或扩大可告知范围。",
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedOn": null,
+      "expiresOn": null
+    },
+    "permissions": {
+      "read": true,
+      "cite": true,
+      "externalModel": true,
+      "training": false
+    }
+  }
+]

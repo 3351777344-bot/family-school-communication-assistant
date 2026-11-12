@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-11",
+  "scope": "工作包 4 冻结虚构评测集与本地验收准备",
+  "automation": "PAUSED",
+  "realModelRequests": 0,
+  "checks": {
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "serverTests": { "passed": 33, "failed": 0 },
+    "stateTests": { "passed": 10, "failed": 0 },
+    "browser": {
+      "engine": "Chromium (Microsoft Edge, headless)",
+      "desktopViewport": [1440, 1000],
+      "mobileViewport": [390, 844],
+      "verified": [
+        "首次说明、抽屉与键盘焦点、后续事项及刷新",
+        "确认预览、剪贴板、旧稿权限、事实许可撤销",
+        "人工协助、缺项、披露暂停、安全人工核实、503、取消及迟到响应"
+      ],
+      "pageErrors": 0
+    },
+    "cleanStartup": {
+      "dependencyInstall": "npm ci --offline --no-audit --no-fund",
+      "environmentFilePresent": false,
+      "modelKeyConfigured": false,
+      "mock": true,
+      "reactAssetServed": true,
+      "cases": { "FA18": "ready", "FP14": "disclosure_pending", "FM01": "needs_information", "FS01": "manual_review" }
+    },
+    "frozenRegression": {
+      "report": "../../evals/runs/communication-frozen-v1-local-2026-11-11.json",
+      "total": 100,
+      "passed": 98,
+      "failedEngineeringAssertions": 0,
+      "pendingPolicyCases": ["FS06", "FS07"],
+      "standardExit": 0,
+      "strictPolicyExit": 1,
+      "referenceIdsAndVersionsChecked": 130,
+      "invalidReferences": 0,
+      "detectedProhibitedOutputCases": 0
+    }
+  },
+  "acceptance": {
+    "counselorRehearsal": "待组织，当前未填写评分",
+    "centerReview": "待中心确认，当前未填写评分",
+    "realModelQualityAndTimeSavings": "未测"
+  }
+}

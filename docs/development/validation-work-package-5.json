@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-11",
+  "scope": "工作包 5 校内试点准备与本地权限回滚",
+  "automation": "PAUSED",
+  "deployed": false,
+  "realModelRequests": 0,
+  "checks": {
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "serverTests": { "passed": 36, "failed": 0 },
+    "stateTests": { "passed": 10, "failed": 0 },
+    "frozenRegression": {
+      "report": "../../evals/runs/communication-frozen-v1-pilot-local-2026-11-11.json",
+      "total": 100,
+      "passed": 98,
+      "failedEngineeringAssertions": 0,
+      "pendingPolicyCases": ["FS06", "FS07"],
+      "strictPolicyExit": 1
+    },
+    "localPilot": {
+      "bind": "127.0.0.1 on ephemeral ports",
+      "accounts": "synthetic only",
+      "outboundModelStubCalls": 0,
+      "verified": [
+        "缺少或错误凭据拒绝，伪造代理身份拒绝，观察角色只可看健康状态",
+        "工作台、静态资源和业务接口检查访问权限，旧 HTML 入口不可用",
+        "场景范围在准备和事实组稿接口均检查，跨账号稿件上下文被拒绝",
+        "异常 Host、跨站 Origin 和跨站浏览器请求被拒绝",
+        "权限配置缺失或无效时停止启动，演练终端误用普通启动入口也不会降级为开放演示",
+        "日志只含元数据，回包请求号可对应日志，正文、身份、凭据和原始 URL 未出现"
+      ],
+      "rollback": {
+        "samePort": true,
+        "stoppedBetweenRevisions": true,
+        "sequence": ["local-v1", "local-v2", "local-v1-rollback"],
+        "retainedAccountRestoredScope": true,
+        "revokedAccountStillDenied": true,
+        "oldDraftContextRejected": true,
+        "newDraftContextWorks": true
+      }
+    },
+    "browser": {
+      "engine": "Chromium (Microsoft Edge, headless)",
+      "pilotViewport": [1440, 1000],
+      "pilotScopeSequence": ["xueye", "yiban", "xueye"],
+      "pilotAuthAndDraft": "passed",
+      "ordinaryWorkbench": "desktop and mobile regression passed"
+    }
+  },
+  "pending": [
+    "正式辅导员验收、中心业务口径与 E2 分支差异",
+    "校方试点范围、名单、访问权限、数据规则、日志及留存",
+    "学校身份体系、目标环境配置与应用版本回滚"
+  ]
+}

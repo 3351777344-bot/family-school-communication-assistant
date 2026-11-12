@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-10",
+  "default": "qwen3.8-flash",
+  "comparison": "qwen3.8-max-0902",
+  "checks": [
+    {
+      "model": "qwen3.8-flash",
+      "ok": true,
+      "total_tokens": 121
+    },
+    {
+      "model": "qwen3.8-max-0902",
+      "ok": true,
+      "total_tokens": 130
+    }
+  ],
+  "live_requests": 2,
+  "account_quota_settings_changed": false,
+  "domain_quality_evaluated": false
+}

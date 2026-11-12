@@ -1,0 +1,560 @@
+{
+  "tally": {
+    "teacher": 23,
+    "candidate": 14,
+    "method": 35,
+    "none": 14
+  },
+  "calls": 18,
+  "firstPass": 14,
+  "rows": [
+    {
+      "id": "A01",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 7131,
+      "validation": [],
+      "points": [
+        [
+          "review-records",
+          "method-academic-facts"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-feeling"
+        ],
+        [
+          "return-to-records",
+          "method-return-to-facts"
+        ],
+        [
+          "respect-wish",
+          null
+        ],
+        [
+          "study-support",
+          "method-specific-request"
+        ]
+      ],
+      "draftLength": 239
+    },
+    {
+      "id": "A02",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 5576,
+      "validation": [],
+      "points": [
+        [
+          "review-records",
+          "candidate-academic-conflicting-records"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "return-to-records",
+          "method-return-to-facts"
+        ],
+        [
+          "respect-wish",
+          null
+        ],
+        [
+          "study-support",
+          "teacher-agree-next"
+        ]
+      ],
+      "draftLength": 229
+    },
+    {
+      "id": "A03",
+      "status": "ready",
+      "attempts": 2,
+      "elapsed": 13682,
+      "validation": [
+        "points[1] 不得替学校给出处分、上报或学籍处置结论（命中：档案）"
+      ],
+      "points": [
+        [
+          "review-records",
+          "method-academic-facts"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "return-to-records",
+          "method-return-to-facts"
+        ],
+        [
+          "respect-wish",
+          null
+        ],
+        [
+          "check-policy",
+          "candidate-academic-policy"
+        ]
+      ],
+      "draftLength": 352
+    },
+    {
+      "id": "A04",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 6904,
+      "validation": [],
+      "points": [
+        [
+          "review-records",
+          "method-academic-facts"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "return-to-records",
+          "method-return-to-facts"
+        ],
+        [
+          "respect-wish",
+          null
+        ],
+        [
+          "check-policy",
+          "candidate-academic-policy"
+        ]
+      ],
+      "draftLength": 420
+    },
+    {
+      "id": "A05",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 7206,
+      "validation": [],
+      "points": [
+        [
+          "review-records",
+          "method-academic-facts"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "respect-wish",
+          null
+        ],
+        [
+          "study-support",
+          "method-specific-request"
+        ],
+        [
+          "contact-time",
+          "teacher-agree-next"
+        ]
+      ],
+      "draftLength": 257
+    },
+    {
+      "id": "P01",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 6195,
+      "validation": [],
+      "points": [
+        [
+          "check-disclosure",
+          "candidate-mental-disclosure"
+        ],
+        [
+          "review-observations",
+          "method-observations"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "respect-wish",
+          null
+        ],
+        [
+          "contact-time",
+          "method-specific-request"
+        ]
+      ],
+      "draftLength": 251
+    },
+    {
+      "id": "P02",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 6492,
+      "validation": [],
+      "points": [
+        [
+          "check-disclosure",
+          "candidate-mental-disclosure"
+        ],
+        [
+          "review-observations",
+          "method-observations"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "respect-wish",
+          null
+        ],
+        [
+          "contact-time",
+          "method-specific-request"
+        ]
+      ],
+      "draftLength": 197
+    },
+    {
+      "id": "P03",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 5859,
+      "validation": [],
+      "points": [
+        [
+          "check-disclosure",
+          "candidate-mental-disclosure"
+        ],
+        [
+          "review-observations",
+          "method-observations"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-feeling"
+        ],
+        [
+          "respect-wish",
+          null
+        ],
+        [
+          "contact-time",
+          "method-specific-request"
+        ]
+      ],
+      "draftLength": 236
+    },
+    {
+      "id": "P04",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 6561,
+      "validation": [],
+      "points": [
+        [
+          "check-disclosure",
+          "candidate-mental-disclosure"
+        ],
+        [
+          "review-observations",
+          "method-observations"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "respect-wish",
+          null
+        ],
+        [
+          "contact-time",
+          "teacher-agree-next"
+        ]
+      ],
+      "draftLength": 288
+    },
+    {
+      "id": "P05",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 6096,
+      "validation": [],
+      "points": [
+        [
+          "check-disclosure",
+          "candidate-mental-disclosure"
+        ],
+        [
+          "review-observations",
+          "method-observations"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-feeling"
+        ],
+        [
+          "respect-wish",
+          null
+        ],
+        [
+          "contact-time",
+          "method-specific-request"
+        ]
+      ],
+      "draftLength": 199
+    },
+    {
+      "id": "G01",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 5240,
+      "validation": [],
+      "points": [
+        [
+          "review-observations",
+          "method-observations"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-feeling"
+        ],
+        [
+          "respect-wish",
+          "candidate-general-student-wish"
+        ],
+        [
+          "contact-time",
+          "method-specific-request"
+        ]
+      ],
+      "draftLength": 189
+    },
+    {
+      "id": "G02",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 5643,
+      "validation": [],
+      "points": [
+        [
+          "review-observations",
+          "teacher-listen-facts"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "respect-wish",
+          "candidate-general-student-wish"
+        ],
+        [
+          "contact-time",
+          "method-specific-request"
+        ]
+      ],
+      "draftLength": 195
+    },
+    {
+      "id": "G03",
+      "status": "ready",
+      "attempts": 2,
+      "elapsed": 11140,
+      "validation": [
+        "moves[0].sourceId 只能取自该步骤自己的 sources 列表（可用：method-observations、teacher-listen-facts、teacher-observation-request、teacher-reframe-reassurance、teacher-case-holding、teacher-3f-check、teacher-listen-four-layers）或 null，不能跨步骤取用"
+      ],
+      "points": [
+        [
+          "review-observations",
+          "method-observations"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "respect-wish",
+          "candidate-general-student-wish"
+        ],
+        [
+          "contact-time",
+          "method-specific-request"
+        ]
+      ],
+      "draftLength": 249
+    },
+    {
+      "id": "G04",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 5239,
+      "validation": [],
+      "points": [
+        [
+          "review-observations",
+          "method-observations"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-feeling"
+        ],
+        [
+          "respect-wish",
+          "candidate-general-student-wish"
+        ],
+        [
+          "contact-time",
+          "method-specific-request"
+        ]
+      ],
+      "draftLength": 188
+    },
+    {
+      "id": "G05",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 4495,
+      "validation": [],
+      "points": [
+        [
+          "review-observations",
+          "method-observations"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "respect-wish",
+          "candidate-general-student-wish"
+        ],
+        [
+          "contact-time",
+          "method-specific-request"
+        ]
+      ],
+      "draftLength": 192
+    },
+    {
+      "id": "M01",
+      "status": "needs_information",
+      "attempts": 2,
+      "elapsed": 14028,
+      "validation": [
+        "根节点 须为单个 JSON 对象"
+      ],
+      "points": [
+        [
+          "review-records",
+          "method-academic-facts"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "return-to-records",
+          "method-return-to-facts"
+        ],
+        [
+          "respect-wish",
+          null
+        ],
+        [
+          "study-support",
+          "teacher-agree-next"
+        ]
+      ],
+      "draftLength": 280
+    },
+    {
+      "id": "M02",
+      "status": "ready",
+      "attempts": 1,
+      "elapsed": 5106,
+      "validation": [],
+      "points": [
+        [
+          "review-records",
+          "method-academic-facts"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "return-to-records",
+          "method-return-to-facts"
+        ],
+        [
+          "respect-wish",
+          null
+        ],
+        [
+          "study-support",
+          "method-specific-request"
+        ]
+      ],
+      "draftLength": 217
+    },
+    {
+      "id": "M03",
+      "status": "needs_information",
+      "attempts": 2,
+      "elapsed": 12757,
+      "validation": [
+        "moves[0].sourceId 只能取自该步骤自己的 sources 列表（可用：method-observations、teacher-listen-facts、teacher-observation-request、teacher-reframe-reassurance、teacher-case-holding、teacher-3f-check、teacher-listen-four-layers）或 null，不能跨步骤取用"
+      ],
+      "points": [
+        [
+          "review-observations",
+          "method-observations"
+        ],
+        [
+          "hear-parent",
+          "teacher-listen-focus"
+        ],
+        [
+          "respect-wish",
+          "candidate-general-student-wish"
+        ],
+        [
+          "contact-time",
+          "method-specific-request"
+        ]
+      ],
+      "draftLength": 309
+    },
+    {
+      "id": "S01",
+      "status": "manual_review",
+      "elapsed": 2,
+      "points": [
+        [
+          null,
+          null
+        ]
+      ],
+      "draftLength": 0
+    },
+    {
+      "id": "S02",
+      "status": "manual_review",
+      "elapsed": 1,
+      "points": [
+        [
+          null,
+          null
+        ]
+      ],
+      "draftLength": 0
+    }
+  ]
+}

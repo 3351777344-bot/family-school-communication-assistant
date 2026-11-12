@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家校沟通助手 · 演示版</title>
+<style>
+  :root{
+    --green:#1f6b57; --green-d:#18503f; --green-l:#e8f1ee;
+    --ink:#1f2328; --ink-2:#57606a; --ink-3:#8b939c;
+    --line:#e3e6e9; --bg:#f6f7f8; --amber:#fff6e0; --amber-d:#a8730a;
+    --red:#c23a3a; --red-bg:#fdeeee;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html,body{margin:0;height:100%}
+  body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;color:var(--ink);
+    background:var(--bg);font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}
+
+  header.top{display:flex;align-items:center;gap:14px;padding:10px 20px;background:#fff;
+    border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;height:56px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .logo{width:28px;height:28px;border-radius:8px;background:var(--green);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+  .brand b{font-size:14.5px}
+  .brand span{display:block;font-size:11px;color:var(--ink-3);line-height:1.2}
+  .spacer{flex:1}
+  .ghost{border:1px solid var(--line);background:#fff;color:var(--ink-2);
+    padding:5px 11px;border-radius:6px;font-size:12px;cursor:pointer}
+  .ghost:hover{border-color:#c9ced3;color:var(--ink)}
+  .tag-demo{border:1px solid #f0d9a8;background:#fffaf0;color:var(--amber-d);
+    font-size:11px;padding:3px 8px;border-radius:20px}
+  .dot-s{display:inline-block;width:7px;height:7px;border-radius:50%;background:#c9ced3;margin-right:5px}
+  .dot-s.on{background:#2e9e6b} .dot-s.off{background:#d08a2a} .dot-s.err{background:#c23a3a}
+
+  /* ---------------- 工作台 ---------------- */
+  .app{display:grid;grid-template-columns:392px minmax(0,1fr);gap:16px;
+       padding:16px 20px 20px;align-items:start;height:calc(100vh - 56px)}
+  .app.slim{grid-template-columns:56px minmax(0,1fr)}
+  @media (max-width:1500px){ .app{grid-template-columns:360px minmax(0,1fr)} .app.slim{grid-template-columns:56px minmax(0,1fr)} }
+  @media (max-width:1240px){
+    .app,.app.slim{grid-template-columns:minmax(0,1fr);height:auto}
+  }
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px}
+  .side{max-height:calc(100vh - 88px);overflow:auto;position:sticky;top:72px}
+  .side-h{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line);
+    position:sticky;top:0;background:#fff;border-radius:10px 10px 0 0;z-index:2}
+  .side-h h3{margin:0;font-size:13px}
+  .side-h .mini{margin-left:auto;border:0;background:none;color:var(--green);font-size:12px;cursor:pointer}
+  .side-b{padding:12px 14px}
+
+  /* 收起后的窄条 */
+  .rail{display:none;flex-direction:column;align-items:center;gap:8px;padding:10px 0;
+    background:#fff;border:1px solid var(--line);border-radius:10px;position:sticky;top:72px;
+    min-height:120px;overflow:hidden}
+  .rail button{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:#fff;
+    cursor:pointer;color:var(--green);font-size:13px}
+  .rail button:hover{background:var(--green-l);border-color:#bcd9d0}
+  .rail .v{font-size:11px;color:var(--ink-3);line-height:1.2;text-align:center;letter-spacing:1px}
+  .app.slim .side{display:none}
+  .app.slim .rail{display:flex}
+
+  /* ---------------- 表单 ---------------- */
+  .field{margin-bottom:14px}
+  .field:last-child{margin-bottom:0}
+  .label{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;margin-bottom:6px}
+  .req{color:var(--red);font-size:11px;font-weight:400}
+  .sub{font-size:11.5px;color:var(--ink-3);margin-top:4px;line-height:1.5}
+  .review{border-top:1px solid var(--line);margin-top:10px;padding-top:10px}
+  .review label{display:block;font-size:12px;color:var(--ink-2);margin:5px 0}
+  .review .row{margin-top:8px}
+  textarea,select{width:100%;border:1px solid var(--line);border-radius:7px;padding:7px 9px;
+    font:inherit;font-size:13px;color:var(--ink);background:#fff;outline:none;resize:vertical}
+  textarea:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(31,107,87,.1)}
+  textarea{min-height:78px}
+  .scene-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+  .scene{border:1px solid var(--line);background:#fff;border-radius:7px;padding:7px 9px;
+    font-size:12.5px;cursor:pointer;text-align:left;color:var(--ink-2);line-height:1.3}
+  .scene.on{border-color:var(--green);background:var(--green-l);color:var(--green-d);font-weight:600}
+  .scene:disabled{opacity:.48;cursor:not-allowed;background:#f7f8f9}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{border:1px solid var(--line);border-radius:20px;padding:3px 11px;font-size:12px;
+    cursor:pointer;color:var(--ink-2);background:#fff;user-select:none}
+  .chip.on{border-color:var(--green);background:var(--green-l);color:var(--green-d);font-weight:600}
+  .cta{width:100%;padding:10px;border:0;border-radius:8px;background:var(--green);color:#fff;
+    font-size:14px;font-weight:600;cursor:pointer;margin-top:2px}
+  .cta:hover{background:var(--green-d)}
+  .cta:disabled{background:#c8d3cf;cursor:not-allowed}
+
+  /* ---------------- 结果区 ---------------- */
+  .out{max-height:calc(100vh - 88px);overflow:auto;padding-right:4px}
+  .bar{display:flex;align-items:center;gap:10px;padding:8px 13px;background:#fff;
+    border:1px solid var(--line);border-radius:8px;font-size:12px;color:var(--ink-2);margin-bottom:10px}
+  .bar b{color:var(--ink)}
+  .empty{background:#fff;border:1px dashed #d6dbe0;border-radius:10px;padding:64px 20px;
+    text-align:center;color:var(--ink-3);font-size:13px}
+  .empty .big{font-size:15px;color:var(--ink-2);margin-bottom:6px;font-weight:600}
+
+  .toolbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .toolbar span{font-size:11.5px;color:var(--ink-3)}
+  .toolbar button{margin-left:auto;border:0;background:none;color:var(--green);font-size:12px;cursor:pointer}
+
+  .sec{background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;overflow:hidden}
+  .sec-h{display:flex;align-items:center;gap:9px;width:100%;padding:11px 14px;background:#fff;border:0;
+    cursor:pointer;text-align:left;font:inherit}
+  .sec-h:hover{background:#fafbfb}
+  .sec-no{width:19px;height:19px;border-radius:50%;background:var(--green-l);color:var(--green);
+    font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700;flex:0 0 19px}
+  .sec-t{font-size:13px;font-weight:600}
+  .sec-s{font-size:11.5px;color:var(--ink-3);margin-left:2px;overflow:hidden;
+    text-overflow:ellipsis;white-space:nowrap}
+  .sec-x{margin-left:auto;color:var(--ink-3);font-size:11px;flex:0 0 auto;transition:.15s}
+  .sec.open .sec-x{transform:rotate(180deg)}
+  .sec-b{display:none;padding:2px 14px 14px;border-top:1px solid #f0f2f4}
+  .sec.open .sec-b{display:block}
+  .sec.open .sec-h{background:#fcfdfd}
+
+  ul.pts{list-style:none;margin:8px 0 0;padding:0}
+  ul.pts li{padding:9px 0;border-bottom:1px dashed var(--line)}
+  ul.pts li:last-child{border-bottom:0;padding-bottom:0}
+  .pt-t{font-weight:600;font-size:13px}
+  .pt-w{color:var(--ink-2);font-size:12.5px;margin-top:1px}
+  .pt-f{display:flex;align-items:center;gap:8px;margin-top:5px}
+  .src{font-size:10.5px;border-radius:4px;padding:1px 6px;border:1px solid;line-height:1.6}
+  .src.rule{color:#1f6b57;border-color:#bcd9d0;background:#f2f8f6}
+  .src.know{color:#3b5ec4;border-color:#ccd6f0;background:#f4f6fd}
+  .src.adv{color:#8a6a12;border-color:#ecdcb4;background:#fdf9ee}
+  .more{margin-left:auto;font-size:12px;color:var(--green);cursor:pointer;background:none;border:0}
+
+  .steps{list-style:none;margin:8px 0 0;padding:0}
+  .steps li{display:flex;gap:9px;padding:5px 0;font-size:12.5px;color:var(--ink-2)}
+  .steps .d{width:17px;height:17px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:10px;flex:0 0 17px;color:var(--ink-3)}
+  .steps li.cur{color:var(--ink);font-weight:600}
+  .steps li.cur .d{background:var(--green);border-color:var(--green);color:#fff}
+  .steps li.done .d{color:var(--green);border-color:var(--green)}
+
+  .risk{background:#fdfaf3;border:1px solid #f0e4c8;border-radius:8px;padding:8px 11px;margin-top:8px}
+  .risk b{font-size:12.5px;color:#7a5a10}
+  .risk p{margin:1px 0 0;font-size:12px;color:var(--ink-2)}
+
+  .draft{width:100%;min-height:120px;border:1px solid var(--line);border-radius:8px;
+    padding:9px 11px;font:inherit;font-size:13px;line-height:1.75;margin-top:8px}
+  .draft[readonly]{background:#fafbfb}
+  .row{display:flex;align-items:center;gap:8px;margin-top:9px;flex-wrap:wrap}
+  .btn{border:1px solid var(--line);background:#fff;border-radius:6px;padding:5px 11px;
+    font-size:12.5px;cursor:pointer;color:var(--ink-2)}
+  .btn.pri{background:var(--green);border-color:var(--green);color:#fff;font-weight:600}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .count{font-size:11.5px;color:var(--ink-3);margin-left:auto}
+
+  .faq{margin:8px 0 0;font-size:12.5px}
+  .faq dt{font-weight:600;margin-top:8px}
+  .faq dt:first-child{margin-top:0}
+  .faq dd{margin:1px 0 0;color:var(--ink-2)}
+  .next{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;font-size:12.5px;color:var(--ink-2);margin-top:8px}
+  .next label{display:flex;gap:7px;align-items:flex-start;cursor:pointer}
+
+  .warn{background:var(--amber);border:1px solid #f0dcae;border-radius:8px;padding:9px 12px;
+    font-size:12.5px;color:#6b4c07;margin-bottom:10px}
+  .stop{background:var(--red-bg);border:1px solid #f2cccc;border-radius:8px;padding:10px 12px;
+    font-size:12.5px;color:#8d2626;margin-bottom:10px}
+  .stop b{display:block;margin-bottom:2px}
+  .flags{font-size:11.5px;color:var(--ink-3);background:#fafbfb;border:1px dashed var(--line);
+    border-radius:8px;padding:7px 11px;margin-bottom:10px}
+  .foot{font-size:11.5px;color:var(--ink-3);margin:10px 2px 0;line-height:1.6}
+
+  /* 抽屉 / 弹窗 / toast */
+  .mask{position:fixed;inset:0;background:rgba(20,25,28,.28);opacity:0;pointer-events:none;transition:.18s;z-index:60}
+  .mask.on{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,92vw);background:#fff;
+    box-shadow:-8px 0 30px rgba(0,0,0,.12);transform:translateX(102%);transition:.22s;z-index:61;
+    display:flex;flex-direction:column}
+  .drawer.on{transform:none}
+  .drawer .dh{padding:13px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center}
+  .drawer .db{overflow:auto;padding:14px 16px 26px}
+  .drawer h4{margin:14px 0 5px;font-size:12.5px}
+  .drawer h4:first-child{margin-top:0}
+  .drawer p{margin:0;font-size:13px;color:var(--ink-2)}
+  .quote{background:#f7f8f9;border-left:3px solid #d8dde1;padding:8px 11px;border-radius:0 6px 6px 0;
+    font-size:13px;margin-top:5px}
+
+  .modal{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;
+    background:rgba(20,25,28,.35);padding:20px}
+  .modal.on{display:flex}
+  .modal .box{background:#fff;border-radius:12px;max-width:600px;width:100%;max-height:82vh;overflow:auto;padding:20px 22px}
+  .modal h2{margin:0 0 4px;font-size:16px}
+  .modal h4{font-size:13px;margin:13px 0 4px}
+  .modal ul{padding-left:18px;margin:6px 0 0;font-size:13px;color:var(--ink-2)}
+  .modal li{margin-bottom:5px}
+
+  .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,14px);background:#22292e;color:#fff;
+    font-size:12.5px;padding:8px 15px;border-radius:8px;opacity:0;pointer-events:none;transition:.2s;z-index:80}
+  .toast.on{opacity:1;transform:translate(-50%,0)}
+
+  /* ---------------- 首页 ---------------- */
+  .home{max-width:1000px;margin:0 auto;padding:8vh 24px 40px}
+  .home h1{font-size:26px;margin:0 0 8px;letter-spacing:.5px}
+  .home .lead{color:var(--ink-2);font-size:14px;margin:0 0 30px}
+  .picks{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media (max-width:860px){ .picks{grid-template-columns:1fr} }
+  .pick{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 24px;
+    cursor:pointer;transition:.15s;text-align:left}
+  .pick:hover{border-color:#bcd9d0;box-shadow:0 6px 22px rgba(31,107,87,.08);transform:translateY(-1px)}
+  .pick .ico{width:40px;height:40px;border-radius:11px;background:var(--green-l);color:var(--green);
+    display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px}
+  .pick b{display:block;font-size:17px;margin-bottom:6px}
+  .pick p{margin:0;color:var(--ink-2);font-size:13px;line-height:1.75}
+  .pick .go{display:inline-block;margin-top:14px;color:var(--green);font-size:13px;font-weight:600}
+
+  .picks{display:block}
+  .replace-dialog{border:1px solid var(--line);border-radius:12px;padding:22px;max-width:460px;width:calc(100% - 40px);color:var(--ink);box-shadow:0 15px 60px #0003}
+  .replace-dialog::backdrop{background:#14201b66}
+  .replace-dialog h2{margin:0 0 10px;font-size:18px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <div class="logo">家</div>
+    <div><b>家校沟通助手</b><span>跟家长谈话之前，先把要说的理一遍（演示版）</span></div>
+  </div>
+  <div class="spacer"></div>
+  <span style="font-size:11.5px;color:var(--ink-3)"><span class="dot-s" id="stDot"></span><span id="stText">检查中…</span></span>
+  <span class="tag-demo">请勿填写真实个人信息</span>
+  <button class="ghost" id="btnScope">使用说明</button>
+</header>
+
+
+<div class="home" id="home">
+  <h1>辅导员家校沟通准备工作台</h1>
+  <p class="lead">离线演示版：内容为预先写好的示例，不读取本次输入，也不连接模型。</p>
+  <div class="picks"><div class="card" style="padding:18px;max-width:760px">
+    <b>使用边界</b>
+    <p>工具提供沟通准备参考，不判断危机等级，不决定是否告知家长，也不提供诊断或处置方案。请核实事实，由辅导员决定是否采用。</p>
+    <p><b>信息处理：</b>本离线演示版在浏览器本地展示固定示例，不调用模型接口。连接模型的服务版会把输入发送至配置的模型服务；具体日志和保存规则待确认。请勿在试用中填写真实个案信息。</p>
+    <button class="btn pri" id="startUse">我已了解，开始使用</button>
+  </div></div>
+</div>
+
+<div class="app" id="app" hidden>
+  <!-- 左：输入 -->
+  <aside class="card side" id="side">
+    <div class="side-h">
+      <h3>这次要谈的事</h3>
+      <span class="req">必填</span>
+      <button class="mini" id="btnSlim">收起 ‹</button>
+    </div>
+    <div class="side-b">
+      <div class="field">
+        <div class="label">这次是哪一类</div>
+        <div class="scene-grid" id="scenes"></div>
+        <div class="sub">只是按这一类换个思路，系统不会因此判断孩子有没有问题。</div>
+      </div>
+
+      <div class="field">
+        <div class="label">学生出了什么事 <span class="req">必填</span></div>
+        <textarea id="situation" placeholder="几年级、最近出了什么事、现在什么状态、你已经做过什么。"></textarea>
+        <div class="sub">请勿输入姓名、学号、班级、咨询原话、真实个案或可识别家庭信息。</div>
+      </div>
+
+      <div class="field">
+        <div class="label">家长那边怎么说</div>
+        <select id="parentReaction">
+          <option value="">还没联系</option><option>说过了，家长不认可</option><option>家长明确拒绝</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <div class="label">孩子自己怎么想</div>
+        <select id="studentWish">
+          <option value="">还没谈到</option><option>愿意谈</option><option>希望先别告诉父母</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <div class="label">几个关键词</div>
+        <div class="chips" id="chips"></div>
+      </div>
+
+      <div class="field">
+        <div class="label">现在走到哪一步</div>
+        <select id="stage">
+          <option value="">还没定</option><option>已上报，做过研判</option><option>已经告诉家长</option>
+          <option>还在跟家长磨</option><option>在跟学生谈</option><option>在拉双方一起处理</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <div class="label">还有什么要注意的</div>
+        <textarea id="extra" style="min-height:56px" placeholder="比如：学生希望先别告诉家里；家长容易着急。"></textarea>
+      </div>
+
+      <button class="cta" id="btnGen" disabled>帮我理一遍</button>
+    </div>
+  </aside>
+
+  <!-- 收起后的窄条 -->
+  <div class="rail" id="rail">
+    <button id="btnWide" title="展开输入">›</button>
+    <div class="v">填<br>的<br>信<br>息</div>
+  </div>
+
+  <!-- 中：结果 -->
+  <section class="out" id="out">
+    <div class="empty">
+      <div class="big">左边填几项，这里会给出四块内容</div>
+      要说的事 · 建议的顺序 · 说话时注意 · 给家长的草稿
+    </div>
+  </section>
+
+
+</div>
+
+
+
+<div class="mask" id="mask"></div>
+<aside class="drawer" id="drawer">
+  <div class="dh"><h3 id="dTitle" style="margin:0;font-size:14px">看看这条</h3>
+    <button class="ghost" id="dClose" style="margin-left:auto">关闭</button></div>
+  <div class="db" id="dBody"></div>
+</aside>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <h2>使用说明</h2>
+    <p style="color:var(--ink-2);font-size:12.5px;margin:0 0 6px">两分钟看完，省得用的时候心里没底。</p>
+    <h4>它能帮你</h4>
+    <ul>
+      <li>把这次要讲的事理出来，告诉你每一条为什么要讲。</li>
+      <li>给一个说话的顺序，提醒你哪几句容易把事情搞僵。</li>
+      <li>按你给的情况，写一段能直接拿去改的说明。</li>
+    </ul>
+    <h4>它不会做的事</h4>
+    <ul>
+      <li>不会判断孩子有多危险，也不会说“没事”。</li>
+      <li>不会替你决定要不要告诉家长，也不会替你做处置。</li>
+      <li>不会说孩子是什么病、吃什么药、能不能好；这类话在输出里会被拦掉。</li>
+      <li>不会编你没说的事，也不会替学生表态。</li>
+      <li>不会替你发消息；草稿你自己确认、自己发。</li>
+    </ul>
+    <h4>信息处理说明</h4>
+    <ul>
+      <li>本离线演示版展示固定示例，不调用模型接口。模型服务版会将输入发送至配置的模型服务。</li>
+      <li>服务端会替换部分号码格式，但不能可靠识别姓名、班级、聊天原话及所有可识别信息。</li>
+      <li>平台及服务方的数据日志和保存期限待确认。请勿输入真实个案信息。</li>
+    </ul>
+    <div class="row" style="margin-top:16px"><button class="btn pri" id="mOk">知道了，开始用</button></div>
+  </div>
+</div>
+
+<dialog class="replace-dialog" id="replaceDialog" aria-labelledby="replaceTitle" aria-describedby="replaceDescription">
+  <h2 id="replaceTitle">重新生成沟通准备</h2>
+  <p id="replaceDescription">新结果生成成功后会替换当前内容，包括你修改的底稿。取消或生成失败时保留当前内容。</p>
+  <div class="row"><button class="btn" id="cancelReplace" autofocus>取消，保留当前内容</button><button class="btn pri" id="acceptReplace">确认重新生成</button></div>
+</dialog>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   v3：左栏可收、结果可折叠、对话固定在最右
+   ============================================================ */
+const SCENES = [
+  {k:"xueye", name:"学业警示"},
+  {k:"xinli", name:"心理健康首次告知"},
+  {k:"yiban", name:"一般家校沟通"},
+  {k:"weiji", name:"危机前期（待校内确认）", disabled:true}
+];
+const CHIPS = ["涉及学业","家长对就医有疑问","家长瞒了情况","学生要求保密","家长着急上火"];
+const STEPS_DEFAULT = ["风险上报与专业研判","告知家长并反复沟通","持续引导","与学生深度沟通","调整策略推进"];
+const STAGE_NAMES = ["","已上报，做过研判","已经告诉家长","还在跟家长磨","在跟学生谈","在拉双方一起处理"];
+
+const state = {
+  scene:"xueye", chips:new Set(), data:null, edited:0, history:[],
+  slim:false, open:new Set(["points","draft"]),
+  mode:"home"
+};
+
+/* ---------- 左栏 ---------- */
+const elScenes = document.getElementById("scenes");
+SCENES.forEach(s=>{
+  const b=document.createElement("button");
+  b.className="scene"+(s.k===state.scene?" on":""); b.dataset.k=s.k; b.textContent=s.name; b.disabled=!!s.disabled;
+  b.onclick=()=>{ if(b.disabled)return; state.scene=s.k;
+    [...elScenes.children].forEach(x=>x.classList.toggle("on",x.dataset.k===s.k)); };
+  elScenes.appendChild(b);
+});
+const elChips=document.getElementById("chips");
+CHIPS.forEach(c=>{
+  const d=document.createElement("div"); d.className="chip"; d.textContent=c;
+  d.onclick=()=>{ if(state.chips.has(c)){state.chips.delete(c);d.classList.remove("on");}
+    else {state.chips.add(c);d.classList.add("on");} };
+  elChips.appendChild(d);
+});
+const elSituation=document.getElementById("situation");
+const elGen=document.getElementById("btnGen");
+elSituation.oninput=()=>{ elGen.disabled = !elSituation.value.trim(); };
+
+/* 左栏收起 / 展开 */
+const app=document.getElementById("app");
+function setSlim(v){
+  state.slim=v; app.classList.toggle("slim",v);
+}
+document.getElementById("btnSlim").onclick=()=>setSlim(true);
+document.getElementById("btnWide").onclick=()=>setSlim(false);
+
+/* ---------- 接口状态 ---------- */
+(function(){
+  const dot=document.getElementById("stDot"), txt=document.getElementById("stText");
+  dot.className="dot-s off"; txt.textContent="演示版：内容是例子，没连模型";
+})();
+
+function confirmReplacement(){
+  const dialog=document.getElementById("replaceDialog");
+  dialog.returnValue="cancel";
+  return new Promise(resolve=>{
+    dialog.addEventListener("close",()=>resolve(dialog.returnValue==="replace"),{once:true});
+    document.getElementById("cancelReplace").onclick=()=>dialog.close("cancel");
+    document.getElementById("acceptReplace").onclick=()=>dialog.close("replace");
+    dialog.showModal();
+  });
+}
+
+/* ---------- 生成 ---------- */
+elGen.onclick=async ()=>{
+  if(state.generating) return;
+  state.generating=true;
+  if(state.data && !(await confirmReplacement())){ state.generating=false; return; }
+  elGen.disabled=true;
+  const out=document.getElementById("out");
+  out.innerHTML=`<div class="card" style="padding:16px">
+      <div style="height:11px;background:#eef1f2;border-radius:5px;margin:8px 0;width:40%"></div>
+      <div style="height:11px;background:#eef1f2;border-radius:5px;margin:8px 0;width:80%"></div>
+      <div style="height:11px;background:#eef1f2;border-radius:5px;margin:8px 0;width:60%"></div>
+      <div style="font-size:12px;color:var(--ink-3);margin-top:10px">正在理，几秒钟…</div></div>`;
+  setSlim(true);
+
+  const payload={
+    scene:state.scene,
+    sceneName:(SCENES.find(s=>s.k===state.scene)||{}).name,
+    situation:elSituation.value.trim(),
+    parentReaction:document.getElementById("parentReaction").value,
+    studentWish:document.getElementById("studentWish").value,
+    chips:[...state.chips],
+    stage:document.getElementById("stage").value,
+    extra:document.getElementById("extra").value.trim()
+  };
+
+  await new Promise(r=>setTimeout(r, 500));
+  state.data = localFallback(payload);
+  state.data.flags = ["演示版：下面是例子，不是模型当场生成的"];
+  state.edited=0; state.open=new Set(["points","draft"]);
+  showMode("case");
+  render();
+  state.generating=false; elGen.disabled=!elSituation.value.trim();
+};
+
+/* ---------- 本地降级 ---------- */
+function localFallback(p){
+  const crisis=p.scene==="weiji" || /(自杀|自伤|轻生|伤害自己|不想活|结束生命|自残)/.test(String(p.situation||"")+" "+String(p.extra||""));
+  const result = {
+    sceneName:p.sceneName||"学业警示",
+    points:[
+      {title:"先说清这次为什么联系",why:"家长接到电话先紧张，头十秒决定他后面愿不愿意听",source:"know",
+       detail:{aim:"让家长知道这通电话要花多久、谈什么",why:"家长一紧张就容易往坏处想，先把话挑明",
+         react:["是不是孩子出事了？","你们是不是又要处分他？"],
+         reply:"孩子没事，是想跟您对一下这学期上课和作业的情况，几分钟就够。"}},
+      {title:"只讲能核对的事",why:"说“最近状态不好”家长接不住，说“缺课12节”他能听懂",source:"know",
+       detail:{aim:"用具体的事代替评价",why:"家长不认可，多半是听到的都是评价",
+         react:["他在家挺好的啊"],reply:"在家和在学校可能不一样，我把学校这边看到的说给您。"}},
+      {title:"说清学校已经做了什么",why:"不然家长会觉得学校只通知一下、后面没人管",source:"know",
+       detail:{aim:"让家长知道学校已经介入",why:"抵触常常来自“只收到一个结果”",
+         react:["那你们之前怎么不说？"],reply:"之前我已经找他谈过两次，也跟任课老师对过。"}},
+      {title:"讲清下一步谁做什么",why:"不说清，这通电话就等于白打",source:"rule",
+       detail:{aim:"把这次沟通落到具体动作",why:"家长挂了电话最常想的是“然后呢”",
+         react:["那我该做什么？"],reply:"这周您先问一句他最近的作息，我这边继续跟课堂，下周三再对一次。"}}
+    ],
+    steps:crisis?STEPS_DEFAULT.slice(0,1):STEPS_DEFAULT,
+    risks:[{title:"别替家长下判断",detail:"说“他就是贪玩”容易把话聊死"},
+           {title:"别把话说满",detail:"不说“照这个做肯定能过”"}],
+    draft:crisis?null:"家长您好，我是学院辅导员。今天想跟您对一下孩子这学期上课和作业的情况，几分钟就够。\n\n这学期缺课12节，专业课作业连续三次没交，任课老师也说他上课有点走神。就这三件事，我先跟您说清楚；原因我还在了解，不急着下结论。\n\n之前我已经找他谈过两次。您的看法对我很重要，方便的话我们约个时间通个电话。",
+    faq:[{q:"为什么现在才联系我？",a:"先说学校已经做过的，再说这次想请家长一起"},
+         {q:"会不会影响毕业？",a:"按学校文件说，超出文件的不替学校答"}],
+    next:["问一句家长听明白了多少","约下次再聊，或请家长来一趟","再找学生谈一次，看他怎么想","需要时找心理中心或专业老师"],
+    crisis, notes:"", flags:[]
+  };
+  if(crisis){
+    result.points=[{title:"转由人工核实",why:"关键词只触发提醒，不代表系统确认或排除风险",source:"adv",
+      detail:{aim:"请辅导员核实输入情况",why:"风险判断需要由校内专业人员完成",react:[],reply:"我先按校内流程联系相关专业人员核实，再决定后续沟通。"}}];
+    result.risks=[{title:"不要据此下结论",detail:"本提醒不判断危机等级，也不替代校内专业研判。"}];
+    result.faq=[]; result.next=[]; result.steps=STEPS_DEFAULT.slice(0,1);
+    result.notes="安全提醒只由预设场景或关键词触发，不代表系统确认或排除风险。请由辅导员核实，并按校内流程联系心理中心或相关专业人员。";
+  }
+  return result;
+}
+
+/* ---------- 渲染结果 ---------- */
+const SECS=[
+  {k:"points", no:"1", t:"这次要说的几件事"},
+  {k:"steps",  no:"2", t:"建议按这个顺序说"},
+  {k:"risks",  no:"3", t:"说话时留个心"},
+  {k:"draft",  no:"4", t:"给家长的草稿"},
+  {k:"faq",    no:"5", t:"家长大概会问"},
+  {k:"next",   no:"6", t:"谈完做什么"}
+];
+
+function summary(k){
+  const d=state.data;
+  if(k==="points") return `${(d.points||[]).length} 条` + ((d.points&&d.points[0])?` · ${d.points[0].title}`:"");
+  if(k==="steps")  return `${(d.steps||[]).length} 步` + ((d.steps&&d.steps[0])?` · ${d.steps[0]}`:"");
+  if(k==="risks")  return `${(d.risks||[]).length} 条提醒`;
+  if(k==="draft")  return d.draft ? "可以照着改" : "这种情况不写";
+  if(k==="faq")    return `${(d.faq||[]).length} 个问题`;
+  if(k==="next")   return `${(d.next||[]).length} 件事`;
+  return "";
+}
+
+function body(k){
+  const d=state.data, stageIdx=STAGE_NAMES.indexOf(document.getElementById("stage").value);
+  if(k==="points") return `<ul class="pts">${(d.points||[]).map((p,i)=>
+    `<li><div class="pt-t">${i+1}. ${esc(p.title)}</div><div class="pt-w">${esc(p.why)}</div>
+      <div class="pt-f">${srcLabel(p.source)}<button class="more" data-i="${i}">展开看看 ›</button></div></li>`).join("")}</ul>`;
+
+  if(k==="steps") return `<ol class="steps">${(d.steps||STEPS_DEFAULT).map((s,i)=>{
+    const cls=(stageIdx>0&&i<stageIdx)?"done":(stageIdx>0&&i===stageIdx?"cur":"");
+    return `<li class="${cls}"><span class="d">${i+1}</span><span>${esc(s)}</span></li>`}).join("")}</ol>
+    <div class="sub" style="margin-top:8px">五步名称依据访谈归纳，正式流程待校内确认。系统不知道你走到了哪一步，请由辅导员选择。</div>`;
+
+  if(k==="risks") return (d.risks||[]).map(x=>`<div class="risk"><b>${esc(x.title)}</b><p>${esc(x.detail)}</p></div>`).join("");
+
+  if(k==="draft"){
+    if(!d.draft) return `<div class="warn" style="margin-top:8px">请由辅导员核实，并按校内流程联系心理中心或相关专业人员。本工具不进行危机研判，也不提供处置方案。</div>`;
+    return `<textarea class="draft" id="draftBox" readonly>${esc(d.draft)}</textarea>
+      <div class="row"><button class="btn" id="btnEdit">编辑底稿</button>
+      <span class="count" id="editCount">改了 0 处</span></div>
+      <div class="review" id="reviewPanel"><b>核对告知内容</b>
+        <label><input type="checkbox" class="reviewCheck"> 事实准确，且来自我已核实的信息</label>
+        <label><input type="checkbox" class="reviewCheck"> 没有把推测写成事实，也没有替学生表态</label>
+        <label><input type="checkbox" class="reviewCheck"> 已删除不必要的姓名、班级等身份信息</label>
+        <label><input type="checkbox" class="reviewCheck"> 内容符合我的判断和校内流程</label>
+        <div class="row"><button class="btn" id="btnConfirm" disabled>确认这版内容</button>
+          <button class="btn pri" id="btnCopy" disabled>复制已确认内容</button></div>
+        <div class="sub" id="reviewStatus">勾选核对项并确认后，才能复制。确认不代表系统已发送。</div>
+      </div>`;
+  }
+
+  if(k==="faq") return `<dl class="faq">${(d.faq||[]).map(f=>
+    `<dt>${esc(f.q)}</dt><dd>${esc(f.a)}</dd>`).join("")}</dl>`;
+
+  if(k==="next") return `<div class="next">${(d.next||[]).map(n=>
+    `<label><input type="checkbox"> <span>${esc(n)}</span></label>`).join("")}</div>
+    <div class="sub" style="margin-top:8px">勾选仅保留在当前页面，不形成个案记录。</div>`;
+  return "";
+}
+
+function srcLabel(s){
+  return s==="rule"?`<span class="src rule">依据：学校流程</span>`
+       : s==="know"?`<span class="src know">依据：常规做法</span>`
+       : `<span class="src adv">沟通建议</span>`;
+}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+function render(){
+  const d=state.data;
+  const out=document.getElementById("out");
+  let html=`<div class="bar"><b>这次是：${esc(d.sceneName)}</b>
+     <span style="margin-left:auto">${new Date().toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit"})} 生成</span></div>`;
+
+  if(d.crisis) html+=`<div class="stop"><b>这种情况，工具不替你出主意</b>
+      输入可能涉及人身安全。请由辅导员核实并按校内流程联系心理中心或相关专业人员；
+      工具不进行危机研判，也不提供处置方案。</div>`;
+  if(d.notes) html+=`<div class="warn">${esc(d.notes)}</div>`;
+  if((d.flags&&d.flags.length)||(d.redacted&&d.redacted.length)){
+    const parts=[];
+    if(d.flags&&d.flags.length) parts.push(d.flags.map(esc).join("；"));
+    if(d.redacted&&d.redacted.length) parts.push("检测并替换了这些号码格式：" + d.redacted.join("、"));
+    html+=`<div class="flags">系统提示：${parts.join("；")}。自动脱敏不代表已识别或删除所有个人信息，请再次核对。</div>`;
+  }
+
+  html+=`<div class="toolbar"><span>点标题收起这块</span>
+    <button id="btnAll">${state.open.size>0?"全部收起":"全部展开"}</button></div>`;
+
+  html+=SECS.map(s=>{
+    const isOpen=state.open.has(s.k);
+    return `<section class="sec${isOpen?" open":""}" data-k="${s.k}">
+      <button class="sec-h">
+        <span class="sec-no">${s.no}</span>
+        <span class="sec-t">${s.t}</span>
+        <span class="sec-s">${summary(s.k)}</span>
+        <span class="sec-x">▾</span>
+      </button>
+      <div class="sec-b">${body(s.k)}</div>
+    </section>`;
+  }).join("");
+
+  html+=`<div class="foot">上面这些只是准备用。事实请你核实，用不用你定。孩子危不危险、要不要上报，不由这个工具判断。</div>`;
+  out.innerHTML=html;
+  bindSections();
+}
+
+function bindSections(){
+  document.querySelectorAll(".sec-h").forEach(h=>{
+    h.onclick=()=>{
+      const sec=h.parentElement, k=sec.dataset.k;
+      if(state.open.has(k)){ state.open.delete(k); sec.classList.remove("open"); }
+      else { state.open.add(k); sec.classList.add("open"); }
+    };
+  });
+  const all=document.getElementById("btnAll");
+  if(all) all.onclick=()=>{
+    if(state.open.size>0){ state.open.clear(); }
+    else { state.open=new Set(SECS.map(s=>s.k)); }
+    document.querySelectorAll(".sec").forEach(sec=>sec.classList.toggle("open",state.open.has(sec.dataset.k)));
+    const b=document.getElementById("btnAll"); if(b) b.textContent=state.open.size>0?"全部收起":"全部展开";
+  };
+  bindInner();
+}
+
+function bindInner(){
+  const d=state.data;
+  document.querySelectorAll(".more").forEach(b=>{ b.onclick=()=>openDrawer(d.points[+b.dataset.i]); });
+  const box=document.getElementById("draftBox"), btnEdit=document.getElementById("btnEdit");
+  const btnConfirm=document.getElementById("btnConfirm"), btnCopy=document.getElementById("btnCopy");
+  const cnt=document.getElementById("editCount");
+  if(box&&btnEdit){
+    let counted=false,timer=null,confirmed=false;
+    const checks=[...document.querySelectorAll(".reviewCheck")], status=document.getElementById("reviewStatus");
+    const ready=()=>checks.length>0&&checks.every(c=>c.checked);
+    btnEdit.onclick=()=>{
+      if(box.readOnly){box.readOnly=false;box.focus();btnEdit.textContent="完成编辑";}
+      else {box.readOnly=true;btnEdit.textContent="编辑底稿";}
+      confirmed=false;btnCopy.disabled=true;btnConfirm.disabled=!ready();
+      checks.forEach(c=>{c.checked=false;c.disabled=false;});
+      status.textContent="请核对当前底稿后再确认。";
+    };
+    box.addEventListener("input",()=>{
+      state.data.draft=box.value;
+      if(!counted){state.edited++;counted=true;cnt.textContent="改了 "+state.edited+" 处";}
+      clearTimeout(timer);timer=setTimeout(()=>{counted=false;},900);
+      confirmed=false;btnCopy.disabled=true;btnConfirm.disabled=true;
+      checks.forEach(c=>{c.checked=false;c.disabled=false;});
+      status.textContent="内容已修改，请重新核对并确认。";
+    });
+    checks.forEach(c=>c.onchange=()=>{
+      confirmed=false;btnCopy.disabled=true;btnConfirm.disabled=!ready();
+      status.textContent=ready()?"请确认当前底稿。":"请完成全部核对项。";
+    });
+    btnConfirm.onclick=()=>{
+      if(!box.readOnly||!ready())return;
+      confirmed=true;btnCopy.disabled=false;btnConfirm.disabled=true;
+      checks.forEach(c=>c.disabled=true);status.textContent="已确认当前内容。工具不会替你发送。";
+    };
+    btnCopy.onclick=()=>{if(confirmed)copyText(box.value).then(ok=>toast(ok?"已复制，请自行选择沟通渠道":"复制失败了，手动选一下"));};
+  }
+}
+
+/* ---------- 使用说明与工作台 ---------- */
+const viewHome=document.getElementById("home"), viewCase=document.getElementById("app");
+function showMode(m){viewHome.hidden=m!=="home";viewCase.hidden=m!=="case";state.mode=m;}
+document.getElementById("startUse").onclick=()=>showMode("case");
+
+/* ---------- 抽屉 / 弹窗 / 工具 ---------- */
+const mask=document.getElementById("mask"), drawer=document.getElementById("drawer");
+function openDrawer(p){
+  if(!p) return;
+  document.getElementById("dTitle").textContent=p.title||"看看这条";
+  const d=p.detail||{};
+  let html="";
+  if(d.aim) html+=`<h4>这条要做什么</h4><p>${esc(d.aim)}</p>`;
+  if(d.why) html+=`<h4>为什么要这么说</h4><p>${esc(d.why)}</p>`;
+  if(d.react&&d.react.length) html+=`<h4>家长可能的反应</h4><p>${d.react.map(x=>"· "+esc(x)).join("<br>")}</p>`;
+  if(d.reply) html+=`<h4>可以这么回复</h4><div class="quote">${esc(d.reply)}</div>`;
+  html+=`<div class="foot">这里是沟通参考，不是逐字稿；请按这位家长的实际情况调整。</div>`;
+  document.getElementById("dBody").innerHTML=html;
+  mask.classList.add("on"); drawer.classList.add("on");
+}
+function closeDrawer(){ mask.classList.remove("on"); drawer.classList.remove("on"); }
+document.getElementById("dClose").onclick=closeDrawer;
+mask.onclick=closeDrawer;
+
+const modal=document.getElementById("modal");
+document.getElementById("btnScope").onclick=()=>modal.classList.add("on");
+document.getElementById("mOk").onclick=()=>modal.classList.remove("on");
+
+function toast(msg){
+  const t=document.getElementById("toast");
+  t.textContent=msg; t.classList.add("on");
+  clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("on"),2400);
+}
+function copyText(text){
+  if(navigator.clipboard&&window.isSecureContext)
+    return navigator.clipboard.writeText(text).then(()=>true).catch(()=>fallbackCopy(text));
+  return Promise.resolve(fallbackCopy(text));
+}
+function fallbackCopy(text){
+  const ta=document.createElement("textarea");
+  ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
+  document.body.appendChild(ta); ta.select();
+  let ok=false; try{ok=document.execCommand("copy");}catch(e){}
+  document.body.removeChild(ta); return ok;
+}
+
+/* 演示模式：?demo=1 */
+const _q = new URLSearchParams(location.search);
+if(_q.get("demo")==="1"){ showMode("case");
+  elSituation.value="某学院大二学生，这学期缺课12节，专业课作业连续三次没交，任课老师说他上课老走神。我找他谈过两次，他说最近状态不太好，但不想让家里知道。";
+  elSituation.dispatchEvent(new Event("input"));
+  setTimeout(()=>document.getElementById("btnGen").click(),300);
+}
+</script>
+</body>
+</html>

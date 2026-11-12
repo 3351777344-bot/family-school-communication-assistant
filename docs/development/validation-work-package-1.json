@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-11",
+  "scope": "工作包 1：披露和确认状态",
+  "automation": "PAUSED（未修改）",
+  "configuredModel": { "provider": "deepseek", "model": "deepseek-flash", "thinking": false },
+  "realModelRequests": 0,
+  "p05Before": { "localStubRequests": 1, "parentDraft": true },
+  "p05After": { "localStubRequests": 0, "status": "disclosure_pending", "parentDraft": false },
+  "checks": {
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "serverTests": { "passed": 27, "failed": 0 },
+    "stateTests": { "passed": 8, "failed": 0 },
+    "browser": {
+      "engine": "Chromium (Microsoft Edge, headless)",
+      "desktopViewport": [1440, 1000],
+      "mobileViewport": [390, 844],
+      "localStubRequests": 4,
+      "horizontalOverflow": false,
+      "pageErrors": 0,
+      "verified": [
+        "P05 仅显示工作人员核对提示，不调用上游；键盘可开关详情并恢复焦点",
+        "P01 已确认后生成；四项核对后实际写入剪贴板；折叠保留确认、编辑撤销确认",
+        "事实与场景变更后仍可预览旧稿，确认和复制按钮禁用，稿区复制事件被阻止",
+        "本地桩 503 和主动取消保留输入与编辑；模拟取消后仍交付的响应不能覆盖新稿",
+        "窄屏 M03 显示联系目的缺项；E2 仅首步和人工提示；两者均无底稿与上游调用"
+      ]
+    }
+  },
+  "limits": [
+    "窄规则只识别明确表述；其他未明确的披露边界由工作人员核实。",
+    "取消保证不更新当前页面，无法保证服务商停止已收到的请求。",
+    "未进行真实模型质量复测、校内审核或正式辅导员演练。"
+  ]
+}

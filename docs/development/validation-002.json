@@ -1,0 +1,34 @@
+{
+  "iteration": 2,
+  "date": "2026-11-10",
+  "automation": "PAUSED",
+  "env_overwritten": false,
+  "config": {
+    "qwen_key_present": true,
+    "deepseek_key_present": true,
+    "mock": true
+  },
+  "preflight": {
+    "deepseek": {
+      "ok": true,
+      "total_tokens": 94
+    },
+    "qwen": {
+      "ok": false,
+      "status": 403,
+      "code": "AllocationQuota.FreeTierOnly",
+      "requests": 2,
+      "usage": null
+    }
+  },
+  "local_tests": {
+    "pass": 13,
+    "fail": 0
+  },
+  "browser": {
+    "cancel_preserves_edited_draft": true,
+    "failure_preserves_edited_draft": true,
+    "workflow_title_preserved": true
+  },
+  "mvp_complete": false
+}

@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-10",
+  "iteration": "003",
+  "scope": "React/TypeScript workbench migration and responsive layout",
+  "automation": "PAUSED (not modified)",
+  "realModelRequests": 0,
+  "checks": {
+    "typecheck": "passed",
+    "productionBuild": "passed, no warnings",
+    "serverTests": { "passed": 14, "failed": 0 },
+    "stateTests": { "passed": 4, "failed": 0 },
+    "envIgnored": true,
+    "browser": {
+      "desktopViewport": [1440, 1000],
+      "mobileViewport": [390, 844],
+      "horizontalOverflow": false,
+      "nestedPanelScroll": false,
+      "draftEditAndChecklist": "passed",
+      "confirmationSurvivesFold": "passed",
+      "editInvalidatesConfirmation": "passed",
+      "replacementCancelPreservesDraft": "passed",
+      "http503PreservesInputAndEditedDraft": "passed with local synthetic upstream",
+      "activeCancellationAndLateResponseIgnored": "passed with local synthetic upstream",
+      "scopeDialog": "passed",
+      "consoleErrorsOnMockWorkbench": 0
+    }
+  },
+  "evidence": ["evidence/iteration-003-desktop.png", "evidence/iteration-003-mobile.png", "evidence/iteration-003-failure.png"],
+  "limits": ["No real model quality evaluation", "No clipboard permission prompt exercised", "Client cancellation does not cancel provider request", "No refresh persistence", "Strict output and source contracts still pending"]
+}

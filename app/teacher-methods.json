@@ -1,0 +1,538 @@
+[
+  {
+    "id": "teacher-listen-facts",
+    "version": 1,
+    "title": "倾听事实并留出核对空间",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块二 · 3F 倾听法（课件照片 90）"
+    },
+    "supports": [
+      "review-records",
+      "review-observations"
+    ],
+    "passages": {
+      "review-records": [
+        {
+          "quote": "事实：只收集“别人也能看见”的信息",
+          "action": "家长一开口就猜原因（“就是贪玩”）时：先只说已核实的时间和记录，请家长补充他了解的，原因留到后面。"
+        }
+      ],
+      "review-observations": [
+        {
+          "quote": "事实：只收集“别人也能看见”的信息",
+          "action": "要说孩子表现时：先讲什么时候、在哪里看到的，再请家长补充，不把推测说成事实。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-listen-feeling",
+    "version": 1,
+    "title": "回应感受并请对方确认",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块二 · 3F 倾听法（课件照片 90）"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "感受：标注情绪，并向他求证",
+          "action": "家长语气明显着急或不认同时：先把对方的感受说出来，再问一句“我理解得对吗”。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-listen-focus",
+    "version": 1,
+    "title": "询问对方最在意的问题",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块二 · 3F 倾听法（课件照片 90）"
+    },
+    "supports": [
+      "hear-parent",
+      "study-support"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "在意：找到他真正在意的东西",
+          "action": "家长说了很多但抓不住重点时：直接问“您最想先弄清哪一件事”，再围绕这一点谈。"
+        }
+      ],
+      "study-support": [
+        {
+          "quote": "在意：找到他真正在意的东西",
+          "action": "要谈配合方式时：先问家长和学生各自最在意什么，再提一项双方都愿意试的。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-reflect-clarify",
+    "version": 1,
+    "title": "回应后复述和开放提问",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块三 · 四种核心回应技术（课件照片 93）"
+    },
+    "supports": [
+      "hear-parent",
+      "return-to-records"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "先反映 → 再释义 → 后提问",
+          "action": "家长说完一段后：先回应感受，再复述你听到的意思，最后问一个开放问题，三步不要跳。"
+        }
+      ],
+      "return-to-records": [
+        {
+          "quote": "先反映 → 再释义 → 后提问",
+          "action": "双方说法不一致时：先复述各自说法并求证，再问“哪一条记录您觉得有问题”。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-agree-next",
+    "version": 1,
+    "title": "沟通结束前商量下一步",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块四 · 三不三要（课件照片 102）"
+    },
+    "supports": [
+      "contact-time",
+      "study-support"
+    ],
+    "passages": {
+      "contact-time": [
+        {
+          "quote": "明确“接下来谁做什么、什么时候”",
+          "action": "通话结束前：把“接下来谁做什么、什么时候”说具体，并复述一遍确认。"
+        }
+      ],
+      "study-support": [
+        {
+          "quote": "明确“接下来谁做什么、什么时候”",
+          "action": "谈完支持方式后：当场确认谁负责、什么时候再沟通，不留“改天再说”。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-observation-request",
+    "version": 1,
+    "title": "说明观察并提出具体请求",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块一 · 培训目标（课件照片 84）"
+    },
+    "supports": [
+      "review-records",
+      "review-observations"
+    ],
+    "passages": {
+      "review-records": [
+        {
+          "quote": "只说观察到的事实、不做诊断",
+          "action": "要说明记录时：只讲经核实且可告知的记录，邀请家长补充，不说“孩子不认真”这类评价。"
+        }
+      ],
+      "review-observations": [
+        {
+          "quote": "只说观察到的事实、不做诊断",
+          "action": "要说明观察时：围绕已核实且可告知的具体表现，请家长补充他看到的。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-meeting-concern",
+    "version": 1,
+    "title": "先了解家长关心的问题",
+    "reviewStatus": "AI 会议纪要，待当事人核对",
+    "sourceLocation": {
+      "title": "陈予的视频会议 AI 视图，2026年11月10日",
+      "locator": "文档内会议摘要图片，家校沟通实操方法与现有支持"
+    },
+    "supports": [
+      "hear-parent",
+      "check-policy"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "需精准抓住家长最关注的核心诉求点",
+          "action": "家长一开口就说结论或抱怨时：先问“您最想先了解什么”，确认后再回应。"
+        }
+      ],
+      "check-policy": [
+        {
+          "quote": "需精准抓住家长最关注的核心诉求点",
+          "action": "家长问到规定和后果时：先问清他关心的是哪一条，核对校内口径后回复，不当场给结论。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-avoid-closing-moves",
+    "version": 1,
+    "title": "避开 12 类会让沟通关门的句子",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块三 · 12 个“沟通杀手”（课件照片 95/96）"
+    },
+    "supports": [
+      "hear-parent",
+      "review-records"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "12 类会关门的句子：安慰式否定、急于给建议、讲道理说教、比惨、评判贴标签、空洞赞美、打断抢话、转移话题、过度追问、质疑感受、过度承诺、替他做决定",
+          "action": "准备开口前：对照这 12 类逐条自查，命中任何一条就改成先接住感受、再问一句具体的。"
+        }
+      ],
+      "review-records": [
+        {
+          "quote": "判断标准只有一条：说完这句话之后，对方给出的信息是变多了，还是变少了",
+          "action": "说明记录后：看对方是继续补充还是收住话头；收住了就换回“您最在意哪一点”。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-reframe-promise",
+    "version": 1,
+    "title": "把“保证不说出去”换成说清边界",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块三 · 杀手句式→替换句式（课件照片 97）"
+    },
+    "supports": [
+      "check-disclosure",
+      "hear-parent"
+    ],
+    "passages": {
+      "check-disclosure": [
+        {
+          "quote": "“我保证不告诉任何人”可以换成“什么情况下我会说出去、说给谁，我现在就跟你说清楚”",
+          "action": "家长问“会不会告诉别人”时：直接讲清哪些情况会告知谁，不用“保证不说”换信任。"
+        }
+      ],
+      "hear-parent": [
+        {
+          "quote": "什么情况下我会说出去、说给谁，我现在就跟你说清楚",
+          "action": "对方追问保密范围时：先说已知的处理方式，不确定的说“我确认后回复您”。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-reframe-reassurance",
+    "version": 1,
+    "title": "把“没什么大不了”换成允许难受",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块三 · 杀手句式→替换句式（课件照片 97）"
+    },
+    "supports": [
+      "hear-parent",
+      "review-observations"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "“别难过了，没什么大不了的”可以换成“这件事放在谁身上都会难受，你不用急着好起来”",
+          "action": "家长说“没什么大不了”或说孩子“矫情”时：先承认难受是正常的，再进入事实。"
+        }
+      ],
+      "review-observations": [
+        {
+          "quote": "这件事放在谁身上都会难受，你不用急着好起来",
+          "action": "讲观察之前：先接一句对方的处境，再讲具体发生了什么。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-empathy-lines",
+    "version": 1,
+    "title": "卡壳时先用一句共情回应",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块三 · 20 句共情回应句卡（课件照片 98）"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "20 句共情回应句卡：嗯，我在听，你慢慢说；听起来这段时间你真的很累；我不急着给你出主意，先听你说完",
+          "action": "家长情绪上来、你一时不知道怎么接时：先用一句“我在听，您慢慢说”或“听起来这段时间您真的很累”，把话留在对方那边。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-safety-disclosure",
+    "version": 1,
+    "title": "涉及安全时先说明会做什么",
+    "reviewStatus": "待老师核对",
+    "scenes": [
+      "xinli"
+    ],
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块三 · 20 句共情回应句卡（课件照片 98）"
+    },
+    "supports": [
+      "check-disclosure",
+      "review-observations"
+    ],
+    "passages": {
+      "check-disclosure": [
+        {
+          "quote": "我担心你的安全，所以有些事我必须做",
+          "action": "涉及安全时：先说“我担心孩子的安全，所以有些事我必须做”，再讲会找谁，不承诺独自处理。"
+        }
+      ],
+      "review-observations": [
+        {
+          "quote": "我担心你的安全，所以有些事我必须做",
+          "action": "提到安全相关观察时：同步说明会按校内流程联系谁，不含糊也不承诺保密。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-case-holding",
+    "version": 1,
+    "title": "听懂“我能扛”“不想麻烦别人”",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块四 · 三张案例卡的观察重点（课件照片 101）"
+    },
+    "supports": [
+      "hear-parent",
+      "review-observations"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "“我不想麻烦别人”常常意味着“我觉得自己不值得被帮”",
+          "action": "家长说“孩子说没事”“不用管他”时：先问一句“他是不是不想麻烦别人”，别再追方案。"
+        }
+      ],
+      "review-observations": [
+        {
+          "quote": "先看看这个“扛”字背后他已经扛了多久",
+          "action": "学生说“我没事，我能扛”时：先问这个状态持续多久，再谈具体安排。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-3f-check",
+    "version": 1,
+    "title": "谈话卡住时回到三层自检",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块二 · 3F 倾听法（课件照片 90）"
+    },
+    "supports": [
+      "review-observations",
+      "hear-parent"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "谈话卡住时，回到这三层自检：事实问全了吗？感受标注了吗？在意点找到了吗",
+          "action": "沟通卡住时：回到三层自检——事实问全了吗、感受标注了吗、在意点找到了吗，缺哪层补哪层。"
+        }
+      ],
+      "hear-parent": [
+        {
+          "quote": "Focus · 在意：找到他真正在意的东西",
+          "action": "听完之后：确认对方最在意的是评价、期待还是后果，再围绕这一点谈。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-three-dilemmas",
+    "version": 1,
+    "title": "第一通电话只建立关系，不传递判断",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "课程导入 · 三重困境（课件照片 83）"
+    },
+    "supports": [
+      "contact-time",
+      "hear-parent"
+    ],
+    "passages": {
+      "contact-time": [
+        {
+          "quote": "第一通电话只建立关系，不传递判断",
+          "action": "第一次联系家长时：只说明来意和能提供的支持，不下判断、不转述别人的评价。"
+        }
+      ],
+      "hear-parent": [
+        {
+          "quote": "我们说“孩子最近状态不太好”，他听到的可能是“你孩子出问题了，你们家有问题”",
+          "action": "开口第一句：先说自己想核对什么，避免用“孩子最近状态不太好”这类概括。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-listen-four-layers",
+    "version": 1,
+    "title": "从「他讲了什么」听到「他没讲什么」",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块二 · 倾听四层信息（课件照片 89）"
+    },
+    "supports": [
+      "review-observations",
+      "hear-parent"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "时间、地点、人物、事件、次数。先不带任何判断把信息记全",
+          "action": "说明情况时：把时间、地点、人物、事件、次数讲全，不夹评价。"
+        }
+      ],
+      "hear-parent": [
+        {
+          "quote": "笼统的一句“我理解你”，等于什么都没说",
+          "action": "回应家长时：把情绪词说具体（“您是担心还是生气”），别用“我理解您”带过。"
+        },
+        {
+          "quote": "停顿、回避、改口、前后矛盾、语气突然变轻、反复说“算了不说了”",
+          "action": "对方欲言又止时：停下来问一句“您刚才想说什么”，不急着推进议程。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-empathy-not-agreement",
+    "version": 1,
+    "title": "共情不等于同意，也不等于放过标准",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块一 · 共情不是“什么”（课件照片 87）"
+    },
+    "supports": [
+      "return-to-records",
+      "study-support"
+    ],
+    "passages": {
+      "return-to-records": [
+        {
+          "quote": "理解他为什么这么做，不等于认可这个做法",
+          "action": "家长说出孩子的原因时：先表示听懂，再回到记录和责任本身，不因为共情就放宽标准。"
+        }
+      ],
+      "study-support": [
+        {
+          "quote": "共情是先把情绪接住，不是马上给方案",
+          "action": "要提支持方案前：先停一句确认情绪被接住，再谈具体做法。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-empathy-levels",
+    "version": 1,
+    "title": "共情有层级，推断完必须求证",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块三 · Carkhuff 五层次（课件照片 94）"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "准确反映已说出的情绪",
+          "action": "回应时：先准确说出对方已经表达的情绪，这是基本线。"
+        },
+        {
+          "quote": "猜错会让学生觉得“你在替我下结论”，说完后必须补一句求证",
+          "action": "说出对方没直说的顾虑后：紧跟一句“我这样理解对吗？不对您纠正我”。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-relationship-first",
+    "version": 1,
+    "title": "关系先于技术",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "模块一 · 关系先于技术（课件照片 88）"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "一个愿意说的学生，比一套漂亮的提问技术更能决定谈话的走向",
+          "action": "第一次通话：先把时间和注意力给足，别急着用技巧推进议程。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-listen-restraint",
+    "version": 1,
+    "title": "最难的是忍住不插嘴",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "高校心理辅导员共情沟通实务培训课件",
+      "locator": "课程导入 · 破冰·我说你听（课件照片 85）"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "学生判断的从来不是这句话，而是你有没有忍住不插嘴",
+          "action": "对方说话时：不打断、不提前想下一句，等对方停下来再回应；忍不住时先默数三秒。"
+        }
+      ]
+    }
+  }
+]

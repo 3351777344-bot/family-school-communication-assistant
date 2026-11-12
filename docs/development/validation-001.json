@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-10",
+  "iteration": 1,
+  "local_tests": {
+    "passed": 6,
+    "failed": 0
+  },
+  "live_api_tested": false,
+  "ui_checks": {
+    "draft_survives_panel_fold": true,
+    "draft_survives_all_fold": true,
+    "confirmation_survives_fold": true,
+    "editing_invalidates_confirmation": true
+  },
+  "mvp_complete": false
+}

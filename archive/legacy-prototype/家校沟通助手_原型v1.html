@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家校沟通助手 · 沟通准备工作台（原型 v1）</title>
+<style>
+  :root{
+    --green:#1f6b57; --green-d:#18503f; --green-l:#e8f1ee;
+    --ink:#1f2328; --ink-2:#57606a; --ink-3:#8b939c;
+    --line:#e3e6e9; --bg:#f6f7f8; --amber:#fff6e0; --amber-d:#a8730a;
+    --red:#c23a3a; --red-bg:#fdeeee;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+    color:var(--ink); background:var(--bg); font-size:14px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ---------- 顶栏 ---------- */
+  header{
+    display:flex;align-items:center;gap:14px;padding:12px 22px;background:#fff;
+    border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;
+  }
+  .brand{display:flex;align-items:center;gap:10px}
+  .logo{width:30px;height:30px;border-radius:8px;background:var(--green);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700}
+  .brand b{font-size:15px}
+  .brand span{display:block;font-size:11px;color:var(--ink-3);line-height:1.2}
+  .spacer{flex:1}
+  .ghost{
+    border:1px solid var(--line);background:#fff;color:var(--ink-2);
+    padding:6px 12px;border-radius:6px;font-size:12px;cursor:pointer
+  }
+  .ghost:hover{border-color:#c9ced3;color:var(--ink)}
+  .tag-demo{border:1px solid #f0d9a8;background:#fffaf0;color:var(--amber-d);
+    font-size:11px;padding:3px 8px;border-radius:20px}
+
+  /* ---------- 布局 ---------- */
+  main{max-width:1360px;margin:0 auto;padding:18px 22px 60px;display:grid;
+       grid-template-columns:396px minmax(0,1fr);gap:20px;align-items:start}
+  @media (max-width:1020px){
+    main{grid-template-columns:1fr}
+  }
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px}
+  .card-h{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .card-h h3{margin:0;font-size:13px;font-weight:700}
+  .card-h .no{width:18px;height:18px;border-radius:50%;background:var(--green-l);color:var(--green);
+    font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700}
+  .card-h .hint{margin-left:auto;font-size:11px;color:var(--ink-3)}
+  .card-b{padding:14px 16px}
+
+  /* ---------- 左：表单 ---------- */
+  .field{margin-bottom:16px}
+  .field:last-child{margin-bottom:0}
+  .label{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;margin-bottom:6px}
+  .req{color:var(--red);font-size:11px;font-weight:400}
+  .sub{font-size:11.5px;color:var(--ink-3);margin-top:4px;line-height:1.5}
+  textarea,input[type=text],select{
+    width:100%;border:1px solid var(--line);border-radius:7px;padding:8px 10px;
+    font:inherit;font-size:13px;color:var(--ink);background:#fff;outline:none;resize:vertical
+  }
+  textarea:focus,select:focus,input[type=text]:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(31,107,87,.1)}
+  textarea{min-height:86px}
+  .scene-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .scene{
+    border:1px solid var(--line);background:#fff;border-radius:7px;padding:8px 10px;
+    font-size:12.5px;cursor:pointer;text-align:left;color:var(--ink-2);line-height:1.35
+  }
+  .scene:hover{border-color:#c9ced3}
+  .scene.on{border-color:var(--green);background:var(--green-l);color:var(--green-d);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:12px;
+    cursor:pointer;color:var(--ink-2);background:#fff;user-select:none}
+  .chip.on{border-color:var(--green);background:var(--green-l);color:var(--green-d);font-weight:600}
+  .cta{
+    width:100%;padding:11px;border:0;border-radius:8px;background:var(--green);color:#fff;
+    font-size:14px;font-weight:600;cursor:pointer;margin-top:4px
+  }
+  .cta:hover{background:var(--green-d)}
+  .cta:disabled{background:#c8d3cf;cursor:not-allowed}
+
+  /* ---------- 右：结果 ---------- */
+  .bar{display:flex;align-items:center;gap:10px;padding:9px 14px;background:#fff;
+    border:1px solid var(--line);border-radius:8px;font-size:12px;color:var(--ink-2);margin-bottom:14px}
+  .bar b{color:var(--ink)}
+  .empty{
+    background:#fff;border:1px dashed #d6dbe0;border-radius:10px;padding:56px 20px;
+    text-align:center;color:var(--ink-3);font-size:13px
+  }
+  .empty .big{font-size:15px;color:var(--ink-2);margin-bottom:6px;font-weight:600}
+  .res{display:grid;gap:14px}
+  @media (min-width:1200px){ .res.two{grid-template-columns:1fr 1fr} }
+
+  ul.pts{list-style:none;margin:0;padding:0}
+  ul.pts li{padding:10px 0;border-bottom:1px dashed var(--line)}
+  ul.pts li:last-child{border-bottom:0;padding-bottom:0}
+  .pt-t{font-weight:600;font-size:13.5px;margin-bottom:3px}
+  .pt-w{color:var(--ink-2);font-size:12.5px}
+  .pt-f{display:flex;align-items:center;gap:8px;margin-top:6px}
+  .src{font-size:10.5px;border-radius:4px;padding:1px 6px;border:1px solid;line-height:1.6}
+  .src.rule{color:#1f6b57;border-color:#bcd9d0;background:#f2f8f6}
+  .src.know{color:#3b5ec4;border-color:#ccd6f0;background:#f4f6fd}
+  .src.adv{color:#8a6a12;border-color:#ecdcb4;background:#fdf9ee}
+  .more{margin-left:auto;font-size:12px;color:var(--green);cursor:pointer;background:none;border:0}
+
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:flex;gap:10px;padding:6px 0;font-size:12.5px;color:var(--ink-2)}
+  .steps .dot{width:18px;height:18px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:10.5px;flex:0 0 18px;color:var(--ink-3)}
+  .steps li.cur{color:var(--ink);font-weight:600}
+  .steps li.cur .dot{border-color:var(--green);background:var(--green);color:#fff}
+  .steps li.done .dot{color:var(--green);border-color:var(--green)}
+
+  .risk{background:#fdfaf3;border:1px solid #f0e4c8;border-radius:8px;padding:10px 12px;margin-bottom:10px}
+  .risk:last-child{margin-bottom:0}
+  .risk b{font-size:12.5px;color:#7a5a10}
+  .risk p{margin:2px 0 0;font-size:12px;color:var(--ink-2)}
+
+  .draft{width:100%;min-height:132px;border:1px solid var(--line);border-radius:8px;
+    padding:10px 12px;font:inherit;font-size:13px;line-height:1.75;color:var(--ink)}
+  .draft[readonly]{background:#fafbfb;color:#333}
+  .row{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .btn{border:1px solid var(--line);background:#fff;border-radius:6px;padding:6px 12px;
+    font-size:12.5px;cursor:pointer;color:var(--ink-2)}
+  .btn:hover{border-color:#c9ced3}
+  .btn.pri{background:var(--green);border-color:var(--green);color:#fff;font-weight:600}
+  .btn.pri:hover{background:var(--green-d)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .count{font-size:11.5px;color:var(--ink-3);margin-left:auto}
+
+  .faq{font-size:12.5px}
+  .faq dt{font-weight:600;margin-top:9px}
+  .faq dt:first-child{margin-top:0}
+  .faq dd{margin:2px 0 0;color:var(--ink-2)}
+
+  .warn{background:var(--amber);border:1px solid #f0dcae;border-radius:8px;padding:10px 12px;
+    font-size:12.5px;color:#6b4c07;margin-bottom:14px}
+  .warn b{color:#5a3f05}
+  .stop{background:var(--red-bg);border:1px solid #f2cccc;border-radius:8px;padding:12px;
+    font-size:12.5px;color:#8d2626;margin-bottom:14px}
+  .stop b{display:block;margin-bottom:3px}
+
+  .next{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;font-size:12.5px;color:var(--ink-2)}
+  .next label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+  .next input{margin-top:3px}
+
+  .foot{font-size:11.5px;color:var(--ink-3);margin-top:16px;line-height:1.6}
+  .skel{height:11px;background:#eef1f2;border-radius:5px;margin:8px 0;animation:pulse 1.1s infinite}
+  .skel.w60{width:60%} .skel.w80{width:80%} .skel.w40{width:40%}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+
+  /* ---------- 抽屉 ---------- */
+  .mask{position:fixed;inset:0;background:rgba(20,25,28,.28);opacity:0;pointer-events:none;
+    transition:.18s;z-index:40}
+  .mask.on{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,92vw);background:#fff;
+    box-shadow:-8px 0 30px rgba(0,0,0,.12);transform:translateX(102%);transition:.22s;
+    z-index:41;display:flex;flex-direction:column}
+  .drawer.on{transform:none}
+  .drawer header{border-bottom:1px solid var(--line);padding:14px 18px;position:static}
+  .drawer .card-b{overflow:auto;padding:16px 18px 28px}
+  .drawer h4{margin:16px 0 6px;font-size:12.5px;color:var(--ink)}
+  .drawer h4:first-child{margin-top:0}
+  .drawer p{margin:0;font-size:13px;color:var(--ink-2)}
+  .quote{background:#f7f8f9;border-left:3px solid #d8dde1;padding:9px 12px;border-radius:0 6px 6px 0;
+    font-size:13px;color:var(--ink);margin-top:6px}
+
+  /* ---------- 弹窗 ---------- */
+  .modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;
+    background:rgba(20,25,28,.35);padding:20px}
+  .modal.on{display:flex}
+  .modal .box{background:#fff;border-radius:12px;max-width:600px;width:100%;max-height:82vh;overflow:auto;
+    padding:22px 24px}
+  .modal h2{margin:0 0 4px;font-size:16px}
+  .modal ul{padding-left:18px;margin:8px 0 0;font-size:13px;color:var(--ink-2)}
+  .modal li{margin-bottom:6px}
+
+  .toast{position:fixed;left:50%;bottom:34px;transform:translate(-50%,14px);background:#22292e;color:#fff;
+    font-size:12.5px;padding:9px 16px;border-radius:8px;opacity:0;pointer-events:none;transition:.2s;z-index:80}
+  .toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">家</div>
+    <div>
+      <b>家校沟通助手</b>
+      <span>沟通准备工作台 · 原型 v1（演示用）</span>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <span class="tag-demo">演示版 · 请勿填写真实信息</span>
+  <button class="ghost" id="btnScope">使用边界</button>
+</header>
+
+<main>
+  <!-- ================= 左：输入 ================= -->
+  <section class="card">
+    <div class="card-h"><h3>本次沟通</h3><span class="req" style="margin-left:auto">必填</span></div>
+    <div class="card-b">
+
+      <div class="field">
+        <div class="label">沟通场景</div>
+        <div class="scene-grid" id="scenes"></div>
+        <div class="sub">只用来加载对应的准备模板，不代表系统对学生作出心理或危机判断。</div>
+      </div>
+
+      <div class="field">
+        <div class="label">学生情况 <span class="req">必填</span></div>
+        <textarea id="situation" placeholder="写清楚这次要沟通的已知事实：年级、触发事件、目前状态、你已经做了什么。"></textarea>
+        <div class="sub">不要填写姓名、学号、班级、咨询原话等可识别信息；演示请用虚构内容。</div>
+      </div>
+
+      <div class="field">
+        <div class="label">家长已有反应</div>
+        <select id="parentReaction">
+          <option value="">未沟通</option>
+          <option>已沟通但不认可</option>
+          <option>已明确拒绝</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <div class="label">学生意愿</div>
+        <select id="studentWish">
+          <option value="">未涉及</option>
+          <option>愿意沟通</option>
+          <option>要求对父母保密</option>
+        </select>
+        <div class="sub">仅作背景参考，不用于决定是否告知家长。</div>
+      </div>
+
+      <div class="field">
+        <div class="label">快速标签</div>
+        <div class="chips" id="chips"></div>
+      </div>
+
+      <div class="field">
+        <div class="label">当前沟通阶段</div>
+        <select id="stage">
+          <option value="">未确认</option>
+          <option>已上报与研判</option>
+          <option>已告知家长</option>
+          <option>持续引导中</option>
+          <option>与学生沟通中</option>
+          <option>推进协同</option>
+        </select>
+        <div class="sub">由你自己确认，系统不会根据输入推断阶段。</div>
+      </div>
+
+      <div class="field">
+        <div class="label">补充限制或关注点</div>
+        <textarea id="extra" style="min-height:64px" placeholder="例如：学生要求暂不告知家长；家长情绪容易激动。"></textarea>
+      </div>
+
+      <button class="cta" id="btnGen" disabled>生成沟通准备</button>
+      <div class="sub" style="text-align:center;margin-top:8px">内容只在你的浏览器里生成，不会上传或保存。</div>
+    </div>
+  </section>
+
+  <!-- ================= 右：结果 ================= -->
+  <section id="out">
+    <div class="empty">
+      <div class="big">填写左侧信息后，这里会给出四块准备内容</div>
+      沟通要点 · 建议沟通顺序 · 表达风险提醒 · 家长告知底稿
+    </div>
+  </section>
+</main>
+
+<!-- 抽屉 -->
+<div class="mask" id="mask"></div>
+<aside class="drawer" id="drawer">
+  <header>
+    <h3 id="dTitle" style="margin:0;font-size:14px">要点详情</h3>
+    <button class="ghost" id="dClose" style="margin-left:auto">关闭</button>
+  </header>
+  <div class="card-b" id="dBody"></div>
+</aside>
+
+<!-- 使用边界 -->
+<div class="modal" id="modal">
+  <div class="box">
+    <h2>使用边界</h2>
+    <p style="color:var(--ink-2);font-size:12.5px;margin:0 0 6px">开始之前，请先看一眼这个工具能做什么、不能做什么。</p>
+    <h4 style="font-size:13px;margin:14px 0 4px">它可以</h4>
+    <ul>
+      <li>整理这次沟通的要点，并说明每一条为什么要讲。</li>
+      <li>给出沟通流程参考，以及沟通中需要留意的表达风险。</li>
+      <li>根据你提供并核实的事实，起草一段可编辑的客观表达。</li>
+    </ul>
+    <h4 style="font-size:13px;margin:14px 0 4px">它不可以</h4>
+    <ul>
+      <li>不判断危机等级，不确认也不排除风险。</li>
+      <li>不决定是否告知家长，也不替你做处置。</li>
+      <li>不提供诊断、治疗、用药或疗效意见。</li>
+      <li>不补写你没有提供的学生事实，不代学生表态。</li>
+      <li>不发送任何信息——底稿由你自己确认后复制到现有渠道。</li>
+    </ul>
+    <h4 style="font-size:13px;margin:14px 0 4px">关于你的输入</h4>
+    <ul>
+      <li>这个演示版不联网、不保存，关闭页面即清空。</li>
+      <li>请使用虚构内容，不要填写学生姓名、学号、聊天记录或真实个案资料。</li>
+    </ul>
+    <div class="row" style="margin-top:18px">
+      <button class="btn pri" id="mOk">我已了解，开始使用</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   家校沟通助手 · 原型 v1
+   说明：本版不接模型，用「场景模板 + 规则」生成内容，
+        目的是让辅导员先点一遍、判断这个交互对不对。
+        后续接真实模型时，只需替换 buildResult() 内的生成逻辑。
+   ============================================================ */
+
+const SCENES = {
+  xueye:{
+    name:"学业警示",
+    points:[
+      {t:"先说清学生现在的学习状态",w:"用事实和课程数据开场，避免家长把话题理解成“孩子不努力”。",
+       src:"know",
+       detail:{aim:"把讨论建立在共同事实上，减少“贪玩、不认真”这类归因。",
+         why:"学业警示场景里，家长最常见的反应是把问题归因于孩子态度，忽略在校的实际困难。先给事实，再谈原因。",
+         react:["“他就是玩手机吧”","“学校管得严不严？”","“是不是老师不喜欢他”"],
+         reply:"这次想跟您说明的是他这学期的到课和作业情况，具体是这几项：……。我也想知道他在家是什么状态，我们一起看。"}},
+      {t:"讲清楚学校已经做了什么",w:"说明辅导员的跟进动作，避免家长觉得“通知一下就完了”。",
+       src:"know",
+       detail:{aim:"让家长看到学校不是甩结论，而是已经介入。",
+         why:"家长对学业警示的抵触，很大一部分来自“只收到一个结果、不知道过程”。",
+         react:["“那你们之前怎么不说？”","“现在才告诉我有什么用”"],
+         reply:"之前我已经找他谈过两次，也跟任课老师对过情况。这次想请您一起参与，是因为家里这一环我们替代不了。"}},
+      {t:"说明警戒不是结论，下一步是什么",w:"给出可执行的改进路径，避免停在“警告”上。",
+       src:"rule",
+       detail:{aim:"把“警示”转成“可执行的下一步”。",
+         why:"学业警示按学校流程有明确后续要求，讲清楚流程，家长才知道要配合什么。",
+         react:["“会不会记档案？”","“影响毕业吗？”"],
+         reply:"学业警示是按学校规定走的流程，具体影响和解除条件，我按文件逐条跟您说清楚，我们一起看怎么把课补上。"}},
+      {t:"预留家庭配合的具体动作",w:"把建议落到可执行的小事，避免空泛要求。",
+       src:"adv",
+       detail:{aim:"让家长带走一件今晚就能做的事。",
+         why:"泛泛地要求“多关心”通常无效，具体到一个动作更容易落实。",
+         react:["“我们说了他也不听”"],
+         reply:"这周先只做一件事：每天晚上问一句今天上了几节课。不用评价，先让他愿意说。"}}
+    ],
+    risks:[
+      {t:"用推断代替事实", d:"说“他可能厌学”之前，先确认这只是你的判断，不要说成结论。"},
+      {t:"过度承诺", d:"不要说“按这个做肯定能过”，学业结果不由一次沟通决定。"},
+      {t:"指责家长", d:"“你们平时不管”这类话会立刻把沟通变成对抗。"},
+      {t:"忽视学生意愿", d:"学生反对告知时，先了解原因，不要替他把话说死。"}
+    ],
+    draft:(f)=>`${f.student}老师好，我是${f.grade}的辅导员。今天想跟您说一下孩子这学期的学习情况：${f.fact}。\n\n学校这边已经做过的是：${f.done}。这次跟您沟通，是想把情况说清楚，也想听听您在家看到的状态，一起商量接下来怎么配合。\n\n如果方便，我们约个时间再细说，您看什么时候合适？`,
+    faq:[["为什么现在才联系我？","说明学校已经掌握的情况和前期做的动作，避免家长觉得“通知一下就完了”。"],
+         ["会不会影响毕业？","按学校规定逐条说明，不做超出文件的承诺。"],
+         ["孩子是不是心理有问题？","不接这个话题下结论，说明本次沟通的范围，必要时按流程转介。"]],
+    next:["确认家长是否理解已说明的信息","约定再次沟通或邀请家长来校","继续与学生沟通并核对其意愿","需要时联系心理中心或专业人员"]
+  },
+
+  xinli:{
+    name:"心理健康首次告知",
+    points:[
+      {t:"先说明这次沟通的目的和范围",w:"让家长知道这是关心，不是下诊断。",
+       src:"know",
+       detail:{aim:"降低家长的第一反应——防御。",
+         why:"首次告知最容易触发家长“我孩子没病”的防御，先把范围划清楚。",
+         react:["“我孩子没问题”","“是不是你们搞错了”"],
+         reply:"今天不是要给孩子下什么结论，是想跟您说一下我们观察到的状态，也想听听您在家看到的样子。"}},
+      {t:"用可观察的表现描述，不用诊断词",w:"说睡不好、不来上课，不说“抑郁”“焦虑”。",
+       src:"rule",
+       detail:{aim:"保持描述性，避免越界。",
+         why:"诊断属于医疗行为，辅导员和工具都不能替代。",
+         react:["“那到底是什么病？”"],
+         reply:"具体是什么情况需要专业评估，我能做的是把观察到的表现如实告诉您，并陪您走下面该走的流程。"}},
+      {t:"把“就医”说成一种选择而不是结论",w:"给出去哪里问、怎么问的具体路径。",
+       src:"adv",
+       detail:{aim:"让“去看医生”这件事变得可操作。",
+         why:"家长对就医的抵触常来自不知道流程、怕被贴标签。",
+         react:["“去了学校会不会有记录”","“能不能自己调整”"],
+         reply:"可以先从校医院或心理中心了解流程，谈的是状态和困扰，具体结论由专业医生判断。"}},
+      {t:"明确下一步由谁做什么",w:"避免沟通停在“知道了”。",
+       src:"rule",
+       detail:{aim:"把沟通落成动作。",
+         why:"首次告知后最常见的失败是“家长口头同意、后面没有动作”。",
+         react:["“我再看看吧”"],
+         reply:"那我们约个时间，我这边同步一下中心的意见，您那边也了解一下情况，一周后再对一次。"}}
+    ],
+    risks:[
+      {t:"使用诊断性表述", d:"“抑郁”“焦虑症”“确诊”这类词不要出现在你的表达里。"},
+      {t:"替代专业判断", d:"家长问“严重吗”，不要给程度判断，说明需要专业评估。"},
+      {t:"承诺保密程度", d:"不要承诺“不会记录”“不会告诉别人”，学校流程你没权限替他保证。"},
+      {t:"把责任推给家长", d:"“你们不带去看就是不负责任”会立刻破坏关系。"}
+    ],
+    draft:(f)=>`${f.student}老师好，我是${f.grade}的辅导员。想跟您说一下孩子最近在学校的状态：${f.fact}。\n\n我说这些，不是要给孩子下什么结论，是想让您了解情况，也想听听您在家观察到的样子。如果需要，我可以陪您一起了解学校心理中心的咨询流程。\n\n您看这两天什么时候方便，我们通个电话？`,
+    faq:[["是不是要休学？","不接这个结论，说明本次沟通范围，涉及学籍的事项按学校规定另走流程。"],
+         ["能不能不告诉别人？","说明学校对这类信息的处理要求和边界，不承诺自己没有权限承诺的事。"],
+         ["要花很多钱吗？","只说明已知的公开渠道，不评价费用与疗效。"]],
+    next:["确认家长是否理解已说明的信息","约定再次沟通或邀请家长来校","继续与学生沟通并核对其意愿","需要时联系心理中心或专业人员"]
+  },
+
+  yiban:{
+    name:"一般家校沟通",
+    points:[
+      {t:"一句话说清这次联系的目的",w:"家长最怕“老师找我准没好事”，开头先给结论。",
+       src:"know",
+       detail:{aim:"把不确定性降到最低。",why:"家长接到辅导员电话的第一反应通常是紧张。",
+         react:["“是不是孩子出什么事了”"],reply:"不是坏事，是想跟您对一下孩子最近的情况，几分钟就够。"}},
+      {t:"说事实，不说评价",w:"描述发生了什么，不给孩子贴标签。",
+       src:"rule",
+       detail:{aim:"让家长能接得住。",why:"评价性表述会引发防御，事实性表述更容易被接受。",
+         react:["“他在家挺乖的”"],reply:"在家和在学校可能确实不一样，我把我在学校看到的说给您，您也说说家里的情况。"}},
+      {t:"明确需要家长配合的一件小事",w:"只提一件，不要一次列五条。",
+       src:"adv",
+       detail:{aim:"让沟通有落点。",why:"一次沟通要求太多，家长会后什么都不会做。",
+         react:["“我们工作忙”"],reply:"不用多，就这一件，您看这周能不能做到。"}}
+    ],
+    risks:[
+      {t:"话题发散", d:"一次沟通只解决一个主题，其他记下来另约。"},
+      {t:"过度解释", d:"家长没问的细节不用主动展开，容易引起新的误解。"},
+      {t:"替学生表态", d:"学生怎么想，让学生自己说，或先征得同意。"}
+    ],
+    draft:(f)=>`${f.student}老师好，我是${f.grade}的辅导员。今天联系您是想说一下孩子最近的情况：${f.fact}。\n\n不用紧张，主要是想跟您对一下情况，也想请您帮个小忙：${f.done}。\n\n您看这样行吗？有问题随时跟我说。`,
+    faq:[["孩子是不是犯错了？","先给结论，说明不是处分类事项。"],
+         ["需要我到学校吗？","按实际需要回答，不主动加码。"],
+         ["能不能以后直接微信说？","说明学校沟通渠道的要求，再给可行方案。"]],
+    next:["确认家长是否理解已说明的信息","约定再次沟通或邀请家长来校","继续与学生沟通并核对其意愿","需要时联系心理中心或专业人员"]
+  },
+
+  weiji:{
+    name:"危机前期",
+    points:[
+      {t:"这一场景不生成处置建议",w:"系统在这里只做提示，不做研判，也不起草告知文本。",
+       src:"rule",
+       detail:{aim:"把判断权交回给人。",why:"危机研判属于专业判断，工具越界会带来直接风险。",
+         react:["“那你们到底管不管”"],reply:"管，但第一步是核实情况并按学校流程上报研判，这一步我来做，不需要工具给意见。"}}
+    ],
+    risks:[
+      {t:"不要用工具替代研判", d:"危机等级、是否告知，都不能由工具判断。"},
+      {t:"不要等", d:"出现人身安全相关信号，先按学校流程联系相关人员，再考虑沟通话术。"}
+    ],
+    draft:null,
+    faq:[["可以先跟家长说什么？","在完成研判前，不建议自行组织告知内容。"]],
+    next:["按学校流程联系心理中心或相关专业人员","如实记录已核实的情况","按研判结论再决定后续沟通"]
+  }
+};
+
+const CHIPS = ["学业警示","就医存疑","家长隐瞒","要求保密"];
+const STEPS = ["风险上报与专业研判","告知家长并反复沟通","持续引导","与学生深度沟通","调整策略推进"];
+
+let state = {scene:"xueye", chips:new Set(), result:null, edited:0, confirmed:false};
+
+/* ---------- 渲染左侧 ---------- */
+const elScenes = document.getElementById("scenes");
+Object.entries(SCENES).forEach(([k,v])=>{
+  const b = document.createElement("button");
+  b.className = "scene" + (k===state.scene?" on":"");
+  b.dataset.k = k;
+  b.textContent = v.name;
+  b.onclick = ()=>{
+    state.scene = k;
+    [...elScenes.children].forEach(x=>x.classList.toggle("on", x.dataset.k===k));
+    if(state.result){ renderResults(); }
+  };
+  elScenes.appendChild(b);
+});
+
+const elChips = document.getElementById("chips");
+CHIPS.forEach(c=>{
+  const d = document.createElement("div");
+  d.className = "chip"; d.textContent = c;
+  d.onclick = ()=>{
+    if(state.chips.has(c)){state.chips.delete(c); d.classList.remove("on");}
+    else {state.chips.add(c); d.classList.add("on");}
+    if(state.result) renderResults();
+  };
+  elChips.appendChild(d);
+});
+
+const elSituation = document.getElementById("situation");
+const elGen = document.getElementById("btnGen");
+elSituation.oninput = ()=>{ elGen.disabled = elSituation.value.trim().length < 6; };
+
+/* ---------- 生成 ---------- */
+elGen.onclick = ()=>{
+  const out = document.getElementById("out");
+  out.innerHTML = `<div class="card"><div class="card-b">
+      <div class="skel w40"></div><div class="skel w80"></div><div class="skel w60"></div>
+      <div class="skel w80"></div><div class="skel w40"></div>
+      <div style="font-size:12px;color:var(--ink-3);margin-top:10px">正在整理沟通准备内容…</div>
+    </div></div>`;
+  setTimeout(()=>{
+    state.result = buildResult();
+    state.edited = 0; state.confirmed = false;
+    renderResults();
+  }, 620);
+};
+
+// 事实摘要：按句号截断，避免把话截成半句
+function trimFact(sit){
+  if(!sit) return "（待补充）";
+  if(sit.length <= 40) return sit;
+  const head = sit.slice(0, 60);
+  const cut = Math.max(head.lastIndexOf("。"), head.lastIndexOf("，"), head.lastIndexOf("；"));
+  return (cut > 12 ? head.slice(0, cut) : head) + "。";
+}
+
+function buildResult(){
+  const sc = SCENES[state.scene];
+  const sit = elSituation.value.trim();
+  const thin = sit.length < 14;
+  return {
+    scene: sc.name,
+    thin,
+    points: thin ? [{
+      t:"信息不足，先给通用准备",
+      w:"你说的情况还比较少，下面是通用的准备思路，不是针对这个学生的结论。可以补充年级、触发事件、家长已有反应后再生成。",
+      src:"adv", detail:{aim:"避免在信息不足时给出像结论一样的建议。",why:"信息越少，越容易把通用经验误当成个案判断。",react:[],reply:""}
+    }].concat(sc.points.slice(0,2)) : sc.points,
+    risks: sc.risks,
+    steps: sc.name==="危机前期" ? STEPS.slice(0,1) : STEPS,
+    draft: sc.draft ? sc.draft({
+      student:"家长", grade:"学院",
+      fact: trimFact(sit),
+      done:"已与任课老师和学生本人沟通过，掌握了基本情况"
+    }) : null,
+    faq: sc.faq,
+    next: sc.next,
+    crisis: sc.name==="危机前期" || (state.chips.has("要求保密") && state.scene==="xinli")
+  };
+}
+
+/* ---------- 渲染右侧 ---------- */
+function srcLabel(s){
+  return s==="rule" ? `<span class="src rule">依据：学校流程</span>`
+       : s==="know" ? `<span class="src know">依据：常规做法</span>`
+       : `<span class="src adv">沟通建议</span>`;
+}
+
+function renderResults(){
+  const r = state.result;
+  const sc = SCENES[state.scene];
+  const stageIdx = [...document.getElementById("stage").options].findIndex(o=>o.value && o.value===document.getElementById("stage").value);
+  const out = document.getElementById("out");
+
+  let html = `<div class="bar"><b>当前场景：${r.scene}</b><span>·</span><span>沟通准备参考</span>
+      <span style="margin-left:auto">${new Date().toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit"})} 生成</span></div>`;
+
+  if(r.crisis){
+    html += `<div class="stop"><b>这个场景不生成处置建议</b>
+      输入内容可能涉及人身安全或需要个体化专业判断。请先按学校流程联系心理中心或相关专业人员完成研判；
+      本工具不判断危机等级，也不提供处置方案。</div>`;
+  }
+  if(r.thin){
+    html += `<div class="warn"><b>信息不足：</b>下面是通用准备参考，不是针对这个学生的结论。补充年级、触发事件、家长已有反应后可重新生成。</div>`;
+  }
+
+  html += `<div class="res two">`;
+
+  /* 1 沟通要点 */
+  html += `<section class="card"><div class="card-h"><span class="no">1</span><h3>沟通要点</h3>
+      <span class="hint">点开看沟通目的与家长常见反应</span></div><div class="card-b"><ul class="pts">`;
+  r.points.forEach((p,i)=>{
+    html += `<li><div class="pt-t">${i+1}. ${p.t}</div><div class="pt-w">${p.w}</div>
+      <div class="pt-f">${srcLabel(p.src)}
+      <button class="more" data-i="${i}">查看详情 ›</button></div></li>`;
+  });
+  html += `</ul></div></section>`;
+
+  /* 2 步骤 */
+  html += `<section class="card"><div class="card-h"><span class="no">2</span><h3>建议沟通顺序</h3>
+      <span class="hint">${stageIdx>0?"已按你确认的阶段高亮":"尚未确认阶段"}</span></div>
+      <div class="card-b"><ol class="steps">`;
+  r.steps.forEach((s,i)=>{
+    const cls = (stageIdx>0 && i<stageIdx) ? "done" : (stageIdx>0 && i===stageIdx ? "cur" : "");
+    html += `<li class="${cls}"><span class="dot">${i+1}</span><span>${s}</span></li>`;
+  });
+  html += `</ol><div class="sub" style="margin-top:10px">本工具不判断流程条件是否已满足，阶段由你自己确认。</div></div></section>`;
+
+  /* 3 风险 */
+  html += `<section class="card"><div class="card-h"><span class="no">3</span><h3>表达风险提醒</h3>
+      <span class="hint">仅作提醒，不显示风险等级</span></div><div class="card-b">`;
+  r.risks.forEach(x=>{ html += `<div class="risk"><b>${x.t}</b><p>${x.d||""}</p></div>`; });
+  html += `</div></section>`;
+
+  /* 4 底稿 */
+  html += `<section class="card"><div class="card-h"><span class="no">4</span><h3>家长告知底稿</h3>
+      <span class="hint">生成后可直接编辑</span></div><div class="card-b">`;
+  if(r.draft){
+    html += `<textarea class="draft" id="draftBox" readonly>${r.draft}</textarea>
+      <div class="row">
+        <button class="btn" id="btnEdit">编辑底稿</button>
+        <button class="btn pri" id="btnCopy" disabled>确认并复制</button>
+        <span class="count" id="editCount">已修改 0 处</span>
+      </div>
+      <div class="sub">确认只表示你认可当前文本，不代表系统已发送。复制后由你自己粘贴到现有沟通渠道。</div>`;
+  }else{
+    html += `<div class="warn" style="margin:0">请先按校内流程完成人工研判，本场景不生成告知底稿。</div>`;
+  }
+  html += `</div></section></div>`;
+
+  /* 家长常见问题 */
+  html += `<section class="card" style="margin-top:14px"><div class="card-h"><h3>家长常见问题参考</h3>
+      <span class="hint">只给参考，不等于家长一定会这么问</span></div><div class="card-b"><dl class="faq">`;
+  r.faq.forEach(([q,a])=>{ html += `<dt>${q}</dt><dd>${a}</dd>`; });
+  html += `</dl></div></section>`;
+
+  /* 沟通后的下一步 */
+  html += `<section class="card" style="margin-top:14px"><div class="card-h"><h3>沟通后的下一步</h3>
+      <span class="hint">可选勾选，不形成个案记录</span></div><div class="card-b"><div class="next">`;
+  r.next.forEach((n,i)=>{ html += `<label><input type="checkbox"> <span>${n}</span></label>`; });
+  html += `</div></div></section>`;
+
+  html += `<div class="foot">以上内容仅供沟通准备参考，请核实事实，并由辅导员决定是否采用。本工具不进行危机研判、诊断或具体处置决定。</div>`;
+
+  out.innerHTML = html;
+  bindRight(r);
+}
+
+/* 风险卡片重建（避免上面正则带来的空段落） */
+function bindRight(r){
+  // 要点详情
+  document.querySelectorAll(".more").forEach(b=>{
+    b.onclick = ()=> openDrawer(r.points[+b.dataset.i]);
+  });
+
+  // 底稿
+  const box = document.getElementById("draftBox");
+  const btnEdit = document.getElementById("btnEdit");
+  const btnCopy = document.getElementById("btnCopy");
+  const cnt = document.getElementById("editCount");
+  if(box && btnEdit){
+    btnEdit.onclick = ()=>{
+      box.readOnly = false; box.focus(); btnEdit.textContent = "保存草稿"; btnCopy.disabled = false;
+      btnEdit.onclick = ()=>{ box.readOnly = true; btnEdit.textContent = "编辑底稿"; };
+    };
+    let editTimer = null, counted = false;
+    box.addEventListener("input", ()=>{
+      if(!counted){ state.edited++; counted = true; cnt.textContent = "已修改 " + state.edited + " 处"; }
+      clearTimeout(editTimer);
+      editTimer = setTimeout(()=>{ counted = false; }, 900);
+    });
+    box.addEventListener("keydown", (e)=>{
+      if(e.key==="Enter"){ counted = false; }
+    });
+    btnCopy.onclick = ()=>{
+      copyText(box.value).then(ok=>{
+        toast(ok ? "已复制，请自行粘贴到现有沟通渠道" : "复制失败，请手动选中复制");
+      });
+      state.confirmed = true;
+    };
+  }
+}
+
+/* ---------- 抽屉 ---------- */
+const mask = document.getElementById("mask");
+const drawer = document.getElementById("drawer");
+function openDrawer(p){
+  document.getElementById("dTitle").textContent = p.t;
+  const d = p.detail || {};
+  let html = "";
+  if(d.aim) html += `<h4>这条要做什么</h4><p>${d.aim}</p>`;
+  if(d.why) html += `<h4>为什么要这么说</h4><p>${d.why}</p>`;
+  if(d.react && d.react.length){
+    html += `<h4>家长可能的反应</h4><p>${d.react.map(x=>"· "+x).join("<br>")}</p>`;
+  }
+  if(d.reply) html += `<h4>可以这样接</h4><div class="quote">${d.reply}</div>`;
+  html += `<div class="foot">这里是沟通参考，不是逐字稿；请按这位家长的实际情况调整。</div>`;
+  document.getElementById("dBody").innerHTML = html;
+  mask.classList.add("on"); drawer.classList.add("on");
+}
+document.getElementById("dClose").onclick = closeDrawer;
+mask.onclick = closeDrawer;
+function closeDrawer(){ mask.classList.remove("on"); drawer.classList.remove("on"); }
+
+/* ---------- 使用边界 ---------- */
+const modal = document.getElementById("modal");
+document.getElementById("btnScope").onclick = ()=> modal.classList.add("on");
+document.getElementById("mOk").onclick = ()=> modal.classList.remove("on");
+
+/* ---------- 工具 ---------- */
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg; t.classList.add("on");
+  clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove("on"), 2200);
+}
+function copyText(text){
+  if(navigator.clipboard && window.isSecureContext){
+    return navigator.clipboard.writeText(text).then(()=>true).catch(()=>fallback(text));
+  }
+  return Promise.resolve(fallback(text));
+}
+function fallback(text){
+  const ta = document.createElement("textarea");
+  ta.value = text; ta.style.position="fixed"; ta.style.opacity="0";
+  document.body.appendChild(ta); ta.select();
+  let ok=false; try{ ok = document.execCommand("copy"); }catch(e){ ok=false; }
+  document.body.removeChild(ta); return ok;
+}
+</script>
+</body>
+</html>

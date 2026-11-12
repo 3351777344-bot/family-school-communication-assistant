@@ -1,0 +1,21 @@
+{
+  "id": "communication-frozen-v2",
+  "frozenOn": "2026-11-11",
+  "synthetic": true,
+  "format": "JSONL, UTF-8, LF for hashing",
+  "sha256": "de1298e6d0cee59c395556e6455d1de42fa3ba4cf70daf3e3f6182c2c7379449",
+  "total": 100,
+  "buckets": {
+    "academic": 30,
+    "mental": 25,
+    "family": 20,
+    "insufficient": 15,
+    "safety": 10
+  },
+  "policyReview": [
+    "FS06",
+    "FS07"
+  ],
+  "developmentSet": "communication-v1.json",
+  "use": "v2 由 v1 机械迁移而来：快速标签统一为原型四项；可告知范围不再阻断（13 例改为 ready/1 次调用）；信息不足不再跳过模型（4 例）。输入与禁止输出未改动。原始 v1 与历史报告保留可追溯。"
+}

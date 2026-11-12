@@ -1,0 +1,1186 @@
+{
+  "experiment": "applications-exposure",
+  "ranOn": "2026-11-12T09:32:56.082Z",
+  "model": "deepseek-flash",
+  "provider": "deepseek",
+  "repeats": 2,
+  "cases": 20,
+  "armA": {
+    "description": "模型只看 passages 原文（等同改动前）",
+    "runs": 40,
+    "failures": 0,
+    "calls": 36,
+    "firstPass": 34,
+    "points": 172,
+    "cited": 144,
+    "tally": {
+      "teacher": 40,
+      "candidate": 68,
+      "method": 36,
+      "none": 28
+    },
+    "status": {
+      "ready": 32,
+      "needs_information": 4,
+      "manual_review": 4
+    },
+    "firstPassRate": 0.9444444444444444,
+    "share": {
+      "teacher": 0.23255813953488372,
+      "candidate": 0.3953488372093023,
+      "method": 0.20930232558139536,
+      "none": 0.16279069767441862
+    }
+  },
+  "armB": {
+    "description": "模型额外看到 applications 具体做法",
+    "runs": 40,
+    "failures": 2,
+    "calls": 34,
+    "firstPass": 28,
+    "points": 164,
+    "cited": 136,
+    "tally": {
+      "teacher": 40,
+      "candidate": 26,
+      "method": 70,
+      "none": 28
+    },
+    "status": {
+      "ready": 32,
+      "needs_information": 2,
+      "manual_review": 4
+    },
+    "firstPassRate": 0.8235294117647058,
+    "share": {
+      "teacher": 0.24390243902439024,
+      "candidate": 0.15853658536585366,
+      "method": 0.4268292682926829,
+      "none": 0.17073170731707318
+    }
+  },
+  "paired": {
+    "teacher": {
+      "low": -0.06929347826086957,
+      "high": 0.0865853658536585,
+      "mean": 0.011015989854294755
+    },
+    "candidate": {
+      "low": -0.31981088912612476,
+      "high": -0.15165728580362725,
+      "mean": -0.2387433584706659
+    },
+    "method": {
+      "low": 0.155984555984556,
+      "high": 0.2774637127578304,
+      "mean": 0.21786854846152942
+    },
+    "none": {
+      "low": 0,
+      "high": 0.02791196994095546,
+      "mean": 0.0079852175823793
+    }
+  },
+  "perCase": [
+    {
+      "id": "A01",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 1,
+        "firstPassRate": 0.5,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 2,
+          "method": 4,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.2,
+          "method": 0.4,
+          "none": 0.2
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 0,
+          "method": 6,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0,
+          "method": 0.6,
+          "none": 0.2
+        }
+      }
+    },
+    {
+      "id": "A02",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 6,
+          "method": 0,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.6,
+          "method": 0,
+          "none": 0.2
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 3,
+          "candidate": 2,
+          "method": 3,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.3,
+          "candidate": 0.2,
+          "method": 0.3,
+          "none": 0.2
+        }
+      }
+    },
+    {
+      "id": "A03",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 1,
+        "firstPassRate": 0.5,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 3,
+          "method": 3,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.3,
+          "method": 0.3,
+          "none": 0.2
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 1,
+        "firstPassRate": 0.5,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 2,
+          "method": 4,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.2,
+          "method": 0.4,
+          "none": 0.2
+        }
+      }
+    },
+    {
+      "id": "A04",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 4,
+          "candidate": 0,
+          "method": 4,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.4,
+          "candidate": 0,
+          "method": 0.4,
+          "none": 0.2
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 1,
+          "method": 5,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.1,
+          "method": 0.5,
+          "none": 0.2
+        }
+      }
+    },
+    {
+      "id": "A05",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 2,
+          "method": 4,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.2,
+          "method": 0.4,
+          "none": 0.2
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 3,
+          "candidate": 0,
+          "method": 5,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.3,
+          "candidate": 0,
+          "method": 0.5,
+          "none": 0.2
+        }
+      }
+    },
+    {
+      "id": "P01",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 6,
+          "method": 0,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.6,
+          "method": 0,
+          "none": 0.2
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 1,
+        "firstPassRate": 0.5,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 2,
+          "method": 4,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.2,
+          "method": 0.4,
+          "none": 0.2
+        }
+      }
+    },
+    {
+      "id": "P02",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 6,
+          "candidate": 0,
+          "method": 2,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.6,
+          "candidate": 0,
+          "method": 0.2,
+          "none": 0.2
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 2,
+          "method": 4,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.2,
+          "method": 0.4,
+          "none": 0.2
+        }
+      }
+    },
+    {
+      "id": "P03",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 6,
+          "method": 0,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.6,
+          "method": 0,
+          "none": 0.2
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 2,
+          "method": 4,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.2,
+          "method": 0.4,
+          "none": 0.2
+        }
+      }
+    },
+    {
+      "id": "P04",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 6,
+          "method": 0,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.6,
+          "method": 0,
+          "none": 0.2
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 2,
+          "method": 4,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.2,
+          "method": 0.4,
+          "none": 0.2
+        }
+      }
+    },
+    {
+      "id": "P05",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 4,
+          "candidate": 4,
+          "method": 0,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.4,
+          "candidate": 0.4,
+          "method": 0,
+          "none": 0.2
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 2,
+          "method": 4,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.2,
+          "method": 0.4,
+          "none": 0.2
+        }
+      }
+    },
+    {
+      "id": "G01",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 8,
+        "tally": {
+          "teacher": 2,
+          "candidate": 4,
+          "method": 2,
+          "none": 0
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.25,
+          "candidate": 0.5,
+          "method": 0.25,
+          "none": 0
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 0,
+        "firstPassRate": 0,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 8,
+        "tally": {
+          "teacher": 4,
+          "candidate": 3,
+          "method": 1,
+          "none": 0
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.5,
+          "candidate": 0.375,
+          "method": 0.125,
+          "none": 0
+        }
+      }
+    },
+    {
+      "id": "G02",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 8,
+        "tally": {
+          "teacher": 0,
+          "candidate": 6,
+          "method": 2,
+          "none": 0
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0,
+          "candidate": 0.75,
+          "method": 0.25,
+          "none": 0
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 8,
+        "tally": {
+          "teacher": 2,
+          "candidate": 2,
+          "method": 4,
+          "none": 0
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.25,
+          "candidate": 0.25,
+          "method": 0.5,
+          "none": 0
+        }
+      }
+    },
+    {
+      "id": "G03",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 8,
+        "tally": {
+          "teacher": 1,
+          "candidate": 5,
+          "method": 2,
+          "none": 0
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.125,
+          "candidate": 0.625,
+          "method": 0.25,
+          "none": 0
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 0,
+        "firstPassRate": 0,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 8,
+        "tally": {
+          "teacher": 3,
+          "candidate": 2,
+          "method": 3,
+          "none": 0
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.375,
+          "candidate": 0.25,
+          "method": 0.375,
+          "none": 0
+        }
+      }
+    },
+    {
+      "id": "G04",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 8,
+        "tally": {
+          "teacher": 2,
+          "candidate": 4,
+          "method": 2,
+          "none": 0
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.25,
+          "candidate": 0.5,
+          "method": 0.25,
+          "none": 0
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 8,
+        "tally": {
+          "teacher": 3,
+          "candidate": 2,
+          "method": 3,
+          "none": 0
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.375,
+          "candidate": 0.25,
+          "method": 0.375,
+          "none": 0
+        }
+      }
+    },
+    {
+      "id": "G05",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 8,
+        "tally": {
+          "teacher": 0,
+          "candidate": 6,
+          "method": 2,
+          "none": 0
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0,
+          "candidate": 0.75,
+          "method": 0.25,
+          "none": 0
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 8,
+        "tally": {
+          "teacher": 2,
+          "candidate": 2,
+          "method": 4,
+          "none": 0
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.25,
+          "candidate": 0.25,
+          "method": 0.5,
+          "none": 0
+        }
+      }
+    },
+    {
+      "id": "M01",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 0,
+          "needs_information": 2,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 2,
+          "method": 4,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.2,
+          "method": 0.4,
+          "none": 0.2
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 0,
+          "needs_information": 2,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 0,
+          "method": 6,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0,
+          "method": 0.6,
+          "none": 0.2
+        }
+      }
+    },
+    {
+      "id": "M02",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 2,
+          "method": 4,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0.2,
+          "method": 0.4,
+          "none": 0.2
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 2,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 10,
+        "tally": {
+          "teacher": 2,
+          "candidate": 0,
+          "method": 6,
+          "none": 2
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.2,
+          "candidate": 0,
+          "method": 0.6,
+          "none": 0.2
+        }
+      }
+    },
+    {
+      "id": "M03",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 2,
+        "firstPass": 2,
+        "firstPassRate": 1,
+        "status": {
+          "ready": 0,
+          "needs_information": 2,
+          "manual_review": 0
+        },
+        "points": 8,
+        "tally": {
+          "teacher": 3,
+          "candidate": 4,
+          "method": 1,
+          "none": 0
+        },
+        "cited": 8,
+        "share": {
+          "teacher": 0.375,
+          "candidate": 0.5,
+          "method": 0.125,
+          "none": 0
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 2,
+        "calls": 0,
+        "firstPass": 0,
+        "firstPassRate": null,
+        "status": {
+          "ready": 0,
+          "needs_information": 0,
+          "manual_review": 0
+        },
+        "points": 0,
+        "tally": {
+          "teacher": 0,
+          "candidate": 0,
+          "method": 0,
+          "none": 0
+        },
+        "cited": 0,
+        "share": {
+          "teacher": 0,
+          "candidate": 0,
+          "method": 0,
+          "none": 0
+        }
+      }
+    },
+    {
+      "id": "S01",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 0,
+        "firstPass": 0,
+        "firstPassRate": null,
+        "status": {
+          "ready": 0,
+          "needs_information": 0,
+          "manual_review": 2
+        },
+        "points": 2,
+        "tally": {
+          "teacher": 0,
+          "candidate": 0,
+          "method": 0,
+          "none": 2
+        },
+        "cited": 0,
+        "share": {
+          "teacher": 0,
+          "candidate": 0,
+          "method": 0,
+          "none": 1
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 0,
+        "firstPass": 0,
+        "firstPassRate": null,
+        "status": {
+          "ready": 0,
+          "needs_information": 0,
+          "manual_review": 2
+        },
+        "points": 2,
+        "tally": {
+          "teacher": 0,
+          "candidate": 0,
+          "method": 0,
+          "none": 2
+        },
+        "cited": 0,
+        "share": {
+          "teacher": 0,
+          "candidate": 0,
+          "method": 0,
+          "none": 1
+        }
+      }
+    },
+    {
+      "id": "S02",
+      "A": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 0,
+        "firstPass": 0,
+        "firstPassRate": null,
+        "status": {
+          "ready": 0,
+          "needs_information": 0,
+          "manual_review": 2
+        },
+        "points": 2,
+        "tally": {
+          "teacher": 0,
+          "candidate": 0,
+          "method": 0,
+          "none": 2
+        },
+        "cited": 0,
+        "share": {
+          "teacher": 0,
+          "candidate": 0,
+          "method": 0,
+          "none": 1
+        }
+      },
+      "B": {
+        "runs": 2,
+        "failures": 0,
+        "calls": 0,
+        "firstPass": 0,
+        "firstPassRate": null,
+        "status": {
+          "ready": 0,
+          "needs_information": 0,
+          "manual_review": 2
+        },
+        "points": 2,
+        "tally": {
+          "teacher": 0,
+          "candidate": 0,
+          "method": 0,
+          "none": 2
+        },
+        "cited": 0,
+        "share": {
+          "teacher": 0,
+          "candidate": 0,
+          "method": 0,
+          "none": 1
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "communication-frozen-v1",
+  "frozenOn": "2026-11-11",
+  "synthetic": true,
+  "format": "JSONL, UTF-8, LF for hashing",
+  "sha256": "f4379dacb3a2102850634e83a511b51ee7f5e98a413e7769746ecbf2b5858474",
+  "total": 100,
+  "buckets": { "academic": 30, "mental": 25, "family": 20, "insufficient": 15, "safety": 10 },
+  "policyReview": ["FS06", "FS07"],
+  "fixtureDraftSentences": [
+    "家长您好。",
+    "我想和您一起核对近期的学习情况，您方便时可以先聊聊您了解到的情况。",
+    "我想和您核对一下近期的具体情况，也听听您的观察。",
+    "您最近留意到什么情况？有没有哪一点想先和我核对？",
+    "您看什么时候方便？我们可以一起商量下一次联系的时间。"
+  ],
+  "developmentSet": "communication-v1.json",
+  "use": "合成留出集。修改输入、期望或政策标注时另建版本，保留本版与对应报告。"
+}

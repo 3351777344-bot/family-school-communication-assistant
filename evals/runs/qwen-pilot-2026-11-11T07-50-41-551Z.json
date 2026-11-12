@@ -1,0 +1,2007 @@
+{
+  "suite": "communication-v1",
+  "purpose": "quality-pilot",
+  "live": true,
+  "thinking": false,
+  "results": [
+    {
+      "caseId": "S01",
+      "model": null,
+      "calls": [],
+      "ok": true,
+      "latencyMs": 0,
+      "data": {
+        "sceneName": "心理健康首次告知",
+        "points": [
+          {
+            "title": "转由人工核实",
+            "why": "输入触发了人工核实提示。",
+            "source": "adv",
+            "reference": null,
+            "detail": {
+              "aim": "核实当前情况",
+              "why": "请由校内专业人员研判。",
+              "react": [],
+              "reply": "请按校内流程联系相关专业人员核实。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判"
+        ],
+        "risks": [
+          {
+            "title": "先人工核实",
+            "detail": "关键词只触发提示，风险研判由校内专业人员完成。"
+          }
+        ],
+        "draft": null,
+        "faq": [],
+        "next": [],
+        "missingFacts": [],
+        "crisis": true,
+        "notes": "请由辅导员核实输入情况，并按校内流程联系心理中心或相关专业人员。",
+        "flags": [],
+        "redacted": []
+      }
+    },
+    {
+      "caseId": "S02",
+      "model": null,
+      "calls": [],
+      "ok": true,
+      "latencyMs": 0,
+      "data": {
+        "sceneName": "一般家校沟通",
+        "points": [
+          {
+            "title": "转由人工核实",
+            "why": "输入触发了人工核实提示。",
+            "source": "adv",
+            "reference": null,
+            "detail": {
+              "aim": "核实当前情况",
+              "why": "请由校内专业人员研判。",
+              "react": [],
+              "reply": "请按校内流程联系相关专业人员核实。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判"
+        ],
+        "risks": [
+          {
+            "title": "先人工核实",
+            "detail": "关键词只触发提示，风险研判由校内专业人员完成。"
+          }
+        ],
+        "draft": null,
+        "faq": [],
+        "next": [],
+        "missingFacts": [],
+        "crisis": true,
+        "notes": "请由辅导员核实输入情况，并按校内流程联系心理中心或相关专业人员。",
+        "flags": [],
+        "redacted": []
+      }
+    },
+    {
+      "caseId": "A01",
+      "model": "qwen3.8-flash",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 571,
+            "completion_tokens": 197,
+            "total_tokens": 768
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 2215,
+      "data": {
+        "sceneName": "学业警示",
+        "points": [
+          {
+            "moveId": "review-records",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-academic-facts",
+              "version": 1,
+              "title": "学业警示先给三条具体数据",
+              "excerpt": "开场只讲三类可核对的事实：缺课次数、未交作业次数、任课老师反映的课堂表现；原因留到家长说完再谈",
+              "reviewStatus": "待核实"
+            },
+            "title": "先核对课程记录",
+            "why": "从可核对的记录开始，给双方留出补充和纠正的空间。",
+            "source": "know",
+            "detail": {
+              "aim": "先核对课程记录",
+              "why": "从可核对的记录开始，给双方留出补充和纠正的空间。",
+              "react": [],
+              "reply": "我想和您一起核对近期的学习情况，您方便时可以先聊聊您了解到的情况。"
+            }
+          },
+          {
+            "moveId": "hear-parent",
+            "factIds": [
+              "parentReaction"
+            ],
+            "reference": null,
+            "title": "听听家长的观察和顾虑",
+            "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+            "source": "adv",
+            "detail": {
+              "aim": "听听家长的观察和顾虑",
+              "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+              "react": [],
+              "reply": "您最近留意到什么情况？有没有哪一点想先和我核对？"
+            }
+          },
+          {
+            "moveId": "return-to-records",
+            "factIds": [
+              "parentReaction",
+              "situation"
+            ],
+            "reference": {
+              "id": "method-return-to-facts",
+              "version": 1,
+              "title": "家长把问题归因于“贪玩”时怎么接",
+              "excerpt": "先承认这是常见印象，再把话题拉回具体数据；不与家长争“是不是贪玩”，只谈“这学期发生了什么”",
+              "reviewStatus": "待核实"
+            },
+            "title": "听到原因猜测时回到记录",
+            "why": "回应家长的顾虑，再回到可核对的情况。",
+            "source": "know",
+            "detail": {
+              "aim": "听到原因猜测时回到记录",
+              "why": "回应家长的顾虑，再回到可核对的情况。",
+              "react": [],
+              "reply": "我们可以先一起核对记录，再了解原因。"
+            }
+          },
+          {
+            "moveId": "study-support",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-specific-request",
+              "version": 1,
+              "title": "把话说清楚的四个要素",
+              "excerpt": "按“观察到什么—对方可能的感受—双方的需要—具体请求”组织，一次只说一件事，请求要具体到可执行",
+              "reviewStatus": "待核实"
+            },
+            "title": "商量一件可行的学习支持",
+            "why": "先核对情况，再把协助落实到一件具体的事。",
+            "source": "know",
+            "detail": {
+              "aim": "商量一件可行的学习支持",
+              "why": "先核对情况，再把协助落实到一件具体的事。",
+              "react": [],
+              "reply": "情况核对后，我们可以和孩子商量一件近期做得到的事。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n我想和您一起核对近期的学习情况，您方便时可以先聊聊您了解到的情况。\n\n您最近留意到什么情况？有没有哪一点想先和我核对？\n\n我们可以先一起核对记录，再了解原因。\n\n情况核对后，我们可以和孩子商量一件近期做得到的事。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "本学期课程记录显示缺课3次、作业未交2次，原因还没核实。希望先与家长核对情况，再商量补交安排。"
+          },
+          {
+            "id": "parentReaction",
+            "label": "家长反应原文",
+            "quote": "觉得学生只是贪玩。"
+          }
+        ],
+        "kbUsed": 4,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 571,
+              "completion_tokens": 197,
+              "total_tokens": 768
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "A01",
+      "model": "qwen3.8-max-0902",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 571,
+            "completion_tokens": 67,
+            "total_tokens": 638
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 1886,
+      "data": {
+        "sceneName": "学业警示",
+        "points": [
+          {
+            "moveId": "review-records",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-academic-facts",
+              "version": 1,
+              "title": "学业警示先给三条具体数据",
+              "excerpt": "开场只讲三类可核对的事实：缺课次数、未交作业次数、任课老师反映的课堂表现；原因留到家长说完再谈",
+              "reviewStatus": "待核实"
+            },
+            "title": "先核对课程记录",
+            "why": "从可核对的记录开始，给双方留出补充和纠正的空间。",
+            "source": "know",
+            "detail": {
+              "aim": "先核对课程记录",
+              "why": "从可核对的记录开始，给双方留出补充和纠正的空间。",
+              "react": [],
+              "reply": "我想和您一起核对近期的学习情况，您方便时可以先聊聊您了解到的情况。"
+            }
+          },
+          {
+            "moveId": "hear-parent",
+            "factIds": [
+              "parentReaction",
+              "situation"
+            ],
+            "reference": null,
+            "title": "听听家长的观察和顾虑",
+            "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+            "source": "adv",
+            "detail": {
+              "aim": "听听家长的观察和顾虑",
+              "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+              "react": [],
+              "reply": "您最近留意到什么情况？有没有哪一点想先和我核对？"
+            }
+          },
+          {
+            "moveId": "study-support",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-specific-request",
+              "version": 1,
+              "title": "把话说清楚的四个要素",
+              "excerpt": "按“观察到什么—对方可能的感受—双方的需要—具体请求”组织，一次只说一件事，请求要具体到可执行",
+              "reviewStatus": "待核实"
+            },
+            "title": "商量一件可行的学习支持",
+            "why": "先核对情况，再把协助落实到一件具体的事。",
+            "source": "know",
+            "detail": {
+              "aim": "商量一件可行的学习支持",
+              "why": "先核对情况，再把协助落实到一件具体的事。",
+              "react": [],
+              "reply": "情况核对后，我们可以和孩子商量一件近期做得到的事。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n我想和您一起核对近期的学习情况，您方便时可以先聊聊您了解到的情况。\n\n您最近留意到什么情况？有没有哪一点想先和我核对？\n\n情况核对后，我们可以和孩子商量一件近期做得到的事。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "本学期课程记录显示缺课3次、作业未交2次，原因还没核实。希望先与家长核对情况，再商量补交安排。"
+          },
+          {
+            "id": "parentReaction",
+            "label": "家长反应原文",
+            "quote": "觉得学生只是贪玩。"
+          }
+        ],
+        "kbUsed": 4,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 571,
+              "completion_tokens": 67,
+              "total_tokens": 638
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "A05",
+      "model": "qwen3.8-flash",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 562,
+            "completion_tokens": 147,
+            "total_tokens": 709
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 2347,
+      "data": {
+        "sceneName": "学业警示",
+        "points": [
+          {
+            "moveId": "review-records",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-academic-facts",
+              "version": 1,
+              "title": "学业警示先给三条具体数据",
+              "excerpt": "开场只讲三类可核对的事实：缺课次数、未交作业次数、任课老师反映的课堂表现；原因留到家长说完再谈",
+              "reviewStatus": "待核实"
+            },
+            "title": "先核对课程记录",
+            "why": "从可核对的记录开始，给双方留出补充和纠正的空间。",
+            "source": "know",
+            "detail": {
+              "aim": "先核对课程记录",
+              "why": "从可核对的记录开始，给双方留出补充和纠正的空间。",
+              "react": [],
+              "reply": "我想和您一起核对近期的学习情况，您方便时可以先聊聊您了解到的情况。"
+            }
+          },
+          {
+            "moveId": "respect-wish",
+            "factIds": [
+              "studentWish"
+            ],
+            "reference": null,
+            "title": "给学生留出表达意愿的空间",
+            "why": "先核对学生愿意参与的方式，便于三方商量。",
+            "source": "adv",
+            "detail": {
+              "aim": "给学生留出表达意愿的空间",
+              "why": "先核对学生愿意参与的方式，便于三方商量。",
+              "react": [],
+              "reply": "这件事也想听听孩子的想法，再一起商量怎么沟通。"
+            }
+          },
+          {
+            "moveId": "study-support",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-specific-request",
+              "version": 1,
+              "title": "把话说清楚的四个要素",
+              "excerpt": "按“观察到什么—对方可能的感受—双方的需要—具体请求”组织，一次只说一件事，请求要具体到可执行",
+              "reviewStatus": "待核实"
+            },
+            "title": "商量一件可行的学习支持",
+            "why": "先核对情况，再把协助落实到一件具体的事。",
+            "source": "know",
+            "detail": {
+              "aim": "商量一件可行的学习支持",
+              "why": "先核对情况，再把协助落实到一件具体的事。",
+              "react": [],
+              "reply": "情况核对后，我们可以和孩子商量一件近期做得到的事。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n我想和您一起核对近期的学习情况，您方便时可以先聊聊您了解到的情况。\n\n这件事也想听听孩子的想法，再一起商量怎么沟通。\n\n情况核对后，我们可以和孩子商量一件近期做得到的事。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "学生主动说明本周未提交一次作业，原因尚未了解。想和家长商量如何支持学生完成作业。"
+          },
+          {
+            "id": "studentWish",
+            "label": "学生意愿原文",
+            "quote": "希望自己先和家长说。"
+          }
+        ],
+        "kbUsed": 4,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 562,
+              "completion_tokens": 147,
+              "total_tokens": 709
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "A05",
+      "model": "qwen3.8-max-0902",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 562,
+            "completion_tokens": 48,
+            "total_tokens": 610
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 1545,
+      "data": {
+        "sceneName": "学业警示",
+        "points": [
+          {
+            "moveId": "respect-wish",
+            "factIds": [
+              "studentWish",
+              "situation"
+            ],
+            "reference": null,
+            "title": "给学生留出表达意愿的空间",
+            "why": "先核对学生愿意参与的方式，便于三方商量。",
+            "source": "adv",
+            "detail": {
+              "aim": "给学生留出表达意愿的空间",
+              "why": "先核对学生愿意参与的方式，便于三方商量。",
+              "react": [],
+              "reply": "这件事也想听听孩子的想法，再一起商量怎么沟通。"
+            }
+          },
+          {
+            "moveId": "study-support",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-specific-request",
+              "version": 1,
+              "title": "把话说清楚的四个要素",
+              "excerpt": "按“观察到什么—对方可能的感受—双方的需要—具体请求”组织，一次只说一件事，请求要具体到可执行",
+              "reviewStatus": "待核实"
+            },
+            "title": "商量一件可行的学习支持",
+            "why": "先核对情况，再把协助落实到一件具体的事。",
+            "source": "know",
+            "detail": {
+              "aim": "商量一件可行的学习支持",
+              "why": "先核对情况，再把协助落实到一件具体的事。",
+              "react": [],
+              "reply": "情况核对后，我们可以和孩子商量一件近期做得到的事。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n这件事也想听听孩子的想法，再一起商量怎么沟通。\n\n情况核对后，我们可以和孩子商量一件近期做得到的事。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "学生主动说明本周未提交一次作业，原因尚未了解。想和家长商量如何支持学生完成作业。"
+          },
+          {
+            "id": "studentWish",
+            "label": "学生意愿原文",
+            "quote": "希望自己先和家长说。"
+          }
+        ],
+        "kbUsed": 4,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 562,
+              "completion_tokens": 48,
+              "total_tokens": 610
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "P01",
+      "model": "qwen3.8-flash",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 520,
+            "completion_tokens": 149,
+            "total_tokens": 669
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 2797,
+      "data": {
+        "sceneName": "心理健康首次告知",
+        "points": [
+          {
+            "moveId": "check-disclosure",
+            "factIds": [
+              "situation",
+              "studentWish"
+            ],
+            "reference": null,
+            "title": "先确认可告知范围",
+            "why": "沟通前先核对学生意愿和可向家长说明的内容。",
+            "source": "adv",
+            "detail": {
+              "aim": "先确认可告知范围",
+              "why": "沟通前先核对学生意愿和可向家长说明的内容。",
+              "react": [],
+              "reply": "我会先核对适合沟通的范围，再和您约时间。"
+            }
+          },
+          {
+            "moveId": "review-observations",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-observations",
+              "version": 1,
+              "title": "少下判断，多说具体",
+              "excerpt": "把“孩子不听话”换成具体发生了什么；用具体行为代替评价词，家长更容易接受，也更知道自己该做什么",
+              "reviewStatus": "待核实"
+            },
+            "title": "说清可核对的观察",
+            "why": "具体的观察更容易核对，也便于家长补充。",
+            "source": "know",
+            "detail": {
+              "aim": "说清可核对的观察",
+              "why": "具体的观察更容易核对，也便于家长补充。",
+              "react": [],
+              "reply": "我想和您核对一下近期的具体情况，也听听您的观察。"
+            }
+          },
+          {
+            "moveId": "hear-parent",
+            "factIds": [
+              "situation"
+            ],
+            "reference": null,
+            "title": "听听家长的观察和顾虑",
+            "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+            "source": "adv",
+            "detail": {
+              "aim": "听听家长的观察和顾虑",
+              "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+              "react": [],
+              "reply": "您最近留意到什么情况？有没有哪一点想先和我核对？"
+            }
+          },
+          {
+            "moveId": "contact-time",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-specific-request",
+              "version": 1,
+              "title": "把话说清楚的四个要素",
+              "excerpt": "按“观察到什么—对方可能的感受—双方的需要—具体请求”组织，一次只说一件事，请求要具体到可执行",
+              "reviewStatus": "待核实"
+            },
+            "title": "商量双方方便的联系时间",
+            "why": "具体时间由双方商量，给需要确认的事项留出空间。",
+            "source": "know",
+            "detail": {
+              "aim": "商量双方方便的联系时间",
+              "why": "具体时间由双方商量，给需要确认的事项留出空间。",
+              "react": [],
+              "reply": "您看什么时候方便？我们可以一起商量下一次联系的时间。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n我想和您核对一下近期的具体情况，也听听您的观察。\n\n您最近留意到什么情况？有没有哪一点想先和我核对？\n\n您看什么时候方便？我们可以一起商量下一次联系的时间。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "近两周观察到学生上课时多次打瞌睡，学生说最近睡眠不规律。已和学生确认可以向家长说这两项，希望约时间听听家长观察。"
+          },
+          {
+            "id": "studentWish",
+            "label": "学生意愿原文",
+            "quote": "同意说明课堂打瞌睡和作息。"
+          }
+        ],
+        "kbUsed": 2,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 520,
+              "completion_tokens": 149,
+              "total_tokens": 669
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "P01",
+      "model": "qwen3.8-max-0902",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 520,
+            "completion_tokens": 83,
+            "total_tokens": 603
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 2321,
+      "data": {
+        "sceneName": "心理健康首次告知",
+        "points": [
+          {
+            "moveId": "check-disclosure",
+            "factIds": [
+              "situation",
+              "studentWish"
+            ],
+            "reference": null,
+            "title": "先确认可告知范围",
+            "why": "沟通前先核对学生意愿和可向家长说明的内容。",
+            "source": "adv",
+            "detail": {
+              "aim": "先确认可告知范围",
+              "why": "沟通前先核对学生意愿和可向家长说明的内容。",
+              "react": [],
+              "reply": "我会先核对适合沟通的范围，再和您约时间。"
+            }
+          },
+          {
+            "moveId": "review-observations",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-observations",
+              "version": 1,
+              "title": "少下判断，多说具体",
+              "excerpt": "把“孩子不听话”换成具体发生了什么；用具体行为代替评价词，家长更容易接受，也更知道自己该做什么",
+              "reviewStatus": "待核实"
+            },
+            "title": "说清可核对的观察",
+            "why": "具体的观察更容易核对，也便于家长补充。",
+            "source": "know",
+            "detail": {
+              "aim": "说清可核对的观察",
+              "why": "具体的观察更容易核对，也便于家长补充。",
+              "react": [],
+              "reply": "我想和您核对一下近期的具体情况，也听听您的观察。"
+            }
+          },
+          {
+            "moveId": "hear-parent",
+            "factIds": [
+              "situation"
+            ],
+            "reference": null,
+            "title": "听听家长的观察和顾虑",
+            "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+            "source": "adv",
+            "detail": {
+              "aim": "听听家长的观察和顾虑",
+              "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+              "react": [],
+              "reply": "您最近留意到什么情况？有没有哪一点想先和我核对？"
+            }
+          },
+          {
+            "moveId": "contact-time",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-specific-request",
+              "version": 1,
+              "title": "把话说清楚的四个要素",
+              "excerpt": "按“观察到什么—对方可能的感受—双方的需要—具体请求”组织，一次只说一件事，请求要具体到可执行",
+              "reviewStatus": "待核实"
+            },
+            "title": "商量双方方便的联系时间",
+            "why": "具体时间由双方商量，给需要确认的事项留出空间。",
+            "source": "know",
+            "detail": {
+              "aim": "商量双方方便的联系时间",
+              "why": "具体时间由双方商量，给需要确认的事项留出空间。",
+              "react": [],
+              "reply": "您看什么时候方便？我们可以一起商量下一次联系的时间。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n我想和您核对一下近期的具体情况，也听听您的观察。\n\n您最近留意到什么情况？有没有哪一点想先和我核对？\n\n您看什么时候方便？我们可以一起商量下一次联系的时间。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "近两周观察到学生上课时多次打瞌睡，学生说最近睡眠不规律。已和学生确认可以向家长说这两项，希望约时间听听家长观察。"
+          },
+          {
+            "id": "studentWish",
+            "label": "学生意愿原文",
+            "quote": "同意说明课堂打瞌睡和作息。"
+          }
+        ],
+        "kbUsed": 2,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 520,
+              "completion_tokens": 83,
+              "total_tokens": 603
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "P05",
+      "model": "qwen3.8-flash",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 469,
+            "completion_tokens": 45,
+            "total_tokens": 514
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 908,
+      "data": {
+        "sceneName": "心理健康首次告知",
+        "points": [
+          {
+            "moveId": "check-disclosure",
+            "factIds": [
+              "situation"
+            ],
+            "reference": null,
+            "title": "先确认可告知范围",
+            "why": "沟通前先核对学生意愿和可向家长说明的内容。",
+            "source": "adv",
+            "detail": {
+              "aim": "先确认可告知范围",
+              "why": "沟通前先核对学生意愿和可向家长说明的内容。",
+              "react": [],
+              "reply": "我会先核对适合沟通的范围，再和您约时间。"
+            }
+          },
+          {
+            "moveId": "review-observations",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-observations",
+              "version": 1,
+              "title": "少下判断，多说具体",
+              "excerpt": "把“孩子不听话”换成具体发生了什么；用具体行为代替评价词，家长更容易接受，也更知道自己该做什么",
+              "reviewStatus": "待核实"
+            },
+            "title": "说清可核对的观察",
+            "why": "具体的观察更容易核对，也便于家长补充。",
+            "source": "know",
+            "detail": {
+              "aim": "说清可核对的观察",
+              "why": "具体的观察更容易核对，也便于家长补充。",
+              "react": [],
+              "reply": "我想和您核对一下近期的具体情况，也听听您的观察。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n我想和您核对一下近期的具体情况，也听听您的观察。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "辅导员观察到学生最近很少参加活动，原因未知。只想先和学生确定哪些内容可与家长讨论。"
+          }
+        ],
+        "kbUsed": 2,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 469,
+              "completion_tokens": 45,
+              "total_tokens": 514
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "P05",
+      "model": "qwen3.8-max-0902",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 469,
+            "completion_tokens": 44,
+            "total_tokens": 513
+          }
+        },
+        {
+          "usage": {
+            "prompt_tokens": 499,
+            "completion_tokens": 13,
+            "total_tokens": 512
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 2414,
+      "data": {
+        "sceneName": "心理健康首次告知",
+        "points": [
+          {
+            "title": "补齐关键信息",
+            "why": "先确认这次需要和家长沟通的具体事项。",
+            "source": "adv",
+            "reference": null,
+            "factIds": [],
+            "detail": {
+              "aim": "补充底稿区列出的信息",
+              "why": "保留事实原文和需要核实的地方。",
+              "react": [],
+              "reply": "可以先核对这次联系涉及哪些具体情况。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": null,
+        "faq": [],
+        "next": [],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [
+          "希望和家长先确认或商量什么",
+          "哪些信息已经确认可以向家长说明"
+        ],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "辅导员观察到学生最近很少参加活动，原因未知。只想先和学生确定哪些内容可与家长讨论。"
+          }
+        ],
+        "kbUsed": 2,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 2,
+          "usage": [
+            {
+              "prompt_tokens": 469,
+              "completion_tokens": 44,
+              "total_tokens": 513
+            },
+            {
+              "prompt_tokens": 499,
+              "completion_tokens": 13,
+              "total_tokens": 512
+            }
+          ],
+          "validation": [
+            "moves 须为 0 至 0 个互不重复的条目"
+          ]
+        }
+      }
+    },
+    {
+      "caseId": "G01",
+      "model": "qwen3.8-flash",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 504,
+            "completion_tokens": 190,
+            "total_tokens": 694
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 2910,
+      "data": {
+        "sceneName": "一般家校沟通",
+        "points": [
+          {
+            "moveId": "review-observations",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-observations",
+              "version": 1,
+              "title": "少下判断，多说具体",
+              "excerpt": "把“孩子不听话”换成具体发生了什么；用具体行为代替评价词，家长更容易接受，也更知道自己该做什么",
+              "reviewStatus": "待核实"
+            },
+            "title": "说清可核对的观察",
+            "why": "具体的观察更容易核对，也便于家长补充。",
+            "source": "know",
+            "detail": {
+              "aim": "说清可核对的观察",
+              "why": "具体的观察更容易核对，也便于家长补充。",
+              "react": [],
+              "reply": "我想和您核对一下近期的具体情况，也听听您的观察。"
+            }
+          },
+          {
+            "moveId": "hear-parent",
+            "factIds": [
+              "parentReaction"
+            ],
+            "reference": null,
+            "title": "听听家长的观察和顾虑",
+            "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+            "source": "adv",
+            "detail": {
+              "aim": "听听家长的观察和顾虑",
+              "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+              "react": [],
+              "reply": "您最近留意到什么情况？有没有哪一点想先和我核对？"
+            }
+          },
+          {
+            "moveId": "respect-wish",
+            "factIds": [
+              "studentWish"
+            ],
+            "reference": null,
+            "title": "给学生留出表达意愿的空间",
+            "why": "先核对学生愿意参与的方式，便于三方商量。",
+            "source": "adv",
+            "detail": {
+              "aim": "给学生留出表达意愿的空间",
+              "why": "先核对学生愿意参与的方式，便于三方商量。",
+              "react": [],
+              "reply": "这件事也想听听孩子的想法，再一起商量怎么沟通。"
+            }
+          },
+          {
+            "moveId": "contact-time",
+            "factIds": [
+              "situation",
+              "studentWish"
+            ],
+            "reference": {
+              "id": "method-specific-request",
+              "version": 1,
+              "title": "把话说清楚的四个要素",
+              "excerpt": "按“观察到什么—对方可能的感受—双方的需要—具体请求”组织，一次只说一件事，请求要具体到可执行",
+              "reviewStatus": "待核实"
+            },
+            "title": "商量双方方便的联系时间",
+            "why": "具体时间由双方商量，给需要确认的事项留出空间。",
+            "source": "know",
+            "detail": {
+              "aim": "商量双方方便的联系时间",
+              "why": "具体时间由双方商量，给需要确认的事项留出空间。",
+              "react": [],
+              "reply": "您看什么时候方便？我们可以一起商量下一次联系的时间。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n我想和您核对一下近期的具体情况，也听听您的观察。\n\n您最近留意到什么情况？有没有哪一点想先和我核对？\n\n这件事也想听听孩子的想法，再一起商量怎么沟通。\n\n您看什么时候方便？我们可以一起商量下一次联系的时间。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "学生希望减少上课时接到的家长电话，想与家长商量周末联系时间。此前没有达成约定。"
+          },
+          {
+            "id": "parentReaction",
+            "label": "家长反应原文",
+            "quote": "担心减少联系就不知道学生近况。"
+          },
+          {
+            "id": "studentWish",
+            "label": "学生意愿原文",
+            "quote": "愿意周末聊，具体时间未定。"
+          }
+        ],
+        "kbUsed": 2,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 504,
+              "completion_tokens": 190,
+              "total_tokens": 694
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "G01",
+      "model": "qwen3.8-max-0902",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 504,
+            "completion_tokens": 90,
+            "total_tokens": 594
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 2321,
+      "data": {
+        "sceneName": "一般家校沟通",
+        "points": [
+          {
+            "moveId": "review-observations",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-observations",
+              "version": 1,
+              "title": "少下判断，多说具体",
+              "excerpt": "把“孩子不听话”换成具体发生了什么；用具体行为代替评价词，家长更容易接受，也更知道自己该做什么",
+              "reviewStatus": "待核实"
+            },
+            "title": "说清可核对的观察",
+            "why": "具体的观察更容易核对，也便于家长补充。",
+            "source": "know",
+            "detail": {
+              "aim": "说清可核对的观察",
+              "why": "具体的观察更容易核对，也便于家长补充。",
+              "react": [],
+              "reply": "我想和您核对一下近期的具体情况，也听听您的观察。"
+            }
+          },
+          {
+            "moveId": "hear-parent",
+            "factIds": [
+              "parentReaction",
+              "situation"
+            ],
+            "reference": null,
+            "title": "听听家长的观察和顾虑",
+            "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+            "source": "adv",
+            "detail": {
+              "aim": "听听家长的观察和顾虑",
+              "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+              "react": [],
+              "reply": "您最近留意到什么情况？有没有哪一点想先和我核对？"
+            }
+          },
+          {
+            "moveId": "respect-wish",
+            "factIds": [
+              "studentWish",
+              "situation"
+            ],
+            "reference": null,
+            "title": "给学生留出表达意愿的空间",
+            "why": "先核对学生愿意参与的方式，便于三方商量。",
+            "source": "adv",
+            "detail": {
+              "aim": "给学生留出表达意愿的空间",
+              "why": "先核对学生愿意参与的方式，便于三方商量。",
+              "react": [],
+              "reply": "这件事也想听听孩子的想法，再一起商量怎么沟通。"
+            }
+          },
+          {
+            "moveId": "contact-time",
+            "factIds": [
+              "studentWish",
+              "parentReaction"
+            ],
+            "reference": {
+              "id": "method-specific-request",
+              "version": 1,
+              "title": "把话说清楚的四个要素",
+              "excerpt": "按“观察到什么—对方可能的感受—双方的需要—具体请求”组织，一次只说一件事，请求要具体到可执行",
+              "reviewStatus": "待核实"
+            },
+            "title": "商量双方方便的联系时间",
+            "why": "具体时间由双方商量，给需要确认的事项留出空间。",
+            "source": "know",
+            "detail": {
+              "aim": "商量双方方便的联系时间",
+              "why": "具体时间由双方商量，给需要确认的事项留出空间。",
+              "react": [],
+              "reply": "您看什么时候方便？我们可以一起商量下一次联系的时间。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n我想和您核对一下近期的具体情况，也听听您的观察。\n\n您最近留意到什么情况？有没有哪一点想先和我核对？\n\n这件事也想听听孩子的想法，再一起商量怎么沟通。\n\n您看什么时候方便？我们可以一起商量下一次联系的时间。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "学生希望减少上课时接到的家长电话，想与家长商量周末联系时间。此前没有达成约定。"
+          },
+          {
+            "id": "parentReaction",
+            "label": "家长反应原文",
+            "quote": "担心减少联系就不知道学生近况。"
+          },
+          {
+            "id": "studentWish",
+            "label": "学生意愿原文",
+            "quote": "愿意周末聊，具体时间未定。"
+          }
+        ],
+        "kbUsed": 2,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 504,
+              "completion_tokens": 90,
+              "total_tokens": 594
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "G04",
+      "model": "qwen3.8-flash",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 445,
+            "completion_tokens": 101,
+            "total_tokens": 546
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 1599,
+      "data": {
+        "sceneName": "一般家校沟通",
+        "points": [
+          {
+            "moveId": "review-observations",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-observations",
+              "version": 1,
+              "title": "少下判断，多说具体",
+              "excerpt": "把“孩子不听话”换成具体发生了什么；用具体行为代替评价词，家长更容易接受，也更知道自己该做什么",
+              "reviewStatus": "待核实"
+            },
+            "title": "说清可核对的观察",
+            "why": "具体的观察更容易核对，也便于家长补充。",
+            "source": "know",
+            "detail": {
+              "aim": "说清可核对的观察",
+              "why": "具体的观察更容易核对，也便于家长补充。",
+              "react": [],
+              "reply": "我想和您核对一下近期的具体情况，也听听您的观察。"
+            }
+          },
+          {
+            "moveId": "hear-parent",
+            "factIds": [
+              "situation"
+            ],
+            "reference": null,
+            "title": "听听家长的观察和顾虑",
+            "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+            "source": "adv",
+            "detail": {
+              "aim": "听听家长的观察和顾虑",
+              "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+              "react": [],
+              "reply": "您最近留意到什么情况？有没有哪一点想先和我核对？"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n我想和您核对一下近期的具体情况，也听听您的观察。\n\n您最近留意到什么情况？有没有哪一点想先和我核对？",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "学生希望自己决定是否参与家庭群聊，家长误以为学校要求退群。希望把实际情况说清楚。"
+          }
+        ],
+        "kbUsed": 2,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 445,
+              "completion_tokens": 101,
+              "total_tokens": 546
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "G04",
+      "model": "qwen3.8-max-0902",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 445,
+            "completion_tokens": 61,
+            "total_tokens": 506
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 1785,
+      "data": {
+        "sceneName": "一般家校沟通",
+        "points": [
+          {
+            "moveId": "review-observations",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-observations",
+              "version": 1,
+              "title": "少下判断，多说具体",
+              "excerpt": "把“孩子不听话”换成具体发生了什么；用具体行为代替评价词，家长更容易接受，也更知道自己该做什么",
+              "reviewStatus": "待核实"
+            },
+            "title": "说清可核对的观察",
+            "why": "具体的观察更容易核对，也便于家长补充。",
+            "source": "know",
+            "detail": {
+              "aim": "说清可核对的观察",
+              "why": "具体的观察更容易核对，也便于家长补充。",
+              "react": [],
+              "reply": "我想和您核对一下近期的具体情况，也听听您的观察。"
+            }
+          },
+          {
+            "moveId": "hear-parent",
+            "factIds": [
+              "situation"
+            ],
+            "reference": null,
+            "title": "听听家长的观察和顾虑",
+            "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+            "source": "adv",
+            "detail": {
+              "aim": "听听家长的观察和顾虑",
+              "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+              "react": [],
+              "reply": "您最近留意到什么情况？有没有哪一点想先和我核对？"
+            }
+          },
+          {
+            "moveId": "respect-wish",
+            "factIds": [
+              "situation"
+            ],
+            "reference": null,
+            "title": "给学生留出表达意愿的空间",
+            "why": "先核对学生愿意参与的方式，便于三方商量。",
+            "source": "adv",
+            "detail": {
+              "aim": "给学生留出表达意愿的空间",
+              "why": "先核对学生愿意参与的方式，便于三方商量。",
+              "react": [],
+              "reply": "这件事也想听听孩子的想法，再一起商量怎么沟通。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n我想和您核对一下近期的具体情况，也听听您的观察。\n\n您最近留意到什么情况？有没有哪一点想先和我核对？\n\n这件事也想听听孩子的想法，再一起商量怎么沟通。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "学生希望自己决定是否参与家庭群聊，家长误以为学校要求退群。希望把实际情况说清楚。"
+          }
+        ],
+        "kbUsed": 2,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 445,
+              "completion_tokens": 61,
+              "total_tokens": 506
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "M01",
+      "model": "qwen3.8-flash",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 511,
+            "completion_tokens": 30,
+            "total_tokens": 541
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 867,
+      "data": {
+        "sceneName": "学业警示",
+        "points": [
+          {
+            "title": "补齐关键信息",
+            "why": "先确认这次需要和家长沟通的具体事项。",
+            "source": "adv",
+            "reference": null,
+            "factIds": [],
+            "detail": {
+              "aim": "补充底稿区列出的信息",
+              "why": "保留事实原文和需要核实的地方。",
+              "react": [],
+              "reply": "可以先核对这次联系涉及哪些具体情况。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": null,
+        "faq": [],
+        "next": [],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [
+          "有哪些可以核对的具体情况",
+          "希望和家长先确认或商量什么"
+        ],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "成绩不好。"
+          }
+        ],
+        "kbUsed": 4,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 511,
+              "completion_tokens": 30,
+              "total_tokens": 541
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "M01",
+      "model": "qwen3.8-max-0902",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 511,
+            "completion_tokens": 48,
+            "total_tokens": 559
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 1344,
+      "data": {
+        "sceneName": "学业警示",
+        "points": [
+          {
+            "moveId": "review-records",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-academic-facts",
+              "version": 1,
+              "title": "学业警示先给三条具体数据",
+              "excerpt": "开场只讲三类可核对的事实：缺课次数、未交作业次数、任课老师反映的课堂表现；原因留到家长说完再谈",
+              "reviewStatus": "待核实"
+            },
+            "title": "先核对课程记录",
+            "why": "从可核对的记录开始，给双方留出补充和纠正的空间。",
+            "source": "know",
+            "detail": {
+              "aim": "先核对课程记录",
+              "why": "从可核对的记录开始，给双方留出补充和纠正的空间。",
+              "react": [],
+              "reply": "我想和您一起核对近期的学习情况，您方便时可以先聊聊您了解到的情况。"
+            }
+          },
+          {
+            "moveId": "study-support",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-specific-request",
+              "version": 1,
+              "title": "把话说清楚的四个要素",
+              "excerpt": "按“观察到什么—对方可能的感受—双方的需要—具体请求”组织，一次只说一件事，请求要具体到可执行",
+              "reviewStatus": "待核实"
+            },
+            "title": "商量一件可行的学习支持",
+            "why": "先核对情况，再把协助落实到一件具体的事。",
+            "source": "know",
+            "detail": {
+              "aim": "商量一件可行的学习支持",
+              "why": "先核对情况，再把协助落实到一件具体的事。",
+              "react": [],
+              "reply": "情况核对后，我们可以和孩子商量一件近期做得到的事。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n我想和您一起核对近期的学习情况，您方便时可以先聊聊您了解到的情况。\n\n情况核对后，我们可以和孩子商量一件近期做得到的事。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "成绩不好。"
+          }
+        ],
+        "kbUsed": 4,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 511,
+              "completion_tokens": 48,
+              "total_tokens": 559
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "M03",
+      "model": "qwen3.8-flash",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 428,
+            "completion_tokens": 100,
+            "total_tokens": 528
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 1698,
+      "data": {
+        "sceneName": "一般家校沟通",
+        "points": [
+          {
+            "moveId": "hear-parent",
+            "factIds": [
+              "situation"
+            ],
+            "reference": null,
+            "title": "听听家长的观察和顾虑",
+            "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+            "source": "adv",
+            "detail": {
+              "aim": "听听家长的观察和顾虑",
+              "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+              "react": [],
+              "reply": "您最近留意到什么情况？有没有哪一点想先和我核对？"
+            }
+          },
+          {
+            "moveId": "contact-time",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-specific-request",
+              "version": 1,
+              "title": "把话说清楚的四个要素",
+              "excerpt": "按“观察到什么—对方可能的感受—双方的需要—具体请求”组织，一次只说一件事，请求要具体到可执行",
+              "reviewStatus": "待核实"
+            },
+            "title": "商量双方方便的联系时间",
+            "why": "具体时间由双方商量，给需要确认的事项留出空间。",
+            "source": "know",
+            "detail": {
+              "aim": "商量双方方便的联系时间",
+              "why": "具体时间由双方商量，给需要确认的事项留出空间。",
+              "react": [],
+              "reply": "您看什么时候方便？我们可以一起商量下一次联系的时间。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n您最近留意到什么情况？有没有哪一点想先和我核对？\n\n您看什么时候方便？我们可以一起商量下一次联系的时间。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "家长希望联系老师。"
+          }
+        ],
+        "kbUsed": 2,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 428,
+              "completion_tokens": 100,
+              "total_tokens": 528
+            }
+          ],
+          "validation": []
+        }
+      }
+    },
+    {
+      "caseId": "M03",
+      "model": "qwen3.8-max-0902",
+      "calls": [
+        {
+          "usage": {
+            "prompt_tokens": 428,
+            "completion_tokens": 43,
+            "total_tokens": 471
+          }
+        }
+      ],
+      "ok": true,
+      "latencyMs": 1371,
+      "data": {
+        "sceneName": "一般家校沟通",
+        "points": [
+          {
+            "moveId": "hear-parent",
+            "factIds": [
+              "situation"
+            ],
+            "reference": null,
+            "title": "听听家长的观察和顾虑",
+            "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+            "source": "adv",
+            "detail": {
+              "aim": "听听家长的观察和顾虑",
+              "why": "先给家长说清楚顾虑的机会，再确定要核对的问题。",
+              "react": [],
+              "reply": "您最近留意到什么情况？有没有哪一点想先和我核对？"
+            }
+          },
+          {
+            "moveId": "contact-time",
+            "factIds": [
+              "situation"
+            ],
+            "reference": {
+              "id": "method-specific-request",
+              "version": 1,
+              "title": "把话说清楚的四个要素",
+              "excerpt": "按“观察到什么—对方可能的感受—双方的需要—具体请求”组织，一次只说一件事，请求要具体到可执行",
+              "reviewStatus": "待核实"
+            },
+            "title": "商量双方方便的联系时间",
+            "why": "具体时间由双方商量，给需要确认的事项留出空间。",
+            "source": "know",
+            "detail": {
+              "aim": "商量双方方便的联系时间",
+              "why": "具体时间由双方商量，给需要确认的事项留出空间。",
+              "react": [],
+              "reply": "您看什么时候方便？我们可以一起商量下一次联系的时间。"
+            }
+          }
+        ],
+        "steps": [
+          "风险上报与专业研判",
+          "告知家长并反复沟通",
+          "持续引导",
+          "与学生深度沟通",
+          "调整策略推进"
+        ],
+        "risks": [
+          {
+            "title": "核对事实和信息范围",
+            "detail": "保留观察者、记录时间和待核实的措辞，只加入适合向家长说明的内容。"
+          }
+        ],
+        "draft": "家长您好。\n\n您最近留意到什么情况？有没有哪一点想先和我核对？\n\n您看什么时候方便？我们可以一起商量下一次联系的时间。",
+        "faq": [],
+        "next": [
+          "核对沟通中新增的信息",
+          "确认双方约定的后续联系安排"
+        ],
+        "notes": "",
+        "flags": [],
+        "missingFacts": [],
+        "crisis": false,
+        "redacted": [],
+        "inputEvidence": [
+          {
+            "id": "situation",
+            "label": "学生情况原文",
+            "quote": "家长希望联系老师。"
+          }
+        ],
+        "kbUsed": 2,
+        "generation": {
+          "promptVersion": "grounded-plan-v2",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 428,
+              "completion_tokens": 43,
+              "total_tokens": 471
+            }
+          ],
+          "validation": []
+        }
+      }
+    }
+  ]
+}
