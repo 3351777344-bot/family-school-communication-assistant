@@ -1,9 +1,9 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { admittedReferences, findReferences, sourcesForMove } = require('../app/knowledge');
-const cards = require('../app/reference-cards.json');
-const teacherMethods = require('../app/teacher-methods.json');
-const { MOVE_IDS } = require('../app/communication-moves');
+const { admittedReferences, findReferences, sourcesForMove } = require('../../app/knowledge');
+const cards = require('../../app/reference-cards.json');
+const teacherMethods = require('../../app/teacher-methods.json');
+const { MOVE_IDS } = require('../../app/communication-moves');
 
 test('候选资料卡以待核对状态参与生成，并保留禁用范围', () => {
   for (const scene of ['xueye', 'xinli', 'yiban']) {
@@ -111,7 +111,7 @@ test('每步候选数受上限约束，0 表示不限', () => {
 });
 
 test('资料权威度不会泄漏到接口返回', async () => {
-  const { prepareCommunication } = require('../app/prepare');
+  const { prepareCommunication } = require('../../app/prepare');
   const data = await prepareCommunication({
     scene: 'xinli',
     situation: '近两周观察到学生上课时多次打瞌睡，学生说最近睡眠不规律。'

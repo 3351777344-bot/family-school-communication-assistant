@@ -1,0 +1,13 @@
+{
+  "syntheticOnly": true,
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "format": "xlsx",
+  "analysisStatus": "review",
+  "preparationStatus": "ready",
+  "analysisAttempts": 1,
+  "generationAttempts": 1,
+  "keepsApproved": true,
+  "promptVersion": "draft-writer-v7",
+  "handoffPromptVersion": "reviewed-draft-v2"
+}

@@ -9,7 +9,7 @@
 - `apps/web/`：React + TypeScript 工作台，包含组件、状态、样式与前端回归。
 - `app/`：Node.js API 服务、知识库和保留的两种 HTML 原型。
 - `scripts/`：启动、模型预检与本地界面测试工具。
-- `tests/`：服务端配置、输入、模型调用与静态资源回归。
+- `apps/tests/`：服务端配置、输入、模型调用与静态资源回归。
 - `dist/web/`：前端构建产物，自动生成，不提交版本库。
 - `docs/product/`：交互设计稿与技术边界。
 - `docs/trial/`：试用说明、试用流程与验收标准。
@@ -28,7 +28,7 @@
 
 ## 启动与API配置
 
-需要 Node.js 22.12 或以上版本；当前本机为 Node.js 24。首次进入项目先运行 `npm ci` 安装锁定的依赖。根目录 `.env` 由用户维护，服务启动时读取；现有 Shell 环境变量优先。`.env` 已被 `.gitignore` 排除。公开配置模板见 `.env.example`，不含密钥。前端不加载根目录 `.env`。
+需要 Node.js 22.13 或以上版本；当前本机为 Node.js 24。首次进入项目先运行 `npm ci` 安装锁定的依赖（包含文件提取库）。根目录 `.env` 由用户维护，服务启动时读取；现有 Shell 环境变量优先。`.env` 已被 `.gitignore` 排除。公开配置模板见 `.env.example`，不含密钥。前端不加载根目录 `.env`。
 
 1. 在 `.env` 填写 `DEEPSEEK_API_KEY`。需要千问对照时可另填 `DASHSCOPE_API_KEY`。
 2. 项目默认使用 `AI_PROVIDER=deepseek`、`DEEPSEEK_MODEL=deepseek-flash`，关闭深度思考。手动选择千问时，设置 `AI_PROVIDER=qwen`，使用 `QWEN_MODEL/QWEN_API_BASE`。

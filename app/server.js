@@ -1,5 +1,5 @@
 /**
- * 家校沟通助手 · 本地服务（零依赖）
+ * 家校沟通助手 · 本地服务
  * ------------------------------------------------------------
  * 作用：
  *   1. 把网页发出去（http://127.0.0.1:8787）
@@ -22,11 +22,15 @@ const fs = require("fs");
 const path = require("path");
 const { URL } = require("url");
 const { randomUUID } = require('node:crypto');
+const { AsyncLocalStorage } = require('node:async_hooks');
 const { loadEnvFile, readConfig, readSourceOptions } = require('./config');
 const { ModelError, requestCompletion } = require('./model-client');
 const { InputError, validatePrepareInput } = require('./contracts');
 const { OutputError } = require('./prepare-output');
 const { prepareCommunication } = require('./prepare');
+const { createAnalysisWorkflow } = require('./analysis');
+const { createPracticeWorkflow } = require('./practice');
+const { importRecord, importError } = require('./import-record');
 const { cardCount } = require('./knowledge');
 const { loadPilotPolicy, authenticate, trustedLocalRequest } = require('./pilot-access');
 const pilotMode = process.env.LOCAL_PILOT_REHEARSAL === '1';
@@ -46,6 +50,12 @@ const KEY_FILE = config.keyFile;
 const MODEL = config.model;
 const API_BASE = config.apiBase;
 const MOCK = !!pilot || config.mock;
+const analysisFlag = process.env.ANALYSIS_ENABLED ?? 'true';
+if (!['true', 'false', '1', '0'].includes(analysisFlag)) throw new Error('ANALYSIS_ENABLED 须为 true、false、1 或 0');
+const analysisEnabled = analysisFlag === 'true' || analysisFlag === '1';
+const practiceFlag = process.env.PRACTICE_ENABLED ?? 'true';
+if (!['true', 'false', '1', '0'].includes(practiceFlag)) throw new Error('PRACTICE_ENABLED 须为 true、false、1 或 0');
+const practiceEnabled = practiceFlag === 'true' || practiceFlag === '1';
 
 const ROOT = __dirname;
 const HTML_FILE = process.env.HTML_FILE || "家校沟通助手_原型v3.html";
@@ -87,7 +97,7 @@ function readBody(req, limit = 1024 * 1024) {
     let size = 0, chunks = [];
     req.on("data", c => {
       size += c.length;
-      if (size > limit) { reject(new Error("请求体过大")); req.destroy(); return; }
+      if (size > limit) { chunks = []; reject(importError('IMPORT_TOO_LARGE', '请求体过大，请提交不超过5 MiB的文件', 413)); return; }
       chunks.push(c);
     });
     req.on("end", () => {
@@ -100,6 +110,85 @@ function readBody(req, limit = 1024 * 1024) {
 
 function denyScene(res) {
   return send(res, 403, { ok: false, code: 'PILOT_SCENE_FORBIDDEN', error: '该账号未获准操作此场景。' });
+}
+
+function completeModel(messages) {
+  if (!API_KEY) throw new ModelError('MODEL_KEY_MISSING', '当前模型密钥未配置，请填写项目根目录 .env 并重启服务', 503);
+  return requestCompletion({ apiBase: API_BASE, apiKey: API_KEY, model: MODEL, messages,
+    json: true, provider: config.provider, thinking: config.thinking });
+}
+const analysisWorkflow = createAnalysisWorkflow({ mock: MOCK, complete: completeModel });
+const practiceCallContext = new AsyncLocalStorage();
+const practiceWorkflow = createPracticeWorkflow({ mock: MOCK, complete: async messages => {
+  const metrics = practiceCallContext.getStore();
+  if (metrics && API_KEY) metrics.attempts++;
+  const result = await completeModel(messages);
+  if (metrics) metrics.usage.push(result.usage ?? null);
+  return result;
+} });
+function practiceOwner(req, res, actor) {
+  const supplied = /(?:^|;\s*)practice_session=([a-f0-9-]{36})(?:;|$)/i.exec(req.headers.cookie || '')?.[1];
+  const token = supplied || randomUUID();
+  if (!supplied) res.setHeader('Set-Cookie', `practice_session=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=1800`);
+  return `${actor?.id || 'local'}:${token}`;
+}
+async function practiceRoute(req, res, actor, pathname, recordResult) {
+  if (!practiceEnabled) return send(res, 404, { ok: false, error: 'not found' });
+  if (pathname === '/api/practice/catalog' && req.method === 'GET') {
+    const data = practiceWorkflow.catalog();
+    if (actor) data.cases = data.cases.filter(item => actor.scenes.has(item.scene));
+    return send(res, 200, { ok: true, data });
+  }
+  const action = pathname.slice('/api/practice/'.length);
+  if (req.method !== 'POST' || !['start', 'turn', 'end', 'review'].includes(action)) return send(res, 404, { ok: false, error: 'not found' });
+  if (req.headers['content-type']?.split(';')[0].trim().toLowerCase() !== 'application/json') return send(res, 415, { ok: false, code: 'JSON_REQUIRED', error: '请使用 JSON 提交演练请求' });
+  if ((req.headers.origin && req.headers.origin !== `http://${req.headers.host}`) || req.headers['sec-fetch-site'] === 'cross-site') return send(res, 403, { ok: false, code: 'ORIGIN_FORBIDDEN', error: '请从本地工作台提交演练请求' });
+  const input = await readBody(req);
+  const owner = practiceOwner(req, res, actor);
+  if (actor) {
+    const scene = action === 'start'
+      ? practiceWorkflow.catalog().cases.find(item => item.id === input?.caseId)?.scene
+      : practiceWorkflow.sceneFor(input?.sessionId, owner);
+    if (!actor.scenes.has(scene)) return denyScene(res);
+  }
+  // Count calls made by this HTTP request; replaying a completed request must not
+  // log the original generation's usage as another paid model call.
+  const metrics = { attempts: 0, usage: [] };
+  let data;
+  try {
+    data = await practiceCallContext.run(metrics, () => practiceWorkflow[action](input, owner));
+  } catch (error) {
+    recordResult('failed', { ...error.generation, ...metrics });
+    throw error;
+  }
+  if (data.generation) Object.assign(data.generation, { provider: config.provider, model: MODEL });
+  recordResult(data.status, { ...data.generation, ...metrics });
+  return send(res, 200, { ok: true, data });
+}
+function analysisOwner(req, res, actor) {
+  const supplied = /(?:^|;\s*)analysis_session=([a-f0-9-]{36})(?:;|$)/i.exec(req.headers.cookie || '')?.[1];
+  const token = supplied || randomUUID();
+  if (!supplied) res.setHeader('Set-Cookie', `analysis_session=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=1800`);
+  return `${actor?.id || 'local'}:${token}`;
+}
+async function analysisRoute(req, res, actor, pathname, recordResult) {
+  if (!analysisEnabled) return send(res, 404, { ok: false, error: 'not found' });
+  // JSON plus same-origin requests protect local session state from cross-site submissions.
+  if (req.headers['content-type']?.split(';')[0].trim().toLowerCase() !== 'application/json') return send(res, 415, { ok: false, code: 'JSON_REQUIRED', error: '请使用 JSON 提交记录' });
+  if (req.headers.origin && req.headers.origin !== `http://${req.headers.host}` || req.headers['sec-fetch-site'] === 'cross-site') return send(res, 403, { ok: false, code: 'ORIGIN_FORBIDDEN', error: '请从本地工作台提交记录' });
+  const input = await readBody(req, pathname === '/api/import-record' ? 7 * 1024 * 1024 : 1024 * 1024);
+  if (actor && !actor.scenes.has(input?.scene)) return denyScene(res);
+  if (pathname === '/api/import-record') {
+    const data = await importRecord(input);
+    recordResult('imported');
+    return send(res, 200, { ok: true, data });
+  }
+  const owner = analysisOwner(req, res, actor);
+  if (actor && pathname === '/api/prepare-from-analysis' && !actor.scenes.has(analysisWorkflow.sceneFor(input?.analysisId, owner))) return denyScene(res);
+  const data = pathname === '/api/analyze' ? await analysisWorkflow.analyze(input, owner) : await analysisWorkflow.prepare(input, owner);
+  if (data.generation) Object.assign(data.generation, { provider: config.provider, model: MODEL });
+  recordResult(data.status, data.generation);
+  return send(res, 200, { ok: true, data });
 }
 
 async function prepareRoute(req, res, actor, recordResult) {
@@ -118,14 +207,18 @@ async function prepareRoute(req, res, actor, recordResult) {
     }
   });
   if (data.generation) Object.assign(data.generation, { provider: config.provider, model: MODEL });
-  recordResult(data.status);
+  recordResult(data.status, data.generation);
   return send(res, 200, { ok: true, data });
 }
 
 const assetsPattern = /^\/assets\/[a-zA-Z0-9_.-]+\.(js|css)$/;
 function routeLabel(pathname) {
+  if (/^\/api\/practice\/(catalog|start|turn|end|review)$/.test(pathname)) return pathname.slice('/api/'.length).replace('/', '-');
   if (pathname === '/api/health') return 'health';
   if (pathname === '/api/prepare') return 'prepare';
+  if (pathname === '/api/analyze') return 'analyze';
+  if (pathname === '/api/prepare-from-analysis') return 'prepare-from-analysis';
+  if (pathname === '/api/import-record') return 'import-record';
   if (pathname === '/' || pathname === '/index.html') return 'workbench';
   if (assetsPattern.test(pathname)) return 'asset';
   return 'other';
@@ -133,12 +226,15 @@ function routeLabel(pathname) {
 
 const server = http.createServer(async (req, res) => {
   const t0 = Date.now();
-  const requestId = pilot ? randomUUID() : null;
+  const requestId = randomUUID();
   let p = '';
   let route = 'other';
   let result = null;
+  let generation = null;
+  const recordOutcome = (status, metadata) => { result = status; generation = metadata; };
   try {
     let actor;
+    res.setHeader('X-Request-Id', requestId);
     if (pilot) {
       res.setHeader('X-Request-Id', requestId);
       if (!trustedLocalRequest(req, PORT)) {
@@ -156,7 +252,7 @@ const server = http.createServer(async (req, res) => {
     if (actor?.role === 'observer' && !(req.method === 'GET' && route === 'health')) {
       return send(res, 403, { ok: false, code: 'PILOT_ROLE_FORBIDDEN', error: '观察账号仅可查看演练健康状态。' });
     }
-    if (pilot && req.method === 'POST' && route === 'prepare' &&
+    if (pilot && req.method === 'POST' && ['prepare', 'analyze', 'prepare-from-analysis', 'import-record'].includes(route) &&
         req.headers['content-type']?.split(';')[0].trim().toLowerCase() !== 'application/json') {
       return send(res, 415, { ok: false, code: 'PILOT_JSON_REQUIRED', error: '演练业务请求需要 JSON。' });
     }
@@ -188,17 +284,23 @@ const server = http.createServer(async (req, res) => {
     if (req.method === "GET" && p === "/api/health") {
       if (pilot) {
         return send(res, 200, {
-          ok: true, mock: true, provider: config.provider, model: MODEL, configured: false,
+          ok: true, mock: true, provider: config.provider, model: MODEL, configured: false, analysisEnabled, practiceEnabled,
           mode: 'pilot-local', policyRevision: pilot.revision, allowedScenes: [...actor.scenes],
         });
       }
-      const info = { ok: true, mock: MOCK, provider: config.provider, model: MODEL, configured: !!API_KEY, key: keyHint(), kb: cardCount, ping: null };
+      const info = { ok: true, mock: MOCK, provider: config.provider, model: MODEL, configured: !!API_KEY, key: keyHint(), kb: cardCount, ping: null, analysisEnabled, practiceEnabled };
       return send(res, 200, info);
     }
 
     // 生成沟通准备
+    if (p.startsWith('/api/practice/')) {
+      return await practiceRoute(req, res, actor, p, recordOutcome);
+    }
+    if (req.method === 'POST' && ['/api/analyze', '/api/prepare-from-analysis', '/api/import-record'].includes(p)) {
+      return await analysisRoute(req, res, actor, p, recordOutcome);
+    }
     if (req.method === "POST" && p === "/api/prepare") {
-      return await prepareRoute(req, res, actor, status => { result = status; });
+      return await prepareRoute(req, res, actor, recordOutcome);
     }
     return send(res, 404, { ok: false, error: pilot ? "not found" : "not found: " + p });
   } catch (e) {
@@ -206,9 +308,24 @@ const server = http.createServer(async (req, res) => {
       return send(res, e.status, { ok: false, code: e.code, error: e.message });
     }
     if (e instanceof OutputError) {
-      return send(res, e.status, { ok: false, code: e.code, error: '模型输出未通过结构或来源校验，请重试。输入与上次结果已保留。' });
+      generation = route.startsWith('practice-') ? { ...e.generation, ...generation } : e.generation ?? null;
+      result = 'validation_failed';
+      const practiceDetails = {
+        PRACTICE_EVIDENCE_INVALID: '复盘引用未能对应本次辅导员原话。',
+        PRACTICE_ADVICE_INVALID: '复盘建议含未获依据的保证或联系期限。',
+        PRACTICE_FACT_INVALID: '角色回复增加了当前材料之外的数字或日期。',
+      };
+      const detail = route.startsWith('practice-') ? practiceDetails[e.rule] || '演练回复或复盘的格式未通过校验。'
+        : e.rule === 'UNAPPROVED_FACT' ? '底稿在获准原文之外增加或改写了时间、次数、原因或归属。'
+        : e.rule === 'APPROVED_TEXT_MISSING' ? '底稿未完整保留获准条目的原文、来源或限定语。'
+        : '模型输出未通过结构或来源校验。';
+      return send(res, e.status, { ok: false, code: e.code, rule: e.rule, error: detail + '请重试当前步骤。输入与上次结果已保留。' });
     }
     if (pilot) return send(res, 500, { ok: false, code: 'PILOT_INTERNAL_ERROR', error: '本地演练请求未完成。' });
+    if (route.startsWith('practice-')) {
+      console.error(JSON.stringify({ event: 'practice_error', requestId, route, code: 'PRACTICE_INTERNAL_ERROR' }));
+      return send(res, 500, { ok: false, code: 'PRACTICE_INTERNAL_ERROR', error: '演练请求未完成，请重试当前步骤。已有对话已保留。' });
+    }
     console.error("[error]", req.method, p, e.message);
     return send(res, 500, { ok: false, error: e.message.slice(0, 300) });
   } finally {
@@ -220,7 +337,15 @@ const server = http.createServer(async (req, res) => {
         policyRevision: pilot.revision, mode: 'offline', result,
       }));
     } else if (p.startsWith("/api/")) {
-      console.log(`${req.method} ${p} ${Date.now() - t0}ms`);
+      console.log(JSON.stringify({
+        event: 'api_request', requestId, route, method: req.method,
+        status: res.headersSent ? res.statusCode : null, result,
+        durationMs: Date.now() - t0, model: MODEL, mode: MOCK ? 'offline' : 'model',
+        promptVersion: generation?.promptVersion ?? null,
+        handoffPromptVersion: generation?.handoffPromptVersion ?? null,
+        attempts: generation?.attempts ?? 0, usage: generation?.usage ?? [],
+        ...(route.startsWith('practice-') ? { validationFailures: generation?.validationFailures ?? [] } : {}),
+      }));
     }
   }
 });

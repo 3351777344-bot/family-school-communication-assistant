@@ -27,10 +27,12 @@ const DEFERRAL = new RegExp([
 const LIMITS = { title: 40, why: 160, reply: 200, q: 60, a: 320, draftMin: 40, draftMax: 1800 };
 
 class OutputError extends Error {
-  constructor(field, expectation) {
+  constructor(field, expectation, rule = 'OUTPUT_SCHEMA') {
     super(field + ' ' + expectation);
     this.code = 'MODEL_OUTPUT_INVALID';
     this.status = 502;
+    this.field = field;
+    this.rule = rule;
   }
 }
 
@@ -197,4 +199,4 @@ function parsePlan(content, { moves, evidence, references, inputText }) {
   return { selected, points, draft, faq, missingFacts: missing.map(id => MISSING_FACTS[id]) };
 }
 
-module.exports = { MISSING_FACTS, PROHIBITED, OutputError, parsePlan };
+module.exports = { MISSING_FACTS, PROHIBITED, OutputError, parsePlan, scanProhibited };

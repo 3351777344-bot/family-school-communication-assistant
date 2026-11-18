@@ -42,4 +42,4 @@ function redactInput(input = {}) {
 
 const SAFETY_SIGNAL_RE = /(自杀|自伤|轻生|伤害自己|不想活|结束生命|自残)/;
 
-module.exports = { redactInput, SAFETY_SIGNAL_RE };
+module.exports = { redactInput, redact, SAFETY_SIGNAL_RE };

@@ -2,7 +2,7 @@
 const http = require("node:http");
 const path = require("node:path");
 const { spawn } = require("node:child_process");
-const { outputFixture } = require("../tests/fixtures/prepare-output");
+const { outputFixture } = require("../apps/tests/fixtures/prepare-output");
 let calls = 0;
 const fake = http.createServer((req, res) => {
   req.resume();

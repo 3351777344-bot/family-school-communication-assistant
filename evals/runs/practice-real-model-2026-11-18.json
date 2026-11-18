@@ -1,0 +1,486 @@
+{
+  "suite": "fictional-practice-v1",
+  "date": "2026-11-18",
+  "mode": "real_model",
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "rubricVersion": "practice-rubric-v1",
+  "reviewStatus": "项目内虚构演练案例草案，待辅导员业务审核；不含真实个案。 项目内练习评价草案，待辅导员业务审核；仅供学习反馈，不代表校方正式评分标准或专业能力判定。",
+  "limitations": "仅固定虚构案例的接口、结构与引用检查；评分规则待业务审核，不能证明角色一致性、反馈适切性或教学效果。",
+  "total": 3,
+  "passed": 3,
+  "failed": 0,
+  "modelCalls": 9,
+  "results": [
+    {
+      "caseId": "academic-denial",
+      "verdict": "pass",
+      "durationMs": 12387,
+      "turns": [
+        {
+          "id": "turn-1",
+          "role": "parent",
+          "content": "老师，孩子跟我说上课都正常，你们是不是把记录弄错了？"
+        },
+        {
+          "id": "turn-2",
+          "role": "counselor",
+          "content": "听起来您担心学校误会孩子，我理解得对吗？课程平台显示本周有两次未到课，学生说其中一次已请假，请假结果还需要核实。我想先了解您听到的情况。"
+        },
+        {
+          "id": "turn-3",
+          "role": "parent",
+          "content": "对，我就是怕误会。孩子只跟我说课程情况正常，没细讲那两次记录。您说请假结果还没核实，那现在到底以哪个为准？"
+        },
+        {
+          "id": "turn-4",
+          "role": "counselor",
+          "content": "我们先不对原因下结论。我来核对平台和请假记录，也邀请学生一起确认；您愿意先听听孩子的说法吗？核实后我们再商量下一次联系时间，这样安排您觉得可以吗？"
+        },
+        {
+          "id": "turn-5",
+          "role": "parent",
+          "content": "可以，我先问问孩子那两次到底怎么回事。不过老师，核实之前不会就先记成旷课或者处分吧？"
+        }
+      ],
+      "review": {
+        "rubricVersion": "practice-rubric-v1",
+        "summary": "本次演练中，辅导员先回应家长“怕误会”的担心并复述核对理解，随后区分平台记录与学生说法、保留请假待核实状态，未作诊断或处分承诺，并邀请家长听孩子说法、商量核实与下次联系。整体边界与协作意识较好。可加强之处：对家长“以哪个为准”的疑问可更直接说明当前以待核实为准；收束时可更明确总结共识与待核实项，并邀请家长确认联系安排。末轮家长关于处分的问题未获回应，属演练截断，暂不据此评价。",
+        "items": [
+          {
+            "criterionId": "listening",
+            "score": 4,
+            "feedback": "辅导员用“听起来您担心学校误会孩子”具体回应了家长的核心担心，并以“我理解得对吗”邀请核对，随后“我想先了解您听到的情况”给家长继续表达的空间，符合4分锚点。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "听起来您担心学校误会孩子，我理解得对吗？"
+              },
+              {
+                "turnId": "turn-2",
+                "quote": "我想先了解您听到的情况。"
+              }
+            ],
+            "alternative": "可在核对理解后补一句开放式邀请，如“您愿意多说说孩子是怎么跟您讲的吗”，让家长先充分表达再进入核实。",
+            "practice": "练习先复述担心、再邀请核对、最后开放提问的三步顺序，避免复述后立即转入信息说明。"
+          },
+          {
+            "criterionId": "facts",
+            "score": 3,
+            "feedback": "辅导员交代了平台记录这一来源，并把“学生说其中一次已请假”归属给学生陈述，明确“请假结果还需要核实”，保留了不确定性；但尚未提出具体的核对问题或办法细节，未达4分。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "课程平台显示本周有两次未到课，学生说其中一次已请假，请假结果还需要核实。"
+              },
+              {
+                "turnId": "turn-4",
+                "quote": "我们先不对原因下结论。"
+              }
+            ],
+            "alternative": "可具体化核对办法，如“我会查平台这两次记录的日期，并确认请假提交的时间和结果”，使来源与核实步骤更清晰。",
+            "practice": "练习用“记录显示……／学生说……／尚待核实……”三栏式表述复述事实，并各配一个可执行的核对动作。"
+          },
+          {
+            "criterionId": "boundaries",
+            "score": 3,
+            "feedback": "辅导员明确“先不对原因下结论”，并说明要核对平台和请假记录，未作诊断、保证或处分决定，边界清楚；但尚未就家长关心的处理性质作边界说明，也未给出完整后续沟通安排，未达4分。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "我们先不对原因下结论。"
+              },
+              {
+                "turnId": "turn-4",
+                "quote": "我来核对平台和请假记录，也邀请学生一起确认"
+              }
+            ],
+            "alternative": "可补充边界表述，如“这次联系不涉及处分决定，核实结果出来前不会先按旷课记录处理”，仅陈述流程边界，不作承诺性结论。",
+            "practice": "练习在说明核实动作的同时，用一句话界定本次沟通不涉及的事项，避免越权表述。"
+          },
+          {
+            "criterionId": "collaboration",
+            "score": 3,
+            "feedback": "辅导员邀请家长“先听听孩子的说法”，并提出“核实后我们再商量下一次联系时间”，体现了邀请补充观察与可商量的小步骤；但尚未核对家长意愿细节或明确双方分工，未达4分。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "您愿意先听听孩子的说法吗？"
+              },
+              {
+                "turnId": "turn-4",
+                "quote": "核实后我们再商量下一次联系时间，这样安排您觉得可以吗？"
+              }
+            ],
+            "alternative": "可进一步明确分工，如“您这边先和孩子聊聊那两次的情况，我这边核对平台和请假记录，之后我们对一下”，并询问家长是否方便。",
+            "practice": "练习用“您这边……我这边……之后我们……”的句式共同明确适量分工，并核对家长意愿。"
+          },
+          {
+            "criterionId": "closure",
+            "score": 3,
+            "feedback": "辅导员提出核实后“再商量下一次联系时间”并询问“这样安排您觉得可以吗”，有下一步联系意向；但未明确总结已达成的共识与待核实事项清单，收束尚不完整，未达4分。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "核实后我们再商量下一次联系时间，这样安排您觉得可以吗？"
+              }
+            ],
+            "alternative": "可在结束前小结，如“目前共识是先听孩子说法、我核对记录，待核实的是请假结果，下次联系时间我们再定”，并请家长确认。",
+            "practice": "练习收束三步：总结共识、列出待核实项、邀请家长确认可行的联系安排。"
+          }
+        ],
+        "nextExercise": "下一次练习聚焦收束与边界：在核实类沟通的结尾，用三句话完成总结共识、列出待核实事项、邀请家长确认下次联系时间；同时练习用一句话说明本次沟通不涉及处分等决定，仅陈述流程边界，不作保证。"
+      },
+      "flags": [],
+      "generations": [
+        {
+          "promptVersion": "parent-practice-v1",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 412,
+              "completion_tokens": 38,
+              "total_tokens": 450
+            }
+          ],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        },
+        {
+          "promptVersion": "parent-practice-v1",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 519,
+              "completion_tokens": 29,
+              "total_tokens": 548
+            }
+          ],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        },
+        {
+          "promptVersion": "practice-review-v1",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 1139,
+              "completion_tokens": 1046,
+              "total_tokens": 2185
+            }
+          ],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        }
+      ]
+    },
+    {
+      "caseId": "anxious-parent",
+      "verdict": "pass",
+      "durationMs": 10223,
+      "turns": [
+        {
+          "id": "turn-1",
+          "role": "parent",
+          "content": "老师，听到这个我很担心，到底是什么原因？您能不能现在就告诉我怎么办？"
+        },
+        {
+          "id": "turn-2",
+          "role": "counselor",
+          "content": "听到孩子睡眠不规律，您很担心，也希望尽快知道原因，我理解得对吗？目前是学生的自述，还没有核实原因或专业评估结论，我不能据此给出诊断。您愿意说说近期观察吗？"
+        },
+        {
+          "id": "turn-3",
+          "role": "parent",
+          "content": "您说得对，我确实很着急，想先弄清楚原因。我最近看他晚上还亮着灯，早上起得也费劲，但具体为什么睡不好，我也说不准。老师，那现在能先怎么帮他？"
+        },
+        {
+          "id": "turn-4",
+          "role": "counselor",
+          "content": "学生愿意了解校内支持资源，我可以先和学生核对希望获得哪些支持，再按校内流程了解可用入口。我们先各自整理观察，核实后再商量下一次联系，可以吗？"
+        },
+        {
+          "id": "turn-5",
+          "role": "parent",
+          "content": "可以，那我先按您说的整理一下他晚上亮灯和早上起不来的情况。老师，您跟孩子核对支持资源的时候，能不能也问问他到底是怎么想的？我怕他自己不说实话。"
+        }
+      ],
+      "review": {
+        "rubricVersion": "practice-rubric-v1",
+        "summary": "辅导员在本段演练中先复述并核对家长的担心，明确区分学生自述与尚未核实的原因，未作诊断或越权承诺；随后邀请家长补充观察，提出先与学生核对支持需求、再商量后续联系的小步骤。整体边界清晰、协作姿态良好。可提升处：对家长最后一轮提出的'问问孩子怎么想'尚未回应，收束时也缺少对下一步联系方式和时间的确认。本反馈仅针对给定对话，不作临床判断或能力鉴定。",
+        "items": [
+          {
+            "criterionId": "listening",
+            "score": 4,
+            "feedback": "turn-2先以'您很担心，也希望尽快知道原因'具体回应本轮担心，并用'我理解得对吗'邀请家长核对理解，符合4分锚点；turn-4也保留了家长继续参与的空间。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "听到孩子睡眠不规律，您很担心，也希望尽快知道原因，我理解得对吗？"
+              }
+            ],
+            "alternative": "可在复述后加一句开放式邀请，如'您最担心的是哪一点？'",
+            "practice": "练习用'复述担心+核对+开放提问'三句式回应家长首轮焦虑。"
+          },
+          {
+            "criterionId": "facts",
+            "score": 3,
+            "feedback": "turn-2明确交代'目前是学生的自述，还没有核实原因或专业评估结论'，保留了陈述归属与不确定性，符合3分；但尚未把家长观察（亮灯、起床困难）与已知信息并列区分，也未提出具体核对问题。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "目前是学生的自述，还没有核实原因或专业评估结论，我不能据此给出诊断。"
+              }
+            ],
+            "alternative": "可补充'您说的亮灯和起床困难是您的观察，我会和学生核对作息情况'。",
+            "practice": "练习把'学生自述/家长观察/待核实'三类信息分别标注后再回应。"
+          },
+          {
+            "criterionId": "boundaries",
+            "score": 3,
+            "feedback": "turn-2说明'不能据此给出诊断'，turn-4以'按校内流程了解可用入口'表述，未作保证或越权决定，符合3分；但未说明哪些事项需由适当人员判断，边界说明略简。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "我不能据此给出诊断。"
+              },
+              {
+                "turnId": "turn-4",
+                "quote": "再按校内流程了解可用入口。"
+              }
+            ],
+            "alternative": "可加一句'具体原因需要由相关专业人员评估，我这里先做信息核对和资源了解'。",
+            "practice": "练习用'我能做的/需他人判断的'两栏句式说明边界。"
+          },
+          {
+            "criterionId": "collaboration",
+            "score": 3,
+            "feedback": "turn-2邀请'您愿意说说近期观察吗'，turn-4提出'我们先各自整理观察'并询问'可以吗'，体现邀请补充与可商量的小步骤，符合3分；但尚未核对家长意愿细节，也未明确学生参与方式。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "您愿意说说近期观察吗？"
+              },
+              {
+                "turnId": "turn-4",
+                "quote": "我们先各自整理观察，核实后再商量下一次联系，可以吗？"
+              }
+            ],
+            "alternative": "可具体化分工，如'您整理作息观察，我和学生核对希望获得哪些支持'。",
+            "practice": "练习把'各自整理'拆成双方各一条可执行的小步骤。"
+          },
+          {
+            "criterionId": "closure",
+            "score": 2,
+            "feedback": "turn-4提到'核实后再商量下一次联系'，有跟进意向，但未总结已达成的共识，也未给出下一步联系的具体安排；对家长turn-5的请求尚无回应，故按2分锚点评价。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "核实后再商量下一次联系，可以吗？"
+              }
+            ],
+            "alternative": "可总结'共识是先整理观察、我与学生核对资源'，并邀请家长确认方便的联系时间。",
+            "practice": "练习用'共识+待核实+下次联系时间'三要素收束对话。"
+          }
+        ],
+        "nextExercise": "下一轮练习：家长追问'您能不能保证孩子没事'。目标：在不作保证的前提下回应担心，区分已知与待核实信息，说明可做的核对步骤，并与家长商定一次具体联系时间；收束时总结共识并邀请确认。"
+      },
+      "flags": [],
+      "generations": [
+        {
+          "promptVersion": "parent-practice-v1",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 424,
+              "completion_tokens": 53,
+              "total_tokens": 477
+            }
+          ],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        },
+        {
+          "promptVersion": "parent-practice-v1",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 542,
+              "completion_tokens": 47,
+              "total_tokens": 589
+            }
+          ],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        },
+        {
+          "promptVersion": "practice-review-v1",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 1176,
+              "completion_tokens": 908,
+              "total_tokens": 2084
+            }
+          ],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        }
+      ]
+    },
+    {
+      "caseId": "cooperative-followup",
+      "verdict": "pass",
+      "durationMs": 9360,
+      "turns": [
+        {
+          "id": "turn-1",
+          "role": "parent",
+          "content": "老师，我愿意配合了解情况，不过我怕问得太急，孩子更不愿说。我们可以先做什么？"
+        },
+        {
+          "id": "turn-2",
+          "role": "counselor",
+          "content": "您希望配合，也担心问得太急给孩子压力，我理解得对吗？目前只知道学生没有参加一次活动，原因还没核实，您愿意先谈谈近期的观察吗？"
+        },
+        {
+          "id": "turn-3",
+          "role": "parent",
+          "content": "对，我就是这个意思。近期我也没多问，怕他觉得我盯着他。老师，您那边打算怎么跟孩子了解情况？"
+        },
+        {
+          "id": "turn-4",
+          "role": "counselor",
+          "content": "我们先不给原因下结论。我来邀请学生谈谈当时的情况，您可以先听听孩子想法，再一起商量合适的小步骤。核对后我们再约下一次联系，您觉得这样可行吗？"
+        },
+        {
+          "id": "turn-5",
+          "role": "parent",
+          "content": "这样安排我能接受。那我先别急着追问，等他愿意说时听听他的想法。老师，您跟孩子谈过后，大概什么时候方便再和我联系？"
+        }
+      ],
+      "review": {
+        "rubricVersion": "practice-rubric-v1",
+        "summary": "辅导员在四轮回应中先复述家长的双重担心并邀请补充观察，随后明确区分已知事实与未核实原因，未作诊断或保证，提出由自己邀请学生谈、家长先倾听的小步骤，并主动询问联系安排是否可行。整体边界清晰、协作姿态明确。可提升处：对家长最后提出的具体联系时间尚未回应，收束环节缺少对共识与待核实项的明确总结；邀请家长确认理解时可更具体地请其更正。",
+        "items": [
+          {
+            "criterionId": "listening",
+            "score": 4,
+            "feedback": "turn-2先以“您希望配合，也担心问得太急给孩子压力”复述家长的双重担心，并用“我理解得对吗”邀请核对，随后以“您愿意先谈谈近期的观察吗”留出表达空间，符合4分锚点。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "您希望配合，也担心问得太急给孩子压力，我理解得对吗？目前只知道学生没有参加一次活动，原因还没核实，您愿意先谈谈近期的观察吗？"
+              }
+            ],
+            "alternative": "可再补一句“如果我理解偏了，您帮我更正”，让核对更开放。",
+            "practice": "练习用“您担心的是……我理解得对吗”句式回应，并加一句邀请更正。"
+          },
+          {
+            "criterionId": "facts",
+            "score": 3,
+            "feedback": "turn-2交代“目前只知道学生没有参加一次活动，原因还没核实”，turn-4重申“我们先不给原因下结论”，保留了事实与未核实部分的区分；但尚未提出具体的核对问题或办法，未达4分。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "目前只知道学生没有参加一次活动，原因还没核实"
+              },
+              {
+                "turnId": "turn-4",
+                "quote": "我们先不给原因下结论。"
+              }
+            ],
+            "alternative": "可提出“我会先问孩子当时是怎么安排时间的”这类具体核对问题。",
+            "practice": "练习把“待核实”转化为一两个可执行的具体提问。"
+          },
+          {
+            "criterionId": "boundaries",
+            "score": 3,
+            "feedback": "turn-4以“我们先不给原因下结论”说明暂不能确定的内容，并表明由自己邀请学生谈，未作诊断、保证或越权处置；但边界说明后未进一步明确可核实的问题与后续沟通安排，属3分水平。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "我们先不给原因下结论。我来邀请学生谈谈当时的情况，您可以先听听孩子想法，再一起商量合适的小步骤。核对后我们再约下一次联系，您觉得这样可行吗？"
+              }
+            ],
+            "alternative": "可补充“具体原因要等我和孩子谈过、也和您核对后再判断”。",
+            "practice": "练习在说明边界后紧跟一句可核实事项和联系安排。"
+          },
+          {
+            "criterionId": "collaboration",
+            "score": 3,
+            "feedback": "turn-2邀请家长“先谈谈近期的观察”，turn-4提出家长“先听听孩子想法”并“一起商量合适的小步骤”，体现了邀请补充与可商量的小步骤；但未核对家长意愿细节，也未明确学生参与方式，未达4分。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "您愿意先谈谈近期的观察吗？"
+              },
+              {
+                "turnId": "turn-4",
+                "quote": "您可以先听听孩子想法，再一起商量合适的小步骤。"
+              }
+            ],
+            "alternative": "可问“您觉得先听孩子说，还是我先和他聊，哪种更合适”。",
+            "practice": "练习提出两个可选小步骤，请家长选择并说明学生如何参与。"
+          },
+          {
+            "criterionId": "closure",
+            "score": 3,
+            "feedback": "turn-4总结“先不给原因下结论”的共识，提出“核对后我们再约下一次联系”并询问可行性，具备总结与下一步安排；但未明确待核实项清单，也未回应家长turn-5关于具体时间的询问，未达4分。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "核对后我们再约下一次联系，您觉得这样可行吗？"
+              }
+            ],
+            "alternative": "可回应“我谈完后两天内和您联系，您看这个时间方便吗”。",
+            "practice": "练习收束时列出共识与待核实项，并给出具体联系时间请家长确认。"
+          }
+        ],
+        "nextExercise": "下一轮练习聚焦收束：在家长询问联系时间后，用三句话完成——复述双方共识、列出待核实事项、提出具体联系时间并请家长确认是否可行。"
+      },
+      "flags": [],
+      "generations": [
+        {
+          "promptVersion": "parent-practice-v1",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 404,
+              "completion_tokens": 33,
+              "total_tokens": 437
+            }
+          ],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        },
+        {
+          "promptVersion": "parent-practice-v1",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 503,
+              "completion_tokens": 38,
+              "total_tokens": 541
+            }
+          ],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        },
+        {
+          "promptVersion": "practice-review-v1",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 1129,
+              "completion_tokens": 940,
+              "total_tokens": 2069
+            }
+          ],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        }
+      ]
+    }
+  ]
+}

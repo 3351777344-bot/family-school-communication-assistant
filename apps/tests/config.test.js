@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const { loadEnvFile, readConfig, readSourceOptions, SOURCE_DEFAULTS } = require('../app/config');
+const { loadEnvFile, readConfig, readSourceOptions, SOURCE_DEFAULTS } = require('../../app/config');
 
 test('.env loading preserves shell values, quotes and empty placeholders', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'family-school-config-'));

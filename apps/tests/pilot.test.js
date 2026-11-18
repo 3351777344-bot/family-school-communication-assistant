@@ -9,7 +9,7 @@ const { spawn } = require('node:child_process');
 const { once } = require('node:events');
 const { setTimeout: delay } = require('node:timers/promises');
 
-const launcher = path.join(__dirname, '../scripts/start-pilot-local.js');
+const launcher = path.join(__dirname, '../../scripts/start-pilot-local.js');
 const input = { scene: 'xueye', situation: '虚构记录演练标记甲。本周记录有一次提交延迟，拟核对。', inputRevision: 1 };
 const marker = 'pilot-private-marker-wp5';
 const account = (id, role, scenes) => ({ id, role, scenes, token: randomBytes(32).toString('base64url') });
@@ -131,14 +131,17 @@ test('local pilot authorizes pages and APIs, enforces scene and owner, and logs 
   const health = await (await get('/api/health', observer)).json();
   assert.deepEqual(health, {
     ok: true, mock: true, provider: 'deepseek', model: 'deepseek-flash', configured: false,
-    mode: 'pilot-local', policyRevision: 'local-v1', allowedScenes: [],
+    mode: 'pilot-local', policyRevision: 'local-v1', allowedScenes: [], analysisEnabled: true, practiceEnabled: true,
   });
   assert.equal((await get('/', observer)).status, 403);
   assert.equal((await get('/assets/index.js', observer)).status, 403);
   assert.equal((await post('/api/prepare', input, observer)).status, 403);
+  assert.equal((await post('/api/analyze', {}, observer)).status, 403);
+  assert.equal((await post('/api/prepare-from-analysis', {}, observer)).status, 403);
+  assert.equal((await post('/api/import-record', {}, observer)).status, 403);
   assert.equal((await post('/api/draft/facts', {}, observer)).status, 403);
   const workbench = await get('/', alpha);
-  if (fs.existsSync(path.join(__dirname, '../dist/web/index.html'))) {
+  if (fs.existsSync(path.join(__dirname, '../../dist/web/index.html'))) {
     assert.equal(workbench.status, 200);
     const asset = (await workbench.text()).match(/src="(\/assets\/[^"]+\.js)"/)?.[1];
     assert(asset);
@@ -153,6 +156,21 @@ test('local pilot authorizes pages and APIs, enforces scene and owner, and logs 
   assert.equal((await get('/.env', alpha)).status, 404);
   assert.equal((await get('/api/' + marker + '?detail=' + marker, alpha)).status, 404);
   assert.equal((await post('/api/prepare', { ...input, scene: 'xinli', disclosureStatus: 'confirmed' }, alpha)).status, 403);
+  assert.equal((await post('/api/analyze', { text: input.situation, scene: 'xinli', inputRevision: 1 }, alpha)).status, 403);
+  const importPayload = { filename: 'records.docx', contentBase64: fs.readFileSync(path.join(__dirname, 'fixtures/import-record/records.docx')).toString('base64'), scene: 'xueye' };
+  assert.equal((await post('/api/import-record', { ...importPayload, scene: 'xinli' }, alpha)).status, 403);
+  assert.equal((await post('/api/import-record', importPayload, alpha, { 'Content-Type': 'text/plain' })).status, 415);
+  assert.equal((await post('/api/import-record', importPayload, alpha)).status, 200);
+  assert.equal((await post('/api/analyze', { text: input.situation, scene: 'xueye', inputRevision: 1 }, alpha, { 'Content-Type': 'text/plain' })).status, 415);
+  const analyzedResponse = await post('/api/analyze', { text: input.situation, scene: 'xueye', inputRevision: 1 }, alpha);
+  assert.equal(analyzedResponse.status, 200);
+  const analyzed = (await analyzedResponse.json()).data;
+  const analysisPayload = { analysisId: analyzed.analysisId, inputRevision: 1, scene: 'xueye', reviews: analyzed.items.map(item => ({ id: item.id, reviewStatus: 'confirmed', disclosable: true })) };
+  const sessionHeader = analyzedResponse.headers.get('set-cookie');
+  const sessionHeaders = sessionHeader ? { Cookie: sessionHeader.split(';')[0] } : {};
+  assert.equal((await post('/api/prepare-from-analysis', analysisPayload, beta, sessionHeaders)).status, 404);
+  assert.equal((await post('/api/prepare-from-analysis', { ...analysisPayload, scene: 'xinli' }, alpha, sessionHeaders)).status, 403);
+  assert.equal((await post('/api/prepare-from-analysis', analysisPayload, alpha, sessionHeaders)).status, 200);
   const prepared = await post('/api/prepare', input, alpha);
   assert.equal(prepared.status, 200);
   const requestId = prepared.headers.get('x-request-id');
@@ -223,7 +241,7 @@ test('missing or invalid local pilot policy stops startup instead of exposing de
     await assert.rejects(fetch(run.base + '/api/health'));
   }
   const direct = spawnPilot(await freePort(), policyFile(t, 'local-v1', [user]),
-    undefined, path.join(__dirname, '../app/server.js'));
+    undefined, path.join(__dirname, '../../app/server.js'));
   t.after(() => direct.stop());
   const [code] = await direct.closed;
   assert.equal(code, 1);

@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { requestCompletion } = require('../app/model-client');
+const { requestCompletion } = require('../../app/model-client');
 const options = { apiBase: 'http://127.0.0.1', apiKey: 'synthetic-key', model: 'synthetic-model', messages: [{ role: 'user', content: 'synthetic' }] };
 
 test('quota errors expose a stable code without upstream body or credentials', async () => {

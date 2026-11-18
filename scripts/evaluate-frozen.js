@@ -6,7 +6,7 @@ const { prepareCommunication } = require('../app/prepare');
 const { validatePrepareInput } = require('../app/contracts');
 const { findReferences } = require('../app/knowledge');
 const { MISSING_FACTS } = require('../app/prepare-output');
-const { outputFixture } = require('../tests/fixtures/prepare-output');
+const { outputFixture } = require('../apps/tests/fixtures/prepare-output');
 const manifest = require('../evals/cases/communication-frozen-v2.manifest.json');
 const development = require('../evals/cases/communication-v1.json');
 
@@ -154,7 +154,7 @@ async function main() {
       'app/prepare.js', 'app/prepare-output.js', 'app/contracts.js', 'app/workflow-steps.json', 'app/preparation-gates.js',
       'app/communication-safety.js', 'app/communication-moves.js', 'app/facts.js', 'app/knowledge.js',
       'app/kb_v3.json', 'app/reference-cards.json', 'scripts/evaluate-frozen.js',
-      'evals/cases/communication-frozen-v2.manifest.json', 'tests/fixtures/prepare-output.js',
+      'evals/cases/communication-frozen-v2.manifest.json', 'apps/tests/fixtures/prepare-output.js',
     ].map(filename => [filename, digestFile(filename)])),
     mode: 'local_stub',
     realModelRequests: 0,

@@ -1,8 +1,8 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { prepareCommunication } = require('../app/prepare');
+const { prepareCommunication } = require('../../app/prepare');
 const { outputFixture } = require('./fixtures/prepare-output');
-const cases = require('../evals/cases/communication-v1.json');
+const cases = require('../../evals/cases/communication-v1.json');
 
 const input = id => cases.find(entry => entry.id === id).input;
 const completion = output => ({ content: JSON.stringify(output), usage: null });

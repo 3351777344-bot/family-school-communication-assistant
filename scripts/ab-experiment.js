@@ -18,7 +18,7 @@ loadEnvFile(path.join(root, '.env'));
 const config = readConfig(process.env);
 const { requestCompletion } = require(path.join(root, 'app/model-client'));
 const { prepareCommunication } = require(path.join(root, 'app/prepare'));
-const { outputFixture } = require(path.join(root, 'tests/fixtures/prepare-output'));
+const { outputFixture } = require(path.join(root, 'apps/tests/fixtures/prepare-output'));
 const cases = require(path.join(root, 'evals/cases/communication-v1.json'));
 
 const args = process.argv.slice(2);

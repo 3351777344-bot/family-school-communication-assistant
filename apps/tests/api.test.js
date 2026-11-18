@@ -5,7 +5,7 @@ const path = require('node:path');
 const { spawn } = require('node:child_process');
 const { setTimeout: delay } = require('node:timers/promises');
 const { outputFixture } = require('./fixtures/prepare-output');
-const cases = require('../evals/cases/communication-v1.json');
+const cases = require('../../evals/cases/communication-v1.json');
 
 async function listen(server) {
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
@@ -21,7 +21,7 @@ async function app(env, run) {
   };
   delete childEnv.LOCAL_PILOT_POLICY_FILE;
   delete childEnv.LOCAL_PILOT_REHEARSAL;
-  const child = spawn(process.execPath, [path.join(__dirname, '../app/server.js')], {
+  const child = spawn(process.execPath, [path.join(__dirname, '../../app/server.js')], {
     env: childEnv, stdio: 'ignore'
   });
   const base = `http://127.0.0.1:${port}`;
@@ -245,4 +245,71 @@ test('static serving rejects secrets, traversal and malformed escapes without cr
       assert.match(response.headers.get('content-type'), /javascript/);
     }
   });
+});
+
+test('文本梳理通过HttpOnly会话绑定分析，旧版本及其他会话不能生成', async () => {
+  await app({ MOCK: '1', ANALYSIS_ENABLED: 'true' }, async base => {
+    const post = async (route, value, cookie) => {
+      const response = await fetch(base + route, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', ...(cookie ? { Cookie: cookie } : {}) },
+        body: JSON.stringify(value),
+      });
+      return { response, body: await response.json() };
+    };
+    const analyzed = await post('/api/analyze', { scene: 'xueye', text: '课程平台显示本周缺课两次。学生说其中一次请过假。', inputRevision: 1 });
+    assert.equal(analyzed.response.status, 200);
+    const cookie = analyzed.response.headers.get('set-cookie');
+    assert.match(cookie, /HttpOnly/i);
+    assert.match(cookie, /SameSite=Strict/i);
+    const { data } = analyzed.body;
+    const payload = {
+      analysisId: data.analysisId, inputRevision: 1, scene: 'xueye',
+      reviews: data.items.map((item, index) => ({ id: item.id, reviewStatus: index === 0 ? 'confirmed' : 'pending', disclosable: index === 0 })),
+    };
+    const foreign = await post('/api/prepare-from-analysis', payload);
+    assert.equal(foreign.response.status, 404);
+    const own = await post('/api/prepare-from-analysis', payload, cookie.split(';')[0]);
+    assert.equal(own.response.status, 200);
+    assert(own.body.data.draft.includes(data.items[0].quote));
+    assert(!own.body.data.draft.includes('请过假'));
+    const stale = await post('/api/prepare-from-analysis', { ...payload, inputRevision: 2 }, cookie.split(';')[0]);
+    assert.equal(stale.response.status, 409);
+  });
+});
+
+test('关闭分析开关同时隐藏能力并停用两个新路由，保留原表单', async () => {
+  await app({ MOCK: '1', ANALYSIS_ENABLED: 'false' }, async base => {
+    const health = await (await fetch(base + '/api/health')).json();
+    assert.equal(health.analysisEnabled, false);
+    for (const route of ['/api/analyze', '/api/prepare-from-analysis', '/api/import-record']) {
+      const response = await fetch(base + route, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
+      assert.equal(response.status, 404);
+    }
+    const response = await fetch(base + '/api/prepare', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ scene: 'xueye', situation: '课程记录显示本周作业延迟提交。' }) });
+    assert.equal(response.status, 200);
+  });
+});
+
+test('导入路由本地解析且不调用模型，跨站提交被拒绝', async () => {
+  const fs = require('node:fs');
+  const contentBase64 = fs.readFileSync(path.join(__dirname, 'fixtures/import-record/records.docx')).toString('base64');
+  let calls = 0;
+  const fake = http.createServer((_req, res) => { calls++; res.end('{}'); });
+  const port = await listen(fake);
+  try {
+    await app({ MOCK: '0', ANALYSIS_ENABLED: 'true', API_BASE: `http://127.0.0.1:${port}`, DEEPSEEK_API_KEY: 'synthetic-key' }, async base => {
+      const payload = { filename: 'records.docx', contentBase64, scene: 'xueye' };
+      const post = headers => fetch(base + '/api/import-record', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', ...headers }, body: JSON.stringify(payload),
+      });
+      assert.equal((await post({ Origin: 'https://outside.invalid' })).status, 403);
+      const response = await post({});
+      assert.equal(response.status, 200);
+      const body = await response.json();
+      assert.equal(body.ok, true);
+      assert.equal(body.data.format, 'docx');
+      assert(body.data.segments.some(segment => segment.text.includes('课程平台')));
+      assert.equal(calls, 0);
+    });
+  } finally { await new Promise(resolve => fake.close(resolve)); }
 });

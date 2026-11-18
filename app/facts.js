@@ -1,13 +1,13 @@
 const { inputEvidence } = require('./communication-moves');
 
-const attributed = /^\s*(?:学生(?:说|称|自述|表示|反馈)|(?:课程)?平台(?:显示|记录)|(?:任课)?老师(?:说|反馈|记录)|家长(?:说|称|反馈|表示))/;
+const attributed = /^\s*(?:学生(?:说|称|自述|表示|反馈|认为|判断|觉得)|(?:课程)?平台(?:显示|记录)|(?:任课)?老师(?:说|反馈|记录)|家长(?:说|称|反馈|表示|认为|判断|觉得))/;
 const uncertainty = /尚待核实|有待核实|待核实|待核对|尚未核实|还[没未]核实|未确认|还需核实|说法不一致|记录不一致|原因未知/;
 const speculation = /猜测|推测|疑似|可能|估计|听说/;
 const context = /^(?:已(?:和|与)学生确认|学生(?:同意|不同意|希望|要求)|允许|只想|(?:希望|准备|想|打算)(?:先|和|与|向|邀请|约|请)|沟通目的|请(?:忽略|顺便|承诺)|原因(?:未知|不明))/;
 const followUp = /^(?:相关)?(?:记录|情况|信息|具体情况|双方说法|这一点)?(?:尚|仍|还)?(?:待|需|需要)(?:进一步)?(?:核实|核对|确认)[。！？；;]?$/;
 const timeText = /\d{4}年\d{1,2}月\d{1,2}[日号]|\d{1,2}月\d{1,2}[日号]|(?:近|过去)[一二两三四五六七八九十\d]+(?:天|周|个月)|本学期|上学期|本月|上月|本周|上周|今天|昨天|近期|最近/;
 const redacted = /\[(?:手机号|身份证|学号|邮箱|电话)\]/;
-const quoteEnds = new Map([['“', '”'], ['「', '」'], ['『', '』'], ['"', '"']]);
+const quoteEnds = new Map([['“', '”'], ['「', '」'], ['『', '』'], ['【', '】'], ['"', '"']]);
 
 function splitSpans(text, boundary) {
   const spans = [];
@@ -30,6 +30,8 @@ function splitSpans(text, boundary) {
 
 function provenance(field, quote) {
   if (/^(?:课程)?平台(?:显示|记录)|^(?:课程|出勤|作业)记录/.test(quote)) return ['record', '课程记录或平台'];
+  if (/^学生(?:认为|判断|觉得)/.test(quote)) return ['speculation', '学生判断'];
+  if (/^家长(?:认为|判断|觉得)/.test(quote)) return ['speculation', '家长判断'];
   if (/^学生(?:说|称|自述|表示|反馈)/.test(quote)) return ['report', '学生自述'];
   if (/^(?:任课)?老师(?:说|反馈|记录)/.test(quote)) return ['report', '教师反馈'];
   if (/^(?:家长(?:说|称|反馈|表示))/.test(quote) || field === 'parentReaction') return ['report', '家长反馈'];
@@ -44,11 +46,14 @@ function factCandidates(evidence) {
   const facts = [];
   for (const { id: field, label, quote: original } of evidence.values()) {
     let previous = [];
+    let importedSource = null;
     for (const [sentenceStart, sentenceEnd] of splitSpans(original, (character, index) => {
       if (character === '\n') return index;
       return '。！？；;'.includes(character) ? index + 1 : null;
     })) {
       const text = original.slice(sentenceStart, sentenceEnd);
+      const sourceLabel = /^【导入来源：([^\r\n]{1,200})】\s*$/.exec(text.trim());
+      if (sourceLabel) { importedSource = sourceLabel[1]; previous = []; continue; }
       // Keep ordinary commas and qualifications. Split when the next clause
       // explicitly changes its speaker or record source.
       const pieces = splitSpans(text, (character, index) =>
@@ -73,7 +78,7 @@ function factCandidates(evidence) {
         else if (speculation.test(quote)) kind = 'speculation';
         current.push({
           id: `${field}:${from}:${to}`, field, start: from, end: to, quote,
-          source: source || label,
+          source: (source || label) + (importedSource ? `（导入来源：${importedSource}）` : ''),
           time: quote.match(timeText)?.[0] ?? null,
           kind, uncertain: followUpNote || uncertainty.test(quote) || Boolean(group), group,
           eligible: kind !== 'context' && kind !== 'speculation' && !redacted.test(quote)

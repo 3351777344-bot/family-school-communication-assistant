@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { validatePrepareInput } = require('../app/contracts');
+const { validatePrepareInput } = require('../../app/contracts');
 test('nonempty short context is allowed and scene labels are server owned', () => {
   const result = validatePrepareInput({ scene: 'xueye', sceneName: '伪造场景名', situation: '缺课' });
   assert.equal(result.situation, '缺课'); assert.equal(result.sceneName, '学业警示');

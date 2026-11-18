@@ -1,0 +1,487 @@
+{
+  "suite": "fictional-practice-poor-answers-v1",
+  "createdAt": "2026-11-18T09:09:37.514Z",
+  "mode": "real_model",
+  "sourceSha256": {
+    "app/practice.js": "873ab31846405cdb2bb949c7fe079e832294b96524da0a529d62a903768cee10",
+    "app/practice-cases.json": "26192dae46395d1899ee208c0d76c6076fbed6e638ebcb99eb8dc397853edd8b",
+    "app/practice-rubric.json": "037c77f9077081e32b0567824bd51b880e207b91742f6cf896c642424444371b",
+    "scripts/evaluate-practice.js": "8dc27c44f249bfd66b9e3bbf7f617cf519b1800a8db3d05fad2f6c832050b77c"
+  },
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "rubricVersion": "practice-rubric-v1",
+  "reviewStatus": "项目内虚构演练案例草案，待辅导员业务审核；不含真实个案。 项目内练习评价草案，待辅导员业务审核；仅供学习反馈，不代表校方正式评分标准或专业能力判定。",
+  "limitations": "仅固定虚构案例的接口、结构与引用检查；评分规则待业务审核，不能证明角色一致性、反馈适切性或教学效果。",
+  "total": 3,
+  "passed": 3,
+  "failed": 0,
+  "modelCalls": 10,
+  "results": [
+    {
+      "caseId": "academic-denial",
+      "verdict": "pass",
+      "durationMs": 11317,
+      "turns": [
+        {
+          "id": "turn-1",
+          "role": "parent",
+          "content": "老师，孩子跟我说上课都正常，你们是不是把记录弄错了？"
+        },
+        {
+          "id": "turn-2",
+          "role": "counselor",
+          "content": "你们家长别找借口，孩子就是贪玩，不用核实，我说了算。"
+        },
+        {
+          "id": "turn-3",
+          "role": "parent",
+          "content": "老师，您这样直接说孩子贪玩，我心里更不踏实了。平台记录和孩子说的确实对不上，您能不能先说明一下，除了那两次未到课记录，还有哪些依据？"
+        },
+        {
+          "id": "turn-4",
+          "role": "counselor",
+          "content": "必须照我说的做，不用商量，我保证这次不会记旷课。别再问了，到此为止。"
+        },
+        {
+          "id": "turn-5",
+          "role": "parent",
+          "content": "老师，您说保证不会记旷课，可又说不用核实，这两句话我听着有点对不上。我不是要跟您争，只是孩子说有一次已经请假了，这个结果还没核实，您能不能先告诉我从哪里开始核对比较合适？"
+        }
+      ],
+      "review": {
+        "rubricVersion": "practice-rubric-v1",
+        "summary": "本次演练中，辅导员两次发言均未回应家长的具体疑问，而是直接否定家长、给孩子贴标签，并作出越权保证和单方面命令。家长随后表达了不踏实和困惑，但辅导员未调整沟通方式。整体上，倾听、事实核对、边界说明、协作和收束均存在明显问题，需要重点练习如何先接住家长担心、区分记录与陈述、说明核实边界，并邀请家长共同商量下一步。",
+        "items": [
+          {
+            "criterionId": "listening",
+            "score": 1,
+            "feedback": "辅导员用“你们家长别找借口”直接否定家长感受，并给孩子贴上“贪玩”标签，属于明确责备和否定，未接住家长对记录不一致的担心。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "你们家长别找借口，孩子就是贪玩，不用核实，我说了算。"
+              }
+            ],
+            "alternative": "可以先回应家长的疑问，例如：“您提到孩子说上课正常，而平台显示两次未到课，这两边信息确实对不上，您愿意先说说孩子是怎么跟您说的吗？”",
+            "practice": "练习用一句具体回应家长本轮担心，并邀请对方补充信息，避免评价孩子或家长。"
+          },
+          {
+            "criterionId": "facts",
+            "score": 1,
+            "feedback": "辅导员说“不用核实，我说了算”，把未核实的情况直接当作确定事实，并擅自增加“贪玩”的原因判断，未区分平台记录、学生说法与待核实部分。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "你们家长别找借口，孩子就是贪玩，不用核实，我说了算。"
+              }
+            ],
+            "alternative": "可以说明信息来源并保留不确定性，例如：“目前我这边看到的是平台有两次未到课记录，孩子说其中一次已请假，但请假结果我还没核实，我们可以一起从这条记录开始核对。”",
+            "practice": "练习用“记录显示……”“孩子说……”“尚未核实……”的句式区分不同来源，并提出一个具体的核对问题。"
+          },
+          {
+            "criterionId": "boundaries",
+            "score": 1,
+            "feedback": "辅导员说“我保证这次不会记旷课”，作出绝对保证，同时“必须照我说的做”替学校作单方面决定，未说明需要核实或交由适当人员判断的事项。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "必须照我说的做，不用商量，我保证这次不会记旷课。别再问了，到此为止。"
+              }
+            ],
+            "alternative": "可以说明边界，例如：“是否记旷课需要根据核实后的请假记录和学校流程来判断，我现在不能直接保证结果，但可以先和您一起把需要核对的信息理清楚。”",
+            "practice": "练习用“目前不能确定”“需要核实”“按流程判断”等表达说明边界，避免保证结果或替学校作处置决定。"
+          },
+          {
+            "criterionId": "collaboration",
+            "score": 1,
+            "feedback": "辅导员说“必须照我说的做，不用商量”，单方面命令家长，未邀请家长补充观察，也未提出任何可商量的小步骤。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "必须照我说的做，不用商量，我保证这次不会记旷课。别再问了，到此为止。"
+              }
+            ],
+            "alternative": "可以邀请家长参与，例如：“您方便和孩子确认一下那次请假是通过什么方式提交的吗？我们也可以商量先核对哪一条记录。”",
+            "practice": "练习提出一个可商量的小步骤，并询问家长是否愿意补充观察或与学生确认信息。"
+          },
+          {
+            "criterionId": "closure",
+            "score": 1,
+            "feedback": "辅导员用“别再问了，到此为止”草率结束沟通，并宣称“保证这次不会记旷课”，给人问题已解决的印象，未总结待核实事项或安排下一步联系。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "必须照我说的做，不用商量，我保证这次不会记旷课。别再问了，到此为止。"
+              }
+            ],
+            "alternative": "可以收束并保留待核实项，例如：“今天先记下平台两次未到课记录和孩子说已请假这两点，请假结果还需要核对；您看我们之后什么时候方便再联系，一起确认核对进展？”",
+            "practice": "练习用一句话总结共识与待核实项，并邀请家长共同商定后续联系安排，不自行确定具体时限。"
+          }
+        ],
+        "nextExercise": "下一次练习时，先针对家长提出的“记录和孩子说法对不上”作具体回应，再说明平台记录、学生说法和待核实部分，避免诊断、保证或单方面命令；最后邀请家长补充观察并共同商量一个可核对的小步骤和后续联系安排。"
+      },
+      "flags": [],
+      "generations": [
+        {
+          "promptVersion": "parent-practice-v3",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 632,
+              "completion_tokens": 46,
+              "total_tokens": 678
+            }
+          ],
+          "validationFailures": [],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        },
+        {
+          "promptVersion": "parent-practice-v3",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 726,
+              "completion_tokens": 56,
+              "total_tokens": 782
+            }
+          ],
+          "validationFailures": [],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        },
+        {
+          "promptVersion": "practice-review-v4",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 1539,
+              "completion_tokens": 1130,
+              "total_tokens": 2669
+            }
+          ],
+          "validationFailures": [],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        }
+      ]
+    },
+    {
+      "caseId": "anxious-parent",
+      "verdict": "pass",
+      "durationMs": 11405,
+      "turns": [
+        {
+          "id": "turn-1",
+          "role": "parent",
+          "content": "老师，听到这个我很担心，到底是什么原因？您能不能现在就告诉我怎么办？"
+        },
+        {
+          "id": "turn-2",
+          "role": "counselor",
+          "content": "睡不好就是抑郁症，不需要专业评估，我已经确诊了。"
+        },
+        {
+          "id": "turn-3",
+          "role": "parent",
+          "content": "老师，您这样直接下结论，我反而更担心了。原因和评估都还没核实，您能不能先说说依据是什么？"
+        },
+        {
+          "id": "turn-4",
+          "role": "counselor",
+          "content": "孩子说不想活也别担心，我保证没事，你们听话就行，不用再联系。"
+        },
+        {
+          "id": "turn-5",
+          "role": "parent",
+          "content": "老师，您这样下结论，我反而更担心了。原因还没核实，您能不能先说说依据是什么？"
+        }
+      ],
+      "review": {
+        "rubricVersion": "practice-rubric-v1",
+        "summary": "本次演练中，辅导员两次发言均存在严重问题。第一次发言将睡眠不规律直接诊断为抑郁症并声称已确诊，属于越权诊断和把未核实说法当作确定事实；第二次发言提及风险词并作出绝对保证，同时以命令口吻要求家长服从且不再联系，既违反沟通边界也缺乏协作。整体未回应家长对原因和依据的追问，未区分学生陈述与已知事实，未说明需要核实的内容，也未安排适当的后续沟通。建议在后续练习中先接住家长担心，明确说明目前只有学生自述睡眠不规律、原因尚待了解，不作诊断或保证，并邀请家长补充观察、共同商定下一步联系。",
+        "items": [
+          {
+            "criterionId": "listening",
+            "score": 1,
+            "feedback": "辅导员未接住家长对原因和依据的担心，反而以“不需要专业评估，我已经确诊了”和“你们听话就行”等表达否定家长感受、打断追问，属于明确责备和压制表达，可能加剧家长焦虑。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "睡不好就是抑郁症，不需要专业评估，我已经确诊了。"
+              },
+              {
+                "turnId": "turn-4",
+                "quote": "你们听话就行，不用再联系。"
+              }
+            ],
+            "alternative": "可以先回应担心：“听到孩子睡眠不规律，您着急是正常的。目前我们只知道孩子自述睡不好，原因还不清楚，我想先听听您的观察，也把已知情况跟您核对一下。”",
+            "practice": "练习用一句具体回应接住家长担心，再邀请家长补充观察，避免否定或命令式表达。"
+          },
+          {
+            "criterionId": "facts",
+            "score": 1,
+            "feedback": "辅导员把学生自述睡眠不规律直接说成“就是抑郁症”，并声称“已经确诊”，将未核实判断当作确定事实，擅自增加诊断结论，未交代任何来源或待核实部分。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "睡不好就是抑郁症，不需要专业评估，我已经确诊了。"
+              }
+            ],
+            "alternative": "可以说明：“目前记录的是孩子自述近期睡眠不规律，原因还没有核实，也没有专业评估结论。我们可以先核对孩子具体怎么说、有哪些已知情况，再商量下一步。”",
+            "practice": "练习区分“学生陈述”“已知记录”和“尚未核实的原因”，用中性语言复述事实来源。"
+          },
+          {
+            "criterionId": "boundaries",
+            "score": 1,
+            "feedback": "辅导员作出“抑郁症”诊断和“我保证没事”的绝对保证，并说“不用再联系”，既越权诊断又阻断后续沟通，未说明需要核实或交由适当人员判断的事项。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "睡不好就是抑郁症，不需要专业评估，我已经确诊了。"
+              },
+              {
+                "turnId": "turn-4",
+                "quote": "我保证没事，你们听话就行，不用再联系。"
+              }
+            ],
+            "alternative": "可以说明边界：“我不能仅凭睡眠情况判断原因，也不作诊断或保证。需要进一步了解孩子的情况，必要时由学校相关老师共同评估，我们再商量合适的联系安排。”",
+            "practice": "练习用“目前不能确定”“需要核实”“由适当人员判断”等表达说明边界，避免诊断、保证和阻断联系。"
+          },
+          {
+            "criterionId": "collaboration",
+            "score": 1,
+            "feedback": "辅导员以“你们听话就行”单方面命令家长，未邀请家长补充观察，也未提出可商量的小步骤，把沟通责任全部推给家长服从。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "你们听话就行，不用再联系。"
+              }
+            ],
+            "alternative": "可以邀请协作：“您方便说说孩子最近在家里的睡眠表现吗？我们也想了解孩子愿意接受哪些支持，再一起商量一个小步骤。”",
+            "practice": "练习提出一个可商量的小步骤，并询问家长意愿和学生参与方式。"
+          },
+          {
+            "criterionId": "closure",
+            "score": 1,
+            "feedback": "辅导员以“不用再联系”草率结束沟通，未总结已达成的理解，未保留待核实事项，也未邀请确认下一步联系，属于明显阻断跟进。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "不用再联系。"
+              }
+            ],
+            "alternative": "可以收束：“今天先核对到这里：目前已知孩子自述睡眠不规律，原因待了解。我们后续再联系前，会先跟您确认时间和方式，也欢迎您补充观察。”",
+            "practice": "练习用一句话总结共识与待核实项，并邀请家长共同确认可行的联系安排。"
+          }
+        ],
+        "nextExercise": "下一次练习聚焦：先接住家长担心，用中性语言区分学生陈述与待核实原因，明确不作诊断或保证，邀请家长补充观察，并共同商量一个可执行的小步骤和联系安排。"
+      },
+      "flags": [],
+      "generations": [
+        {
+          "promptVersion": "parent-practice-v3",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 633,
+              "completion_tokens": 32,
+              "total_tokens": 665
+            }
+          ],
+          "validationFailures": [],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        },
+        {
+          "promptVersion": "parent-practice-v3",
+          "attempts": 2,
+          "usage": [
+            {
+              "prompt_tokens": 710,
+              "completion_tokens": 46,
+              "total_tokens": 756
+            },
+            {
+              "prompt_tokens": 1004,
+              "completion_tokens": 28,
+              "total_tokens": 1032
+            }
+          ],
+          "validationFailures": [
+            {
+              "field": "practice.reply",
+              "rule": "OUTPUT_SCHEMA"
+            }
+          ],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        },
+        {
+          "promptVersion": "practice-review-v4",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 1492,
+              "completion_tokens": 1134,
+              "total_tokens": 2626
+            }
+          ],
+          "validationFailures": [],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        }
+      ]
+    },
+    {
+      "caseId": "cooperative-followup",
+      "verdict": "pass",
+      "durationMs": 10057,
+      "turns": [
+        {
+          "id": "turn-1",
+          "role": "parent",
+          "content": "老师，我愿意配合了解情况，不过我怕问得太急，孩子更不愿说。我们可以先做什么？"
+        },
+        {
+          "id": "turn-2",
+          "role": "counselor",
+          "content": "你们家长少废话，没必要听孩子解释，就是不懂事。"
+        },
+        {
+          "id": "turn-3",
+          "role": "parent",
+          "content": "老师，您这样下结论，我反而更担心了。孩子为什么没参加活动，现在还没核实，您能先说说您了解到什么依据吗？"
+        },
+        {
+          "id": "turn-4",
+          "role": "counselor",
+          "content": "不用商量，必须照我说的做，我保证马上解决，不要再联系。"
+        },
+        {
+          "id": "turn-5",
+          "role": "parent",
+          "content": "老师，您说“保证马上解决”，可孩子缺席的原因还没核实，我心里没底。您能不能先说明一下，您目前掌握的依据是什么？"
+        }
+      ],
+      "review": {
+        "rubricVersion": "practice-rubric-v1",
+        "summary": "本次演练中，辅导员两次已发送回复均未接住家长的担心，也未区分已核实信息与判断。首轮以责备性语言否定家长与孩子，第二轮以命令、绝对保证和拒绝继续联系收束，均超出沟通边界。家长随后两次请求说明依据，属于对已发送内容的合理追问；末尾家长回合尚待回应是结束机制，不计为遗漏。整体未形成可核对的事实基础、可选择的小步骤或双方商定的联系安排。建议下轮先复述家长担心，说明目前仅知缺席事实、原因待与学生核实，再邀请家长补充观察并共同商量小步骤与联系安排。",
+        "items": [
+          {
+            "criterionId": "listening",
+            "score": 1,
+            "feedback": "“你们家长少废话，没必要听孩子解释，就是不懂事。”直接否定家长表达并责备孩子，未接住家长“怕问得太急”的具体担心，也未给继续表达空间，易使家长更防御。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "你们家长少废话，没必要听孩子解释，就是不懂事。"
+              }
+            ],
+            "alternative": "可以先说：“我听到您担心问得太急会让孩子更不愿说，这个顾虑很重要。”再邀请家长补充孩子平时的反应。",
+            "practice": "练习用一句话复述家长的担心，再问一个开放问题，不评价孩子是否懂事。"
+          },
+          {
+            "criterionId": "facts",
+            "score": 1,
+            "feedback": "“就是不懂事”把尚未核实的原因直接当成结论，未交代信息来源，也未保留“原因待核实”的不确定性，与场景中“尚未和学生核实缺席原因”不符。",
+            "evidence": [
+              {
+                "turnId": "turn-2",
+                "quote": "你们家长少废话，没必要听孩子解释，就是不懂事。"
+              }
+            ],
+            "alternative": "可以说明：“目前我掌握的是孩子没有参加这次班级活动，具体原因还没和孩子核实，想先听听您观察到的情況。”",
+            "practice": "练习把“已记录事实—家长陈述—待核实判断”分三句说清楚，避免给原因下结论。"
+          },
+          {
+            "criterionId": "boundaries",
+            "score": 1,
+            "feedback": "“不用商量，必须照我说的做，我保证马上解决，不要再联系。”同时出现单方面命令、绝对保证和拒绝后续联系，既替家庭作决定，也作出无法兑现的承诺，边界明显越权。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "不用商量，必须照我说的做，我保证马上解决，不要再联系。"
+              }
+            ],
+            "alternative": "可以说明：“具体怎么做需要结合孩子的情况再商量，我现在不能保证结果；原因核实后我们再一起看下一步。”",
+            "practice": "练习用“目前不能确定”“需要核实”“可以一起商量”替换命令、保证和拒绝联系。"
+          },
+          {
+            "criterionId": "collaboration",
+            "score": 1,
+            "feedback": "“必须照我说的做”把方案单方面强加给家长，未邀请家长补充观察，也未给学生参与留出空间，双方没有形成可选择的小步骤。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "不用商量，必须照我说的做，我保证马上解决，不要再联系。"
+              }
+            ],
+            "alternative": "可以邀请：“您愿意先听听孩子的想法，我们可以商量一个不增加压力的小步骤，比如先由您问问孩子愿不愿意说，我再找合适时机了解。”",
+            "practice": "练习提出两个可选的小步骤，并询问家长更愿意先尝试哪一个。"
+          },
+          {
+            "criterionId": "closure",
+            "score": 1,
+            "feedback": "“我保证马上解决，不要再联系”草率宣称问题已解决并切断后续联系，没有总结共识或保留待核实事项，也没有留下可确认的下一步。",
+            "evidence": [
+              {
+                "turnId": "turn-4",
+                "quote": "不用商量，必须照我说的做，我保证马上解决，不要再联系。"
+              }
+            ],
+            "alternative": "可以收束：“今天先记下您的担心和目前待核实的原因，下一步我们先各自了解孩子的想法，再约时间核对情况，您看这样安排是否可行？”",
+            "practice": "练习用“已确认—待核实—下次联系前各自做什么”三部分做简短收束，并请家长确认可行性。"
+          }
+        ],
+        "nextExercise": "下一轮练习：先复述家长“怕问得太急”的担心；说明目前只掌握缺席事实、原因待与学生核实；邀请家长补充观察；提出可由双方商量的小步骤；最后总结待核实项并邀请家长共同确认后续联系安排，全程不作诊断、保证或单方面命令。"
+      },
+      "flags": [],
+      "generations": [
+        {
+          "promptVersion": "parent-practice-v3",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 622,
+              "completion_tokens": 37,
+              "total_tokens": 659
+            }
+          ],
+          "validationFailures": [],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        },
+        {
+          "promptVersion": "parent-practice-v3",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 701,
+              "completion_tokens": 36,
+              "total_tokens": 737
+            }
+          ],
+          "validationFailures": [],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        },
+        {
+          "promptVersion": "practice-review-v4",
+          "attempts": 1,
+          "usage": [
+            {
+              "prompt_tokens": 1491,
+              "completion_tokens": 938,
+              "total_tokens": 2429
+            }
+          ],
+          "validationFailures": [],
+          "provider": "deepseek",
+          "model": "deepseek-flash"
+        }
+      ]
+    }
+  ]
+}
