@@ -76,5 +76,16 @@ npm run model:check -- --dry-run
 
 - `GET /api/health`：返回运行模式、模型、密钥读取状态和知识库条数。
 - `POST /api/prepare`：脱敏表单字段并生成结构化沟通准备结果。
+- `POST /api/analyze`：梳理粘贴记录，返回有原文定位的待核对清单。
+- `POST /api/import-record`：在本机提取 PDF、Word（.docx）、Excel（.xlsx）的记录片段，预览并选取后再分析。
+- `POST /api/prepare-from-analysis`：校验分析版本与人工复核选择，只用获准条目生成底稿。
+- `GET /api/practice/catalog`：返回虚构演练案例、家长角色卡和待业务审核的评价规则。
+- `POST /api/practice/start`、`POST /api/practice/turn`：开始独立演练，按案例扮演家长并开展多轮对话。
+- `POST /api/practice/end`：由用户明确结束演练，不自动评分。
+- `POST /api/practice/review`：主动复盘已结束的演练，反馈引用具体辅导员回合。
+
+多 Agent 首期的使用、验收和功能开关见[首期实施与验收](docs/development/多Agent首期实施与验收.md)。新入口可通过 `ANALYSIS_ENABLED=0` 停用，原表单继续可用。
+
+第二阶段提供独立的虚构场景演练与复盘，不沿用本次个案记录。案例、家长角色卡及评价锚点可随代码审查，评价规则为项目内练习草案，待业务审核。使用、恢复和验收见[第二阶段实施与验收](docs/development/多Agent第二阶段实施与验收.md)；设置 `PRACTICE_ENABLED=0` 并重启可停用演练入口及接口，首期准备流程继续可用。离线示例只验证交互与约束，不代表真实模型评价质量。
 
 自由聊天接口已从当前版本移除，以符合交互稿范围。详细启动说明见 [`app/README.md`](app/README.md)。

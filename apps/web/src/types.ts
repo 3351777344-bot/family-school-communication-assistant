@@ -84,6 +84,8 @@ export interface Preparation {
   redacted?: string[];
 }
 export interface Health {
+  analysisEnabled?: boolean;
+  practiceEnabled?: boolean;
   mock: boolean;
   provider: string;
   model: string;

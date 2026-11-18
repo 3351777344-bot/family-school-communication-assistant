@@ -18,7 +18,7 @@
     "typecheck": "tsc --noEmit",
     "test": "npm run test:server && npm run test:web",
     "test:server": "node --test apps/tests/*.test.js",
-    "test:web": "tsx --test apps/web/src/state.test.ts"
+    "test:web": "tsx --test apps/web/src/*.test.ts"
   },
   "engines": {
     "node": ">=22.13.0"

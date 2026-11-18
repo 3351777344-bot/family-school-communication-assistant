@@ -443,7 +443,7 @@ export function Results({
                 <p className="muted compact">
                   {stale
                     ? "下列勾选属于上一次结果。"
-                    : "勾选仅作为本次工作提示，刷新或关闭页面后清除。"}
+                    : "记录这次沟通后的待办事项。"}
                 </p>
                 <div className="checklist next-list">
                   {data.next.map((n) => (
@@ -477,7 +477,7 @@ export function Results({
               <h3>请转由人工核实</h3>
               <p>
                 {data.notes || "请先核实情况，再按校内流程处理。"}
-                本次未调用模型，未生成底稿。
+                核实后再准备沟通底稿。
               </p>
               {data.status === "needs_information" && (
                 <ul>
@@ -504,7 +504,7 @@ export function Results({
       )}
       {(data.flags.length > 0 || !!data.redacted?.length) && (
         <div className="footnotes">
-          <h3>本次结果的使用说明</h3>
+          <h3>补充提示</h3>
           <ul>
             {data.flags.map((flag, i) => (
               <li key={i}>{flag}</li>
@@ -513,7 +513,7 @@ export function Results({
           {!!data.redacted?.length && (
             <p>
               已替换检测到的：{data.redacted.join("、")}
-              。仍需人工检查其他身份线索。
+              ，请核对是否还有需要隐去的信息。
             </p>
           )}
         </div>

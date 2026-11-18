@@ -184,3 +184,56 @@ test("follow-up checks stay on the current result across failure and reset on re
   const fresh = reducer(retry, { type: "success", id: 3, data: { ...result, inputRevision: stale.inputRevision } });
   assert.deepEqual(fresh.nextChecks, []);
 });
+
+import { initialReviews, approvedReviews, validateAnalysis } from "./analysis";
+
+test("analysis requires separate review and disclosure decisions; model flags do not grant approval", () => {
+  const reviews = initialReviews([{ id: "one", start: 0, end: 2, quote: "记录", source: "平台", kind: "record", uncertain: false, reviewStatus: "confirmed", disclosable: true }]);
+  assert.equal(approvedReviews(reviews).length, 0);
+  assert.equal(approvedReviews([{ ...reviews[0], reviewStatus: "confirmed" }]).length, 0);
+  assert.equal(approvedReviews([{ ...reviews[0], disclosable: true }]).length, 0);
+  assert.equal(approvedReviews([{ ...reviews[0], reviewStatus: "confirmed", disclosable: true }]).length, 1);
+});
+
+test("analysis rejects late versions, invented spans, and duplicate identifiers", () => {
+  const valid = { status: "review", analysisId: "a1", inputRevision: 4, items: [{ id: "one", start: 0, end: 2, quote: "记录", source: "平台", kind: "record" }], questions: [], conflicts: [], flags: [] };
+  assert.equal(validateAnalysis(valid, "记录", 4).analysisId, "a1");
+  assert.throws(() => validateAnalysis(valid, "记录", 5));
+  assert.throws(() => validateAnalysis(valid, "改动", 4));
+  assert.throws(() => validateAnalysis({ ...valid, items: [...valid.items, ...valid.items] }, "记录", 4));
+});
+
+test("changing approved selection invalidates old draft confirmation and copy", () => {
+  const old = confirmed(loaded());
+  assert.equal(canCopyDraft(old), true);
+  const changed = reducer(old, { type: "form", patch: { extra: JSON.stringify([{ id: "one", disclosable: false }]) } });
+  assert.equal(isStale(changed), true);
+  assert.equal(canCopyDraft(changed), false);
+  assert.equal(canConfirmDraft(changed), false);
+});
+
+import { selectedImportText, validateImportFile, validateImportedRecord, MAX_IMPORT_BYTES } from "./record-import";
+
+test("record import validates supported formats and exact upload limit", () => {
+  validateImportFile({ name: "虚构.PDF", size: MAX_IMPORT_BYTES });
+  validateImportFile({ name: "虚构.docx", size: 1 });
+  validateImportFile({ name: "虚构.xlsx", size: 1 });
+  assert.throws(() => validateImportFile({ name: "旧格式.doc", size: 1 }));
+  assert.throws(() => validateImportFile({ name: "虚构.pdf", size: MAX_IMPORT_BYTES + 1 }));
+  assert.throws(() => validateImportFile({ name: "虚构.pdf", size: 0 }));
+});
+
+test("import selection preserves source labels, edits and full oversized text without truncation", () => {
+  const segments = [{ id: "a", label: "第 1 页", text: "未选择内容" }, { id: "b", label: "私密表名 · 第 2 行", text: "学生说已提交" }];
+  assert.equal(selectedImportText(segments, ["b"], {}, { b: "工作表 · 第 2 行" }), "【导入来源：工作表 · 第 2 行】\n学生说已提交");
+  const long = "字".repeat(1501);
+  assert.ok(selectedImportText(segments, ["b"], { b: long }).endsWith(long));
+  assert.equal(selectedImportText(segments, [], {}), "");
+});
+
+test("import parser rejects malformed response and duplicated segment identifiers", () => {
+  const data = { format: "pdf", segments: [{ id: "a", label: "第 1 页", text: "虚构记录" }], warnings: [] };
+  assert.equal(validateImportedRecord(data).segments.length, 1);
+  assert.throws(() => validateImportedRecord({ ...data, warnings: [12] }));
+  assert.throws(() => validateImportedRecord({ ...data, segments: [...data.segments, ...data.segments] }));
+});

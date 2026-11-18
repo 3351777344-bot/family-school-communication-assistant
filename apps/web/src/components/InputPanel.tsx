@@ -82,11 +82,10 @@ export function InputPanel({
                 >
                   {label}
                   {allowedScenes && !allowedScenes.includes(id)
-                    ? "（未授权）"
+                    ? "（暂不可用）"
                     : ""}
                 </option>
               ))}
-              <option disabled>危机前期（待校内审核）</option>
             </select>
           </label>
           <div className="field">
@@ -108,7 +107,7 @@ export function InputPanel({
                     factsRef.current?.focus();
                   }}
                 >
-                  填入虚构示例
+                  试试示例
                 </button>
               )}
             </div>
@@ -126,7 +125,7 @@ export function InputPanel({
               aria-describedby="situation-hint"
             />
             <span id="situation-hint" className="field-meta">
-              试用时请只填虚构信息
+              描述具体事件，保留信息来源
               <span>{form.situation.length}/1500</span>
             </span>
           </div>
@@ -134,7 +133,7 @@ export function InputPanel({
             <div className="notice" role="status">
               <strong>学生要求对家长保密</strong>
               <p>
-                底稿仍会生成，但是否告知家长由你判断。系统不替你确认可告知范围，也不认为生成内容等于可以对外披露。
+                请先确认可向家长说明的范围，再核对底稿。
               </p>
             </div>
           )}
@@ -149,7 +148,7 @@ export function InputPanel({
             </summary>
             <div className="optional-fields-body">
               <label className="field">
-                家长反应预设
+                家长沟通情况
                 <select
                   value={form.parentReactionPreset}
                   onChange={(event) =>
@@ -183,7 +182,7 @@ export function InputPanel({
                 />
               </label>
               <label className="field">
-                学生意愿预设
+                学生沟通意愿
                 <select
                   value={form.studentWishPreset}
                   onChange={(event) =>

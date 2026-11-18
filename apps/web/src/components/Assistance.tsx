@@ -43,7 +43,7 @@ export function Assistance({ status, onClose }: {
         <h3>{title}</h3>
         <ol className="assistance-steps">{steps.map(step => <li key={step}>{step}</li>)}</ol>
       </div>
-      <p>具体联系人、入口与响应要求待学校确认。请从学校现有渠道联系。打开本提示不会发起或完成转介。</p>
+      <p>请通过学校现有渠道联系相关人员。</p>
       <div className="dialog-actions">
         <button className="primary" onClick={onClose}>返回工作台</button>
       </div>

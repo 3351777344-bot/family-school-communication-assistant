@@ -14,20 +14,24 @@ export async function prepare(
   const body = await response.json().catch(() => null);
   if (!response.ok || !body?.ok)
     throw new Error(body?.error || "服务暂时不可用，请稍后重试。");
-  const data = body.data;
-  const hasDraft = typeof data?.draft === "string" && Boolean(data.draft.trim());
+  return validatePreparation(body.data, inputRevision);
+}
+
+export function validatePreparation(data: unknown, inputRevision: number): Preparation {
+  const value = data as Preparation;
+  const hasDraft = typeof value?.draft === "string" && Boolean(value.draft.trim());
   if (
-    !data ||
-    data.inputRevision !== inputRevision ||
-    !preparationStatuses.includes(data.status) ||
-    (data.status === "manual_review" ? data.draft !== null : !hasDraft) ||
-    !Array.isArray(data.points) ||
-    !Array.isArray(data.steps) ||
-    !Array.isArray(data.risks) ||
-    !Array.isArray(data.flags) ||
-    !Array.isArray(data.faq) ||
-    !Array.isArray(data.next)
+    !value ||
+    value.inputRevision !== inputRevision ||
+    !preparationStatuses.includes(value.status) ||
+    (value.status === "manual_review" ? value.draft !== null : !hasDraft) ||
+    !Array.isArray(value.points) ||
+    !Array.isArray(value.steps) ||
+    !Array.isArray(value.risks) ||
+    !Array.isArray(value.flags) ||
+    !Array.isArray(value.faq) ||
+    !Array.isArray(value.next)
   )
     throw new Error("服务返回的结果不完整，请重试。");
-  return data;
+  return value;
 }
