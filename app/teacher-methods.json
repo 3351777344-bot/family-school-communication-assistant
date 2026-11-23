@@ -1,5 +1,245 @@
 [
   {
+    "id": "teacher-individual-no-label",
+    "version": 1,
+    "title": "先了解具体需要，避免贴标签",
+    "reviewStatus": "待老师核对",
+    "priority": 4,
+    "sourceLocation": {
+      "title": "心理健康教育工作模块讲义与课件更新20260402 · 关心关爱要点",
+      "locator": "1.2.2 讲义第 7 页"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "不要给他们“贴标签”",
+          "action": "先听学生和家长描述具体情况及当前需要，不根据家庭背景或某种表现给人下结论；共同商量适合的支持。原资料面向高校辅导员，迁移到家校沟通待老师核对。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-shared-needs",
+    "version": 1,
+    "title": "确认双方共同希望解决的问题",
+    "reviewStatus": "待老师核对",
+    "scenes": [
+      "xinli"
+    ],
+    "sourceLocation": {
+      "title": "心理健康教育工作模块讲义与课件更新20260402 · 家校沟通策略",
+      "locator": "3.4.2 课件第 8 页"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "尝试找到双方需求的共同点，为达成共识做好铺垫",
+          "action": "先听家长和学生各自希望解决什么，确认理解是否准确；涉及学生隐私时先核对可告知范围。不要替任何一方下结论。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-resource-options",
+    "version": 1,
+    "title": "把支持安排说具体并核实",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "心理健康教育工作模块讲义与课件更新20260402 · 陷入困境学生的沟通",
+      "locator": "3.1.3 师生沟通策略"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "资源可视化：提供可操作的解决方案",
+          "action": "与学生商量一项近期可行的支持，并核对可用资源、适用条件和负责人；不承诺未经确认的政策或结果。原资料面向师生谈话，迁移至家校沟通待核对。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-focus-question",
+    "version": 1,
+    "title": "请对方选择先谈的问题",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "系统咨询的言语范式及应用",
+      "locator": "PDF 第 14 页 · 沟通提问"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "现在你最想聚焦哪个问题？",
+          "action": "对方同时提出多个问题时，先询问想从哪一项谈起，再逐项核对；不把咨询技术用于诊断。该方法迁移至家长沟通仍待核对。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-context-behavior",
+    "version": 1,
+    "title": "把概括还原为可核对的行为",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "系统咨询的理论和技术",
+      "locator": "PDF 第 29 页 · 情境化"
+    },
+    "supports": [
+      "review-observations"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "将问题细致化，还原为行为",
+          "action": "把笼统评价改为已经核实、可以告知的具体观察，并邀请对方补充；不推断行为背后的家庭原因。该原则从系统咨询课件迁移，待老师核对。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-listen-verify-needs",
+    "version": 1,
+    "title": "倾听后核对对方的需要",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "心理健康教育工作模块讲义与课件更新20260402 · 师生沟通策略",
+      "locator": "3.1.1.3.2 倾听—情绪识别—开放式提问"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "这一层往往需要跟学生确认ta期待和渴望的是什么",
+          "action": "先听对方说完，用自己的话复述并询问理解是否准确；不要根据只言片语断定对方的需要。原资料面向师生谈话，此处用于家长沟通的迁移仍待核对。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-parent-concerns",
+    "version": 1,
+    "title": "先了解家长对建议的顾虑",
+    "reviewStatus": "待老师核对",
+    "priority": 4,
+    "when": {
+      "parentReaction": [
+        "disagrees",
+        "refuses"
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "sourceLocation": {
+      "title": "心理健康教育工作模块讲义与课件更新20260402 · 家校沟通策略",
+      "locator": "3.4.2.2 与家长进行有效沟通的方法"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "理解家长对于就医的恐惧和担心，理解家长的种种顾虑",
+          "action": "当家长对寻求专业帮助有顾虑时，先询问具体担心并倾听；不预设原因，不代替专业人员诊断或承诺结果。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-ask-with-space",
+    "version": 1,
+    "title": "提问后留出回答空间",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "心理健康教育工作模块讲义与课件更新20260402 · 师生沟通策略",
+      "locator": "3.1.1.3.2 倾听—情绪识别—开放式提问"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "不要连环追问：问1个问题后，留足沉默时间",
+          "action": "一次问一个具体问题，给对方时间回答；不要预设回答或催促。原文用于师生谈话，迁移到家长沟通需核对。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-conflict-focus",
+    "version": 1,
+    "title": "冲突中聚焦问题和共同目标",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "心理健康教育工作模块讲义与课件更新20260402 · 师生沟通策略",
+      "locator": "3.1.2 化解阻抗与处理冲突"
+    },
+    "supports": [
+      "return-to-records",
+      "study-support"
+    ],
+    "passages": {
+      "return-to-records": [
+        {
+          "quote": "聚焦问题而非人，寻求共同目标，探索替代方案",
+          "action": "双方有分歧时先核对具体问题，询问双方希望解决什么，不评价对方人格。原文用于师生谈话，迁移到家长沟通需核对。"
+        }
+      ],
+      "study-support": [
+        {
+          "quote": "聚焦问题而非人，寻求共同目标，探索替代方案",
+          "action": "先确认双方共同希望改善的问题，再与学生商量能尝试的支持。原文用于师生谈话，迁移到家长沟通需核对。"
+        }
+      ]
+    }
+  },
+  {
+    "id": "teacher-private-information",
+    "version": 1,
+    "title": "谨慎处理学生隐私",
+    "reviewStatus": "待老师核对",
+    "priority": 4,
+    "when": {
+      "studentWish": [
+        "confidential"
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "sourceLocation": {
+      "title": "心理健康教育工作模块讲义与课件更新20260402 · 辅导员的职责与工作边界",
+      "locator": "1.1.1 辅导员的职责、角色定位与工作边界"
+    },
+    "supports": [
+      "check-disclosure"
+    ],
+    "passages": {
+      "check-disclosure": [
+        {
+          "quote": "要注意对学生的个人隐私进行保密，不随意泄露",
+          "action": "联系家长前核对学生意愿与可告知范围；遇安全问题按校内流程和专业研判处理，不作绝对保密承诺。"
+        }
+      ]
+    }
+  },
+  {
     "id": "teacher-listen-facts",
     "version": 1,
     "title": "倾听事实并留出核对空间",
@@ -221,6 +461,12 @@
     "version": 1,
     "title": "把“保证不说出去”换成说清边界",
     "reviewStatus": "待老师核对",
+    "priority": 4,
+    "when": {
+      "studentWish": [
+        "confidential"
+      ]
+    },
     "sourceLocation": {
       "title": "高校心理辅导员共情沟通实务培训课件",
       "locator": "模块三 · 杀手句式→替换句式（课件照片 97）"
@@ -534,5 +780,2249 @@
         }
       ]
     }
+  },
+  {
+    "id": "teacher-009-1",
+    "version": 1,
+    "title": "先说清保密的边界再谈",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "1.1.1资源1视频-辅导员在心理健康教育工作中的职责、角色定位与工作边界.docx",
+      "locator": "1.1.1 讲义全文"
+    },
+    "supports": [
+      "check-disclosure"
+    ],
+    "passages": {
+      "check-disclosure": [
+        {
+          "quote": "隐私保密是建立信任的基石，但也并非绝对",
+          "action": "谈隐私前先说清哪些情况会告知、告知给谁，不作绝对保密承诺。"
+        }
+      ]
+    },
+    "when": {
+      "studentWish": [
+        "confidential"
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-009-2",
+    "version": 1,
+    "title": "不越位做诊断和干预",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "1.1.1资源1视频-辅导员在心理健康教育工作中的职责、角色定位与工作边界.docx",
+      "locator": "1.1.1 讲义全文"
+    },
+    "supports": [
+      "check-policy"
+    ],
+    "passages": {
+      "check-policy": [
+        {
+          "quote": "我们可以进行初步识别、陪伴与支持，但不要超出自己的职责和能力，擅自进行诊断或干预",
+          "action": "只做识别、陪伴与支持，超出能力范围时转介，不自行诊断。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-009-3",
+    "version": 1,
+    "title": "先分清管理、支持与专业服务的边界",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "1.1.1资源1视频-辅导员在心理健康教育工作中的职责、角色定位与工作边界.docx",
+      "locator": "1.1.1 讲义全文"
+    },
+    "supports": [
+      "check-policy"
+    ],
+    "passages": {
+      "check-policy": [
+        {
+          "quote": "清晰区分辅导员的管理职责、心理支持与专业心理服务的边界",
+          "action": "说明自己能做什么、不能做什么，专业判断交给心理中心。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-009-4",
+    "version": 1,
+    "title": "同时说清能做什么和不能做什么",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "1.1.1资源1视频-辅导员在心理健康教育工作中的职责、角色定位与工作边界.docx",
+      "locator": "1.1.1 讲义全文"
+    },
+    "supports": [
+      "check-policy"
+    ],
+    "passages": {
+      "check-policy": [
+        {
+          "quote": "我们不仅要知道辅导员在心理工作中“做什么”，同样需要注意一些工作的边界问题",
+          "action": "介绍工作内容时一并说明边界，避免家长误解职责。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-014-1",
+    "version": 1,
+    "title": "先接触再判断，不凭印象归类",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "1.2.2资源4视频-大学生的心理健康状况与关心关爱要点.docx",
+      "locator": "1.2.2 讲义全文"
+    },
+    "supports": [
+      "review-observations"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "有些同学可能就是个性原因喜欢独处，另一些可能才是需要帮助的社交、人际困难等，具体如何也是需要我们去实际接触才能了解的",
+          "action": "把“孤僻”当作待核实的观察，先接触了解再判断是否需要帮助。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-014-2",
+    "version": 1,
+    "title": "回应独特需求，不用模板",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "1.2.2资源4视频-大学生的心理健康状况与关心关爱要点.docx",
+      "locator": "1.2.2 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "只有这样才能有效回应学生的独特需求，提供真诚、有温度的关心关爱",
+          "action": "先了解这名学生的具体情况，再决定怎么支持，不用统一话术。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-014-3",
+    "version": 1,
+    "title": "先明确关注点，再谈关心",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "1.2.2资源4视频-大学生的心理健康状况与关心关爱要点.docx",
+      "locator": "1.2.2 讲义全文"
+    },
+    "supports": [
+      "review-observations"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "在明确关注要点的基础上强化对重点学生的关心关爱",
+          "action": "把关注点说具体（学业、人际、时间节点），再商量怎么关心。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-019-1",
+    "version": 1,
+    "title": "听出情绪，不只记事实",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效沟通之道.docx",
+      "locator": "3.1.1 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "听情感（中层）：在这一层我们需要捕捉学生的情绪信号",
+          "action": "听完事实后，用一句话说出对方可能的情绪，并请对方确认。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-019-2",
+    "version": 1,
+    "title": "情绪没落地前先别给方案",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效沟通之道.docx",
+      "locator": "3.1.1 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "避免过早解决问题：情绪未宣泄时，建议和指导可能无效",
+          "action": "家长还在说情绪时先接住，等对方说完再谈怎么办。"
+        }
+      ]
+    },
+    "priority": 5,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-019-3",
+    "version": 1,
+    "title": "不打断、不评价，允许沉默",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效沟通之道.docx",
+      "locator": "3.1.1 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "深度谈话的基石：尊重、真诚、不评价和不打断、接纳性沉默和简单回应",
+          "action": "对方说话时不插话、不评判，沉默时等几秒再回应。"
+        }
+      ]
+    },
+    "priority": 5,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-019-4",
+    "version": 1,
+    "title": "先让对方说完，再谈对错",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效沟通之道.docx",
+      "locator": "3.1.1 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "学生倾诉时，别急着评判对错，虽然我们需要引导和教育，但先以引导学生充分表达为主",
+          "action": "先请对方把情况讲完，不中途纠正，之后再核对。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-019-5",
+    "version": 1,
+    "title": "敏感话题前先破冰",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效沟通之道.docx",
+      "locator": "3.1.1 讲义全文"
+    },
+    "supports": [
+      "review-records"
+    ],
+    "passages": {
+      "review-records": [
+        {
+          "quote": "避免直接切入敏感问题，先用中性话题破冰",
+          "action": "先问一句近况或具体小事，再进入敏感问题。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-019-6",
+    "version": 1,
+    "title": "先尊重想法，不急着否定",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效沟通之道.docx",
+      "locator": "3.1.1 讲义全文"
+    },
+    "supports": [
+      "respect-wish"
+    ],
+    "passages": {
+      "respect-wish": [
+        {
+          "quote": "比如有学生说想休学创业，别第一时间否定，而是尊重他的想法",
+          "action": "学生提出特别想法时，先问清理由，不第一时间否定。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-019-7",
+    "version": 1,
+    "title": "在不违规前提下尊重选择",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效沟通之道.docx",
+      "locator": "3.1.1 讲义全文"
+    },
+    "supports": [
+      "respect-wish"
+    ],
+    "passages": {
+      "respect-wish": [
+        {
+          "quote": "无论他们的想法多特别，我们首先在不违法违规违纪的前提下，尊重他们的感受和选择",
+          "action": "先说明边界，再尊重学生自己的选择，不替其决定。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-019-8",
+    "version": 1,
+    "title": "用短句传递“我在听”",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效沟通之道.docx",
+      "locator": "3.1.1 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "简单回应则是传递 “我在听，我理解” 的信号",
+          "action": "对方停顿或情绪上来时，用“嗯，我在听”这类短句回应。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-020-1",
+    "version": 1,
+    "title": "先建关系，再放慢提问",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效狗沟通之道.pptx",
+      "locator": "3.1.1 课件"
+    },
+    "supports": [
+      "review-records"
+    ],
+    "passages": {
+      "review-records": [
+        {
+          "quote": "先建立信任，放缓提问节奏",
+          "action": "第一次沟通先建立关系，问题一次只问一个。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-020-2",
+    "version": 1,
+    "title": "把需求说出来并求证",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效狗沟通之道.pptx",
+      "locator": "3.1.1 课件"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "在深层需要与学生确认需求是什么",
+          "action": "把猜到的需求说出来，再问“是这样吗”。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-020-3",
+    "version": 1,
+    "title": "提问不带预设答案",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效狗沟通之道.pptx",
+      "locator": "3.1.1 课件"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "不要预设答案",
+          "action": "问开放问题，不把“是不是因为……”塞进问题里。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-020-4",
+    "version": 1,
+    "title": "问题要具体到一件事",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效狗沟通之道.pptx",
+      "locator": "3.1.1 课件"
+    },
+    "supports": [
+      "review-observations"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "不要抽象空泛",
+          "action": "把“最近怎么样”换成“这周哪几天没交作业”。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-020-5",
+    "version": 1,
+    "title": "把观察变成提问，不变成结论",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效狗沟通之道.pptx",
+      "locator": "3.1.1 课件"
+    },
+    "supports": [
+      "review-observations"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "将观察到的信号转化为开放式提问，而非武断结论",
+          "action": "看到信号时用提问核对，不说“他就是不想学”。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-020-6",
+    "version": 1,
+    "title": "先接住事实层，再谈情绪",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.1师生沟通策略打开有效狗沟通之道.pptx",
+      "locator": "3.1.1 课件"
+    },
+    "supports": [
+      "review-records"
+    ],
+    "passages": {
+      "review-records": [
+        {
+          "quote": "表层关注学生表述的客观事实",
+          "action": "先复述对方说的事实（时间、次数），再问感受。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-021-1",
+    "version": 1,
+    "title": "请求要具体、正向，不用命令",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.2师生沟通策略化解阻抗处理冲突.docx",
+      "locator": "3.1.2 讲义全文"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "请求：提出具体、可操作的、正向的请求（而非要求或命令）",
+          "action": "把“你要多管管孩子”换成“这周能否每天问一次作业”。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-021-2",
+    "version": 1,
+    "title": "说出未被满足的核心需要",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.2师生沟通策略化解阻抗处理冲突.docx",
+      "locator": "3.1.2 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "需要： 识别并表达谈话中未被满足的核心需求（如安全、尊重、理解）",
+          "action": "把对方的需要说出来（被尊重、被理解），再请对方确认。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-021-3",
+    "version": 1,
+    "title": "先接纳情绪，不争对错",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.2师生沟通策略化解阻抗处理冲突.docx",
+      "locator": "3.1.2 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "接纳情绪（不否认感受）、避免对抗（不争论对错）、理解保护性（尊重防御机制）",
+          "action": "对方激动时先承认感受，不辩论谁对谁错。"
+        }
+      ]
+    },
+    "when": {
+      "parentReaction": [
+        "refuses"
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-021-4",
+    "version": 1,
+    "title": "按观察—感受—需求—请求说话",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.2师生沟通策略化解阻抗处理冲突.docx",
+      "locator": "3.1.2 讲义全文"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "观察行为（非评判）→ 表达感受（非指责）→ 挖掘需求（共同需要）→ 提出请求（非命令）",
+          "action": "先说观察到什么，再说感受，再谈需要，最后提具体请求。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-021-5",
+    "version": 1,
+    "title": "说行为，不贴标签",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.2师生沟通策略化解阻抗处理冲突.docx",
+      "locator": "3.1.2 讲义全文"
+    },
+    "supports": [
+      "review-observations"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "描述具体行为而非贴标签",
+          "action": "把“孩子很懒”换成“这周有三天没交作业”。"
+        }
+      ]
+    },
+    "priority": 5,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-021-6",
+    "version": 1,
+    "title": "把生气和沉默看作自我保护",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.2师生沟通策略化解阻抗处理冲突.docx",
+      "locator": "3.1.2 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "情绪防御：学生可能因谈话触及敏感问题，用生气、沉默等方式保护自己",
+          "action": "对方沉默或发火时，不追问，先说“我可能问得太直接了”。"
+        }
+      ]
+    },
+    "when": {
+      "parentReaction": [
+        "refuses"
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-022-1",
+    "version": 1,
+    "title": "开口别强势指责",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.2师生沟通策略化解阻抗处理冲突.pptx",
+      "locator": "3.1.2 课件"
+    },
+    "supports": [
+      "review-records"
+    ],
+    "passages": {
+      "review-records": [
+        {
+          "quote": "若辅导员语气上来就强势、指责，易让学生反感，引发对抗情绪，缺乏破冰铺垫",
+          "action": "第一句先说明来意，不用“你怎么又……”开头。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-022-2",
+    "version": 1,
+    "title": "只讲问题会让人闭嘴",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.2师生沟通策略化解阻抗处理冲突.pptx",
+      "locator": "3.1.2 课件"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "不理解学生感受，只顾说问题，会让学生觉得被忽视，选择沉默抵触",
+          "action": "先说“我理解这事不容易”，再讲记录。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-022-3",
+    "version": 1,
+    "title": "把不认同看作表达，不是对着干",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.2师生沟通策略化解阻抗处理冲突.pptx",
+      "locator": "3.1.2 课件"
+    },
+    "supports": [
+      "return-to-records"
+    ],
+    "passages": {
+      "return-to-records": [
+        {
+          "quote": "师生对问题看法不同，学生不认同辅导员观点，通过阻抗表达不满",
+          "action": "对方不同意时先请他说出不同在哪，不急着说服。"
+        }
+      ]
+    },
+    "when": {
+      "parentReaction": [
+        "disagrees"
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-022-4",
+    "version": 1,
+    "title": "先回应“怕被说出去”的担心",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.2师生沟通策略化解阻抗处理冲突.pptx",
+      "locator": "3.1.2 课件"
+    },
+    "supports": [
+      "check-disclosure"
+    ],
+    "passages": {
+      "check-disclosure": [
+        {
+          "quote": "对辅导员缺乏信任，担心谈话内容外泄或不被理解，从而产生抵触",
+          "action": "先说明哪些内容会记录、告知谁，再继续。"
+        }
+      ]
+    },
+    "when": {
+      "parentReaction": [
+        "refuses"
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-022-5",
+    "version": 1,
+    "title": "始终盯住问题，不评价人",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.2师生沟通策略化解阻抗处理冲突.pptx",
+      "locator": "3.1.2 课件"
+    },
+    "supports": [
+      "return-to-records"
+    ],
+    "passages": {
+      "return-to-records": [
+        {
+          "quote": "始终聚焦问题本身",
+          "action": "讨论分歧时回到具体事情，不评价对方人格。"
+        }
+      ]
+    },
+    "when": {
+      "parentReaction": [
+        "disagrees"
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-023-1",
+    "version": 1,
+    "title": "支持不等于治疗，该转介就转介",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.3师生沟通与陷入困境学生的深度沟通与引导.pptx",
+      "locator": "3.1.3 课件"
+    },
+    "supports": [
+      "check-policy"
+    ],
+    "passages": {
+      "check-policy": [
+        {
+          "quote": "区分心理支持（倾听共情）与心理治疗（转介专业人士）",
+          "action": "说明自己提供倾听支持，专业治疗由专业人员负责。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-023-2",
+    "version": 1,
+    "title": "允许哭，不急着劝",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.3师生沟通与陷入困境学生的深度沟通与引导.pptx",
+      "locator": "3.1.3 课件"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "允许情绪释放“想哭就哭一会儿，我陪着你",
+          "action": "对方哭时递纸巾，说“想哭就哭一会儿，我陪着你”。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-023-3",
+    "version": 1,
+    "title": "尊重选择并留回访",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.3师生沟通与陷入困境学生的深度沟通与引导.pptx",
+      "locator": "3.1.3 课件"
+    },
+    "supports": [
+      "contact-time"
+    ],
+    "passages": {
+      "contact-time": [
+        {
+          "quote": "尊重选择：“我理解你的顾虑”→告知资源随时可用→约定回访时间",
+          "action": "先说我理解顾虑，再告知资源，最后约定何时再联系。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-023-4",
+    "version": 1,
+    "title": "先稳情绪，再看支持，再谈转介",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.3师生沟通与陷入困境学生的深度沟通与引导.pptx",
+      "locator": "3.1.3 课件"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "情绪状态确认、社会支持系统梳理、专业转介建议",
+          "action": "按情绪—支持—转介三步谈，不跳步。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-023-5",
+    "version": 1,
+    "title": "先稳情绪，再协助申请资源",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.3师生沟通与陷入困境学生的深度沟通与引导.pptx",
+      "locator": "3.1.3 课件"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "稳定情绪，协助申请帮扶资源",
+          "action": "情绪稳定后再一起看有哪些可申请的帮扶。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-023-6",
+    "version": 1,
+    "title": "把需求和支持政策对上",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.3师生沟通与陷入困境学生的深度沟通与引导.pptx",
+      "locator": "3.1.3 课件"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "情感需求识别、校内外援助政策解读",
+          "action": "先确认需求，再说明校内外有哪些可用政策。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-024-1",
+    "version": 1,
+    "title": "先疏导情绪，同时推进问题",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.3师生沟通策略与陷入困境学生的深度沟通与引导.docx",
+      "locator": "3.1.3 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "以疏导情绪但伴随问题解决为主",
+          "action": "不要只安抚或只讲方案，两件事一起做。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-024-2",
+    "version": 1,
+    "title": "先给情绪出口，再问原因",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.3师生沟通策略与陷入困境学生的深度沟通与引导.docx",
+      "locator": "3.1.3 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "给情绪出口，建立信任后再问原因",
+          "action": "对方情绪上来时先接住，等稳下来再问原因。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-024-3",
+    "version": 1,
+    "title": "回应要具体、可实现",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.3师生沟通策略与陷入困境学生的深度沟通与引导.docx",
+      "locator": "3.1.3 讲义全文"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "因此，我们应该注意给出回应是可实现的、具体的",
+          "action": "不说“学校会关照”，说“这周先和任课老师约一次”。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-024-4",
+    "version": 1,
+    "title": "先确认最困扰的点",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.3师生沟通策略与陷入困境学生的深度沟通与引导.docx",
+      "locator": "3.1.3 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "倾听→确认事实：“这件事哪里最让你困扰？",
+          "action": "听完后问一句“这件事哪里最让你困扰”。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-024-5",
+    "version": 1,
+    "title": "看法不一致时先别急着纠正",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.1.3师生沟通策略与陷入困境学生的深度沟通与引导.docx",
+      "locator": "3.1.3 讲义全文"
+    },
+    "supports": [
+      "return-to-records"
+    ],
+    "passages": {
+      "return-to-records": [
+        {
+          "quote": "我们应避免因学生理解和老师的想法不一致而导致的学生与老师之间进一步的不信任",
+          "action": "发现双方理解不同，先记录差异，不当场纠正。"
+        }
+      ]
+    },
+    "when": {
+      "parentReaction": [
+        "disagrees"
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-045-1",
+    "version": 1,
+    "title": "不评价对方的情绪和想法",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.4.2家校沟通策略.pptx",
+      "locator": "3.4.2 课件"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "要带着非评判的态度，不去评价对方的情绪、认知，甚至不合理信念",
+          "action": "即使觉得对方想法不合理，也先描述、不评判。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-045-2",
+    "version": 1,
+    "title": "先让对方感到被允许",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.4.2家校沟通策略.pptx",
+      "locator": "3.4.2 课件"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "看到和接纳对方的情绪，让对方感到被允许、被理解、被支持",
+          "action": "用一句话承认对方的情绪是合理的，再往下谈。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-045-3",
+    "version": 1,
+    "title": "说出对方的需求和期待",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.4.2家校沟通策略.pptx",
+      "locator": "3.4.2 课件"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "理解对方的需求，看到对方的期待",
+          "action": "把对方想要的结果说出来，请对方确认。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-045-4",
+    "version": 1,
+    "title": "关系没建立前先共情",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.4.2家校沟通策略.pptx",
+      "locator": "3.4.2 课件"
+    },
+    "supports": [
+      "review-records"
+    ],
+    "passages": {
+      "review-records": [
+        {
+          "quote": "共情适用于辅导员与家长建立关系的阶段",
+          "action": "第一次联系先共情，不急着给建议。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-046-1",
+    "version": 1,
+    "title": "听语言背后的情绪",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.4.2资源4视频-家校沟通策略.docx",
+      "locator": "3.4.2 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "因此，我们要注意观察，当事人的语言背后隐藏着什么样的情绪",
+          "action": "听到“算了”“随便”时，先猜情绪再求证。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-046-2",
+    "version": 1,
+    "title": "替对方说出情绪的名字",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.4.2资源4视频-家校沟通策略.docx",
+      "locator": "3.4.2 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "如果我们能帮助对方识别和命名的TA的情绪，那么TA的情绪中很大一部分就可以获得释放，从而减小压力",
+          "action": "用“你是担心……吗”帮对方命名情绪，再请确认。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-046-3",
+    "version": 1,
+    "title": "让家长看到目标一致",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.4.2资源4视频-家校沟通策略.docx",
+      "locator": "3.4.2 讲义全文"
+    },
+    "supports": [
+      "return-to-records"
+    ],
+    "passages": {
+      "return-to-records": [
+        {
+          "quote": "让家长感到被理解、被支持，最终明白自己与辅导员的工作目标是一致而非冲突的",
+          "action": "明确说“我们的目标都是让孩子好起来”。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "when": {
+      "parentReaction": [
+        "disagrees"
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-046-4",
+    "version": 1,
+    "title": "从对立转向合作，不硬碰",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.4.2资源4视频-家校沟通策略.docx",
+      "locator": "3.4.2 讲义全文"
+    },
+    "supports": [
+      "return-to-records"
+    ],
+    "passages": {
+      "return-to-records": [
+        {
+          "quote": "辅导员可以尝试一些心理咨询的沟通技巧，逐步从对立的状态过渡到合作的状态",
+          "action": "对方对抗时先退一步，用提问代替说服。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "when": {
+      "parentReaction": [
+        "refuses"
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-046-5",
+    "version": 1,
+    "title": "先共情，再讲道理",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.4.2资源4视频-家校沟通策略.docx",
+      "locator": "3.4.2 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "先做到充分共情",
+          "action": "开口先共情一句，再进入事实。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1"
+  },
+  {
+    "id": "teacher-007-1",
+    "version": 1,
+    "title": "听四层：内容、关系、状态、诉求",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "系统咨询的言语范式及应用.pdf",
+      "locator": "PDF 第 3 页"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "沟通时需要带着四只耳朵",
+          "action": "听完一句话，分别想他说了什么、对谁说的、什么状态、想要什么。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-007-2",
+    "version": 1,
+    "title": "听出没说出口的诉求",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "系统咨询的言语范式及应用.pdf",
+      "locator": "PDF 第 3 页"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "4.说话者的诉求（内在需要和渴望）",
+          "action": "把对方可能的需要说出来，问“是这样吗”。"
+        }
+      ]
+    },
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-007-3",
+    "version": 1,
+    "title": "注意语气和状态，不只听字面",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "系统咨询的言语范式及应用.pdf",
+      "locator": "PDF 第 3 页"
+    },
+    "supports": [
+      "review-observations"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "3.说话者的当下状态（非语言信息在表达什么）",
+          "action": "注意语速、停顿和情绪变化，必要时点出来核对。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-007-4",
+    "version": 1,
+    "title": "请对方说说情绪",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "系统咨询的言语范式及应用.pdf",
+      "locator": "PDF 第 7 页"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "2.（描述）你可以跟我说说你的情绪吗",
+          "action": "事实讲完后，请对方说说当时的感受。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-006-1",
+    "version": 1,
+    "title": "看问题，也看已经做过的应对",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "系统咨询的理论和技术.pdf",
+      "locator": "PDF 第 16 页"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "系统的方法不仅要看到问题，还要看到应对问题",
+          "action": "先问对方已经试过什么、哪些有点用。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-006-2",
+    "version": 1,
+    "title": "重要的人尽量一开始就请到",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "系统咨询的理论和技术.pdf",
+      "locator": "PDF 第 34 页"
+    },
+    "supports": [
+      "contact-time"
+    ],
+    "passages": {
+      "contact-time": [
+        {
+          "quote": "尽可能一开始就邀请全体重要人物",
+          "action": "第一次沟通就确认还有谁需要一起参与。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-006-3",
+    "version": 1,
+    "title": "问范围，不问是非",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "系统咨询的理论和技术.pdf",
+      "locator": "PDF 第 18 页"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "问所涉及的范围，增加回答的开放度、复杂度",
+          "action": "把“是不是”换成“还有哪些情况”，让对方展开。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-006-4",
+    "version": 1,
+    "title": "把问题当作可用的资源",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "系统咨询的理论和技术.pdf",
+      "locator": "PDF 第 33 页"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "问题更是资源",
+          "action": "问对方这个困难里已经有哪些能用的东西。"
+        }
+      ]
+    },
+    "priority": 2,
+    "status": "active",
+    "batch": "2026-11-A1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-002-1",
+    "version": 1,
+    "title": "要不要告诉家长：先过危险性、伦理、法律三道",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "20260815心理咨询中阶伦理培训.pdf",
+      "locator": "第 4 页"
+    },
+    "supports": [
+      "check-policy",
+      "check-disclosure"
+    ],
+    "passages": {
+      "check-policy": [
+        {
+          "quote": "伦理评估：是否达到可以突破保密？怎样突破？",
+          "action": "先看风险有多急，再看保密能不能突破，最后看法律要求；三道都过了再定告知谁、说到哪。"
+        }
+      ],
+      "check-disclosure": [
+        {
+          "quote": "伦理评估：是否达到可以突破保密？怎样突破？",
+          "action": "先看风险有多急，再看保密能不能突破，最后看法律要求；三道都过了再定告知谁、说到哪。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 5,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-002-2",
+    "version": 1,
+    "title": "涉安全先告知家长，事后再向学生解释",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "20260815心理咨询中阶伦理培训.pdf",
+      "locator": "第 16 页"
+    },
+    "supports": [
+      "check-policy",
+      "respect-wish"
+    ],
+    "passages": {
+      "check-policy": [
+        {
+          "quote": "紧急情况下的保密突破一一先突破后解释",
+          "action": "涉及安全先联系家长、把保护措施落地，事后再跟学生讲清楚为什么必须说、说了哪几句。"
+        }
+      ],
+      "respect-wish": [
+        {
+          "quote": "紧急情况下的保密突破一一先突破后解释",
+          "action": "涉及安全先联系家长、把保护措施落地，事后再跟学生讲清楚为什么必须说、说了哪几句。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 5,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-002-3",
+    "version": 1,
+    "title": "学生提「不想活」：先当真，别当气话",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "20260815心理咨询中阶伦理培训.pdf",
+      "locator": "第 5 页"
+    },
+    "supports": [
+      "review-observations",
+      "check-policy"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "对于个案说想要自杀时，心理师对于个案的说词要认真严肃以待",
+          "action": "记下原话和时间，不急着安慰也不追问细节；先按校内流程联系心理中心核对，别自己压下来。"
+        }
+      ],
+      "check-policy": [
+        {
+          "quote": "对于个案说想要自杀时，心理师对于个案的说词要认真严肃以待",
+          "action": "记下原话和时间，不急着安慰也不追问细节；先按校内流程联系心理中心核对，别自己压下来。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 5,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-005-1",
+    "version": 1,
+    "title": "家长说「没办法」时，先问家里已经有什么",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "家谱图与时间线(1).pdf",
+      "locator": "第 33 页"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "可以在家庭里找到哪些资源和力量",
+          "action": "问三件：过去遇到难处谁帮过忙、现在谁能搭把手、哪种帮忙他最接受；把答案记下来当支持点。"
+        }
+      ]
+    },
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-008-1",
+    "version": 1,
+    "title": "反馈心理情况：只讲事实，按规定定范围",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "1.1 PPT.pptx",
+      "locator": "第 11 页"
+    },
+    "supports": [
+      "review-observations",
+      "check-policy"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "按照工作实际和相关规定，向家长客观反馈学生的心理情况；与危机学生的家长及时展开沟通；结合日常家庭教育指导形成家校育人合力。",
+          "action": "先列要说的三条事实（时间、次数、变化），再按学校规定说明能说到哪，最后讲学校已经做了什么。"
+        }
+      ],
+      "check-policy": [
+        {
+          "quote": "按照工作实际和相关规定，向家长客观反馈学生的心理情况；与危机学生的家长及时展开沟通；结合日常家庭教育指导形成家校育人合力。",
+          "action": "先列要说的三条事实（时间、次数、变化），再按学校规定说明能说到哪，最后讲学校已经做了什么。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-008-2",
+    "version": 1,
+    "title": "家长说「他在学校挺好的」：老师手里要有平时观察",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "1.1 PPT.pptx",
+      "locator": "第 5 页"
+    },
+    "supports": [
+      "review-observations",
+      "check-policy"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "日常通过下宿舍、谈心谈话等方式动态监测和初步研判学生的心理健康状态，并进行必要的疏导。",
+          "action": "把出勤、作息、情绪、社交四项放进日常谈话，变化先记录再研判，拿不准的找心理中心一起看。"
+        }
+      ],
+      "check-policy": [
+        {
+          "quote": "日常通过下宿舍、谈心谈话等方式动态监测和初步研判学生的心理健康状态，并进行必要的疏导。",
+          "action": "把出勤、作息、情绪、社交四项放进日常谈话，变化先记录再研判，拿不准的找心理中心一起看。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-012-1",
+    "version": 1,
+    "title": "家长说「他就是内向」：先核实再下结论",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "1.2 PPT.pptx",
+      "locator": "第 8 页"
+    },
+    "supports": [
+      "review-records",
+      "review-observations"
+    ],
+    "passages": {
+      "review-records": [
+        {
+          "quote": "要通过实际接触确认，是个性倾向独处，还是确实需要帮助的社交、人际困难群体。",
+          "action": "对照三样：以前是否这样、最近有没有变化、除了独处还影响了什么；对不上就请家长补充家里的观察。"
+        }
+      ],
+      "review-observations": [
+        {
+          "quote": "要通过实际接触确认，是个性倾向独处，还是确实需要帮助的社交、人际困难群体。",
+          "action": "对照三样：以前是否这样、最近有没有变化、除了独处还影响了什么；对不上就请家长补充家里的观察。"
+        }
+      ]
+    },
+    "scenes": [
+      "yiban"
+    ],
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-012-2",
+    "version": 1,
+    "title": "别在家长和孩子面前用标签称呼他",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "1.2 PPT.pptx",
+      "locator": "第 8 页"
+    },
+    "supports": [
+      "review-observations",
+      "hear-parent"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "但也要注意不要去“特殊化”他们，不要给他们“贴标签”。",
+          "action": "把标签换成具体可核对的说法，比如「最近常请假」而不是「他有问题」；当面和背后都不说。"
+        }
+      ],
+      "hear-parent": [
+        {
+          "quote": "但也要注意不要去“特殊化”他们，不要给他们“贴标签”。",
+          "action": "把标签换成具体可核对的说法，比如「最近常请假」而不是「他有问题」；当面和背后都不说。"
+        }
+      ]
+    },
+    "scenes": [
+      "yiban"
+    ],
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-027-1",
+    "version": 1,
+    "title": "家长不接受说法：摆事实，不贴标签",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.2.2资源4视频-心理问题的初步评估和应对策略.docx",
+      "locator": "3.2.2 讲义全文"
+    },
+    "supports": [
+      "review-observations"
+    ],
+    "passages": {
+      "review-observations": [
+        {
+          "quote": "跟家长沟通要‘摆事实，不贴标签’。",
+          "action": "把三条可核对的事实按时间讲完，不用病名开头；家长反驳时回到其中一条，请他解释这一条。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "when": {
+      "parentReaction": [
+        "disagrees"
+      ]
+    },
+    "priority": 5,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-027-2",
+    "version": 1,
+    "title": "别过度干预：多数情况只是情绪失衡",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.2.2资源4视频-心理问题的初步评估和应对策略.docx",
+      "locator": "第 1 页"
+    },
+    "supports": [
+      "hear-parent",
+      "study-support"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "一般心理困扰的核心是‘情绪暂时失衡’，学生自己有能力调节，咱们的角色是‘搭个情绪出口’，不一定需要做太多干预。",
+          "action": "先接住情绪、帮他把事说清，再问要不要预约咨询；不替他做决定，也不急着叫家长。"
+        }
+      ],
+      "study-support": [
+        {
+          "quote": "一般心理困扰的核心是‘情绪暂时失衡’，学生自己有能力调节，咱们的角色是‘搭个情绪出口’，不一定需要做太多干预。",
+          "action": "先接住情绪、帮他把事说清，再问要不要预约咨询；不替他做决定，也不急着叫家长。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-028-1",
+    "version": 1,
+    "title": "该介入就介入，但不替专业下判断",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.2.2资源4视频-心理问题的初步评估和应对策略.pptx",
+      "locator": "第 11 页"
+    },
+    "supports": [
+      "check-policy"
+    ],
+    "passages": {
+      "check-policy": [
+        {
+          "quote": "关键原则：不缺位（及时介入）、不越位（不替代专业干预）",
+          "action": "把可核对的情况交给专业人员，不替家长或医生下结论；能做的（记录、陪同、协调）当场说清。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-029-1",
+    "version": 1,
+    "title": "亲子冲突：不站队，两边的话都接",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.2.3资源7视频-常见发展性问题的识别与应对.docx",
+      "locator": "3.2.3 讲义全文"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "这种时候千万别‘站队’，既不说‘父母都是为你好’，也不说‘你父母太强势了’。",
+          "action": "先复述家长担心的那句，再复述学生的打算，请双方各确认一次；不评谁对，只找能对上的一点。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-029-2",
+    "version": 1,
+    "title": "当翻译：把家长的话翻成担心",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.2.3资源7视频-常见发展性问题的识别与应对.docx",
+      "locator": "3.2.3 讲义全文"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "你可以当‘翻译官’，帮他理解父母的动机，也帮他学会和父母沟通。",
+          "action": "跟学生说「你爸妈怕的是…」，跟家长说「孩子想要的是…」，两边各用自己的话复述一遍确认。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-030-1",
+    "version": 1,
+    "title": "教学生跟家里谈：认可动机、说事实、留余地",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.2.3资源7视频-常见发展性问题的识别与应对.pptx",
+      "locator": "第 11 页"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "引导学生理解父母动机，并运用“动机认可+事实陈述+弹性诉求”进行沟通。",
+          "action": "陪学生写三句：理解家里担心什么、自己的情况是什么、希望家里怎么配合；写完让他自己说一遍。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-030-2",
+    "version": 1,
+    "title": "家长越管，学生越当面答应、背后另做",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.2.3资源7视频-常见发展性问题的识别与应对.pptx",
+      "locator": "第 5 页"
+    },
+    "supports": [
+      "hear-parent"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "家庭关系边界模糊与控制反抗：对父母过度关注感到烦躁，却又因拒绝父母安排而愧疚，常采取表面顺从、私下自主的行为模式。",
+          "action": "把「当面答应、背后另做」讲给家长听，请他把一件具体的事交给学生自己定，并约定复盘时间。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-034-1",
+    "version": 1,
+    "title": "把家长当合作者：谈分工，不是通知",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.3.1资源1视频-危机识别与应对之初识心理危机.docx",
+      "locator": "3.3.1 讲义全文"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "并与家长充分沟通，争取家长的支持和配合，促进家校形成合力，共同为学生走出危机创造条件。",
+          "action": "先讲学生现在什么状态，再问家里能出谁、能做什么，把分工和下次联系时间当场定下来。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-034-2",
+    "version": 1,
+    "title": "家长慌，老师先别慌：危机是暂时的",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.3.1资源1视频-危机识别与应对之初识心理危机.docx",
+      "locator": "第 1 页"
+    },
+    "supports": [
+      "hear-parent",
+      "study-support"
+    ],
+    "passages": {
+      "hear-parent": [
+        {
+          "quote": "我们遇到学生出现心理危机时不必过分恐慌，如临大敌，要设身处地地理解学生，看到他们身上的资源，帮助他们重新看到和运用自己的资源和力量去应对危机，相信他们可以在应对危机的过程中获得成长。",
+          "action": "先把话说稳：这是一段能过去的状态；再点出孩子已有的资源，别只讲风险。"
+        }
+      ],
+      "study-support": [
+        {
+          "quote": "我们遇到学生出现心理危机时不必过分恐慌，如临大敌，要设身处地地理解学生，看到他们身上的资源，帮助他们重新看到和运用自己的资源和力量去应对危机，相信他们可以在应对危机的过程中获得成长。",
+          "action": "先把话说稳：这是一段能过去的状态；再点出孩子已有的资源，别只讲风险。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 4,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-036-1",
+    "version": 1,
+    "title": "学生不让说：先问顾虑，再谈怎么说",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.3.2资源4视频-危机识别与应对之自杀意念.docx",
+      "locator": "3.3.2 讲义全文"
+    },
+    "supports": [
+      "respect-wish"
+    ],
+    "passages": {
+      "respect-wish": [
+        {
+          "quote": "如学生拒绝联系家长，我们可以先询问TA的顾虑，并尽可能帮助其消除顾虑。",
+          "action": "问清怕的是什么（责备、退学、丢脸、家里受不了），逐条回应，再一起定由谁说、说哪几句。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "when": {
+      "studentWish": [
+        "confidential"
+      ]
+    },
+    "priority": 5,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-036-2",
+    "version": 1,
+    "title": "高风险时告知家长是规定要求",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.3.2资源4视频-危机识别与应对之自杀意念.docx",
+      "locator": "3.3.2 讲义全文"
+    },
+    "supports": [
+      "respect-wish",
+      "check-disclosure"
+    ],
+    "passages": {
+      "respect-wish": [
+        {
+          "quote": "学校和教师应当与学生父母或者其他监护人、近亲属沟通学生心理健康情况",
+          "action": "学生反对时说明这是规定，同时承诺只讲必要内容、讲之前先告诉他，讲的时候尽量让他在场。"
+        }
+      ],
+      "check-disclosure": [
+        {
+          "quote": "学校和教师应当与学生父母或者其他监护人、近亲属沟通学生心理健康情况",
+          "action": "学生反对时说明这是规定，同时承诺只讲必要内容、讲之前先告诉他，讲的时候尽量让他在场。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "when": {
+      "studentWish": [
+        "confidential"
+      ]
+    },
+    "priority": 5,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-044-1",
+    "version": 1,
+    "title": "家长到不了现场，也能用电话稳住学生",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "3.4.1资源1视频-危机处置中的校内资源协同联动.docx",
+      "locator": "3.4.1 讲义全文"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "当然还有学生的家长，他们即使不能第一时间赶到现场，也能通过电话来跟学生联系，帮助学生稳定情绪。",
+          "action": "给家长一个具体动作：先不谈问题，只说家里在、会等他；等老师到场再细说。"
+        }
+      ]
+    },
+    "scenes": [
+      "xinli"
+    ],
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
+  },
+  {
+    "id": "teacher-054-1",
+    "version": 1,
+    "title": "别说「别紧张」，要给能落地的办法",
+    "reviewStatus": "待老师核对",
+    "sourceLocation": {
+      "title": "2.2.3 压力及情绪调试预防类.docx",
+      "locator": "2.2.3 讲义全文"
+    },
+    "supports": [
+      "study-support"
+    ],
+    "passages": {
+      "study-support": [
+        {
+          "quote": "我们作为辅导员，此时最关键的不是说“别紧张”“加油学”这类安慰的话，而是帮学生“拆解压力、找到方法”，教他们实用的减压技巧，让他们从“被压力困住”转向“主动应对压力”。",
+          "action": "把问题拆成两三个具体点，逐条告诉家长现在能做什么、下一步做什么，不停在安慰上。"
+        }
+      ]
+    },
+    "scenes": [
+      "xueye"
+    ],
+    "priority": 3,
+    "status": "active",
+    "batch": "2026-11-B1",
+    "migration": "专业资料迁移，待核对"
   }
 ]

@@ -48,9 +48,14 @@ function readConfig(env = process.env) {
 // 资料选取策略的默认值。改动这里等于改产品行为，需同步 README 与对照实验基线。
 const SOURCE_DEFAULTS = Object.freeze({
   tiering: true,        // 候选卡只在没有已审资料覆盖该步骤时出现
-  maxPerMove: 8,        // 每个步骤最多给模型几个候选资料；0 表示不限
-  exposeApplications: false // 是否把卡片的具体做法一并发给模型（对照实验证伪，默认关）
+  maxPerMove: 8,        // 每个步骤最多给模型几个候选资料（注入预算）；0 表示不限
+  exposeApplications: false, // 是否把卡片的具体做法一并发给模型（对照实验证伪，默认关）
+  // order：按资料库数组顺序取前 N 张；retrieval：按 when 标签、优先级和关键词挑选。
+  // 2026-11-18 对照：扩库到 90 张后，retrieval 与 order/8 的质量差异在噪声内（配对 95% 区间跨 0），
+  // 但 retrieval 的首次通过率 100%、可直接用分最高，且能让 order 模式下永远选不到的新卡参与。
+  selection: 'retrieval'
 });
+const SELECTION_MODES = ['order', 'retrieval'];
 const TRUE_WORDS = ['1', 'true', 'yes', 'on'];
 const FALSE_WORDS = ['0', 'false', 'no', 'off'];
 
@@ -74,11 +79,19 @@ function readSourceOptions(env = process.env) {
     }
     maxPerMove = parsed;
   }
+  let selection = SOURCE_DEFAULTS.selection;
+  if (env.SOURCE_SELECTION !== undefined && env.SOURCE_SELECTION !== '') {
+    selection = String(env.SOURCE_SELECTION).trim().toLowerCase();
+    if (!SELECTION_MODES.includes(selection)) {
+      throw new Error('SOURCE_SELECTION must be one of ' + SELECTION_MODES.join('/'));
+    }
+  }
   return {
     tiering: readFlag(env, 'SOURCE_TIERING', SOURCE_DEFAULTS.tiering),
     maxPerMove,
-    exposeApplications: readFlag(env, 'EXPOSE_APPLICATIONS', SOURCE_DEFAULTS.exposeApplications)
+    exposeApplications: readFlag(env, 'EXPOSE_APPLICATIONS', SOURCE_DEFAULTS.exposeApplications),
+    selection
   };
 }
 
-module.exports = { loadEnvFile, readConfig, readSourceOptions, SOURCE_DEFAULTS };
+module.exports = { loadEnvFile, readConfig, readSourceOptions, SOURCE_DEFAULTS, SELECTION_MODES };

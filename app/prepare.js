@@ -62,7 +62,7 @@ function messagesFor(input, moves, evidence, references, approvedItems) {
   const options = [...moves].map(([id, move]) => ({
     id, purpose: move.title,
     allowedFacts: move.fields.filter(field => evidence.has(field)),
-    sources: sourcesForMove(references, id)
+    sources: sourcesForMove(references, id, input)
   }));
   return [
     { role: 'system', content: instructions },
@@ -153,13 +153,13 @@ function formatResult(plan, input, moves, evidence, { mock, notices }) {
   };
 }
 
-function mockPlan(moves, references) {
+function mockPlan(moves, references, input) {
   const ids = [...moves.keys()].slice(0, 3);
   const selected = new Map();
   const points = new Map();
   for (const id of ids) {
     const move = moves.get(id);
-    const source = sourcesForMove(references, id)[0];
+    const source = sourcesForMove(references, id, input)[0];
     const reference = source && references.get(source.id);
     const grounding = reference && findGrounding(reference, id, source.passages[0].slice(0, 140));
     selected.set(id, { factIds: ['situation'], reference: grounding ? reference : null, grounding });
@@ -189,7 +189,7 @@ async function prepareCommunication(rawInput, { mock, complete, approvedItems })
   const forced = obviousMissingFacts(input);
 
   if (mock) {
-    const plan = mockPlan(moves, references);
+    const plan = mockPlan(moves, references, input);
     if (approvedItems) plan.draft = '家长您好。想和您核对一下本次沟通的情况。\n\n本次获准核对的记录写道：\n' + approvedItems.map(item => item.quote).join('\n') + '\n\n这些表述仍保留各自的来源与限定。您了解的情况是怎样的？我们可以先核对记录，再共同商量下一步支持方式。';
     if (forced.length) plan.missingFacts = forced.map(id => MISSING_FACTS[id]);
     return versioned(formatResult(plan, input, moves, evidence, { mock: true, notices }));

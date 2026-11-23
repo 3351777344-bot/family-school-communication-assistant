@@ -24,16 +24,19 @@ test('资料选取策略有集中默认值，非法取值启动即报错', () =>
     tiering: SOURCE_DEFAULTS.tiering,
     maxPerMove: SOURCE_DEFAULTS.maxPerMove,
     exposeApplications: SOURCE_DEFAULTS.exposeApplications,
+    selection: SOURCE_DEFAULTS.selection,
   });
   assert.deepEqual(readSourceOptions({
-    SOURCE_TIERING: '0', MAX_SOURCES_PER_MOVE: '0', EXPOSE_APPLICATIONS: '1',
-  }), { tiering: false, maxPerMove: 0, exposeApplications: true });
+    SOURCE_TIERING: '0', MAX_SOURCES_PER_MOVE: '0', EXPOSE_APPLICATIONS: '1', SOURCE_SELECTION: 'retrieval',
+  }), { tiering: false, maxPerMove: 0, exposeApplications: true, selection: 'retrieval' });
   for (const word of ['1', 'true', 'yes', 'on', ' TRUE ']) {
     assert.equal(readSourceOptions({ SOURCE_TIERING: word }).tiering, true, word);
   }
   for (const word of ['0', 'false', 'no', 'off', 'OFF']) {
     assert.equal(readSourceOptions({ EXPOSE_APPLICATIONS: word }).exposeApplications, false, word);
   }
+  assert.equal(readSourceOptions({ SOURCE_SELECTION: ' ORDER ' }).selection, 'order');
+  assert.throws(() => readSourceOptions({ SOURCE_SELECTION: 'ranked' }), /SOURCE_SELECTION/);
   // 留空等于没配，回落到默认值。
   assert.equal(readSourceOptions({ MAX_SOURCES_PER_MOVE: '' }).maxPerMove, SOURCE_DEFAULTS.maxPerMove);
   for (const bad of ['2', 'maybe', '  ']) {

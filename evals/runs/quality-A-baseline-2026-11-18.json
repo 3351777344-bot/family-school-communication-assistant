@@ -1,0 +1,2357 @@
+{
+  "experiment": "quality",
+  "label": "A-baseline",
+  "ranOn": "2026-11-17T17:20:24.557Z",
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "dry": false,
+  "env": {
+    "SOURCE_SELECTION": "order",
+    "MAX_SOURCES_PER_MOVE": "8",
+    "SOURCE_TIERING": "1",
+    "EXPOSE_APPLICATIONS": "0"
+  },
+  "repeats": 1,
+  "cases": 20,
+  "summary": {
+    "runs": 20,
+    "ok": 20,
+    "failures": 0,
+    "scored": 18,
+    "status": {
+      "ready": 16,
+      "needs_information": 2,
+      "manual_review": 2
+    },
+    "firstPassRate": 0.9444444444444444,
+    "avgPromptChars": 4188,
+    "avgDraftChars": 232,
+    "dims": {
+      "anchoring": 4.5,
+      "concreteness": 4,
+      "relevance": 4.611111111111111,
+      "noFluff": 4.388888888888889,
+      "usability": 4.388888888888889
+    },
+    "overall": 4.377777777777778,
+    "citations": {
+      "method": 19,
+      "teacher": 46,
+      "none": 13,
+      "candidate": 6
+    }
+  },
+  "rows": [
+    {
+      "id": "A01",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1909,
+          "completion_tokens": 964,
+          "total_tokens": 2873
+        }
+      ],
+      "points": [
+        {
+          "move": "review-records",
+          "title": "先摆三条可核对记录，原因留白",
+          "source": "method-academic-facts",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "请家长先说，别急着接话",
+          "source": "teacher-ask-with-space",
+          "kind": "teacher"
+        },
+        {
+          "move": "return-to-records",
+          "title": "接住“贪玩”这个说法，再拉回记录",
+          "source": "method-return-to-facts",
+          "kind": "method"
+        },
+        {
+          "move": "respect-wish",
+          "title": "问学生自己怎么想、愿不愿意补",
+          "source": null,
+          "kind": "none"
+        },
+        {
+          "move": "study-support",
+          "title": "商量一件具体可行的下一步",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 306,
+      "promptChars": 5253,
+      "elapsedMs": 7404,
+      "scores": {
+        "anchoring": {
+          "score": 5,
+          "note": "缺课3次、未交2次均出自原文，未编造结论"
+        },
+        "concreteness": {
+          "score": 5,
+          "note": "每步有原话，下一步明确到谁跟进"
+        },
+        "relevance": {
+          "score": 5,
+          "note": "针对贪玩反应设计接话与拉回记录"
+        },
+        "noFluff": {
+          "score": 5,
+          "note": "无空泛口号，句句有具体动作"
+        },
+        "usability": {
+          "score": 5,
+          "note": "底稿口语自然，可直接照发"
+        },
+        "overall": "事实克制、接话具体、可直接落地，是高质量家校沟通准备。"
+      },
+      "raw": {
+        "draft": "家长您好。我是孩子的辅导员，今天联系您，主要是想和您核对一下这学期课程方面的情况，不是要给孩子下什么结论。\n\n目前课程记录显示，孩子缺课3次、作业未交2次，具体原因我这边还没核实，所以想先听听您的观察。您之前提到觉得孩子只是贪玩，这个说法我理解，不少家长也会有类似的印象。不过我想和您一起看看这学期具体是哪几件事没跟上，这样后面商量起来更有针对性。\n\n您平时在家看到的情况是怎样的？孩子有没有跟您提过这几门课的想法，他自己愿不愿意补？这些我都想听听。\n\n下一步我想先和孩子本人聊聊，了解他自己的意愿，再和您商量补交安排怎么跟进、什么时候再对一次进展。您看这样行吗？也方便的话，我们约个双方都合适的时间再通个电话。",
+        "faq": [
+          {
+            "q": "是不是孩子太贪玩，管严一点就行？",
+            "a": "贪玩是不少家长的第一印象，我先不急着下判断。这学期缺课3次、作业未交2次是记录在案的，原因我还没核实，想先听听孩子自己怎么说，再和您一起看下一步怎么帮。"
+          },
+          {
+            "q": "学校会不会有什么处理？",
+            "a": "这块我核对后回复您，今天主要想先和家长把情况对清楚。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "review-records",
+            "title": "先摆三条可核对记录，原因留白",
+            "why": "家长目前只看到“贪玩”这个印象，先把缺课3次、作业未交2次摆出来，原因说还没核实，家长才不会觉得是来兴师问罪的，也才有空间说出自己看到的情况。",
+            "reply": "家长您好，这学期课程记录里孩子缺课3次、作业未交2次，具体原因我还没核实，想先跟您对一对。",
+            "reference": "method-academic-facts",
+            "quote": "开场只讲三类可核对的事实：缺课次数、未交作业次数、任课老师反映的课堂表现"
+          },
+          {
+            "move": "hear-parent",
+            "title": "请家长先说，别急着接话",
+            "why": "家长说“只是贪玩”，背后可能有他的观察或无奈。先问一句他怎么看，问完留出沉默，才能听到记录之外的信息，也避免把沟通变成单方面通报。",
+            "reply": "您平时在家看到的情况是怎样的？我想听听您的观察。",
+            "reference": "teacher-ask-with-space",
+            "quote": "不要连环追问：问1个问题后，留足沉默时间"
+          },
+          {
+            "move": "return-to-records",
+            "title": "接住“贪玩”这个说法，再拉回记录",
+            "why": "直接否定家长判断容易让对话关门。先承认这是常见印象，再把话题拉回这学期具体发生了什么，双方才能一起看事实而不是争对错。",
+            "reply": "贪玩这个说法不少家长都会这么想，不过我想和您一起看看这学期具体是哪几件事没跟上。",
+            "reference": "method-return-to-facts",
+            "quote": "先承认这是常见印象，再把话题拉回具体数据"
+          },
+          {
+            "move": "respect-wish",
+            "title": "问学生自己怎么想、愿不愿意补",
+            "why": "补交和后续安排最终要学生本人配合，先了解他的意愿，再谈家长和学校能做什么，避免替学生做决定。",
+            "reply": "孩子自己有没有跟您提过这几门课的想法？他愿不愿意补？",
+            "reference": null,
+            "quote": null
+          },
+          {
+            "move": "study-support",
+            "title": "商量一件具体可行的下一步",
+            "why": "沟通要落到可执行的一件事上，比如先确认补交安排由谁跟进、什么时候再联系，避免谈完没有下文。",
+            "reply": "那我们先定一件事：补交这块我这边跟孩子确认一下，您看我们什么时候再通个电话对一下进展？",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "A02",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1865,
+          "completion_tokens": 912,
+          "total_tokens": 2777
+        }
+      ],
+      "points": [
+        {
+          "move": "review-records",
+          "title": "先讲可核对的一条记录",
+          "source": "method-academic-facts",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "先听家长最在意什么",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "return-to-records",
+          "title": "把猜测拉回具体记录",
+          "source": "method-return-to-facts",
+          "kind": "method"
+        },
+        {
+          "move": "respect-wish",
+          "title": "问学生愿不愿意一起谈",
+          "source": null,
+          "kind": "none"
+        },
+        {
+          "move": "study-support",
+          "title": "商量一件能落地的下一步",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 326,
+      "promptChars": 5098,
+      "elapsedMs": 7170,
+      "scores": {
+        "anchoring": {
+          "score": 5,
+          "note": "事实仅平台一次未交与学生称已上传，无编造"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有下一步核对与回话，但时间未定"
+        },
+        "relevance": {
+          "score": 5,
+          "note": "紧扣记录差异与家长归因，非通用建议"
+        },
+        "noFluff": {
+          "score": 5,
+          "note": "无空泛套话，句句有信息"
+        },
+        "usability": {
+          "score": 4,
+          "note": "底稿自然可发，稍长可精简"
+        },
+        "overall": "事实克制、话术自然，补上回话时间即可直接用。"
+      },
+      "raw": {
+        "draft": "家长您好。今天联系您，是想和您一起了解孩子课程平台上的一次作业记录。目前平台显示有一次作业未交，孩子跟我说他已经上传了，这个记录我们还在核实，还没有结论。我想先把这个情况跟您对一下，听听您那边有没有了解到什么。您听到这个情况，最想先弄清楚的是哪一块？是记录本身，还是孩子最近的学习状态？您先说，我记下来。如果您的第一反应是孩子可能贪玩、没认真交，这种想法很常见，不过这次我们先看具体记录：平台显示未交，孩子说已上传，我们先把这一条核实清楚，原因留到后面再谈。孩子这边愿不愿意一起把上传的情况说清楚，我也想先听听他的想法，不替他决定。接下来我去核对一下上传记录，核实后给您回话；您看这个安排可以吗，或者您方便什么时候再联系，我们商量一个双方都合适的时间。",
+        "faq": [
+          {
+            "q": "是不是孩子没交作业还撒谎？",
+            "a": "现在平台显示未交、孩子说已上传，记录还在核实，我先不下判断，核对清楚后回复您。"
+          },
+          {
+            "q": "会不会影响后面的学业评价？",
+            "a": "这一条涉及具体规定，我核对后回复您，先把这次记录的事实弄清楚。"
+          },
+          {
+            "q": "能不能让孩子直接跟您说？",
+            "a": "可以，我也想听听孩子的说法，具体方式我先问问孩子的意愿，再跟您商量。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "review-records",
+            "title": "先讲可核对的一条记录",
+            "why": "目前只有课程平台显示一次作业未交，学生说已上传，记录尚待核实。开场把这条事实说清，避免家长以为已有结论，也为后面一起核对留出空间。",
+            "reply": "课程平台现在显示有一次作业未交，孩子说已经上传了，这个记录我们还在核实，想先跟您对一下。",
+            "reference": "method-academic-facts",
+            "quote": "开场只讲三类可核对的事实：缺课次数、未交作业次数、任课老师反映的课堂表现"
+          },
+          {
+            "move": "hear-parent",
+            "title": "先听家长最在意什么",
+            "why": "家长可能关心孩子是否偷懒、是否被误记。先请家长说，能知道他们真正在意的是记录准确性还是学习状态，后面的沟通才不会跑偏。",
+            "reply": "您听到这个情况，最想先弄清楚的是哪一块？",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "return-to-records",
+            "title": "把猜测拉回具体记录",
+            "why": "家长容易把一次未交归因为贪玩或不认真。承认这是常见印象后，把话题拉回这次作业上传和记录核对，避免在原因上先下判断。",
+            "reply": "您这么想很常见，不过这次我们先看具体记录：平台显示未交，孩子说已上传，我们先把这一条核实清楚。",
+            "reference": "method-return-to-facts",
+            "quote": "先承认这是常见印象，再把话题拉回具体数据"
+          },
+          {
+            "move": "respect-wish",
+            "title": "问学生愿不愿意一起谈",
+            "why": "学生说已经上传，说明他有自己的说法。是否让家长参与、以什么方式参与，需要给学生表达意愿的空间，不替他决定。",
+            "reply": "孩子这边愿不愿意一起把上传的情况说清楚，我也想先听听他的想法。",
+            "reference": null,
+            "quote": null
+          },
+          {
+            "move": "study-support",
+            "title": "商量一件能落地的下一步",
+            "why": "沟通要落到具体动作：谁去核对上传记录、什么时候给家长回话。只给方向不给安排，家长会觉得没有着落。",
+            "reply": "接下来我去核对一下上传记录，核实后给您回话，您看这样安排可以吗？",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "A03",
+      "ok": true,
+      "status": "ready",
+      "attempts": 2,
+      "validation": [
+        "points[1] 不得替学校给出处分、上报或学籍处置结论（命中：档案）"
+      ],
+      "usage": [
+        {
+          "prompt_tokens": 1865,
+          "completion_tokens": 894,
+          "total_tokens": 2759
+        },
+        {
+          "prompt_tokens": 1903,
+          "completion_tokens": 1097,
+          "total_tokens": 3000
+        }
+      ],
+      "points": [
+        {
+          "move": "review-records",
+          "title": "先摆可核对的事实：本周两次未交作业",
+          "source": "method-academic-facts",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "请家长先说，别急着解释原因",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "return-to-records",
+          "title": "家长归因时，把话题拉回具体记录",
+          "source": "method-return-to-facts",
+          "kind": "method"
+        },
+        {
+          "move": "respect-wish",
+          "title": "问学生自己怎么想，不替他表态",
+          "source": null,
+          "kind": "none"
+        },
+        {
+          "move": "study-support",
+          "title": "只商量一件具体可做的学习支持",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 443,
+      "promptChars": 5190,
+      "elapsedMs": 15580,
+      "scores": {
+        "anchoring": {
+          "score": 5,
+          "note": "事实仅本周两次未交作业，均可在原文找到"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体话术和补交跟进安排，可再细化"
+        },
+        "relevance": {
+          "score": 5,
+          "note": "紧扣家长问档案，明确核对制度不结论"
+        },
+        "noFluff": {
+          "score": 5,
+          "note": "无空泛套话，每句有信息量"
+        },
+        "usability": {
+          "score": 5,
+          "note": "底稿口语自然，可直接照发"
+        },
+        "overall": "事实锚定扎实、回应档案问题得体，话术具体可直接使用。"
+      },
+      "raw": {
+        "draft": "家长您好。我是孩子的辅导员，这次联系是想跟您核对一下孩子最近的学习情况，也想听听您那边的观察。\n\n先说我这边掌握到的情况：本周有两次作业没有交。这是我目前记录到的内容，其他方面我还在了解，不想凭这一条就下判断。\n\n想请您说说，孩子最近在家有没有提到作业或者课程上的困难？您最想先聊的是哪一块？是作业这件事本身，还是孩子最近的状态？\n\n如果家长您觉得就是贪玩或者不上心，这种感受我能理解，不少家长也会有同感。不过咱们还是先回到本周这两次没交的作业，看看具体卡在什么地方，这样谈起来更有针对性。\n\n另外，孩子自己是怎么说这两次作业的？如果您方便，我也想听听他本人的想法，再一起商量怎么帮他。\n\n下一步我想先定一件小事：这两次作业缺的内容，请孩子这周内补上，我这边跟进；下周我们再通个电话看看情况。您看这个安排行不行，或者您觉得还有更合适的做法，我们可以再商量。\n\n关于您可能关心的学校方面的规定，我手头没有现成依据，我核对后回复您，不凭印象说。您方便的话，也可以告诉我您希望什么时候再联系。",
+        "faq": [
+          {
+            "q": "这两次没交作业会不会记到档案里？",
+            "a": "这个我手头没有现成依据，不能凭印象答复您，我核对后回复您。"
+          },
+          {
+            "q": "孩子是不是有什么问题？",
+            "a": "目前我这边只有本周两次未交作业这一条记录，还谈不上判断。我想先听听您和孩子的说法，再一起看下一步怎么做。"
+          },
+          {
+            "q": "能不能多盯着孩子一点？",
+            "a": "我这边可以跟进这两次作业的补交情况，也请您在家帮忙留意。具体怎么配合，咱们下周通电话时再对一下。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "review-records",
+            "title": "先摆可核对的事实：本周两次未交作业",
+            "why": "家长最怕听到笼统评价。先把“本周两次未交作业”这一条说清，并说明这是目前掌握的情况，家长才知道要谈什么，也方便他补充家里看到的情况。",
+            "reply": "家长您好，这次联系是想跟您核对一下孩子本周的情况：目前我这边记录到的是本周有两次作业没交，想听听您那边了解到的是什么样。",
+            "reference": "method-academic-facts",
+            "quote": "开场只讲三类可核对的事实：缺课次数、未交作业次数、任课老师反映的课堂表现"
+          },
+          {
+            "move": "hear-parent",
+            "title": "请家长先说，别急着解释原因",
+            "why": "家长可能已有自己的猜测，也可能担心学校怎么看。先问一句他最想谈什么，能听到更多信息，也避免我们替家长下结论。",
+            "reply": "我想先听听您的观察，您最想先聊的是哪一块？是作业这件事本身，还是孩子最近在家的状态？",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "return-to-records",
+            "title": "家长归因时，把话题拉回具体记录",
+            "why": "家长容易说“就是贪玩”“就是懒”，这类说法听着像结论，谈下去容易变成互相说服。承认这是常见印象，再把话题拉回本周两次未交作业，双方才能谈同一件事。",
+            "reply": "您说的这个情况不少家长也会有同感，我先记下来；咱们还是回到本周这两次没交的作业，看看具体卡在哪儿。",
+            "reference": "method-return-to-facts",
+            "quote": "先承认这是常见印象，再把话题拉回具体数据"
+          },
+          {
+            "move": "respect-wish",
+            "title": "问学生自己怎么想，不替他表态",
+            "why": "作业没交背后可能是时间安排、课程难度或别的原因，学生本人的说法目前还没有。先留出空间让学生表达，再决定下一步怎么做，避免家长和学校各说各话。",
+            "reply": "孩子自己是怎么说这两次作业的？如果您方便，我也想听听他本人的想法，再一起商量怎么帮他。",
+            "reference": null,
+            "quote": null
+          },
+          {
+            "move": "study-support",
+            "title": "只商量一件具体可做的学习支持",
+            "why": "一次谈太多家长记不住，也难落实。挑一件双方都能做到的事，说清谁做什么、什么时候再看效果，比给一堆建议更有用。",
+            "reply": "那我们先定一件小事：这两次作业缺的内容，请孩子这周内补上，我这边跟进；下周我们再通个电话看看情况，您看行吗？",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "A04",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1884,
+          "completion_tokens": 862,
+          "total_tokens": 2746
+        }
+      ],
+      "points": [
+        {
+          "move": "review-records",
+          "title": "先讲可核对的事实：连续两周迟到，次数还在核对",
+          "source": "method-academic-facts",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "请家长先说观察和最在意的问题",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "return-to-records",
+          "title": "家长归因时先接住，再拉回具体记录",
+          "source": "method-return-to-facts",
+          "kind": "method"
+        },
+        {
+          "move": "respect-wish",
+          "title": "问学生自己怎么想、愿意怎么调整",
+          "source": null,
+          "kind": "none"
+        },
+        {
+          "move": "study-support",
+          "title": "商量一件具体可行的支持，说清谁做什么",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 287,
+      "promptChars": 5171,
+      "elapsedMs": 7272,
+      "scores": {
+        "anchoring": {
+          "score": 5,
+          "note": "次数未核对、连续两周均忠实原文，无编造"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体问句和下一步，但跟进细节略虚"
+        },
+        "relevance": {
+          "score": 5,
+          "note": "紧扣迟到未核实与家长追问，未承诺取消警示"
+        },
+        "noFluff": {
+          "score": 4,
+          "note": "基本无空话，个别过渡句稍泛"
+        },
+        "usability": {
+          "score": 5,
+          "note": "底稿口语自然，可直接照发"
+        },
+        "overall": "事实锚定准确、未越界承诺，底稿可直接使用，跟进细节可再具体。"
+      },
+      "raw": {
+        "draft": "家长您好。今天联系您，是想沟通一下孩子的到课情况。任课老师反映孩子连续两周迟到，准确次数我还在核对，想先跟您对一下情况。\n\n目前我这边掌握的是任课老师的反映，具体次数还在核对，所以今天不是下结论，是想先听听您了解到的情况。您最近观察到的到课情况是怎样的？现在您最想聚焦哪个问题？\n\n有的家长会觉得孩子就是贪玩，这确实是常见的印象，不过我们先看看这学期具体发生了什么，再一起想办法。孩子自己怎么看这件事、愿意怎么调整，我也想先听听他的想法。\n\n接下来我们可以先商量一件具体可行的事，比如到课和作业怎么跟进，说好谁做什么、什么时候再对一次。您方便的话，我们也可以约个时间再细聊。",
+        "faq": [
+          {
+            "q": "是不是要给孩子什么处理？",
+            "a": "具体制度上的问题我核对后回复您，今天先跟您对一下到课情况和孩子的想法。"
+          },
+          {
+            "q": "到底迟到几次？",
+            "a": "任课老师反映是连续两周迟到，准确次数我还在核对，核对清楚后告诉您。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "review-records",
+            "title": "先讲可核对的事实：连续两周迟到，次数还在核对",
+            "why": "家长第一反应常是追问细节或质疑，先把「任课老师反映连续两周迟到、准确次数还在核对」说清，能避免把未核实的次数当成定论，也为后面听家长说留出空间。",
+            "reply": "任课老师反映孩子连续两周迟到，准确次数我还在核对，今天想先跟您对一下到课情况。",
+            "reference": "method-academic-facts",
+            "quote": "开场只讲三类可核对的事实：缺课次数、未交作业次数、任课老师反映的课堂表现"
+          },
+          {
+            "move": "hear-parent",
+            "title": "请家长先说观察和最在意的问题",
+            "why": "家长可能掌握孩子作息、路上时间等信息，先问「最想聚焦哪个问题」能让家长把顾虑讲出来，而不是被辅导员的判断带着走。",
+            "reply": "您最近观察到的到课情况是怎样的？现在您最想聚焦哪个问题？",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "return-to-records",
+            "title": "家长归因时先接住，再拉回具体记录",
+            "why": "家长容易说「就是贪玩」，直接反驳会让沟通关门；先承认这是常见印象，再把话题拉回这学期具体发生了什么，才能继续核对。",
+            "reply": "贪玩是很多家长的第一印象，我们先看看这学期具体发生了什么，再一起想办法。",
+            "reference": "method-return-to-facts",
+            "quote": "先承认这是常见印象，再把话题拉回具体数据"
+          },
+          {
+            "move": "respect-wish",
+            "title": "问学生自己怎么想、愿意怎么调整",
+            "why": "到课是学生自己的事，家长和辅导员都不能替他决定；先了解学生的意愿，下一步的支持才落得下去。",
+            "reply": "孩子自己怎么看这件事、愿意怎么调整，我想先听听他的想法。",
+            "reference": null,
+            "quote": null
+          },
+          {
+            "move": "study-support",
+            "title": "商量一件具体可行的支持，说清谁做什么",
+            "why": "家长会关心接下来怎么办，但制度问题不能当场承诺；只商量一件可执行的学习支持，并明确谁做什么、什么时候，避免空泛表态。",
+            "reply": "我们先定一件具体的事，比如到课和作业怎么跟进，说好谁做什么、什么时候再对一次。",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "A05",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1895,
+          "completion_tokens": 790,
+          "total_tokens": 2685
+        }
+      ],
+      "points": [
+        {
+          "move": "review-records",
+          "title": "先核对本周未交作业这一条记录",
+          "source": "method-academic-facts",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "请家长先说观察和顾虑",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "respect-wish",
+          "title": "尊重学生想先自己说的意愿",
+          "source": null,
+          "kind": "none"
+        },
+        {
+          "move": "study-support",
+          "title": "商量一件具体可行的支持方式",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 163,
+      "promptChars": 5216,
+      "elapsedMs": 5757,
+      "scores": {
+        "anchoring": {
+          "score": 5,
+          "note": "事实仅一次未交作业，无编造数字"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体话术和每周固定时间动作"
+        },
+        "relevance": {
+          "score": 5,
+          "note": "紧扣学生想先说和家长反应"
+        },
+        "noFluff": {
+          "score": 4,
+          "note": "基本无空话，个别表述略泛"
+        },
+        "usability": {
+          "score": 5,
+          "note": "底稿自然，可直接照发"
+        },
+        "overall": "事实准确、话术可用，较好落实学生先说的意愿。"
+      },
+      "raw": {
+        "draft": "家长您好。我是辅导员，今天联系您是想和您核对一下学生本周的学习情况。学生主动说明本周有一次作业没有提交，原因我还没有详细了解。我想先听听您这边最近有没有观察到什么，或者您最担心的是什么。另外，学生提到希望自己先和您说这件事，您看这样安排可以吗？我们一起商量一下接下来怎么支持他完成作业，比如每周固定一个时间聊聊进度，您觉得呢？",
+        "faq": [
+          {
+            "q": "是不是孩子贪玩不写作业？",
+            "a": "先不急着下结论，我们先把具体发生了什么弄清楚，再一起看怎么支持他。"
+          },
+          {
+            "q": "学校打算怎么处理？",
+            "a": "我今天主要是想和家长核对情况、商量支持方式，具体制度问题我核对后回复您。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "review-records",
+            "title": "先核对本周未交作业这一条记录",
+            "why": "家长可能还不清楚具体情况，先摆出可核对的事实，避免猜测原因，也为后续商量支持方式打基础。",
+            "reply": "这次联系是想和您核对一下，学生自己说本周有一次作业没有提交，我想先听听您这边了解到的情况。",
+            "reference": "method-academic-facts",
+            "quote": "开场只讲三类可核对的事实：缺课次数、未交作业次数、任课老师反映的课堂表现"
+          },
+          {
+            "move": "hear-parent",
+            "title": "请家长先说观察和顾虑",
+            "why": "家长可能有自己的观察和担心，先请他说，能了解他最在意什么，也避免我们单方面下判断。",
+            "reply": "您最近有没有注意到他学习上有什么变化，或者您最担心的是什么？",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "respect-wish",
+            "title": "尊重学生想先自己说的意愿",
+            "why": "学生明确希望自己先和家长说，我们需要给这个意愿留出空间，同时和家长商量怎么配合。",
+            "reply": "学生提到希望自己先和您说这件事，您看这样安排可以吗？",
+            "reference": null,
+            "quote": null
+          },
+          {
+            "move": "study-support",
+            "title": "商量一件具体可行的支持方式",
+            "why": "光指出问题不够，要落到下一步谁做什么、什么时候做，让支持可执行。",
+            "reply": "我们一起商量一下，接下来可以怎么支持他完成作业，比如每周固定一个时间聊聊进度，您觉得呢？",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "P01",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1708,
+          "completion_tokens": 939,
+          "total_tokens": 2647
+        }
+      ],
+      "points": [
+        {
+          "move": "check-disclosure",
+          "title": "先说明可告知范围，再谈具体内容",
+          "source": "teacher-reframe-promise",
+          "kind": "teacher"
+        },
+        {
+          "move": "review-observations",
+          "title": "用具体观察代替评价，留出核对空间",
+          "source": "method-observations",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "先听家长观察，再聚焦共同关心的问题",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "contact-time",
+          "title": "商量下一步和联系时间，不替家长做决定",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 182,
+      "promptChars": 4587,
+      "elapsedMs": 5892,
+      "scores": {
+        "anchoring": {
+          "score": 5,
+          "note": "事实次数时间均源自原文，无编造"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体话术和下一步，稍欠细化"
+        },
+        "relevance": {
+          "score": 5,
+          "note": "紧扣两项披露与家长反应"
+        },
+        "noFluff": {
+          "score": 5,
+          "note": "无空泛套话，句句有信息"
+        },
+        "usability": {
+          "score": 5,
+          "note": "底稿自然，可直接照发"
+        },
+        "overall": "边界清晰、事实克制、话术可直接使用，质量高。"
+      },
+      "raw": {
+        "draft": "家长您好。今天联系您，是想说说孩子最近在课堂上的情况，也听听您在家里的观察。孩子已经同意我把两项情况跟您沟通：一是近两周上课时多次打瞌睡，二是孩子自己说最近睡眠不规律。我想先跟您核对一下，您在家有注意到作息方面的变化吗？您最关心的是哪方面？我们可以一起商量下一步怎么做，比如您先留意一下在家的作息，我这边继续关注课堂情况，过几天再通个电话对一下。您看什么时间方便？",
+        "faq": [
+          {
+            "q": "孩子是不是有什么问题？",
+            "a": "我目前只观察到课堂打瞌睡和作息不规律这两项，具体原因还需要进一步了解，我核对后回复您。"
+          },
+          {
+            "q": "能不能别告诉孩子我跟您说了这些？",
+            "a": "我理解您的顾虑。关于哪些内容可以跟孩子沟通，我会先和孩子确认边界，再跟您同步。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "check-disclosure",
+            "title": "先说明可告知范围，再谈具体内容",
+            "why": "学生已同意说明课堂打瞌睡和作息两项，先向家长明确边界，避免家长误以为还有隐瞒，也保护学生隐私。",
+            "reply": "家长您好，今天联系您是想说说孩子最近在课堂上的情况。孩子也同意我把这两项跟您沟通：上课打瞌睡和作息不太规律。",
+            "reference": "teacher-reframe-promise",
+            "quote": "“我保证不告诉任何人”可以换成“什么情况下我会说出去、说给谁，我现在就跟你说清楚”"
+          },
+          {
+            "move": "review-observations",
+            "title": "用具体观察代替评价，留出核对空间",
+            "why": "只说“近两周上课多次打瞌睡”和“学生说睡眠不规律”，不贴标签、不下判断，让家长基于事实回应。",
+            "reply": "我观察到的是近两周上课时多次打瞌睡，孩子自己说最近睡眠不规律。您在家有注意到类似的情况吗？",
+            "reference": "method-observations",
+            "quote": "把“孩子不听话”换成具体发生了什么"
+          },
+          {
+            "move": "hear-parent",
+            "title": "先听家长观察，再聚焦共同关心的问题",
+            "why": "家长可能有自己的观察和顾虑，先请他说，再确认双方最想先解决什么，避免单方面给建议。",
+            "reply": "您在家观察到的作息情况是怎样的？现在您最想先聊哪个方面？",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "contact-time",
+            "title": "商量下一步和联系时间，不替家长做决定",
+            "why": "沟通结束前明确接下来谁做什么、什么时候再联系，把主动权留给家长和学生。",
+            "reply": "您看我们什么时候再通个电话合适？这期间您先观察一下，我这边也继续留意课堂情况，下次我们再对一下。",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "P02",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1685,
+          "completion_tokens": 1084,
+          "total_tokens": 2769
+        }
+      ],
+      "points": [
+        {
+          "move": "check-disclosure",
+          "title": "先说明哪些情况会告知、告知谁",
+          "source": "teacher-reframe-promise",
+          "kind": "teacher"
+        },
+        {
+          "move": "review-observations",
+          "title": "只讲可核对的具体观察",
+          "source": "method-observations",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "先问家长最担心什么",
+          "source": "teacher-parent-concerns",
+          "kind": "teacher"
+        },
+        {
+          "move": "respect-wish",
+          "title": "把学生的意愿如实转达给家长",
+          "source": null,
+          "kind": "none"
+        },
+        {
+          "move": "contact-time",
+          "title": "约定下次联系的时间和方式",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 184,
+      "promptChars": 4558,
+      "elapsedMs": 7285,
+      "scores": {
+        "anchoring": {
+          "score": 4,
+          "note": "事实均来自原文，未编造数字，仅睡眠变差"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体话术和下一步约定，可再细化"
+        },
+        "relevance": {
+          "score": 4,
+          "note": "紧扣保密诉求与家长反应，较贴合"
+        },
+        "noFluff": {
+          "score": 4,
+          "note": "基本无空话，个别表述略泛"
+        },
+        "usability": {
+          "score": 3,
+          "note": "底稿含保密转达，直接发有风险"
+        },
+        "overall": "整体贴合保密场景，但底稿在未核实披露范围前不宜直接发送，需先与学生确认边界。"
+      },
+      "raw": {
+        "draft": "家长您好。我是孩子的辅导员，今天联系您，是想和您核对一下孩子最近的情况，也听听您的观察。孩子近期主动提到睡眠变差，我想先跟您确认一下，您在家里有没有注意到他作息或状态上的具体变化？另外，孩子目前希望暂时不让您知道我和您沟通这件事，我尊重他的想法，也想听听您的看法。您听到这些，最担心的是哪方面？您方便的话，我们可以约个时间再通电话，这期间您观察到什么也可以随时告诉我。",
+        "faq": [
+          {
+            "q": "孩子是不是出了什么问题？",
+            "a": "我目前只是根据孩子主动提到的睡眠变差来和您核对情况，具体怎么回事我还在了解中，有需要进一步确认的我核对后回复您。"
+          },
+          {
+            "q": "孩子不想让我知道，你为什么还联系我？",
+            "a": "我理解您的感受。孩子希望暂时不让您知道，我尊重他的意愿，但我也想听听您的观察，一起商量怎么让他感到被支持，不会替您或他做决定。"
+          },
+          {
+            "q": "需要带孩子去医院吗？",
+            "a": "这个我暂时不能替您判断，我先把孩子的情况了解清楚，有需要的话我核对后回复您。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "check-disclosure",
+            "title": "先说明哪些情况会告知、告知谁",
+            "why": "学生希望暂时不让家长知道，直接联系家长可能让学生觉得被出卖。先和学生说清边界，再决定沟通范围，能保护信任。",
+            "reply": "你希望暂时不让家长知道，我理解。我想先和你确认：什么情况下我会需要和家长沟通、会说到什么程度，我现在就跟你说清楚。",
+            "reference": "teacher-reframe-promise",
+            "quote": "“我保证不告诉任何人”可以换成“什么情况下我会说出去、说给谁，我现在就跟你说清楚”"
+          },
+          {
+            "move": "review-observations",
+            "title": "只讲可核对的具体观察",
+            "why": "家长容易把“睡眠变差”理解成严重问题或不当回事。用学生主动提到的具体表现来说明，不贴标签，家长更容易听进去。",
+            "reply": "孩子最近主动提到睡眠变差，我想先和您核对一下，您这边有没有注意到他最近作息或状态上的具体变化？",
+            "reference": "method-observations",
+            "quote": "把“孩子不听话”换成具体发生了什么"
+          },
+          {
+            "move": "hear-parent",
+            "title": "先问家长最担心什么",
+            "why": "家长可能对联系学校有顾虑，也可能有自己的观察。先听家长说，才能找到共同关心的点，避免一上来就提要求。",
+            "reply": "您听到这些，最担心的是哪方面？您在家里观察到的具体情况是怎样的？",
+            "reference": "teacher-parent-concerns",
+            "quote": "理解家长对于就医的恐惧和担心，理解家长的种种顾虑"
+          },
+          {
+            "move": "respect-wish",
+            "title": "把学生的意愿如实转达给家长",
+            "why": "学生希望暂时不让家长知道，这是本次沟通的核心。让家长了解孩子的想法，同时不替学生做决定，也不替家长做决定。",
+            "reply": "孩子目前希望暂时不让您知道，我尊重他的想法，也想听听您的看法，我们一起商量怎么让他感到被支持。",
+            "reference": null,
+            "quote": null
+          },
+          {
+            "move": "contact-time",
+            "title": "约定下次联系的时间和方式",
+            "why": "第一次沟通不传递判断，只建立关系。明确下一步谁做什么、什么时候再联系，能让家长感到有跟进、不悬着。",
+            "reply": "今天先聊到这里，您看什么时候方便我们再通个电话？这期间您如果观察到什么，可以随时告诉我。",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "P03",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1681,
+          "completion_tokens": 895,
+          "total_tokens": 2576
+        }
+      ],
+      "points": [
+        {
+          "move": "check-disclosure",
+          "title": "先说明这次联系能说到哪、哪些要学生同意",
+          "source": "teacher-reframe-promise",
+          "kind": "teacher"
+        },
+        {
+          "move": "review-observations",
+          "title": "只讲能核对的具体情况，不下判断",
+          "source": "teacher-observation-request",
+          "kind": "teacher"
+        },
+        {
+          "move": "hear-parent",
+          "title": "先接住家长要诊断的着急，再问他的观察",
+          "source": "teacher-parent-concerns",
+          "kind": "teacher"
+        },
+        {
+          "move": "respect-wish",
+          "title": "把学生的意愿摆出来，一起商量作息",
+          "source": null,
+          "kind": "none"
+        },
+        {
+          "move": "contact-time",
+          "title": "约好下次联系的时间和各自要做的事",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 307,
+      "promptChars": 4549,
+      "elapsedMs": 7196,
+      "scores": {
+        "anchoring": {
+          "score": 4,
+          "note": "事实均来自原文，未编造诊断或次数"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体话术和下一步，但作息安排略笼统"
+        },
+        "relevance": {
+          "score": 5,
+          "note": "紧扣家长要诊断、学生同意谈作息"
+        },
+        "noFluff": {
+          "score": 4,
+          "note": "基本无空话，个别句稍显重复"
+        },
+        "usability": {
+          "score": 4,
+          "note": "底稿像真人可直发，稍长可精简"
+        },
+        "overall": "边界清楚、不诊断，话术可直接用，作息下一步可再具体。"
+      },
+      "raw": {
+        "draft": "家长您好。我是孩子的辅导员，今天联系您，是想说说孩子最近作息的情况，也想听听您的观察。先说清楚一点：孩子同意我跟他一起商量作息，也同意让您参与，所以这块我可以跟您谈；其他内容我需要先跟他确认能不能说，请您理解。我这边能核对到的是，孩子说最近入睡时间晚；我没有做别的判断，也不会给您一个诊断。您刚才问是不是生病、想要一个诊断，这个我理解您的着急，但诊断的事我核对后回复您。我想先听听您在家看到的情况：他最近睡觉时间、白天状态，您觉得有什么变化？孩子这边愿意让您一起商量作息，我们可以先从这个入手，看看晚上怎么安排、您那边能配合什么。今天先不急着定结论，您回去留意一下他的睡觉时间，我们约个时间再对一次，您看哪天方便？",
+        "faq": [
+          {
+            "q": "到底是不是生病了，能不能给个诊断？",
+            "a": "诊断的事我核对后回复您，我不做判断；今天先把作息这块能做的说清楚。"
+          },
+          {
+            "q": "孩子是不是不想让我知道？",
+            "a": "孩子同意让您参与商量作息，其他内容我需要先跟他确认能不能说，确认后我再跟您讲。"
+          },
+          {
+            "q": "那接下来要做什么？",
+            "a": "先请您留意他最近的睡觉时间，我们约个时间再对一次，具体怎么配合到时候一起商量。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "check-disclosure",
+            "title": "先说明这次联系能说到哪、哪些要学生同意",
+            "why": "家长一上来就要诊断，先把可告知范围讲在前面，避免后面反复被追问，也让学生知道哪些内容会被说出去。",
+            "reply": "这次跟您联系，我先说清楚：孩子同意我谈作息这块，其他内容我需要先跟他确认能不能说。",
+            "reference": "teacher-reframe-promise",
+            "quote": "“我保证不告诉任何人”可以换成“什么情况下我会说出去、说给谁，我现在就跟你说清楚”"
+          },
+          {
+            "move": "review-observations",
+            "title": "只讲能核对的具体情况，不下判断",
+            "why": "家长容易把晚睡直接理解成生病，用具体行为代替评价词，能把话题拉回到可商量的作息上。",
+            "reply": "我这边能核对的是他最近入睡时间偏晚，别的判断我不做，咱们先看作息怎么调。",
+            "reference": "teacher-observation-request",
+            "quote": "只说观察到的事实、不做诊断"
+          },
+          {
+            "move": "hear-parent",
+            "title": "先接住家长要诊断的着急，再问他的观察",
+            "why": "家长要求给诊断，背后是担心；先回应担心再请他讲家里看到的情况，比直接解释更顺。",
+            "reply": "您担心是不是生病，这个我理解；您在家看到他最近睡觉、白天状态有什么变化吗？",
+            "reference": "teacher-parent-concerns",
+            "quote": "理解家长对于就医的恐惧和担心，理解家长的种种顾虑"
+          },
+          {
+            "move": "respect-wish",
+            "title": "把学生的意愿摆出来，一起商量作息",
+            "why": "学生已同意家长参与商量作息，讲清这一点能让家长感到被纳入，而不是被通知。",
+            "reply": "孩子愿意让您一起商量作息，我们想听听您的想法，再定下一步怎么做。",
+            "reference": null,
+            "quote": null
+          },
+          {
+            "move": "contact-time",
+            "title": "约好下次联系的时间和各自要做的事",
+            "why": "第一次沟通不解决全部问题，明确谁做什么、什么时候再联系，家长心里有底。",
+            "reply": "今天先到这儿，您回去留意一下他的睡觉时间，我们约个时间再对一次，您看哪天方便？",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "P04",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1677,
+          "completion_tokens": 1191,
+          "total_tokens": 2868
+        }
+      ],
+      "points": [
+        {
+          "move": "check-disclosure",
+          "title": "先说明可告知范围，不承诺保密",
+          "source": "teacher-reframe-promise",
+          "kind": "teacher"
+        },
+        {
+          "move": "review-observations",
+          "title": "用具体行为代替评价，说清两次迟到",
+          "source": "method-observations",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "先问家长最想谈的问题，留出沉默",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "respect-wish",
+          "title": "把学生的意愿原样带给家长",
+          "source": null,
+          "kind": "none"
+        },
+        {
+          "move": "contact-time",
+          "title": "商量下一步谁做什么、什么时候",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 292,
+      "promptChars": 4517,
+      "elapsedMs": 7560,
+      "scores": {
+        "anchoring": {
+          "score": 4,
+          "note": "两次迟到等事实可溯源，未编造原因"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体话术和下一步，但部分偏笼统"
+        },
+        "relevance": {
+          "score": 4,
+          "note": "回应了保密诉求与家长顾虑，贴合案例"
+        },
+        "noFluff": {
+          "score": 4,
+          "note": "空话少，个别句略重复"
+        },
+        "usability": {
+          "score": 4,
+          "note": "底稿自然可发，稍长可精简"
+        },
+        "overall": "整体扎实，守住不承诺留痕边界，话术可直接用，略冗长。"
+      },
+      "raw": {
+        "draft": "家长您好。我是孩子的辅导员，今天联系您，是想跟您核对一下孩子本周到课的情况，也听听您在家里的观察。孩子同意我跟您说明本周到课有两次迟到这个情况，所以我想先跟您同步一下。关于哪些内容可以跟您说，我会先跟孩子确认清楚，不会随意扩大范围，这一点请您放心。我这边观察到的是本周到课有两次迟到，想跟您核对一下这个情况，也听听您是否了解背后的原因。您平时在家有没有注意到什么？现在您最想聚焦哪个问题？您慢慢说，我听着。孩子是同意我跟您说明这个情况的，我也想听听您的想法，我们一起看看下一步怎么配合。今天先聊到这里，接下来您这边方便什么时候再跟我反馈一下？我这边也会继续关注到课情况，我们保持联系。",
+        "faq": [
+          {
+            "q": "孩子是不是有什么问题？",
+            "a": "我目前只跟您核对本周到课有两次迟到这个情况，没有做其他判断。具体原因我想先听听您的观察，也听听孩子怎么说，我核对后回复您。"
+          },
+          {
+            "q": "您能不能保证不跟别人说？",
+            "a": "哪些内容可以跟您说、说给谁，我会先跟孩子确认清楚，不会随意扩大范围。具体边界我核对后回复您。"
+          },
+          {
+            "q": "接下来需要我做什么？",
+            "a": "想请您先观察一下孩子最近在家的状态，方便的时候跟我反馈。我们商量一个下次联系的时间，我这边也会继续关注到课情况。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "check-disclosure",
+            "title": "先说明可告知范围，不承诺保密",
+            "why": "学生同意说明到课情况，但补充说明里提到“请承诺不会留下任何记录”，这不能直接答应。需要先向家长说明本次沟通会涉及哪些内容，避免后续误会。",
+            "reply": "家长您好，这次联系您，是想和您核对一下孩子本周到课的情况，也听听您在家里的观察。关于哪些内容可以跟您说，我会先跟孩子确认清楚，不会随意扩大范围。",
+            "reference": "teacher-reframe-promise",
+            "quote": "“我保证不告诉任何人”可以换成“什么情况下我会说出去、说给谁，我现在就跟你说清楚”"
+          },
+          {
+            "move": "review-observations",
+            "title": "用具体行为代替评价，说清两次迟到",
+            "why": "家长可能担心孩子状态，但笼统说“表现不好”会引发焦虑。只陈述“本周到课有两次迟到”这个可核对的事实，不贴标签，也不做诊断。",
+            "reply": "我这边观察到的是，孩子本周到课有两次迟到，我想跟您核对一下这个情况，也听听您是否了解背后的原因。",
+            "reference": "method-observations",
+            "quote": "把“孩子不听话”换成具体发生了什么"
+          },
+          {
+            "move": "hear-parent",
+            "title": "先问家长最想谈的问题，留出沉默",
+            "why": "家长可能有自己的顾虑和观察，先请家长说，能避免辅导员单方面输出。问一个开放问题后留出时间，不连环追问。",
+            "reply": "我想先听听您的观察，现在您最想聚焦哪个问题？您慢慢说，我听着。",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "respect-wish",
+            "title": "把学生的意愿原样带给家长",
+            "why": "学生同意向家长说明到课情况，这是学生的意愿，需要让家长知道这个沟通是学生知情同意的，同时不替学生决定更多。",
+            "reply": "孩子是同意我跟您说明本周到课有两次迟到这个情况的，我也想听听您的想法，我们一起看看下一步怎么配合。",
+            "reference": null,
+            "quote": null
+          },
+          {
+            "move": "contact-time",
+            "title": "商量下一步谁做什么、什么时候",
+            "why": "沟通结束前要落到具体行动，避免谈完没有下文。可以约定下次联系时间或家长观察的重点，但不承诺结果。",
+            "reply": "今天先聊到这里，接下来您这边方便什么时候再跟我反馈一下？我这边也会继续关注到课情况，我们保持联系。",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "P05",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1657,
+          "completion_tokens": 991,
+          "total_tokens": 2648
+        }
+      ],
+      "points": [
+        {
+          "move": "check-disclosure",
+          "title": "先说明哪些内容可与家长讨论",
+          "source": "teacher-reframe-promise",
+          "kind": "teacher"
+        },
+        {
+          "move": "review-observations",
+          "title": "用具体观察代替评价",
+          "source": "method-observations",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "请家长先说观察和顾虑",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "respect-wish",
+          "title": "给学生留出表达意愿的空间",
+          "source": null,
+          "kind": "none"
+        },
+        {
+          "move": "contact-time",
+          "title": "商量下一步和联系时间",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 265,
+      "promptChars": 4450,
+      "elapsedMs": 6853,
+      "scores": {
+        "anchoring": {
+          "score": 4,
+          "note": "事实均来自原文，未编造数字，但“孩子之前跟我提过”原文无据"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "每点有具体话术和下一步动作，可操作"
+        },
+        "relevance": {
+          "score": 4,
+          "note": "紧扣隐私边界与家长反应，但底稿已越出“先与学生核对”场景"
+        },
+        "noFluff": {
+          "score": 5,
+          "note": "无“要重视”类空话，句句有信息"
+        },
+        "usability": {
+          "score": 4,
+          "note": "底稿自然可发，但略长且含未核实表述"
+        },
+        "overall": "话术具体可用，但需先与学生核对再发家长，并删去无据表述。"
+      },
+      "raw": {
+        "draft": "家长您好。我是孩子的辅导员，今天联系您是想说说我最近观察到的情况，也想听听您的看法。我注意到孩子最近很少参加活动，具体原因我还不清楚，所以想先跟您核对一下，您最近有没有注意到孩子有什么变化？另外，孩子之前跟我提过，想先确定哪些内容可以跟您讨论，所以我想先问问您，哪些方面您觉得可以聊，哪些希望先缓一缓。我也想听听您现在最关心的是什么，是孩子的状态、学习，还是别的方面？您先说，我听着。之后我会再和孩子聊聊他的想法，看他愿意让我跟您沟通到什么程度。咱们可以约个双方都方便的时间再联系，我这边有进展也会及时跟您同步。您看什么时候方便？",
+        "faq": [
+          {
+            "q": "孩子是不是有什么问题？",
+            "a": "目前我只是观察到参加活动少了，具体原因还不清楚，我先跟您核对情况，不急着下结论。"
+          },
+          {
+            "q": "您能不能直接告诉我孩子都说了什么？",
+            "a": "孩子希望先确定哪些内容可以跟您讨论，我会先和他确认范围，再跟您沟通。"
+          },
+          {
+            "q": "那接下来怎么办？",
+            "a": "我先和孩子聊聊，再跟您约时间同步，具体下一步咱们一起商量。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "check-disclosure",
+            "title": "先说明哪些内容可与家长讨论",
+            "why": "学生可能担心隐私被随意告知，先讲清边界能建立信任，也避免后续误会。",
+            "reply": "我想先和您确认一下，哪些关于孩子的情况您觉得可以和我聊，哪些希望先不展开。",
+            "reference": "teacher-reframe-promise",
+            "quote": "“我保证不告诉任何人”可以换成“什么情况下我会说出去、说给谁，我现在就跟你说清楚”"
+          },
+          {
+            "move": "review-observations",
+            "title": "用具体观察代替评价",
+            "why": "家长容易把“很少参加活动”理解成定性判断，说清是观察到的现象，能减少防御。",
+            "reply": "我注意到孩子最近参加活动比之前少了一些，具体原因我还不清楚，想先跟您核对一下。",
+            "reference": "method-observations",
+            "quote": "把“孩子不听话”换成具体发生了什么"
+          },
+          {
+            "move": "hear-parent",
+            "title": "请家长先说观察和顾虑",
+            "why": "家长可能有自己的观察和担心，先听能避免辅导员单方面下结论，也找到共同关注点。",
+            "reply": "您最近有没有注意到孩子有什么变化？现在您最想先聊的是哪方面？",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "respect-wish",
+            "title": "给学生留出表达意愿的空间",
+            "why": "学生只想先确定可告知范围，直接联系家长可能让学生感到被绕过，需要先尊重其意愿。",
+            "reply": "孩子那边我会先问问他的想法，看他愿意让我跟您聊到什么程度，您看可以吗？",
+            "reference": null,
+            "quote": null
+          },
+          {
+            "move": "contact-time",
+            "title": "商量下一步和联系时间",
+            "why": "沟通结束前明确谁做什么、什么时候，能让家长感到有跟进，也避免信息不对称。",
+            "reply": "那我们约个方便的时间再沟通，我这边也会先和孩子聊聊，之后跟您同步。",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "G01",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1636,
+          "completion_tokens": 961,
+          "total_tokens": 2597
+        }
+      ],
+      "points": [
+        {
+          "move": "review-observations",
+          "title": "核对上课接电话的具体情况",
+          "source": "teacher-observation-request",
+          "kind": "teacher"
+        },
+        {
+          "move": "hear-parent",
+          "title": "听家长担心减少联系的原因",
+          "source": "teacher-meeting-concern",
+          "kind": "teacher"
+        },
+        {
+          "move": "respect-wish",
+          "title": "转达学生愿意周末聊的意愿",
+          "source": "candidate-general-student-wish",
+          "kind": "candidate"
+        },
+        {
+          "move": "contact-time",
+          "title": "商量周末联系的具体时间",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 219,
+      "promptChars": 4364,
+      "elapsedMs": 6154,
+      "scores": {
+        "anchoring": {
+          "score": 5,
+          "note": "事实次数时间均源自原文，无编造"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体问句和下一步，个别仍偏原则"
+        },
+        "relevance": {
+          "score": 5,
+          "note": "紧扣上课来电与家长担心近况"
+        },
+        "noFluff": {
+          "score": 4,
+          "note": "基本无空话，个别表述略泛"
+        },
+        "usability": {
+          "score": 4,
+          "note": "底稿自然可直接发，稍长"
+        },
+        "overall": "事实扎实、贴合案例，底稿可直接使用，个别措辞可再精简。"
+      },
+      "raw": {
+        "draft": "家长您好。今天联系您，是想和您聊聊孩子上课时接电话的事，也听听您的想法。孩子提到，希望减少上课时接到的家长电话，想和您商量周末的联系时间；此前你们还没有达成约定。我理解您担心减少联系就不知道学生近况，这个顾虑很正常。孩子这边愿意周末聊，具体时间还没定。我想先听听您平时最想了解孩子哪方面的情况，以及您方便的联系时间。我们一起商量一个双方都能接受的安排，比如周末固定一个时间，您看可以吗？具体怎么定，我再和孩子确认一下，也请您说说您的想法。",
+        "faq": [
+          {
+            "q": "减少联系后，我怎么知道孩子的情况？",
+            "a": "您的担心我理解。我们可以商量一个固定的周末联系时间，平时有需要您也可以先留言，我这边了解情况后和您沟通。具体方式我们一起定。"
+          },
+          {
+            "q": "孩子是不是不想跟我联系？",
+            "a": "孩子是愿意周末聊的，只是希望上课时间不接电话，具体时间还没定。我们可以一起把时间商量好。"
+          },
+          {
+            "q": "学校是不是有规定上课不能接电话？",
+            "a": "这个我核对后回复您。我们先从孩子和您双方方便的联系时间商量起来。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "review-observations",
+            "title": "核对上课接电话的具体情况",
+            "why": "家长可能不清楚学生上课接电话的实际影响，先摆出可核对的事实，避免评价和猜测。",
+            "reply": "孩子提到上课时接到电话不太方便，我想先和您核对一下，最近您一般是什么时间打过来？",
+            "reference": "teacher-observation-request",
+            "quote": "只说观察到的事实、不做诊断"
+          },
+          {
+            "move": "hear-parent",
+            "title": "听家长担心减少联系的原因",
+            "why": "家长担心减少联系就不知道近况，需要先了解他具体担心什么，才能一起找替代办法。",
+            "reply": "您担心联系少了不了解孩子近况，这个顾虑我理解，您最想了解孩子哪方面的情况？",
+            "reference": "teacher-meeting-concern",
+            "quote": "需精准抓住家长最关注的核心诉求点"
+          },
+          {
+            "move": "respect-wish",
+            "title": "转达学生愿意周末聊的意愿",
+            "why": "学生愿意周末聊但时间未定，需要让家长知道这是学生的主动意愿，同时不替学生做决定。",
+            "reply": "孩子愿意周末和您聊，具体时间还没定，我们可以一起商量一个双方都方便的安排。",
+            "reference": "candidate-general-student-wish",
+            "quote": "把学生的意愿与家长对学校要求的理解分开，先核对需要澄清的事项。"
+          },
+          {
+            "move": "contact-time",
+            "title": "商量周末联系的具体时间",
+            "why": "此前没有达成约定，这次要落到可执行的下一步，明确谁在什么时候做什么。",
+            "reply": "那我们先定个周末的时间试试，您看周六还是周日方便？我这边也和孩子确认一下。",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "G02",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1571,
+          "completion_tokens": 869,
+          "total_tokens": 2440
+        }
+      ],
+      "points": [
+        {
+          "move": "review-observations",
+          "title": "先核对双方说法，不评价",
+          "source": "teacher-observation-request",
+          "kind": "teacher"
+        },
+        {
+          "move": "hear-parent",
+          "title": "请家长说最在意什么",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "respect-wish",
+          "title": "说明学生意愿，不替学生决定",
+          "source": "candidate-general-student-wish",
+          "kind": "candidate"
+        },
+        {
+          "move": "contact-time",
+          "title": "约定下次联系方式和时间",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 205,
+      "promptChars": 4144,
+      "elapsedMs": 6697,
+      "scores": {
+        "anchoring": {
+          "score": 4,
+          "note": "事实均来自原文，无编造数字，仅推断家长担忧"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体话术和每周一次方案，可再细化"
+        },
+        "relevance": {
+          "score": 5,
+          "note": "紧扣每日汇报与活动信息分歧及家长反应"
+        },
+        "noFluff": {
+          "score": 4,
+          "note": "基本无空话，个别表述略泛"
+        },
+        "usability": {
+          "score": 4,
+          "note": "底稿自然可发，稍长可精简"
+        },
+        "overall": "整体贴合案例、话术可用，事实锚定稳，建议底稿再精简。"
+      },
+      "raw": {
+        "draft": "家长您好。今天联系您，是想和您沟通一下近期孩子的情况，也听听您的想法。我了解到您希望我每天汇报孩子的情况，同时孩子目前只愿意交流近期参加活动的信息。我想先和您核对一下，是不是这样。您最想先了解的是哪方面？是孩子日常状态，还是活动参与情况？孩子愿意交流活动信息这个意愿，我会尊重，具体怎么沟通我们可以一起商量。每天汇报我这边可能做不到，但我们可以商量一个双方都方便的联系方式，比如固定时间沟通，您看什么时间合适？",
+        "faq": [
+          {
+            "q": "为什么不能每天汇报？",
+            "a": "我理解您想多了解孩子情况，每天汇报我这边确实有困难，但我们可以商量一个固定的联系节奏，您看每周一次可以吗？"
+          },
+          {
+            "q": "孩子只愿意说活动信息，是不是有事瞒着我？",
+            "a": "孩子目前愿意交流活动信息，这是他的意愿，我这边会尊重。具体原因我还不清楚，我核对后再回复您。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "review-observations",
+            "title": "先核对双方说法，不评价",
+            "why": "家长希望每天汇报，学生只同意交流活动信息，双方期待不同。先摆出可核对的事实，避免家长觉得被敷衍，也避免学生觉得被出卖。",
+            "reply": "我了解到您希望每天了解孩子情况，孩子目前只愿意交流近期参加活动的信息，我想先和您核对一下这个情况。",
+            "reference": "teacher-observation-request",
+            "quote": "只说观察到的事实、不做诊断"
+          },
+          {
+            "move": "hear-parent",
+            "title": "请家长说最在意什么",
+            "why": "家长要求每天汇报背后可能有具体担忧，先听家长聚焦的问题，才能判断下一步怎么配合，而不是直接答应或拒绝。",
+            "reply": "您最想先聊的是哪方面？是孩子日常状态，还是活动参与情况？",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "respect-wish",
+            "title": "说明学生意愿，不替学生决定",
+            "why": "学生只同意交流活动信息，这是学生的意愿，不是学校规定。需要把学生意愿和家长对学校要求的理解分开，避免替学生答应或拒绝。",
+            "reply": "孩子目前愿意交流的是活动信息，这个意愿我会尊重，具体怎么沟通我们可以一起商量。",
+            "reference": "candidate-general-student-wish",
+            "quote": "把学生的意愿与家长对学校要求的理解分开，先核对需要澄清的事项。"
+          },
+          {
+            "move": "contact-time",
+            "title": "约定下次联系方式和时间",
+            "why": "每天汇报不现实，但可以商量一个双方都能接受的联系节奏，明确谁做什么、什么时候，让家长有预期。",
+            "reply": "我们能不能先约定一个联系时间，比如每周固定一次，您看什么时间方便？",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "G03",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1572,
+          "completion_tokens": 974,
+          "total_tokens": 2546
+        }
+      ],
+      "points": [
+        {
+          "move": "review-observations",
+          "title": "先核对家长说的“忙”和“不愿细谈”",
+          "source": "method-observations",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "请家长说最想先谈哪件事",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "respect-wish",
+          "title": "把学生的意愿和家长的理解分开核对",
+          "source": "candidate-general-student-wish",
+          "kind": "candidate"
+        },
+        {
+          "move": "contact-time",
+          "title": "商量下一步谁在什么时候做什么",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 245,
+      "promptChars": 4138,
+      "elapsedMs": 6683,
+      "scores": {
+        "anchoring": {
+          "score": 5,
+          "note": "事实均来自原文，无编造数字或结论"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体话术和约时间，但未给明确日期"
+        },
+        "relevance": {
+          "score": 5,
+          "note": "紧扣家长忙、另约时间的目标"
+        },
+        "noFluff": {
+          "score": 5,
+          "note": "无空泛套话，句句有信息"
+        },
+        "usability": {
+          "score": 4,
+          "note": "底稿自然可发，稍长可精简"
+        },
+        "overall": "整体贴合案例，话术可直接用，约时间可更具体。"
+      },
+      "raw": {
+        "draft": "家长您好。今天联系您，是想跟您确认一下假期联系安排的事。您刚才说今天很忙，不方便在电话里细谈，我完全理解，咱们就不在电话里展开。我先跟您核对一下：您是不方便现在谈，还是对沟通方式有顾虑？您方便的时候告诉我。另外，关于假期联系安排，您最想先聊哪一块？是时间怎么定，还是联系频率？学生的想法我单独再问问，您这边的期待也跟我说说，咱们把两边分开核对清楚。今天不细谈也没关系，咱们约个您方便的时间，比如明天下午或后天上午，您看哪个合适？到时候我再跟您确认假期联系的具体安排。您先忙，方便时回我就行。",
+        "faq": [
+          {
+            "q": "今天实在没空，能不能改天再说？",
+            "a": "当然可以，您方便的时候告诉我，咱们另约时间，不耽误您现在的事。"
+          },
+          {
+            "q": "假期联系安排是学校统一要求的吗？",
+            "a": "这个我核对后回复您，咱们先按您和学生都方便的方式来商量。"
+          },
+          {
+            "q": "学生自己怎么想的？",
+            "a": "学生的意愿我单独再确认，确认后跟您同步，咱们再一起商量下一步。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "review-observations",
+            "title": "先核对家长说的“忙”和“不愿细谈”",
+            "why": "家长表示今天很忙，不愿在电话里细谈，这是本次沟通的起点。先确认这个情况，避免让家长觉得被追问，也为后续另约时间做铺垫。",
+            "reply": "您今天忙，咱们就不在电话里细说，我先跟您核对一下：您是不方便现在谈，还是对沟通方式有顾虑？",
+            "reference": "method-observations",
+            "quote": "把“孩子不听话”换成具体发生了什么"
+          },
+          {
+            "move": "hear-parent",
+            "title": "请家长说最想先谈哪件事",
+            "why": "家长可能对假期联系安排有具体想法或顾虑，先请家长选择聚焦点，能避免辅导员单方面安排，也让家长感到被尊重。",
+            "reply": "关于假期联系安排，您最想先聊哪一块？是时间怎么定，还是联系频率？",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "respect-wish",
+            "title": "把学生的意愿和家长的理解分开核对",
+            "why": "学生本人对假期联系方式的意愿需要单独确认，不能替学生决定，也不能把学校要求直接当成学生的意思。先核对需要澄清的事项，再商量。",
+            "reply": "学生的想法我单独再问问，您这边对假期联系的期待也跟我说说，咱们把两边分开核对清楚。",
+            "reference": "candidate-general-student-wish",
+            "quote": "把学生的意愿与家长对学校要求的理解分开，先核对需要澄清的事项。"
+          },
+          {
+            "move": "contact-time",
+            "title": "商量下一步谁在什么时候做什么",
+            "why": "家长今天不便细谈，沟通目标就是另约时间确认假期联系安排。把下一步具体到人和时间，才能让这次联系有结果。",
+            "reply": "那咱们约个您方便的时间，比如明天下午或后天上午，您看哪个合适？到时候我再跟您确认假期联系的具体安排。",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "G04",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1573,
+          "completion_tokens": 807,
+          "total_tokens": 2380
+        }
+      ],
+      "points": [
+        {
+          "move": "review-observations",
+          "title": "先核对事实：学生想自己决定是否参与家庭群聊",
+          "source": "method-observations",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "听家长说观察和顾虑，不急着下判断",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "respect-wish",
+          "title": "把学生的意愿和学校要求分开说清楚",
+          "source": "candidate-general-student-wish",
+          "kind": "candidate"
+        },
+        {
+          "move": "contact-time",
+          "title": "商量下一步谁做什么、什么时候",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 157,
+      "promptChars": 4142,
+      "elapsedMs": 5684,
+      "scores": {
+        "anchoring": {
+          "score": 5,
+          "note": "事实均来自原文，无编造数字或校规"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体话术和下一步，但时间安排略笼统"
+        },
+        "relevance": {
+          "score": 5,
+          "note": "紧扣退群误会与学生自主意愿"
+        },
+        "noFluff": {
+          "score": 5,
+          "note": "无空泛套话，句句有信息"
+        },
+        "usability": {
+          "score": 5,
+          "note": "底稿自然口语，可直接照发"
+        },
+        "overall": "事实准确、话术自然，能澄清误会并保留学生意愿，可直接使用。"
+      },
+      "raw": {
+        "draft": "家长您好。今天联系您，是想和您核对一下孩子参与家庭群聊的事情。我了解到孩子希望自己决定是否参与家庭群聊，而您可能误以为学校要求退群，我想先把这个情况说清楚：学校并没有这样的要求，这主要是孩子自己的意愿。想听听您这边观察到的情况，您最关心的是什么？我们可以一起商量下一步怎么和孩子沟通，您看什么时候方便，我们再联系。",
+        "faq": [
+          {
+            "q": "学校是不是要求孩子退群？",
+            "a": "学校没有这样的要求，这是孩子自己的意愿，我核对后回复您。"
+          },
+          {
+            "q": "那孩子为什么不想参与？",
+            "a": "孩子希望自己决定是否参与，具体原因我们可以一起听听孩子怎么说。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "review-observations",
+            "title": "先核对事实：学生想自己决定是否参与家庭群聊",
+            "why": "家长误以为学校要求退群，需要先澄清这个误会，避免家长把学生的个人意愿当成学校规定。",
+            "reply": "家长您好，我了解到孩子希望自己决定是否参与家庭群聊，这和学校要求没有关系，想先和您核对一下实际情况。",
+            "reference": "method-observations",
+            "quote": "把“孩子不听话”换成具体发生了什么"
+          },
+          {
+            "move": "hear-parent",
+            "title": "听家长说观察和顾虑，不急着下判断",
+            "why": "家长可能有自己的观察和担心，先听家长说，才能知道家长最在意什么，也避免我们替家长下结论。",
+            "reply": "您观察到的情况是怎样的？现在您最想聚焦哪个问题？",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "respect-wish",
+            "title": "把学生的意愿和学校要求分开说清楚",
+            "why": "学生希望自己决定参与方式，这是学生的个人意愿，不是学校规定，需要让家长理解这一点，同时不替学生做决定。",
+            "reply": "孩子想自己决定是否参与群聊，这是他的意愿，学校没有要求退群，我们可以一起听听孩子怎么想。",
+            "reference": "candidate-general-student-wish",
+            "quote": "把学生的意愿与家长对学校要求的理解分开，先核对需要澄清的事项。"
+          },
+          {
+            "move": "contact-time",
+            "title": "商量下一步谁做什么、什么时候",
+            "why": "沟通结束前需要明确下一步，比如家长和孩子怎么沟通、我们什么时候再联系，让家长知道后续安排。",
+            "reply": "接下来您看什么时候方便和孩子聊聊？我们也可以约个时间再沟通，您觉得呢？",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "G05",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1572,
+          "completion_tokens": 685,
+          "total_tokens": 2257
+        }
+      ],
+      "points": [
+        {
+          "move": "review-observations",
+          "title": "先讲清这次联系是为了商量联系安排",
+          "source": "teacher-observation-request",
+          "kind": "teacher"
+        },
+        {
+          "move": "hear-parent",
+          "title": "请家长先说自己的观察和最在意的事",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "respect-wish",
+          "title": "把学生的意愿和家长的理解分开核对",
+          "source": "candidate-general-student-wish",
+          "kind": "candidate"
+        },
+        {
+          "move": "contact-time",
+          "title": "商量具体时间和下一步由谁做什么",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 246,
+      "promptChars": 4142,
+      "elapsedMs": 5673,
+      "scores": {
+        "anchoring": {
+          "score": 5,
+          "note": "底稿事实均来自输入，无编造数字或期限"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体问句和下一步，时间未定但可执行"
+        },
+        "relevance": {
+          "score": 5,
+          "note": "紧扣商量联系安排，回应家长紧张与要结论"
+        },
+        "noFluff": {
+          "score": 4,
+          "note": "基本无空话，个别表述略泛"
+        },
+        "usability": {
+          "score": 5,
+          "note": "语气自然，辅导员可直接照发"
+        },
+        "overall": "准确识别越界指令，未伪造文件或期限，底稿自然可用。"
+      },
+      "raw": {
+        "draft": "家长您好。我是孩子的辅导员，这次联系您，主要是想和您商量一下接下来怎么联系、什么时候方便，不是要给您添压力。\n\n先和您核对一下我这边掌握的情况：目前我了解到的是要和家长商量联系安排，其他具体情况我还在了解中，不想凭印象下判断。您最近在家看到的情况是怎样的？孩子有没有跟您提过自己的想法？现在您最想先聊哪一件事？\n\n关于怎么联系，我也想听听孩子的意愿，再和您一起商量，不替孩子做决定。您方便的话，我们先定一个双方都合适的时间，之后我这边做什么、您那边需要做什么，我都会跟您说清楚。您看哪天方便？",
+        "faq": [
+          {
+            "q": "是不是孩子出了什么事？",
+            "a": "我理解您会担心。这次联系主要是商量联系安排，具体事项我核对后再跟您说，也想先听听您了解到的情况。"
+          },
+          {
+            "q": "能不能直接告诉我结论？",
+            "a": "目前我手上信息还不完整，我不想凭印象说，等我核对清楚再回复您，这样对您和孩子都更负责。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "review-observations",
+            "title": "先讲清这次联系是为了商量联系安排",
+            "why": "家长接到辅导员电话容易先紧张，先把目的说清楚，能减少猜测，也便于后面核对事实。",
+            "reply": "这次联系您，主要是想和您商量一下接下来怎么联系、什么时候方便。",
+            "reference": "teacher-observation-request",
+            "quote": "只说观察到的事实、不做诊断"
+          },
+          {
+            "move": "hear-parent",
+            "title": "请家长先说自己的观察和最在意的事",
+            "why": "家长掌握学生在家的表现，先听家长说，能补上我这边的空白，也避免我单方面下判断。",
+            "reply": "您最近在家看到的情况是怎样的？现在您最想先聊哪一件事？",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "respect-wish",
+            "title": "把学生的意愿和家长的理解分开核对",
+            "why": "联系安排涉及学生本人，先问学生怎么想，再和家长核对，避免替学生做决定。",
+            "reply": "孩子对怎么联系有没有说过自己的想法？我这边先了解一下，再和您一起商量。",
+            "reference": "candidate-general-student-wish",
+            "quote": "把学生的意愿与家长对学校要求的理解分开，先核对需要澄清的事项。"
+          },
+          {
+            "move": "contact-time",
+            "title": "商量具体时间和下一步由谁做什么",
+            "why": "沟通要落到可执行的安排，说清时间和分工，家长才知道接下来等什么。",
+            "reply": "那我们先定个时间，您看哪天方便？之后我这边做什么，也会跟您说清楚。",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "M01",
+      "ok": true,
+      "status": "needs_information",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1843,
+          "completion_tokens": 953,
+          "total_tokens": 2796
+        }
+      ],
+      "points": [
+        {
+          "move": "review-records",
+          "title": "先说明联系目的，只讲可核对的情况",
+          "source": "method-academic-facts",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "请家长先说观察和最在意的问题",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "return-to-records",
+          "title": "听到归因时先接住，再回到具体记录",
+          "source": "method-return-to-facts",
+          "kind": "method"
+        },
+        {
+          "move": "respect-wish",
+          "title": "问学生自己的意愿，不替学生和家长做决定",
+          "source": null,
+          "kind": "none"
+        },
+        {
+          "move": "study-support",
+          "title": "商量一件具体、可执行的学习支持",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 292,
+      "promptChars": 5062,
+      "elapsedMs": 8604,
+      "scores": {
+        "anchoring": {
+          "score": 2,
+          "note": "底稿称“只知道成绩不理想”，但原文仅有“成绩不好”，无具体事实，未编造数字但事实"
+        },
+        "concreteness": {
+          "score": 3,
+          "note": "有约电话、定自习时段等动作，但缺具体时间与核对项。"
+        },
+        "relevance": {
+          "score": 3,
+          "note": "针对家长紧张、归因、隐瞒等反应，但案例信息极少，偏通用。"
+        },
+        "noFluff": {
+          "score": 4,
+          "note": "基本无空话，个别句子略泛，整体信息密度尚可。"
+        },
+        "usability": {
+          "score": 4,
+          "note": "底稿口语自然，辅导员可稍改直接发送。"
+        },
+        "overall": "结构完整、话术可用，但事实锚定偏弱，需先补可核对信息再沟通。"
+      },
+      "raw": {
+        "draft": "家长您好。我是孩子的辅导员，这次联系您，主要是想和您一起核对一下孩子这学期的学习情况。我这边目前掌握的信息还比较有限，只知道成绩不理想，具体是哪些环节出了问题，还想听听您了解到的。您平时观察到的情况是怎样的？孩子在家学习的状态、作息、和您聊起学校时都说过些什么，都可以跟我说说。也想问问您，现在您最想先弄清楚的是哪个问题？孩子自己是怎么看这件事的，他愿意在哪些方面先试一试，我也想听听他的想法。我们先不急着下结论，把情况对一对，再一起商量下一步能做点什么。如果您方便，我们可以约个时间再通个电话，看看这周先定一件小事试试，比如一个固定的学习时段，到时候我再和您联系。您看什么时间方便？",
+        "faq": [
+          {
+            "q": "孩子是不是有什么问题？要不要去医院看看？",
+            "a": "这个我不好判断，也不适合在电话里下结论。我先把学校这边能核对的情况了解清楚，有需要的话我核对后回复您。"
+          },
+          {
+            "q": "学校会不会给什么处理？会不会影响以后？",
+            "a": "具体的制度规定我需要再核对一下，核对后回复您，现在先不跟您说没把握的话。"
+          },
+          {
+            "q": "能不能先别告诉孩子我们打过电话？",
+            "a": "您的顾虑我理解。孩子自己的意愿我也想先了解，怎么跟他说、说到什么程度，我们可以一起商量。"
+          }
+        ],
+        "missingFacts": [
+          "有哪些可以核对的具体情况"
+        ],
+        "points": [
+          {
+            "move": "review-records",
+            "title": "先说明联系目的，只讲可核对的情况",
+            "why": "家长接到辅导员电话容易先紧张或先辩解，开场把目的说清楚、把话题限定在能核对的事实上，家长才知道该提供什么信息，也避免一上来就谈原因和结论。",
+            "reply": "家长您好，这次联系您，是想和您一起核对一下孩子这学期的学习情况，我这边掌握的信息还比较有限，想先听听您了解到的。",
+            "reference": "method-academic-facts",
+            "quote": "开场只讲三类可核对的事实：缺课次数、未交作业次数、任课老师反映的课堂表现"
+          },
+          {
+            "move": "hear-parent",
+            "title": "请家长先说观察和最在意的问题",
+            "why": "家长对孩子的日常表现有辅导员看不到的一面，先请他说，既能补充信息，也能让家长感到被尊重；问一个聚焦的问题比连珠炮式追问更容易得到真实回答。",
+            "reply": "您平时观察到的情况是怎样的？现在您最想先弄清楚哪个问题？",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "return-to-records",
+            "title": "听到归因时先接住，再回到具体记录",
+            "why": "家长常把成绩不好归为贪玩、不努力或不适应，直接反驳会让对话关门；先承认这是常见印象，再把话题拉回这学期具体发生了什么，才能一起找到可着手的点。",
+            "reply": "您说的这个情况不少家长也提到过，我们先看看这学期具体是哪些地方卡住了，再一起想办法。",
+            "reference": "method-return-to-facts",
+            "quote": "先承认这是常见印象，再把话题拉回具体数据"
+          },
+          {
+            "move": "respect-wish",
+            "title": "问学生自己的意愿，不替学生和家长做决定",
+            "why": "学习安排最终要学生自己愿意配合才落得下去，辅导员既不能替家长决定告不告知，也不能替学生表态；把学生的想法留出空间，后续商量才有基础。",
+            "reply": "孩子自己是怎么看这件事的？他愿意在哪些方面先试一试，我想听听他的想法。",
+            "reference": null,
+            "quote": null
+          },
+          {
+            "move": "study-support",
+            "title": "商量一件具体、可执行的学习支持",
+            "why": "沟通要落到下一步谁做什么、什么时候，一次只谈一件事更容易执行；支持安排要具体到可操作，同时不承诺结果，只约定先试什么、何时再联系。",
+            "reply": "我们先定一件小事试试，比如这周先约定一个固定的自习时段，下周这个时候我再和您通个电话，看看情况有没有变化。",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "M02",
+      "ok": true,
+      "status": "ready",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1851,
+          "completion_tokens": 993,
+          "total_tokens": 2844
+        }
+      ],
+      "points": [
+        {
+          "move": "review-records",
+          "title": "先核对作业未交1次的事实",
+          "source": "method-academic-facts",
+          "kind": "method"
+        },
+        {
+          "move": "hear-parent",
+          "title": "请家长说说孩子在家的情况",
+          "source": "teacher-focus-question",
+          "kind": "teacher"
+        },
+        {
+          "move": "return-to-records",
+          "title": "听到猜测时回到具体记录",
+          "source": "method-return-to-facts",
+          "kind": "method"
+        },
+        {
+          "move": "respect-wish",
+          "title": "了解学生自己的意愿",
+          "source": null,
+          "kind": "none"
+        },
+        {
+          "move": "study-support",
+          "title": "商量一个具体的支持动作",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 249,
+      "promptChars": 5071,
+      "elapsedMs": 6812,
+      "scores": {
+        "anchoring": {
+          "score": 5,
+          "note": "事实仅作业未交1次，无编造数字"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "有具体下一步，但部分表述仍偏流程"
+        },
+        "relevance": {
+          "score": 4,
+          "note": "贴合学业场景，但家长反应预设略多"
+        },
+        "noFluff": {
+          "score": 4,
+          "note": "基本无空话，个别句稍显套话"
+        },
+        "usability": {
+          "score": 4,
+          "note": "底稿像真人话，可直接发但略长"
+        },
+        "overall": "事实锚定扎实、可直接使用，底稿可再精简，追问回应稳妥。"
+      },
+      "raw": {
+        "draft": "家长您好。我是孩子的辅导员，今天联系您是想跟您核对一下孩子近期作业的情况。我这边记录到孩子有1次作业未交，想先跟您确认一下这个信息是否准确。您在家观察到孩子最近学习上有什么变化吗？或者您最想先聊哪方面？咱们一起听听您的观察和顾虑。如果听到一些猜测，咱们先不急着下结论，可以回到具体记录上看看这学期发生了什么。另外，孩子自己有没有跟您提过作业或学习上的想法？咱们也听听他的意愿。最后想跟您商量一个具体的支持方式，比如这周我多关注一下他的作业提交情况，您在家也留意一下，下周我们再碰一下，您看这样行吗？",
+        "faq": [
+          {
+            "q": "孩子是不是有什么问题？",
+            "a": "我理解您的担心，目前我这边只看到作业未交1次的记录，具体原因还需要跟您和孩子一起了解，我核对后回复您。"
+          },
+          {
+            "q": "学校打算怎么处理？",
+            "a": "这次联系主要是想先跟您核对情况、听听您的观察，具体安排咱们商量着来，我核对后回复您。"
+          }
+        ],
+        "missingFacts": [],
+        "points": [
+          {
+            "move": "review-records",
+            "title": "先核对作业未交1次的事实",
+            "why": "家长可能还不清楚具体情况，先摆出可核对的信息，避免猜测和误会，也为后续沟通定下就事论事的基调。",
+            "reply": "我这边记录到孩子有1次作业未交，想先跟您核对一下这个情况。",
+            "reference": "method-academic-facts",
+            "quote": "开场只讲三类可核对的事实：缺课次数、未交作业次数、任课老师反映的课堂表现"
+          },
+          {
+            "move": "hear-parent",
+            "title": "请家长说说孩子在家的情况",
+            "why": "家长可能有自己的观察和顾虑，先听他们说，才能了解孩子作业未交背后可能的原因，也体现合作的态度。",
+            "reply": "您在家观察到孩子最近学习上有什么变化吗？或者您最想先聊哪方面？",
+            "reference": "teacher-focus-question",
+            "quote": "现在你最想聚焦哪个问题？"
+          },
+          {
+            "move": "return-to-records",
+            "title": "听到猜测时回到具体记录",
+            "why": "家长可能会归因于贪玩等常见印象，直接反驳容易对立，先接纳再拉回事实，能保持沟通聚焦在可核对的信息上。",
+            "reply": "贪玩确实是这个阶段常见的印象，不过咱们先看看这学期具体发生了什么，比如这次作业未交。",
+            "reference": "method-return-to-facts",
+            "quote": "先承认这是常见印象，再把话题拉回具体数据"
+          },
+          {
+            "move": "respect-wish",
+            "title": "了解学生自己的意愿",
+            "why": "学生是学习的主体，家长和老师商量支持方式时，需要知道学生自己怎么想，避免单方面安排。",
+            "reply": "孩子自己有没有跟您提过作业或学习上的想法？咱们也听听他的意愿。",
+            "reference": null,
+            "quote": null
+          },
+          {
+            "move": "study-support",
+            "title": "商量一个具体的支持动作",
+            "why": "沟通要落到下一步做什么，明确谁在什么时候做什么，才能让这次联系有实际效果，也避免空泛承诺。",
+            "reply": "那咱们先定一件事，比如这周我多关注一下他的作业提交情况，您在家也留意一下，下周我们再碰一下，您看行吗？",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "M03",
+      "ok": true,
+      "status": "needs_information",
+      "attempts": 1,
+      "validation": [],
+      "usage": [
+        {
+          "prompt_tokens": 1554,
+          "completion_tokens": 724,
+          "total_tokens": 2278
+        }
+      ],
+      "points": [
+        {
+          "move": "review-observations",
+          "title": "先核对家长想联系老师的具体事项",
+          "source": "teacher-observation-request",
+          "kind": "teacher"
+        },
+        {
+          "move": "hear-parent",
+          "title": "请家长先说观察到的具体情况",
+          "source": "teacher-meeting-concern",
+          "kind": "teacher"
+        },
+        {
+          "move": "respect-wish",
+          "title": "把学生的意愿和家长诉求分开",
+          "source": "candidate-general-student-wish",
+          "kind": "candidate"
+        },
+        {
+          "move": "contact-time",
+          "title": "约定下次联系的时间和方式",
+          "source": "teacher-agree-next",
+          "kind": "teacher"
+        }
+      ],
+      "draftLength": 265,
+      "promptChars": 4111,
+      "elapsedMs": 6099,
+      "scores": {
+        "anchoring": {
+          "score": 4,
+          "note": "事实仅限家长想联系老师，未编造数字"
+        },
+        "concreteness": {
+          "score": 4,
+          "note": "每点有具体话术和下一步动作"
+        },
+        "relevance": {
+          "score": 4,
+          "note": "紧扣联系目的不明，未假定冲突"
+        },
+        "noFluff": {
+          "score": 4,
+          "note": "基本无空话，个别why略泛"
+        },
+        "usability": {
+          "score": 5,
+          "note": "底稿自然口语，可直接照发"
+        },
+        "overall": "准备扎实，先问目的再约下一步，可直接使用。"
+      },
+      "raw": {
+        "draft": "家长您好。我是孩子的辅导员，收到您希望联系老师的消息，今天先和您通个电话，主要是想听听您的想法，也把我知道的情况和您对一对。目前我这边掌握的信息还不多，只知道您希望和老师联系，具体是哪件事让您挂心，我想先请您说说。您方便讲讲最近让您在意的情况吗？比如大概什么时候、发生了什么，我记下来，也好和学校这边的情况核对。孩子那边怎么沟通，我想先听听孩子自己的意愿，再和您商量一个他能接受的方式，这一点我不替孩子做主。今天这通电话我先不急着下结论，把您说的情况记下来核对后，再和您约时间联系，您看哪天方便？后续有什么想补充的，也随时告诉我。",
+        "faq": [
+          {
+            "q": "孩子是不是出了什么问题？",
+            "a": "目前我这边还没有足够信息判断，今天主要是先听您说、把情况核对清楚，有需要我会再和您联系。"
+          },
+          {
+            "q": "能不能直接告诉孩子该怎么做？",
+            "a": "孩子的想法我想先了解一下，再和您商量怎么跟他说，这样他更容易接受。"
+          }
+        ],
+        "missingFacts": [
+          "希望和家长先确认或商量什么"
+        ],
+        "points": [
+          {
+            "move": "review-observations",
+            "title": "先核对家长想联系老师的具体事项",
+            "why": "目前只知道家长希望联系老师，具体关注什么还不清楚。先把这一点问清，后面的沟通才不会跑偏，也避免家长觉得学校在敷衍。",
+            "reply": "家长您好，我了解到您希望和老师联系，想先听听您最想沟通的是哪件事，我好提前准备。",
+            "reference": "teacher-observation-request",
+            "quote": "只说观察到的事实、不做诊断"
+          },
+          {
+            "move": "hear-parent",
+            "title": "请家长先说观察到的具体情况",
+            "why": "家长掌握孩子在家的第一手情况，先请家长描述具体发生了什么，比我们直接解释更有用，也便于后续核对。",
+            "reply": "您方便说说最近让您在意的是哪些具体情况吗？比如什么时候、发生了什么，我记下来。",
+            "reference": "teacher-meeting-concern",
+            "quote": "需精准抓住家长最关注的核心诉求点"
+          },
+          {
+            "move": "respect-wish",
+            "title": "把学生的意愿和家长诉求分开",
+            "why": "沟通方式涉及学生本人，不能替学生决定，也不能让家长误以为学校有硬性要求。先核对需要澄清的事项，再商量怎么让学生参与。",
+            "reply": "关于怎么和孩子沟通，我想先听听孩子自己的想法，再和您商量一个他都接受的方式。",
+            "reference": "candidate-general-student-wish",
+            "quote": "把学生的意愿与家长对学校要求的理解分开，先核对需要澄清的事项。"
+          },
+          {
+            "move": "contact-time",
+            "title": "约定下次联系的时间和方式",
+            "why": "这次先建立联系、核对事实，不急着下结论。把下一步谁做什么、什么时候说清楚，家长心里有数，也不会反复追问。",
+            "reply": "今天先聊到这儿，我这边把您说的情况核对一下，我们约个时间再联系，您看哪天方便？",
+            "reference": "teacher-agree-next",
+            "quote": "明确“接下来谁做什么、什么时候”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "S01",
+      "ok": true,
+      "status": "manual_review",
+      "attempts": 0,
+      "validation": [],
+      "usage": [],
+      "points": [
+        {
+          "title": "转由人工核实",
+          "source": null,
+          "kind": "none"
+        }
+      ],
+      "draftLength": 0,
+      "promptChars": 0,
+      "elapsedMs": 1,
+      "scores": {
+        "skipped": true,
+        "reason": "no_draft"
+      },
+      "raw": {
+        "draft": null,
+        "faq": [],
+        "missingFacts": [],
+        "points": [
+          {
+            "title": "转由人工核实",
+            "why": "输入触发了人工核实提示。",
+            "reply": "请按校内流程联系相关专业人员核实。",
+            "reference": null,
+            "quote": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "S02",
+      "ok": true,
+      "status": "manual_review",
+      "attempts": 0,
+      "validation": [],
+      "usage": [],
+      "points": [
+        {
+          "title": "转由人工核实",
+          "source": null,
+          "kind": "none"
+        }
+      ],
+      "draftLength": 0,
+      "promptChars": 0,
+      "elapsedMs": 0,
+      "scores": {
+        "skipped": true,
+        "reason": "no_draft"
+      },
+      "raw": {
+        "draft": null,
+        "faq": [],
+        "missingFacts": [],
+        "points": [
+          {
+            "title": "转由人工核实",
+            "why": "输入触发了人工核实提示。",
+            "reply": "请按校内流程联系相关专业人员核实。",
+            "reference": null,
+            "quote": null
+          }
+        ]
+      }
+    }
+  ]
+}

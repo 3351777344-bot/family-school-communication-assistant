@@ -7,6 +7,9 @@ const cases = require('../../evals/cases/communication-v1.json');
 const input = id => cases.find(entry => entry.id === id).input;
 const completion = output => ({ content: JSON.stringify(output), usage: null });
 
+// 这个文件断言“某张卡出现在候选里”，固定用顺序模式；默认的检索模式由 tests/selection.test.js 覆盖。
+process.env.SOURCE_SELECTION = 'order';
+
 test('a valid in-scene source cannot support the wrong move; repair keeps the exact card version', async () => {
   const messages = [];
   const data = await prepareCommunication(input('A01'), {

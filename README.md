@@ -34,7 +34,7 @@
 2. 项目默认使用 `AI_PROVIDER=deepseek`、`DEEPSEEK_MODEL=deepseek-flash`，关闭深度思考。手动选择千问时，设置 `AI_PROVIDER=qwen`，使用 `QWEN_MODEL/QWEN_API_BASE`。
 3. 初始 `MOCK=1` 只显示离线示例。填写密钥不会自动发出模型请求；需要真实生成时改 `MOCK=0` 并重启。
 4. 在项目根目录运行 `npm start`，会先构建新版前端，再启动 `http://127.0.0.1:8787`。`npm run start:mock` 强制离线，也会先构建。直接 `node app/server.js` 不构建；没有构建产物时保留旧原型兼容入口。
-5. 资料选取有三个可选项：`SOURCE_TIERING`、`MAX_SOURCES_PER_MOVE`、`EXPOSE_APPLICATIONS`。默认值已够用，一般不用改；含义与取值范围见 `.env.example` 和 `app/config.js` 的 `SOURCE_DEFAULTS`。取值非法时服务启动即报错。
+5. 资料选取有四个可选项：`SOURCE_SELECTION`、`SOURCE_TIERING`、`MAX_SOURCES_PER_MOVE`、`EXPOSE_APPLICATIONS`。默认值已够用，一般不用改；含义与取值范围见 `.env.example` 和 `app/config.js` 的 `SOURCE_DEFAULTS`。取值非法时服务启动即报错。`SOURCE_SELECTION` 默认 `retrieval`（按卡片的情境标签 `when`、`priority` 和输入关键词挑选，每步最多 8 张）；改回 `order` 会恢复“按资料库顺序取前 N 张”的旧行为。2026-11-18 的对照显示两种模式的质量差异在噪声内，但 `retrieval` 首次通过率更高，且不会让排在数组后面的卡片永远选不到。
 
 前端开发另开终端运行 `npm run dev:web`，开发页通过代理访问 8787 的 API。`npm run typecheck` 检查类型，`npm run build:web` 构建，`npm test` 运行前后端本地回归。架构、状态与界面测试说明见 [`apps/web/README.md`](apps/web/README.md)。
 

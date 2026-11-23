@@ -3,6 +3,17 @@ const referenceCards = require('./reference-cards.json');
 const teacherMethods = require('./teacher-methods.json');
 const { MOVE_IDS } = require('./communication-moves');
 const { readSourceOptions } = require('./config');
+const { WORKFLOW_STEPS, CONTEXT_PRESETS, CHIPS } = require('./contracts');
+
+// 情境标签的可选值：与输入契约同源，避免卡片里写出系统不会产生的取值。
+const WHEN_VALUES = {
+  parentReaction: new Set(Object.keys(CONTEXT_PRESETS.parentReactionPreset)),
+  studentWish: new Set(Object.keys(CONTEXT_PRESETS.studentWishPreset)),
+  stage: new Set(WORKFLOW_STEPS),
+  chips: CHIPS
+};
+const WHEN_KEYS = Object.keys(WHEN_VALUES);
+const CARD_STATUS = new Set(['active', 'retired']);
 
 // Only these excerpts from the versioned, generic summaries go to the model.
 // Each excerpt has a staff-facing application for the specific move it supports.
@@ -84,6 +95,31 @@ for (const card of teacherMethods) {
       }
     }
   }
+  if (card.priority !== undefined &&
+      (!Number.isInteger(card.priority) || card.priority < 1 || card.priority > 5)) {
+    throw new Error('老师课件资料卡优先级必须是 1–5：' + card.id);
+  }
+  if (card.status !== undefined && !CARD_STATUS.has(card.status)) {
+    throw new Error('老师课件资料卡状态只能是 active/retired：' + card.id);
+  }
+  if (card.when !== undefined) {
+    if (!card.when || typeof card.when !== 'object' || Array.isArray(card.when)) {
+      throw new Error('老师课件资料卡 when 必须是对象：' + card.id);
+    }
+    for (const [dim, wanted] of Object.entries(card.when)) {
+      if (!WHEN_KEYS.includes(dim)) {
+        throw new Error('老师课件资料卡 when 维度未知：' + card.id + '.' + dim);
+      }
+      if (!Array.isArray(wanted) || !wanted.length) {
+        throw new Error('老师课件资料卡 when 必须是非空数组：' + card.id + '.' + dim);
+      }
+      for (const value of wanted) {
+        if (!WHEN_VALUES[dim].has(value)) {
+          throw new Error('老师课件资料卡 when 取值无效：' + card.id + '.' + dim + '=' + value);
+        }
+      }
+    }
+  }
 }
 
 // 原型只要求资料「有可靠来源并经相关人员审核」，没有规定审核状态门禁。
@@ -137,6 +173,7 @@ function findReferences(input) {
       tier: 1
     }]);
   const teacherReferences = teacherMethods
+    .filter(card => card.status !== 'retired')
     .filter(card => !Array.isArray(card.scenes) || card.scenes.includes('*') || card.scenes.includes(input.scene))
     .map(card => [card.id, {
       ...card,
@@ -148,24 +185,123 @@ function findReferences(input) {
 
 // 资料权威度：1 通用方法卡（公开方法）、2 老师课件卡（待老师核对）、3 候选卡（项目自写、待核对）。
 // 候选卡只在没有更高一级的资料覆盖该步骤时才进入选项，避免「最没背书的资料被引用最多」。
-// 三个开关的名称、默认值和校验集中在 app/config.js 的 readSourceOptions()。
-function sourcesForMove(references, moveId) {
-  const { tiering, maxPerMove, exposeApplications } = readSourceOptions();
-  const all = [...references.values()].filter(card => card.supports.includes(moveId));
+// 开关的名称、默认值和校验集中在 app/config.js 的 readSourceOptions()。
+const CARD_TEXT_CACHE = new Map();
+
+function gramsOf(text) {
+  const grams = new Set();
+  const clean = String(text ?? '').replace(/[^\u4e00-\u9fa5A-Za-z0-9]+/g, ' ');
+  for (const run of clean.split(' ')) {
+    for (let i = 0; i < run.length - 1; i++) grams.add(run.slice(i, i + 2));
+  }
+  return grams;
+}
+
+function cardGrams(card) {
+  const key = card.id + '@' + (card.version ?? 0);
+  if (CARD_TEXT_CACHE.has(key)) return CARD_TEXT_CACHE.get(key);
+  const text = [
+    card.title,
+    ...Object.values(card.passages ?? {}).flat().flatMap(item => [item.quote, item.action])
+  ].join(' ');
+  const grams = gramsOf(text);
+  CARD_TEXT_CACHE.set(key, grams);
+  return grams;
+}
+
+function inputGrams(context) {
+  return gramsOf([context.situation, context.parentReaction, context.studentWish, context.extra]
+    .filter(Boolean).join(' '));
+}
+
+// 输入里没填的维度不参与排除：不知道就不该丢卡。
+function matchesWhen(card, context) {
+  const when = card.when;
+  if (!when) return true;
+  if (when.parentReaction && context.parentReactionPreset &&
+      !when.parentReaction.includes(context.parentReactionPreset)) return false;
+  if (when.studentWish && context.studentWishPreset &&
+      !when.studentWish.includes(context.studentWishPreset)) return false;
+  if (when.stage && context.stage && !when.stage.includes(context.stage)) return false;
+  if (when.chips && Array.isArray(context.chips) && context.chips.length &&
+      !when.chips.some(chip => context.chips.includes(chip))) return false;
+  return true;
+}
+
+function rankScore(card, context, grams) {
+  const when = card.when ?? {};
+  let score = 0;
+  if (when.parentReaction && context.parentReactionPreset &&
+      when.parentReaction.includes(context.parentReactionPreset)) score += 3;
+  if (when.studentWish && context.studentWishPreset &&
+      when.studentWish.includes(context.studentWishPreset)) score += 3;
+  if (when.stage && context.stage && when.stage.includes(context.stage)) score += 3;
+  if (when.chips) score += 3 * when.chips.filter(chip => (context.chips || []).includes(chip)).length;
+  score += (card.priority ?? 3) * 0.5;
+  const cardSet = cardGrams(card);
+  if (cardSet.size && grams.size) {
+    let hit = 0;
+    for (const gram of cardSet) if (grams.has(gram)) hit++;
+    score += 2 * Math.min(1, hit / cardSet.size);
+  }
+  return score;
+}
+
+const hasWhen = card => !!card.when && Object.keys(card.when).length > 0;
+
+function poolForMove(references, moveId, options) {
+  const all = [...references.values()]
+    .filter(card => card.status !== 'retired')
+    .filter(card => card.supports.includes(moveId));
   const reviewed = all.filter(card => (card.tier ?? 3) <= 2);
-  let pool = tiering && reviewed.length ? reviewed : all;
-  if (maxPerMove > 0 && pool.length > maxPerMove) pool = pool.slice(0, maxPerMove);
-  // 顺序沿用资料库自身顺序（通用方法卡 → 老师课件卡 → 候选卡）；上限只是防选项爆炸，
-  // 不做相关性猜测，卡片优先级应该由资料库顺序表达，而不是这里临时排序。
-  return pool.map(card => {
-    const curated = card.passages?.[moveId];
-    return {
-      id: card.id, version: card.version, title: card.title,
-      passages: curated ? curated.map(item => item.quote) : [card.excerpt],
-      ...(exposeApplications && curated ? { applications: curated.map(item => item.action) } : {}),
-      ...(card.excludedUse ? { excludedUse: card.excludedUse } : {}),
-    };
-  });
+  return options.tiering && reviewed.length ? reviewed : all;
+}
+
+// order 模式：数组位置就是优先级。retrieval 模式：先按 when 排除矛盾卡片，再按情境命中、优先级和关键词重合度排序。
+function selectSources(references, moveId, context = {}, options = readSourceOptions()) {
+  let pool = poolForMove(references, moveId, options);
+  if (options.selection === 'retrieval') {
+    const grams = inputGrams(context);
+    const order = new Map(pool.map((card, index) => [card.id, index]));
+    const matched = pool.filter(card => matchesWhen(card, context));
+    const usable = matched.length ? matched : pool.filter(card => !hasWhen(card));
+    const ranked = (usable.length ? usable : pool)
+      .map(card => ({ card, score: rankScore(card, context, grams) }))
+      .sort((a, b) => b.score - a.score || order.get(a.card.id) - order.get(b.card.id));
+    pool = ranked.map(item => item.card);
+  }
+  if (options.maxPerMove > 0 && pool.length > options.maxPerMove) pool = pool.slice(0, options.maxPerMove);
+  return pool;
+}
+
+function toSource(card, moveId, exposeApplications) {
+  const curated = card.passages?.[moveId];
+  return {
+    id: card.id, version: card.version, title: card.title,
+    passages: curated ? curated.map(item => item.quote) : [card.excerpt],
+    ...(exposeApplications && curated ? { applications: curated.map(item => item.action) } : {}),
+    ...(card.excludedUse ? { excludedUse: card.excludedUse } : {}),
+  };
+}
+
+function sourcesForMove(references, moveId, context = {}) {
+  const options = readSourceOptions();
+  return selectSources(references, moveId, context, options)
+    .map(card => toSource(card, moveId, options.exposeApplications));
+}
+
+// 对照实验用：给每张卡返回得分和命中原因，不进入接口返回。
+function explainSelection(references, moveId, context = {}, options = readSourceOptions()) {
+  const grams = inputGrams(context);
+  const selected = new Set(selectSources(references, moveId, context, options).map(card => card.id));
+  return poolForMove(references, moveId, options).map(card => ({
+    id: card.id,
+    tier: card.tier ?? 3,
+    priority: card.priority ?? 3,
+    matched: matchesWhen(card, context),
+    score: Math.round(rankScore(card, context, grams) * 100) / 100,
+    selected: selected.has(card.id)
+  })).sort((a, b) => b.score - a.score);
 }
 
 function findGrounding(reference, moveId, quote) {
@@ -175,4 +311,7 @@ function findGrounding(reference, moveId, quote) {
   return reference.excerpt.includes(quote) ? { quote, action: null } : null;
 }
 
-module.exports = { findReferences, admittedReferences, sourcesForMove, findGrounding, cardCount: cards.length };
+module.exports = {
+  findReferences, admittedReferences, sourcesForMove, selectSources, explainSelection,
+  findGrounding, cardCount: cards.length
+};
